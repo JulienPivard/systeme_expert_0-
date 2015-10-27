@@ -1,10 +1,10 @@
 /**
  * @file Fait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier Fait.cpp.
- * Définit la classe Fait.
+ * Définit la classe abstraite Fait.
  * */
 
 #ifndef fait_hpp
@@ -18,7 +18,7 @@
 namespace sysexp
 {
     /**
-    * @namespace modele
+    * @namespace sysexp::modele
     * */
     namespace modele
     {
@@ -37,7 +37,15 @@ namespace sysexp
                  * @param[in] nom - Le @ref nom_ du fait.
                  * */
                 Fait( const std::string & nom );
+
+                /**
+                 * Méthode par défaut inutile rendu inutilisable.
+                 * */
                 Fait( const Fait & autre ) = delete;
+
+                /**
+                 * Méthode par défaut inutile rendu inutilisable.
+                 * */
                 Fait & operator= ( const Fait & autre ) = delete;
 
                 /**
