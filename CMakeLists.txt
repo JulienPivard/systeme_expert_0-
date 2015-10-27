@@ -2,7 +2,8 @@
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
 # Chemin des répertoires contenant les fichiers entêtes.
-INCLUDE_DIRECTORIES( src/include/modele )
+INCLUDE_DIRECTORIES( src/include/modele
+		     src/include/builders )
 
 # Chemin du répertoire contenant les binaires.
 SET ( EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE} )
