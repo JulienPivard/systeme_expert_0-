@@ -18,41 +18,43 @@ if [[ ! -f Makefile && ! -f CMakeCache.txt ]]; then
     cmake -G"Unix Makefiles"
 fi
 
-# Itère sur toutes les lignes du fichier
-# BEGIN
-# Une variable ENTREE mise a vide.
-#
-# CORP
-# test si il trouve les lignes qui doivent être modifiée
-# et les remplace tout simplement par celle voulu.
-# Chaque ligne du fichier est ajoutée à la variable ENTREE.
-#
-# END
-# La variable ENTREE est tout simplement imprimée dans un fichier.
-awk 'BEGIN{
-FS="="
-print"Modification du fichier CMakeCache.txt";
-ENTREE="";
-}
-{
-    if ($0=="CMAKE_BUILD_TYPE:STRING=")
+if [[ -r CMakeCache.txt ]]; then
+    # Itère sur toutes les lignes du fichier
+    # BEGIN
+    # Une variable ENTREE mise a vide.
+    #
+    # CORP
+    # test si il trouve les lignes qui doivent être modifiée
+    # et les remplace tout simplement par celle voulu.
+    # Chaque ligne du fichier est ajoutée à la variable ENTREE.
+    #
+    # END
+    # La variable ENTREE est tout simplement imprimée dans un fichier.
+    awk 'BEGIN {
+        FS="="
+        print"Modification du fichier CMakeCache.txt.";
+        ENTREE="";
+    }
+    {
+        if ($0=="CMAKE_BUILD_TYPE:STRING=")
         {
             ENTREE=ENTREE$0"Release\n";
             printf "    Release à bien été ajouté à la ligne : CMAKE_BUILD_TYPE:STRING=\n";
         }
-    else if ($0=="CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG")
+        else if ($0=="CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG")
         {
             ENTREE=ENTREE$1"=-Wall -Wextra -march=native -fopenmp -O3\n";
             printf "    La valeur précédente de : CMAKE_CXX_FLAGS_RELEASE:STRING= à bien été remplacée par : -Wall -Wextra -march=native -fopenmp -O3\n";
         }
-    else
+        else
         {
             ENTREE=ENTREE$0"\n";
         }
-}
-END{
-print ENTREE > "CMakeCache.txt";
-printf "Le CMakeCache.txt à bien été écrit";
-}' ./CMakeCache.txt
+    }
+    END {
+        print ENTREE > "CMakeCache.txt";
+        printf "Le CMakeCache.txt à bien été écrit.\n";
+    }' ./CMakeCache.txt
+fi
 
 exit 0
