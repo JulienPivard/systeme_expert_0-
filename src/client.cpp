@@ -1,16 +1,21 @@
+/**
+ * @mainpage
+ *
+ * Le systeme expert 0+ capable de comprendre la grammaire LORAINE.
+ *
+ * @author PIVARD Julien, CLECH Sandy
+ */
 #include <cstdlib>
-
-#include <cstdlib>
-// Pour avoir accès aux entrées sorties des flux.
 #include <iostream>
-// istringstream pour lire en entrée une chaine.
-// ostringstream pour
 #include <sstream>
 
-// Si on veut ne pas avoir à taper std::
-// peut être mis dans un bloc
-//using namespace std;
-
+/**
+ * Programme principal.
+ *
+ * @param[in] argc - le nombre d'arguments de la ligne de commande.
+ * @param[in] argv - les arguments de la ligne de commandes.
+ * @return @c EXIT_FAILURE en cas d'exécution réussie o @c EXIT_FAILURE sinon.
+ */
 int main( int argc, char* argv[] )
 {
 

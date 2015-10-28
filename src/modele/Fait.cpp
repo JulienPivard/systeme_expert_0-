@@ -7,7 +7,7 @@ namespace sysexp
     namespace modele
     {
         Fait::Fait( const std::string & nom ):
-            nom_(nom)
+            nom_( nom )
         {
         }
 

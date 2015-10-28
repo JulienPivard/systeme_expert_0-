@@ -39,16 +39,6 @@ namespace sysexp
                 Fait( const std::string & nom );
 
                 /**
-                 * Méthode par défaut inutile rendu inutilisable.
-                 * */
-                Fait( const Fait & autre ) = delete;
-
-                /**
-                 * Méthode par défaut inutile rendu inutilisable.
-                 * */
-                Fait & operator= ( const Fait & autre ) = delete;
-
-                /**
                  * Accesseur
                  *
                  * @return Le @ref nom_ du fait.
@@ -63,6 +53,7 @@ namespace sysexp
             protected:
                 /**
                  * Le nom qu'on a donné au fait.
+                 * Le nom n'est pas censé changer je le met donc constant.
                  * */
                 const std::string nom_;
 
@@ -71,5 +62,3 @@ namespace sysexp
 }
 
 #endif
-
-/*Pivard Julien*/
