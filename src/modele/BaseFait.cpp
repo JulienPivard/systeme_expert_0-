@@ -7,16 +7,16 @@ namespace sysexp
     namespace modele
     {
 
-        /*
         void BaseFait::afficher() const
         {
-            for( const BaseFait::Contenu & couple : baseFait_ )
+            for( const std::pair<std::string, Fait> & couple : baseFait_ )
             {
                 std::cout << couple.first
+                    << " valeur "
+                    //<< couple.second
                     << std::endl;
             }
         }
-         * */
 
         bool
         BaseFait::appartient( const std::string & nomFait ) const

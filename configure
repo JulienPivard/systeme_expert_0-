@@ -1,0 +1,18 @@
+#! /bin/bash
+# Changer les droits avec chmod u+x fichier
+
+#(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)#
+#                                   #
+#     AUTEUR : PIVARD Julien        #
+#                                   #
+#(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)#
+
+#########################
+#       Debogage        #
+#########################
+# Dit tout : bash -V
+# Vérifie la syntaxe : bash -n
+
+cmake -G"Unix Makefiles"
+
+exit 0

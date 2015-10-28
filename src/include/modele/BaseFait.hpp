@@ -49,7 +49,7 @@ namespace sysexp
                 /*
                  * Affiche le contenu de la base de fait.
                  * */
-                //void afficher() const;
+                void afficher() const;
 
                 /**
                  * Test si un fait existe dans la base de fait.
