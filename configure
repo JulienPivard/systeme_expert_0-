@@ -13,6 +13,21 @@
 # Dit tout : bash -V
 # Vérifie la syntaxe : bash -n
 
-cmake -G"Unix Makefiles"
+if [[ ! -f Makefile ]]; then
+    cmake -G"Unix Makefiles"
+fi
+
+awk 'BEGIN{print"Modification du fichier CMakeCache.txt";
+ENTREE=""}
+{
+    if ($0=="CMAKE_BUILD_TYPE:STRING=")
+        {ENTREE=ENTREE"CMAKE_BUILD_TYPE:STRING=Release\n"}
+    else if ($0=="CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG")
+        {ENTREE=ENTREE"CMAKE_CXX_FLAGS_RELEASE:STRING=-Wall -Wextra -march=native -fopenmp -O3\n"}
+    else
+        {ENTREE=ENTREE$0"\n";}
+}
+END{print ENTREE > "CMakeCache.txt";
+printf "Le CMakeCache.txt à bien été modifié"}' ./CMakeCache.txt
 
 exit 0
