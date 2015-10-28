@@ -46,8 +46,8 @@ namespace sysexp
 
             public:
 
-                /*
-                 * Affiche le contenu de la base de fait.
+                /**
+                 * Affiche le contenu de la base de fait sur la sortie standard.
                  * */
                 void afficher() const;
 

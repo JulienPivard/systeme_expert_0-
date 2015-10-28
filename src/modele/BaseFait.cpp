@@ -11,6 +11,8 @@ namespace sysexp
         {
             for( const std::pair<std::string, Fait> & couple : baseFait_ )
             {
+                Fait valeur = couple.second;
+
                 std::cout << couple.first
                     << " valeur "
                     //<< couple.second

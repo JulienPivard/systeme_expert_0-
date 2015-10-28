@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include "BaseFait.hpp"
+#include "FaitEntier.hpp"
 
 /**
  * Programme principal.
@@ -20,20 +22,20 @@ int main( int argc, char* argv[] )
 {
 
     // Controle du nombre d'argument sur la ligne de commande
-    if( argc == 1 )
+    if( argc > 1 )
     {
         std::cout << "Usage "
             << argv[0]
-            << " entier"
             << std::endl;
     }
-    if( argc != 2 )
+    if( argc != 1 )
     {
         std::cerr << "Trop d'argument, tartine de pus !"
             << std::endl;
         return EXIT_FAILURE;
     }
 
+    /*
     // Cast de chaine dans un type précis.
     std::istringstream laChaine( argv[1] );
     int e ;
@@ -53,6 +55,12 @@ int main( int argc, char* argv[] )
             << std::endl;
         return EXIT_FAILURE;
     }
+     * */
+
+    sysexp::modele::BaseFait base;
+    base.ajouter( sysexp::modele::FaitEntier("truc", 5) );
+    base.afficher();
+
 
     return EXIT_SUCCESS;
 
