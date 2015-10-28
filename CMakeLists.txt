@@ -18,6 +18,9 @@ ADD_EXECUTABLE( client
     src/modele/FaitBool.cpp
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
+    src/modele/FaitSymbolique.cpp
+    src/modele/FaitEntier.cpp
+    src/modele/BaseFait.cpp
     )
 
 # Faire parler le make.
