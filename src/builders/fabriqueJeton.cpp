@@ -4,24 +4,32 @@
 namespace sysexp{
 	
 	namespace builders{
+		// multiton a faire 
+		const Jeton FabriqueJeton::parentheseOuvrante_(Jeton(type::parentheseOuvrante, "("));
+		const Jeton FabriqueJeton::parentheseFermante_(Jeton(type::parentheseFermante, ")"));
+		const Jeton FabriqueJeton::superieur_(Jeton(type::superieur, ">"));
+		const Jeton FabriqueJeton::inferieur_(Jeton(type::inferieur, "<"));
+		const Jeton FabriqueJeton::operateurPlus_(Jeton(type::operateurPlus, "+"));
+		const Jeton FabriqueJeton::operateurMoins_(Jeton(type::operateurMoins, "-"));
+		const Jeton FabriqueJeton::operateurMul_(Jeton(type::operateurMul, "*"));
+		const Jeton FabriqueJeton::operateurDiv_(Jeton(type::operateurDiv, "/"));
+		const Jeton FabriqueJeton::egal_(Jeton(type::egal, "="));
+		const Jeton FabriqueJeton::finExpression_(Jeton(type::finExpression, ";"));
+		const Jeton FabriqueJeton::si_(Jeton(type::si, "si"));
+		const Jeton FabriqueJeton::non_(Jeton(type::non, "non"));
+		const Jeton FabriqueJeton::et_(Jeton(type::et, "et"));
+		const Jeton FabriqueJeton::alors_(Jeton(type::alors, "alors"));
+		const Jeton FabriqueJeton::separateur_(Jeton(type::separateur, ","));
 		
-		FabriqueJeton::FabriqueJeton():
-			parentheseOuvrante_(Jeton(type::parentheseOuvrante, "(")),
-			parentheseFermante_(Jeton(type::parentheseFermante, ")")),
-			superieur_(Jeton(type::superieur, ">")),
-			inferieur_(Jeton(type::inferieur, "<")),
-			operateurPlus_(Jeton(type::operateurPlus, "+")),
-			operateurMoins_(Jeton(type::operateurMoins, "-")),
-			operateurMul_(Jeton(type::operateurMul, "*")),
-			operateurDiv_(Jeton(type::operateurDiv, "/")),
-			egal_(Jeton(type::egal, "=")),
-			finExpression_(Jeton(type::finExpression, ";")),
-			si_(Jeton(type::si, "si")),
-			non_(Jeton(type::non, "non")),
-			et_(Jeton(type::et, "et")),
-			alors_(Jeton(type::alors, "alors")),
-			separateur_(Jeton(type::separateur, ","))
-			{}
+		const Jeton
+		FabriqueJeton::identificateur(const std::string & representation){
+			return Jeton(type::identificateur, representation);
+		}
+		
+		const Jeton 
+		FabriqueJeton::inconnu(const std::string & representation){
+			return Jeton(type::inconnu, representation);
+		}
 		
 		const Jeton 
 		FabriqueJeton::parentheseOuvrante(){

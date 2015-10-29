@@ -18,7 +18,7 @@
 		  */
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
-					egal, finExpression, faitBooleen, faitEntier, faitSymbolique,
+					egal, finExpression, identificateur,
 					si, non, et, alors, separateur, inconnu}Type;
 	}
 	 /**
@@ -99,19 +99,9 @@
 				bool estFinExpression();
 
 				/**
-				 * Indique si le jeton est un fait booleen.
+				 * Indique si le jeton est un identificateur.
 				 */
-				bool estFaitBooleen();
-
-				/**
-				 * Indique si le jeton est un fait entier.
-				 */
-				bool estFaitEntier();
-
-				/**
-				 * Indique si le jeton est un fait symbolique.
-				 */
-				bool estFaitSymbolique();
+				bool estIdentificateur();
 
 				/**
 				 * Indique si le jeton est un si .

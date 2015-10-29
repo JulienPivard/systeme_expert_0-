@@ -71,19 +71,8 @@ namespace sysexp{
 		}
 
 		bool 
-		Jeton::estFaitBooleen() {
-			return type_ == type::faitBooleen;
-		}
-
-		bool 
-		Jeton::estFaitEntier() {
-			return type_ == type::faitEntier;
-		}
-
-
-		bool 
-		Jeton::estFaitSymbolique() {
-			return type_ == type::faitSymbolique;
+		Jeton::estIdentificateur() {
+			return type_ == type::identificateur;
 		}
 
 		bool 

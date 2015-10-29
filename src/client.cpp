@@ -1,7 +1,7 @@
 /**
  * @mainpage
  *
- * Le systeme expert 0+ capable de comprendre la grammaire LORAINE.
+ * Le systeme expert 0+ capable de comprendre la grammaire LORRAINE.
  *
  * @author PIVARD Julien, CLECH Sandy
  */
@@ -10,7 +10,11 @@
 #include <sstream>
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
+#include "fabriqueJeton.hpp"
+#include "jeton.hpp"
 
+using namespace sysexp::builders;
+// using namespace sysexp::modele;
 /**
  * Programme principal.
  *
@@ -55,13 +59,24 @@ int main( int argc, char* argv[] )
             << std::endl;
         return EXIT_FAILURE;
     }
-     * */
-
+     
+	
+	// test de la base de fait
+	
     sysexp::modele::BaseFait base;
     base.ajouter( sysexp::modele::FaitEntier("truc", 5) );
     base.afficher();
 
-
-    return EXIT_SUCCESS;
+	// test sur les jetons (ça marche)
+	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
+	std::cout << std::boolalpha << parentheseOuvrante.estParentheseOuvrante()
+            << std::endl;
+    
+    Jeton identificateur = FabriqueJeton::identificateur("titi");
+    std::cout << std::boolalpha << identificateur.estIdentificateur()
+            << std::endl;
+    */
+        return EXIT_SUCCESS;
+    
 
 }
