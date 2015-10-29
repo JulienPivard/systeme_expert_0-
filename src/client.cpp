@@ -10,6 +10,7 @@
 #include <sstream>
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
+#include "Fait.hpp"
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 
@@ -64,9 +65,14 @@ int main( int argc, char* argv[] )
 	// test de la base de fait
 	
     sysexp::modele::BaseFait base;
-    base.ajouter( sysexp::modele::FaitEntier("truc", 5) );
-    base.afficher();
+    //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 7 );
+    //base.ajouter( fait );
 
+    bool trouve = base.appartient( "bidule" );
+    std::cout << "On a trouve bidule dans la base de fait : "
+        << std::boolalpha
+        << trouve
+        << std::endl;
 	// test sur les jetons (ça marche)
 	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
 	std::cout << std::boolalpha << parentheseOuvrante.estParentheseOuvrante()
@@ -78,5 +84,26 @@ int main( int argc, char* argv[] )
     */
         return EXIT_SUCCESS;
     
+
+}
+    //base.afficher();
+
+    sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 5 );
+    std::cout << "nom : "
+    << fait.lireNom();
+    std::cout << " valeur : "
+    << fait.lireValeur()
+    << std::endl;
+
+    sysexp::modele::Fait fait2 = fait;
+    sysexp::modele::Fait * pfait2 = &fait2;
+    sysexp::modele::FaitEntier * fait3 = (sysexp::modele::FaitEntier *) pfait2;
+    std::cout << "nom : "
+    << fait3->lireNom();
+    std::cout << " valeur : "
+    << fait3->lireValeur()
+    << std::endl;
+
+    return EXIT_SUCCESS;
 
 }

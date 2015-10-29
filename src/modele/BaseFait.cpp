@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "BaseFait.hpp"
+#include "FaitEntier.hpp"
 
 namespace sysexp
 {
@@ -12,10 +13,12 @@ namespace sysexp
             for( const std::pair<std::string, Fait> & couple : baseFait_ )
             {
                 Fait valeur = couple.second;
+                Fait * pValeur = &valeur;
+                FaitEntier *fait = dynamic_cast<FaitEntier *>( pValeur );
 
                 std::cout << couple.first
                     << " valeur "
-                    //<< couple.second
+                    << fait->lireValeur()
                     << std::endl;
             }
         }

@@ -24,6 +24,7 @@ ADD_EXECUTABLE( client
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp
+    src/modele/VisiteurFormesAbstrait.cpp
     )
 
 # Faire parler le make.
