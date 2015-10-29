@@ -8,7 +8,7 @@ namespace sysexp
     {
 
         FaitSymbolique::FaitSymbolique( const std::string & nom, const std::string & valeur ):
-            Fait( nom ),
+            FaitAbstrait( nom ),
             valeur_( valeur )
         {
         }

@@ -10,7 +10,7 @@
 #ifndef faitbool_hpp
 #define faitbool_hpp
 
-#include "Fait.hpp"
+#include "FaitAbstrait.hpp"
 
 /**
  * @namespace sysexp
@@ -28,7 +28,7 @@ namespace sysexp
          * Déclaration de la classe concrète FaitBool.
          * Cette classe permet de représenter un fait booléen et sa valeur booléenne.
          * */
-        class FaitBool : public Fait
+        class FaitBool : public FaitAbstrait
         {
 
             public:

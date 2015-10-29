@@ -10,7 +10,7 @@
 #ifndef faitsymbolique_hpp
 #define faitsymbolique_hpp
 
-# include "Fait.hpp"
+#include "FaitAbstrait.hpp"
 
 /**
  * @namespace sysexp
@@ -28,7 +28,7 @@ namespace sysexp
          * Déclaration de la classe concrète FaitSymbolique.
          * Cette classe permet de représenter un fait symbolique et sa valeur.
          * */
-        class FaitSymbolique : public Fait
+        class FaitSymbolique : public FaitAbstrait
         {
 
             public:

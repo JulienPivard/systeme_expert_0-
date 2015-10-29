@@ -10,7 +10,7 @@
 #ifndef faitentier_hpp
 #define faitentier_hpp
 
-#include "Fait.hpp"
+#include "FaitAbstrait.hpp"
 
 /**
  * @namespace sysexp
@@ -29,7 +29,7 @@ namespace sysexp
          * Déclaration de la classe concrète FaitEntier.
          * Cette classe permet de représenter un fait entier et sa valeur.
          * */
-        class FaitEntier : public Fait
+        class FaitEntier : public FaitAbstrait
         {
 
             public:

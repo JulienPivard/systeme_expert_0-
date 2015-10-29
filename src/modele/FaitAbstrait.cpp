@@ -1,18 +1,18 @@
 #include <cstdlib>
 
-#include "Fait.hpp"
+#include "FaitAbstrait.hpp"
 
 namespace sysexp
 {
     namespace modele
     {
-        Fait::Fait( const std::string & nom ):
+        FaitAbstrait::FaitAbstrait( const std::string & nom ):
             nom_( nom )
         {
         }
 
         const std::string &
-        Fait::lireNom() const
+        FaitAbstrait::lireNom() const
         {
             return nom_;
         }

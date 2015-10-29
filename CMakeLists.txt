@@ -16,7 +16,7 @@ SET( CMAKE_CXX_FLAGS "-std=c++11")
 # Création des exécutables.
 ADD_EXECUTABLE( client
     src/client.cpp
-    src/modele/Fait.cpp
+    src/modele/FaitAbstrait.cpp
     src/modele/FaitBool.cpp
     src/modele/FaitSymbolique.cpp
     src/modele/FaitEntier.cpp

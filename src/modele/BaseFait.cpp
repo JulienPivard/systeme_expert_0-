@@ -10,10 +10,10 @@ namespace sysexp
 
         void BaseFait::afficher() const
         {
-            for( const std::pair<std::string, Fait> & couple : baseFait_ )
+            for( const std::pair<std::string, FaitAbstrait> & couple : baseFait_ )
             {
-                Fait valeur = couple.second;
-                Fait * pValeur = &valeur;
+                FaitAbstrait valeur = couple.second;
+                FaitAbstrait * pValeur = &valeur;
                 FaitEntier *fait = dynamic_cast<FaitEntier *>( pValeur );
 
                 std::cout << couple.first
@@ -29,16 +29,16 @@ namespace sysexp
             return baseFait_.find( nomFait ) != baseFait_.end();
         }
 
-        const Fait &
+        const FaitAbstrait &
         BaseFait::trouver( const std::string & nomFait ) const
         {
             return baseFait_.find( nomFait )->second;
         }
 
         void
-        BaseFait::ajouter( const Fait & fait )
+        BaseFait::ajouter( const FaitAbstrait & fait )
         {
-            baseFait_.insert( std::pair<std::string, Fait>( fait.lireNom(), fait ) );
+            baseFait_.insert( std::pair<std::string, FaitAbstrait>( fait.lireNom(), fait ) );
         }
 
     }

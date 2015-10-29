@@ -10,7 +10,7 @@
 #include <sstream>
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
-#include "Fait.hpp"
+#include "FaitAbstrait.hpp"
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 
@@ -60,10 +60,10 @@ int main( int argc, char* argv[] )
             << std::endl;
         return EXIT_FAILURE;
     }
-     
-	
+
+
 	// test de la base de fait
-	
+
     sysexp::modele::BaseFait base;
     //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 7 );
     //base.ajouter( fait );
@@ -77,32 +77,29 @@ int main( int argc, char* argv[] )
 	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
 	std::cout << std::boolalpha << parentheseOuvrante.estParentheseOuvrante()
             << std::endl;
-    
+
     Jeton identificateur = FabriqueJeton::identificateur("titi");
     std::cout << std::boolalpha << identificateur.estIdentificateur()
             << std::endl;
     */
-        return EXIT_SUCCESS;
-    
 
-}
     //base.afficher();
 
-    sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 5 );
-    std::cout << "nom : "
-    << fait.lireNom();
-    std::cout << " valeur : "
-    << fait.lireValeur()
-    << std::endl;
+    //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 5 );
+    //std::cout << "nom : "
+    //<< fait.lireNom();
+    //std::cout << " valeur : "
+    //<< fait.lireValeur()
+    //<< std::endl;
 
-    sysexp::modele::Fait fait2 = fait;
-    sysexp::modele::Fait * pfait2 = &fait2;
-    sysexp::modele::FaitEntier * fait3 = (sysexp::modele::FaitEntier *) pfait2;
-    std::cout << "nom : "
-    << fait3->lireNom();
-    std::cout << " valeur : "
-    << fait3->lireValeur()
-    << std::endl;
+    //sysexp::modele::FaitAbstrait fait2 = fait;
+    //sysexp::modele::FaitAbstrait * pfait2 = &fait2;
+    //sysexp::modele::FaitEntier * fait3 = (sysexp::modele::FaitEntier *) pfait2;
+    //std::cout << "nom : "
+    //<< fait3->lireNom();
+    //std::cout << " valeur : "
+    //<< fait3->lireValeur()
+    //<< std::endl;
 
     return EXIT_SUCCESS;
 

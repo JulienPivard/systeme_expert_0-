@@ -8,7 +8,7 @@ namespace sysexp
     {
 
         FaitEntier::FaitEntier( const std::string & nom, const long int & valeur ):
-            Fait( nom ),
+            FaitAbstrait( nom ),
             valeur_( valeur )
         {
         }

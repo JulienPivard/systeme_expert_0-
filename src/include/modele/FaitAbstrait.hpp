@@ -1,14 +1,14 @@
 /**
- * @file Fait.hpp
+ * @file FaitAbstrait.hpp
  * @brief header.
  * @author PIVARD Julien, CLECH Sandy
  *
- * Header pour le fichier Fait.cpp.
+ * Header pour le fichier FaitAbstrait.cpp.
  * Définit la classe abstraite Fait.
  * */
 
-#ifndef fait_hpp
-#define fait_hpp
+#ifndef faitabstrait_hpp
+#define faitabstrait_hpp
 
 #include <string>
 
@@ -23,20 +23,21 @@ namespace sysexp
     namespace modele
     {
         /**
-         * @class Fait Fait.hpp
+         * @class FaitAbstrait FaitAbstrait.hpp
          *
-         * Déclaration de la classe abstraite Fait.
+         * Déclaration de la classe abstraite FaitAbstrait.
          * */
-        class Fait
+        class FaitAbstrait
         {
 
             public:
                 /**
                  * Constructeur logique
                  *
-                 * @param[in] nom - Le @ref nom_ du fait.
+                 * @param[in] nom
+                 * Le @ref nom_ du fait.
                  * */
-                Fait( const std::string & nom );
+                FaitAbstrait( const std::string & nom );
 
                 /**
                  * Accesseur
@@ -48,7 +49,7 @@ namespace sysexp
                 /**
                  * La méthode virtuel destructeur.
                  * */
-                virtual ~Fait() = default;
+                virtual ~FaitAbstrait() = default;
 
             protected:
                 /**
