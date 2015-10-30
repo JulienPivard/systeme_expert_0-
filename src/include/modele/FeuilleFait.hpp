@@ -38,7 +38,7 @@ namespace sysexp
                 /**
                  * Constructeur logique.
                  *
-                 * @param[in] valeur
+                 * @param[in] nom
                  * Le @ref nom_ du fait entier dont on veut la valeur.
                  * */
                 FeuilleFait( const std::string & nom );
