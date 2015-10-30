@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
+#include <memory>
+
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
 #include "FaitAbstrait.hpp"
@@ -15,7 +17,6 @@
 #include "jeton.hpp"
 #include "FeuilleConstante.hpp"
 #include "ValeurAbstraite.hpp"
-#include <memory>
 #include "lexical.hpp"
 
 using namespace sysexp::builders;
@@ -64,47 +65,9 @@ int main( int argc, char* argv[] )
             << std::endl;
         return EXIT_FAILURE;
     }
-
-
-	// test de la base de fait
-
-    sysexp::modele::BaseFait base;
-    //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 7 );
-    //base.ajouter( fait );
-
-    bool trouve = base.appartient( "bidule" );
-    std::cout << "On a trouve bidule dans la base de fait : "
-        << std::boolalpha
-        << trouve
-        << std::endl;
-	// test sur les jetons (ça marche)
-	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
-	std::cout << std::boolalpha << parentheseOuvrante.estParentheseOuvrante()
-            << std::endl;
-
-    Jeton identificateur = FabriqueJeton::identificateur("titi");
-    std::cout << std::boolalpha << identificateur.estIdentificateur()
-            << std::endl;
     */
 
-
-    //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 5 );
-    //std::cout << "nom : "
-    //<< fait.lireNom();
-    //std::cout << " valeur : "
-    //<< fait.lireValeur()
-    //<< std::endl;
-
-    //sysexp::modele::FaitAbstrait fait2 = fait;
-    //sysexp::modele::FaitAbstrait * pfait2 = &fait2;
-    //sysexp::modele::FaitEntier * fait3 = (sysexp::modele::FaitEntier *) pfait2;
-    //std::cout << "nom : "
-    //<< fait3->lireNom();
-    //std::cout << " valeur : "
-    //<< fait3->lireValeur()
-    //<< std::endl;
-	
-	/*sysexp::modele::BaseFait base;
+	sysexp::modele::BaseFait base;
     sysexp::modele::FaitEntier::PtrFaitEntier fait3( new sysexp::modele::FaitEntier("machin", 5) );
     base.ajouter(fait3);
 
@@ -114,23 +77,54 @@ int main( int argc, char* argv[] )
     sysexp::modele::FaitEntier::PtrFaitEntier fait5( new sysexp::modele::FaitEntier("blabla", 9) );
     base.ajouter(fait5);
 
+    std::cout << "================================"
+        << std::endl;
+    std::cout << "= Affichage de la base de fait ="
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
     base.afficher();
 
+    bool trouve = base.appartient( "bidule" );
+    std::cout << "\nOn a trouve bidule dans la base de fait : "
+        << std::boolalpha
+        << trouve
+        << std::endl;
+
+    std::cout << "==================================================="
+        << std::endl;
+    std::cout << "= Test des shared_ptr et cast sur ValeurAbstraite ="
+        << std::endl;
+    std::cout << "==================================================="
+        << std::endl;
     int valinit = 7;
     std::shared_ptr<sysexp::modele::ValeurAbstraite> val( new sysexp::modele::FeuilleConstante( valinit ));
-    std::cout << valinit
+    std::cout << "Valeur mise dans la feuille à l'instanciation : "
+        << valinit
         << " on doit retrouver "
         << val->interpret( base )
         << std::endl;
-    */
-    
+
+
+    /*
+	// test sur les jetons (ça marche)
+	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
+	std::cout << std::boolalpha << parentheseOuvrante.estParentheseOuvrante()
+            << std::endl;
+
+    Jeton identificateur = FabriqueJeton::identificateur("titi");
+    std::cout << std::boolalpha << identificateur.estIdentificateur()
+            << std::endl;
+     * */
+
+    /*
 	Lexical lorraine("/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt");
 	Jeton machin = lorraine.suivant();
 	std::cout << std::boolalpha
 	<< machin.estFinFichier() << "\n"
 	<< machin.estSi()
 	<< std::endl;
-    
+     * */
 
     return EXIT_SUCCESS;
 

@@ -33,7 +33,7 @@ namespace sysexp
          * ou le déclenchement de la conclusion entière.
          * incoherenceFait uniquement pour le déclenchement des conclusions.
          * */
-        typedef enum class
+        typedef enum class Erreurs
         {
             toutVaBien,         /**< Pas d'erreur */
             divParZero,         /**< Erreur division par zéro rencontrée. */
