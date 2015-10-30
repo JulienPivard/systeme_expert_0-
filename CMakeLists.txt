@@ -23,9 +23,10 @@ ADD_EXECUTABLE( client
     src/modele/BaseFait.cpp
     src/modele/FeuilleConstante.cpp
     src/modele/FeuilleFait.cpp
+    src/modele/VisiteurFormesAbstrait.cpp
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
-    src/modele/VisiteurFormesAbstrait.cpp
+    src/builders/lexical.cpp
     )
 
 # Faire parler le make.

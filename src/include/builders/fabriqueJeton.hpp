@@ -130,6 +130,13 @@
                   */
 				static const Jeton separateur();
 				
+				/**
+				  * Retourne le jeton associe a la fin du fichier.
+                  *
+                  * @return le jeton associe a la foin du fichier.
+                  */
+				static const Jeton finFichier();
+				
 				static const Jeton identificateur(const std::string & representation);
 				
 				static const Jeton inconnu(const std::string & representation);
@@ -150,6 +157,7 @@
 				static const Jeton et_;
 				static const Jeton alors_;
 				static const Jeton separateur_;
+				static const Jeton finFichier_;
 				
 		};
 	 }

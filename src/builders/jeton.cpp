@@ -104,6 +104,11 @@ namespace sysexp{
 		Jeton::estInconnu() {
 			return type_ == type::inconnu;
 		}
+		
+		bool
+		Jeton::estFinFichier(){
+			return type_ == type::finFichier;
+		}
 
 	}
 }

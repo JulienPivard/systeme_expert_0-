@@ -16,6 +16,7 @@
 #include "FeuilleConstante.hpp"
 #include "ValeurAbstraite.hpp"
 #include <memory>
+#include "lexical.hpp"
 
 using namespace sysexp::builders;
 // using namespace sysexp::modele;
@@ -102,8 +103,8 @@ int main( int argc, char* argv[] )
     //std::cout << " valeur : "
     //<< fait3->lireValeur()
     //<< std::endl;
-
-    sysexp::modele::BaseFait base;
+	
+	/*sysexp::modele::BaseFait base;
     sysexp::modele::FaitEntier::PtrFaitEntier fait3( new sysexp::modele::FaitEntier("machin", 5) );
     base.ajouter(fait3);
 
@@ -121,6 +122,15 @@ int main( int argc, char* argv[] )
         << " on doit retrouver "
         << val->interpret( base )
         << std::endl;
+    */
+    
+	Lexical lorraine("/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt");
+	Jeton machin = lorraine.suivant();
+	std::cout << std::boolalpha
+	<< machin.estFinFichier() << "\n"
+	<< machin.estSi()
+	<< std::endl;
+    
 
     return EXIT_SUCCESS;
 

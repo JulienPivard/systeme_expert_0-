@@ -20,6 +20,8 @@ namespace sysexp{
 		const Jeton FabriqueJeton::et_(Jeton(type::et, "et"));
 		const Jeton FabriqueJeton::alors_(Jeton(type::alors, "alors"));
 		const Jeton FabriqueJeton::separateur_(Jeton(type::separateur, ","));
+		const Jeton FabriqueJeton::finFichier_(Jeton(type::finFichier, ""));
+		
 		
 		const Jeton
 		FabriqueJeton::identificateur(const std::string & representation){
@@ -102,5 +104,9 @@ namespace sysexp{
 			return separateur_;
 		}
 		
+		const Jeton 
+		FabriqueJeton::finFichier(){
+			return finFichier_;
+		}
 	}
 }

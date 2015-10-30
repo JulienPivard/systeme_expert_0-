@@ -19,7 +19,7 @@
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
 					egal, finExpression, identificateur,
-					si, non, et, alors, separateur, inconnu}Type;
+					si, non, et, alors, separateur, inconnu, finFichier}Type;
 	}
 	 /**
 	   * @namespace sysexp::builders
@@ -133,6 +133,11 @@
 				 * Indique si le jeton est inconnu.
 				 */
 				bool estInconnu();
+				
+				/**
+				 * Indique si le jeton est fin du fichier.
+				 */
+				bool estFinFichier();
 
 			public:
 				/**
