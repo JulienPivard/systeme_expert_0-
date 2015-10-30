@@ -32,6 +32,16 @@ namespace sysexp
         {
 
             public:
+
+                /**
+                 * @typedef PtrFaitBool
+                 *
+                 * Nom facile pour un shared_ptr de FaitBool.
+                 * */
+                typedef std::shared_ptr<FaitBool> PtrFaitBool;
+
+            public:
+
                 /**
                  * Constructeur logique du fait booléen.
                  *

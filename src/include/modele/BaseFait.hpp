@@ -13,6 +13,8 @@
 
 #include <string>
 #include <map>
+#include <memory>
+
 #include "FaitAbstrait.hpp"
 
 /**
@@ -40,9 +42,9 @@ namespace sysexp
                 /**
                  * @typedef Contenu
                  *
-                 * Nouveau non pour la map.
+                 * Nom pour faciliter l'écriture et la manipulation de la variable @ref baseFait_
                  * */
-                typedef std::map<std::string, FaitAbstrait> Contenu;
+                typedef std::map<std::string, std::shared_ptr<FaitAbstrait>> Contenu;
 
             public:
 
@@ -67,7 +69,7 @@ namespace sysexp
                  * Le nom du fait recherché.
                  * @return Le fait trouvé.
                  * */
-                const FaitAbstrait & trouver( const std::string & nomFait ) const;
+                const FaitAbstrait::PtrFaitAbstrait & trouver( const std::string & nomFait ) const;
 
                 /**
                  * Ajoute un fait à la base de fait.
@@ -75,7 +77,7 @@ namespace sysexp
                  * @param[in] fait
                  * Le fait à ajouter à la base de faits.
                  * */
-                void ajouter( const FaitAbstrait & fait );
+                void ajouter( const FaitAbstrait::PtrFaitAbstrait & fait );
 
             protected:
                 /**

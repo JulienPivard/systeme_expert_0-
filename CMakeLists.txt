@@ -21,9 +21,10 @@ ADD_EXECUTABLE( client
     src/modele/FaitSymbolique.cpp
     src/modele/FaitEntier.cpp
     src/modele/BaseFait.cpp
+    src/modele/FeuilleConstante.cpp
+    src/modele/FeuilleFait.cpp
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
-    src/builders/lexical.cpp
     src/modele/VisiteurFormesAbstrait.cpp
     )
 

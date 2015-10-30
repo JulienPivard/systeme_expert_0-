@@ -13,6 +13,9 @@
 #include "FaitAbstrait.hpp"
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
+#include "FeuilleConstante.hpp"
+#include "ValeurAbstraite.hpp"
+#include <memory>
 
 using namespace sysexp::builders;
 // using namespace sysexp::modele;
@@ -83,7 +86,6 @@ int main( int argc, char* argv[] )
             << std::endl;
     */
 
-    //base.afficher();
 
     //sysexp::modele::FaitEntier fait = sysexp::modele::FaitEntier( "truc", 5 );
     //std::cout << "nom : "
@@ -100,6 +102,25 @@ int main( int argc, char* argv[] )
     //std::cout << " valeur : "
     //<< fait3->lireValeur()
     //<< std::endl;
+
+    sysexp::modele::BaseFait base;
+    sysexp::modele::FaitEntier::PtrFaitEntier fait3( new sysexp::modele::FaitEntier("machin", 5) );
+    base.ajouter(fait3);
+
+    sysexp::modele::FaitEntier::PtrFaitEntier fait4( new sysexp::modele::FaitEntier("bidule", 15) );
+    base.ajouter(fait4);
+
+    sysexp::modele::FaitEntier::PtrFaitEntier fait5( new sysexp::modele::FaitEntier("blabla", 9) );
+    base.ajouter(fait5);
+
+    base.afficher();
+
+    int valinit = 7;
+    std::shared_ptr<sysexp::modele::ValeurAbstraite> val( new sysexp::modele::FeuilleConstante( valinit ));
+    std::cout << valinit
+        << " on doit retrouver "
+        << val->interpret( base )
+        << std::endl;
 
     return EXIT_SUCCESS;
 

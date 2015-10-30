@@ -11,6 +11,7 @@
 #define valeurabstraite_hpp
 
 #include "BaseFait.hpp"
+#include <memory>
 
 /**
  * @namespace sysexp
@@ -34,9 +35,13 @@ namespace sysexp
             public:
 
                 /**
-                 * Destructeur virtuel.
+                 * @typedef Valeur
+                 *
+                 * La valeur stocké sous forme de shared_ptr.
                  * */
-                virtual ~ValeurAbstraite();
+                typedef std::shared_ptr<sysexp::modele::ValeurAbstraite> Valeur;
+
+            public:
 
                 /**
                  * Permet d'évaluer la valeur.
@@ -44,7 +49,12 @@ namespace sysexp
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
                  * */
-                virtual const long int & interpret( const BaseFait & baseFait ) const;
+                virtual const long int & interpret( const BaseFait & baseFait ) const = 0;
+
+                /**
+                 * Destructeur virtuel.
+                 * */
+                virtual ~ValeurAbstraite() = default;
 
             protected:
 

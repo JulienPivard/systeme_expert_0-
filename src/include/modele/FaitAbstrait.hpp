@@ -11,6 +11,7 @@
 #define faitabstrait_hpp
 
 #include <string>
+#include <memory>
 
 /**
  * @namespace sysexp
@@ -31,6 +32,16 @@ namespace sysexp
         {
 
             public:
+
+                /**
+                 * @typedef PtrFaitAbstrait
+                 *
+                 * Nom facile pour un shared_ptr de FaitAbstrait.
+                 * */
+                typedef std::shared_ptr<FaitAbstrait> PtrFaitAbstrait;
+
+            public:
+
                 /**
                  * Constructeur logique
                  *
@@ -52,6 +63,7 @@ namespace sysexp
                 virtual ~FaitAbstrait() = default;
 
             protected:
+
                 /**
                  * Le nom qu'on a donné au fait.
                  * Le nom n'est pas censé changer je le met donc constant.

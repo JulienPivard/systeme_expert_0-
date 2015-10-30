@@ -33,6 +33,15 @@ namespace sysexp
         {
 
             public:
+
+                /**
+                 * @typedef PtrFaitEntier
+                 *
+                 * Nom facile pour un shared_ptr de FaitEntier.
+                 * */
+                typedef std::shared_ptr<FaitEntier> PtrFaitEntier;
+
+            public:
                 /**
                  * Constructeur logique du fait entier.
                  *

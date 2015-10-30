@@ -32,6 +32,15 @@ namespace sysexp
         {
 
             public:
+
+                /**
+                 * @typedef PtrFaitSymbolique
+                 *
+                 * Nom facile pour un shared_ptr de FaitSymbolique.
+                 * */
+                typedef std::shared_ptr<FaitSymbolique> PtrFaitSymbolique;
+
+            public:
                 /**
                  * Constructeur logique du fait symbolique.
                  *

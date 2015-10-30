@@ -10,15 +10,14 @@ namespace sysexp
 
         void BaseFait::afficher() const
         {
-            for( const std::pair<std::string, FaitAbstrait> & couple : baseFait_ )
+            for( const std::pair<std::string, std::shared_ptr<FaitAbstrait>> & couple : baseFait_ )
             {
-                FaitAbstrait valeur = couple.second;
-                FaitAbstrait * pValeur = &valeur;
-                FaitEntier *fait = dynamic_cast<FaitEntier *>( pValeur );
+                FaitAbstrait::PtrFaitAbstrait fait( couple.second );
+                FaitEntier::PtrFaitEntier fait2 = std::dynamic_pointer_cast<FaitEntier>(fait);
 
                 std::cout << couple.first
                     << " valeur "
-                    << fait->lireValeur()
+                    << fait2->lireValeur()
                     << std::endl;
             }
         }
@@ -29,16 +28,16 @@ namespace sysexp
             return baseFait_.find( nomFait ) != baseFait_.end();
         }
 
-        const FaitAbstrait &
+        const FaitAbstrait::PtrFaitAbstrait &
         BaseFait::trouver( const std::string & nomFait ) const
         {
             return baseFait_.find( nomFait )->second;
         }
 
         void
-        BaseFait::ajouter( const FaitAbstrait & fait )
+        BaseFait::ajouter( const FaitAbstrait::PtrFaitAbstrait & fait )
         {
-            baseFait_.insert( std::pair<std::string, FaitAbstrait>( fait.lireNom(), fait ) );
+            baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
         }
 
     }
