@@ -35,14 +35,6 @@ namespace sysexp
             public:
 
                 /**
-                * Constructeur logique
-                *
-                * @param[in] autre
-                * Le blabla qui vas bien.
-                * */
-                RegleAbstraite( const RegleAbstraite & autre );
-
-                /**
                 * Destructeur de la RegleAbstraite.
                 * */
                 virtual ~RegleAbstraite();

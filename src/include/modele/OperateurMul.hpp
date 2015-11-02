@@ -51,6 +51,7 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
+                 * @return La valeur de l'opération de multiplication.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
 

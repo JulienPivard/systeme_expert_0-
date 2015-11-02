@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier ExceptionFaitInconnu.cpp.
- * Définit la classe abstraite ExceptionFaitInconnu.
+ * Définit la classe d'exception concrète ExceptionFaitInconnu.
  * */
 
 
@@ -32,12 +32,17 @@ namespace sysexp
         class ExceptionFaitInconnu : public std::runtime_error
         {
             public:
-                ExceptionFaitInconnu():
-                    std::runtime_error("Erreur le fait n'existe pas dans la base.")
-                {}
-        };
-    }
 
+                /**
+                 * Le fait que l'on chercher n'existe pas dans la base de fait.
+                 * */
+                ExceptionFaitInconnu():
+                    std::runtime_error( "Erreur ! Le fait n'existe pas dans la base." )
+                {}
+
+        };
+
+    }
 }
 
 #endif

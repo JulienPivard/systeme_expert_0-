@@ -63,7 +63,7 @@ namespace sysexp
                  * @param[in] nom
                  * Le @ref nom_ du fait.
                  * @param[in] type
-                 * Le @ref type_ du fait.
+                 * Le @ref type_ du fait. Voir @see TypeFait.
                  * */
                 FaitAbstrait( const std::string & nom, const TypeFait & type );
 
@@ -96,6 +96,8 @@ namespace sysexp
 
                 /**
                  * Le type de fait que l'on va manipuler.
+                 * De même le type n'est pas censé changer.
+                 * @see TypeFait
                  * */
                 const TypeFait type_;
 

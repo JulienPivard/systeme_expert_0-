@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier FeuilleConstante.cpp.
- * Définit la classe abstraite FeuilleConstante.
+ * Définit la classe concrète FeuilleConstante.
  * */
 
 
@@ -50,6 +50,7 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
+                 * @return La valeur de la feuille de l'opération.
                  * */
                 long int
                 interpret( const BaseFait & baseFait ) const;

@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier FeuilleFait.cpp.
- * Définit la classe abstraite FeuilleFait.
+ * Définit la classe concrète FeuilleFait.
  * */
 
 
@@ -54,6 +54,7 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
+                 * @return La valeur de la feuille de l'opération.
                  * */
                 long int
                 interpret( const BaseFait & baseFait ) const;

@@ -65,6 +65,10 @@ namespace sysexp
         const FaitAbstrait::PtrFaitAbstrait &
         BaseFait::trouver( const std::string & nomFait ) const
         {
+            if( ! appartient( nomFait ) )
+            {
+                throw ExceptionFaitInconnu();
+            }
             return baseFait_.find( nomFait )->second;
         }
 

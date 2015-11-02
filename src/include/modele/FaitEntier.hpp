@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FaitEntier.cpp.
- * Définit la classe FaitEntier.
+ * Définit la classe concrète FaitEntier.
  * */
 
 #ifndef faitentier_hpp

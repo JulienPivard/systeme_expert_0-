@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FaitSymbolique.cpp.
- * Définit la classe FaitSymbolique.
+ * Définit la classe concrète FaitSymbolique.
  * */
 
 #ifndef faitsymbolique_hpp

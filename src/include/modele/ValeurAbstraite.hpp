@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier ValeurAbstraite.cpp.
- * Définit la classe abstraite ValeurAbstraite.
+ * Définit la classe concrète ValeurAbstraite.
  * */
 
 #ifndef valeurabstraite_hpp
@@ -49,6 +49,7 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
+                 * @return La valeur.
                  * */
                 virtual long int interpret( const BaseFait & baseFait ) const = 0;
 

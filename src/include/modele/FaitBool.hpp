@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FaitBool.cpp.
- * Définit la classe FaitBool.
+ * Définit la classe concrète FaitBool.
  * */
 
 #ifndef faitbool_hpp

@@ -49,6 +49,9 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
+                 * @return La valeur de l'opération.
+                 * @throws ExceptionDivParZero
+                 * La partie droite de la division est 0. L'opération ne peut pas être évalué.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
 
