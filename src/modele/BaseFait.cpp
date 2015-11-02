@@ -7,7 +7,7 @@ namespace sysexp
 
         void BaseFait::afficher() const
         {
-            for( const std::pair<std::string, std::shared_ptr<FaitAbstrait>> & couple : baseFait_ )
+            for( const std::pair<std::string, FaitAbstrait::PtrFaitAbstrait> & couple : baseFait_ )
             {
 
                 FaitAbstrait::PtrFaitAbstrait faitAbstrait =  couple.second;
@@ -19,6 +19,7 @@ namespace sysexp
                         {
                             const FaitBool* fait = static_cast<const FaitBool*>( faitAbstrait.get() );
                             std::cout << " valeur "
+                                << std::boolalpha
                                 << fait->lireValeur()
                                 << std::endl;
                         }
@@ -67,6 +68,10 @@ namespace sysexp
         void
         BaseFait::ajouter( const FaitAbstrait::PtrFaitAbstrait & fait )
         {
+            if( appartient( fait->lireNom() ) )
+            {
+                throw ExceptionFaitInconnu();
+            }
             baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
         }
 

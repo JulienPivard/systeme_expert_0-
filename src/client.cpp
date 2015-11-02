@@ -9,9 +9,11 @@
 #include <iostream>
 #include <sstream>
 #include <memory>
+#include <exception>
 
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
+#include "FaitBool.hpp"
 #include "FaitAbstrait.hpp"
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
@@ -20,7 +22,6 @@
 #include "lexical.hpp"
 
 using namespace sysexp::builders;
-// using namespace sysexp::modele;
 /**
  * Programme principal.
  *
@@ -68,13 +69,27 @@ int main( int argc, char* argv[] )
     */
 
 	sysexp::modele::BaseFait base;
-    sysexp::modele::FaitEntier::PtrFaitEntier fait3( new sysexp::modele::FaitEntier("machin", 5) );
+    sysexp::modele::FaitEntier::PtrFaitEntier fait1( new sysexp::modele::FaitEntier("machin", 5) );
+    base.ajouter(fait1);
+
+    sysexp::modele::FaitEntier::PtrFaitEntier fait2( new sysexp::modele::FaitEntier("bidule", 15) );
+    base.ajouter(fait2);
+
+    sysexp::modele::FaitBool::PtrFaitBool fait3( new sysexp::modele::FaitBool("blabla", true) );
     base.ajouter(fait3);
 
-    sysexp::modele::FaitEntier::PtrFaitEntier fait4( new sysexp::modele::FaitEntier("bidule", 15) );
-    base.ajouter(fait4);
+    try
+    {
+        sysexp::modele::FaitEntier::PtrFaitEntier fait4( new sysexp::modele::FaitEntier("blabla", 9) );
+        base.ajouter(fait4);
+    }
+    catch(std::exception & e)
+    {
+        std::cerr << "Erreur "
+            << std::endl;
+    }
 
-    sysexp::modele::FaitEntier::PtrFaitEntier fait5( new sysexp::modele::FaitEntier("blabla", 9) );
+    sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait5( new sysexp::modele::FaitSymbolique("cheval", "genial") );
     base.ajouter(fait5);
 
     std::cout << "================================"
@@ -85,26 +100,19 @@ int main( int argc, char* argv[] )
         << std::endl;
     base.afficher();
 
+    std::cout << std::endl
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
+    std::cout << "= Test de présence de fait ="
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
     bool trouve = base.appartient( "bidule" );
     std::cout << "\nOn a trouve bidule dans la base de fait : "
         << std::boolalpha
         << trouve
         << std::endl;
-
-    std::cout << "==================================================="
-        << std::endl;
-    std::cout << "= Test des shared_ptr et cast sur ValeurAbstraite ="
-        << std::endl;
-    std::cout << "==================================================="
-        << std::endl;
-    int valinit = 7;
-    std::shared_ptr<sysexp::modele::ValeurAbstraite> val( new sysexp::modele::FeuilleConstante( valinit ));
-    std::cout << "Valeur mise dans la feuille à l'instanciation : "
-        << valinit
-        << " on doit retrouver "
-        << val->interpret( base )
-        << std::endl;
-
 
     /*
 	// test sur les jetons (ça marche)

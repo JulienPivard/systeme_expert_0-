@@ -37,14 +37,22 @@ namespace sysexp
             public:
 
                 /**
-                * Constructeur logique
-                *
-                * @param[in] filsGauche
-                * Le fils gauche de l'opération. Voir @ref filsGauche_.
-                * @param[in] filsDroit
-                * Le fils droit de l'opération. Voir @ref filsDroit_.
-                * */
+                 * Constructeur logique
+                 *
+                 * @param[in] filsGauche
+                 * Le fils gauche de l'opération. Voir @ref filsGauche_.
+                 * @param[in] filsDroit
+                 * Le fils droit de l'opération. Voir @ref filsDroit_.
+                 * */
                 OperateurAbstrait( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+
+                /**
+                 * Permet d'évaluer la valeur.
+                 *
+                 * @param[in] baseFait
+                 * La base de fait à utiliser pour évaluer les expressions.
+                 * */
+                virtual long int interpret( const BaseFait & baseFait ) const = 0;
 
                 /**
                 * Destructeur de OperateurAbstrait.

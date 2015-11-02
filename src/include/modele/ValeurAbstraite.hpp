@@ -10,8 +10,9 @@
 #ifndef valeurabstraite_hpp
 #define valeurabstraite_hpp
 
-#include "BaseFait.hpp"
 #include <memory>
+
+#include "BaseFait.hpp"
 
 /**
  * @namespace sysexp
@@ -39,7 +40,7 @@ namespace sysexp
                  *
                  * La valeur stocké sous forme de shared_ptr.
                  * */
-                typedef std::shared_ptr<sysexp::modele::ValeurAbstraite> Valeur;
+                typedef std::shared_ptr<ValeurAbstraite> Valeur;
 
             public:
 

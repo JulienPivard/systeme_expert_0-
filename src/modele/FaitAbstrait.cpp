@@ -4,6 +4,7 @@ namespace sysexp
 {
     namespace modele
     {
+
         FaitAbstrait::FaitAbstrait( const std::string & nom, const TypeFait & type ):
             nom_( nom ),
             type_( type )
@@ -21,5 +22,6 @@ namespace sysexp
         {
             return type_;
         }
+
     }
 }

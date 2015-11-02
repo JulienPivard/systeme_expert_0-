@@ -21,6 +21,7 @@
 #include "FaitEntier.hpp"
 #include "FaitBool.hpp"
 #include "FaitSymbolique.hpp"
+#include "ExceptionFaitInconnu.hpp"
 
 /**
  * @namespace sysexp
