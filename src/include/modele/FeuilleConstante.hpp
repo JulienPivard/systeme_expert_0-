@@ -11,6 +11,9 @@
 #ifndef feuilleconstante_hpp
 #define feuilleconstante_hpp
 
+#include <cstdlib>
+
+#include "BaseFait.hpp"
 #include "ValeurAbstraite.hpp"
 
 /**

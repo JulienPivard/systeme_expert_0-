@@ -50,7 +50,7 @@ fi
 
 # Si le fichier makefile n'existe pas alors on le génère.
 if [[ ! -f Makefile && ! -f CMakeCache.txt ]]; then
-    echo -e "${vert}Configuration de ${magenta}CMake${neutre} pour UNIX.\n"
+    echo -e "${vert}Configuration de ${magenta}CMake${vert} pour UNIX.${neutre}\n"
     cmake -G"Unix Makefiles"
 fi
 

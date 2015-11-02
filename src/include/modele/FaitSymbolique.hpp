@@ -10,6 +10,8 @@
 #ifndef faitsymbolique_hpp
 #define faitsymbolique_hpp
 
+#include <cstdlib>
+
 #include "FaitAbstrait.hpp"
 
 /**

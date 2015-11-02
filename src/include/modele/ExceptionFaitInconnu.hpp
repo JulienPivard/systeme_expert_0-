@@ -27,7 +27,7 @@ namespace sysexp
         /**
         * @class ExceptionFaitInconnu ExceptionFaitInconnu.hpp
         *
-        * Déclaration de la classe ExceptionFaitInconnu.
+        * Déclaration de l'exception pour les faits non trouvé.
         * */
         class ExceptionFaitInconnu : public std::runtime_error
         {

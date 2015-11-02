@@ -10,6 +10,8 @@
 #ifndef faitbool_hpp
 #define faitbool_hpp
 
+#include <cstdlib>
+
 #include "FaitAbstrait.hpp"
 
 /**

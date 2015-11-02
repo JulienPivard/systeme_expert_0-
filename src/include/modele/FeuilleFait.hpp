@@ -11,8 +11,13 @@
 #ifndef feuillefait_hpp
 #define feuillefait_hpp
 
-#include "BaseFait.hpp"
 #include <string>
+#include <cstdlib>
+
+#include "BaseFait.hpp"
+#include "FaitEntier.hpp"
+#include "FaitAbstrait.hpp"
+#include "ExceptionFaitInconnu.hpp"
 
 /**
  * @namespace sysexp

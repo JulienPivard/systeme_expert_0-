@@ -10,6 +10,7 @@
 #ifndef faitabstrait_hpp
 #define faitabstrait_hpp
 
+#include <cstdlib>
 #include <string>
 #include <memory>
 
@@ -30,7 +31,7 @@ namespace sysexp
          *
          * Les différents type de fait que l'on peut rencontrer.
          * */
-        enum TypeFait
+        enum class TypeFait
         {
             faitBool,          /**< un fait de type FaitBool */
             faitEntier,        /**< un fait de type FaitEntier */

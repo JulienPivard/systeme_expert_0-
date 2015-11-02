@@ -11,6 +11,8 @@
 #ifndef operateurabstrait_hpp
 #define operateurabstrait_hpp
 
+#include <cstdlib>
+
 #include "ValeurAbstraite.hpp"
 
 /**
@@ -66,4 +68,3 @@ namespace sysexp
 }
 
 #endif
-

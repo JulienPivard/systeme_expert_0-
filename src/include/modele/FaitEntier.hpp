@@ -10,6 +10,8 @@
 #ifndef faitentier_hpp
 #define faitentier_hpp
 
+#include <cstdlib>
+
 #include "FaitAbstrait.hpp"
 
 /**

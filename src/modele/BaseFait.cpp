@@ -1,12 +1,4 @@
-#include <cstdlib>
-#include <iostream>
-#include <memory>
-
 #include "BaseFait.hpp"
-#include "FaitAbstrait.hpp"
-#include "FaitEntier.hpp"
-#include "FaitBool.hpp"
-#include "FaitSymbolique.hpp"
 
 namespace sysexp
 {
@@ -18,19 +10,36 @@ namespace sysexp
             for( const std::pair<std::string, std::shared_ptr<FaitAbstrait>> & couple : baseFait_ )
             {
 
-                switch( couple.second.get()->type() )
+                FaitAbstrait::PtrFaitAbstrait faitAbstrait =  couple.second;
+                std::cout << "Nom : " << faitAbstrait->lireNom();
+                switch( faitAbstrait->type() )
                 {
 
                     case TypeFait::faitBool:
-                        //FaitBool* fait = static_cast<FaitBool*>( couple.second.get() );
+                        {
+                            const FaitBool* fait = static_cast<const FaitBool*>( faitAbstrait.get() );
+                            std::cout << " valeur "
+                                << fait->lireValeur()
+                                << std::endl;
+                        }
                         break;
 
                     case TypeFait::faitEntier:
-                        //FaitEntier* fait = static_cast<FaitEntier*>(  couple.second.get() );
+                        {
+                            const FaitEntier* fait = static_cast<const FaitEntier*>( faitAbstrait.get() );
+                            std::cout << " valeur "
+                                << fait->lireValeur()
+                                << std::endl;
+                        }
                         break;
 
                     case TypeFait::faitSymbolique:
-                        //FaitSymbolique* fait = static_cast<FaitSymbolique*>(   couple.second.get() );
+                        {
+                            const FaitSymbolique* fait = static_cast<const FaitSymbolique*>( faitAbstrait.get() );
+                            std::cout << " valeur "
+                                << fait->lireValeur()
+                                << std::endl;
+                        }
                         break;
 
                     default:
@@ -40,10 +49,6 @@ namespace sysexp
 
                 }
 
-                std::cout << couple.first
-                    << " valeur "
-                    //<< fait2->lireValeur()
-                    << std::endl;
             }
         }
 

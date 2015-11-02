@@ -1,5 +1,3 @@
-#include <cstdlib>
-
 #include "FaitAbstrait.hpp"
 
 namespace sysexp

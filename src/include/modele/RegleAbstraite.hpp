@@ -11,6 +11,8 @@
 #ifndef regleabstraite_hpp
 #define regleabstraite_hpp
 
+#include <cstdlib>
+
 /**
  * @namespace sysexp
  * */

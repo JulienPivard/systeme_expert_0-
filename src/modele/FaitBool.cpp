@@ -1,5 +1,3 @@
-#include <cstdlib>
-
 #include "FaitBool.hpp"
 
 namespace sysexp

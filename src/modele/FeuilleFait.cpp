@@ -1,9 +1,4 @@
-#include <cstdlib>
-
 #include "FeuilleFait.hpp"
-#include "FaitEntier.hpp"
-#include "FaitAbstrait.hpp"
-#include "ExceptionFaitInconnu.hpp"
 
 namespace sysexp
 {

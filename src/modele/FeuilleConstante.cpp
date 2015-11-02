@@ -1,7 +1,4 @@
-#include <cstdlib>
-
 #include "FeuilleConstante.hpp"
-#include "BaseFait.hpp"
 
 namespace sysexp
 {

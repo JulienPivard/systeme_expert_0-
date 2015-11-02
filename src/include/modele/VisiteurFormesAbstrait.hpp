@@ -11,7 +11,9 @@
 #ifndef visiteurformesabstraites_hpp
 #define visiteurformesabstraites_hpp
 
+#include <cstdlib>
 #include <memory>
+
 #include "BaseFait.hpp"
 
 /**

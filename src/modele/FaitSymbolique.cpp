@@ -1,5 +1,3 @@
-#include <cstdlib>
-
 #include "FaitSymbolique.hpp"
 
 namespace sysexp

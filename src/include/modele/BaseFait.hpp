@@ -11,11 +11,16 @@
 #ifndef basefait_hpp
 #define basefait_hpp
 
+#include <cstdlib>
+#include <iostream>
 #include <string>
-#include <map>
 #include <memory>
+#include <map>
 
 #include "FaitAbstrait.hpp"
+#include "FaitEntier.hpp"
+#include "FaitBool.hpp"
+#include "FaitSymbolique.hpp"
 
 /**
  * @namespace sysexp
