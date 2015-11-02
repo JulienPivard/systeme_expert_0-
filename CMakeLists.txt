@@ -24,7 +24,11 @@ ADD_EXECUTABLE( client
     src/modele/FeuilleConstante.cpp
     src/modele/FeuilleFait.cpp
     src/modele/VisiteurFormesAbstrait.cpp
+    src/modele/OperateurAbstrait.cpp
     src/modele/OperateurPlus.cpp
+    src/modele/OperateurMoins.cpp
+    src/modele/OperateurMul.cpp
+    src/modele/OperateurDiv.cpp
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp

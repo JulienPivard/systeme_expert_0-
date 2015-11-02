@@ -5,9 +5,8 @@ namespace sysexp
     namespace modele
     {
 
-        OperateurPlus::OperateurPlus( ValeurAbstraite::Valeur filsGauche, ValeurAbstraite::Valeur filsDroit ):
-            filsGauche_( filsGauche ),
-            filsDroit_( filsDroit )
+        OperateurPlus::OperateurPlus( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit ):
+            OperateurAbstrait( filsGauche, filsDroit )
         { }
 
         long int

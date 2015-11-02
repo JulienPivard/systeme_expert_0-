@@ -47,17 +47,9 @@ namespace sysexp
                 OperateurAbstrait( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
 
                 /**
-                 * Permet d'évaluer la valeur.
-                 *
-                 * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
-                 * */
-                virtual long int interpret( const BaseFait & baseFait ) const = 0;
-
-                /**
                 * Destructeur de OperateurAbstrait.
                 * */
-                virtual ~OperateurAbstrait();
+                virtual ~OperateurAbstrait() = default;
 
             protected:
                 /**

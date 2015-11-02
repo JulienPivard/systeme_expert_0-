@@ -1,20 +1,17 @@
 /**
- * @file OperateurPlus.hpp
+ * @file OperateurDiv.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier OperateurPlus.cpp.
- * Définit la classe concrète OperateurPlus.
+ * Header pour le fichier OperateurDiv.cpp.
+ * Définit la classe concrète OperateurDiv.
  * */
 
 
-#ifndef operateurplus_hpp
-#define operateurplus_hpp
-
-#include <cstdlib>
+#ifndef operateurdiv_hpp
+#define operateurdiv_hpp
 
 #include "OperateurAbstrait.hpp"
-#include "BaseFait.hpp"
 
 /**
  * @namespace sysexp
@@ -28,11 +25,11 @@ namespace sysexp
     {
 
         /**
-         * @class OperateurPlus OperateurPlus.hpp
+         * @class OperateurDiv OperateurDiv.hpp
          *
-         * Déclaration de la classe OperateurPlus.
+         * Déclaration de la classe OperateurDiv.
          * */
-        class OperateurPlus : public OperateurAbstrait
+        class OperateurDiv : public OperateurAbstrait
         {
 
             public:
@@ -45,10 +42,10 @@ namespace sysexp
                  * @param[in] filsDroit
                  * Le fils droit de l'opération. Voir @ref filsDroit_.
                  * */
-                OperateurPlus( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+                OperateurDiv( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
 
                 /**
-                 * Permet d'évaluer la valeur de l'opération addition.
+                 * Permet d'évaluer la valeur de l'opération division.
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.

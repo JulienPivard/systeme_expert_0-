@@ -17,6 +17,7 @@
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
 #include "FaitAbstrait.hpp"
+#include "ValeurAbstraite.hpp"
 #include "ExceptionFaitInconnu.hpp"
 
 /**
@@ -35,7 +36,7 @@ namespace sysexp
         *
         * Déclaration de la classe FeuilleFait.
         * */
-        class FeuilleFait
+        class FeuilleFait : public ValeurAbstraite
         {
 
             public:
