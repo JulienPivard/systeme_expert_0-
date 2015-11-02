@@ -44,8 +44,11 @@ namespace sysexp
                         break;
 
                     default:
-                        std::cout << "Le type du fait n'existe pas."
+                        std::cerr << "Le type du fait n'existe pas."
                             << std::endl;
+                        // TODO
+                        // Ajouter un type d'exception pour les fait inconnu.
+                        throw ExceptionFaitInconnu();
                     break;
 
                 }
@@ -70,6 +73,8 @@ namespace sysexp
         {
             if( appartient( fait->lireNom() ) )
             {
+                // TODO
+                // Ajouter un type d'exception pour un fait déjà existant dans la base de fait.
                 throw ExceptionFaitInconnu();
             }
             baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
