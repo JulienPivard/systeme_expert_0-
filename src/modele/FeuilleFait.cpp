@@ -3,6 +3,7 @@
 #include "FeuilleFait.hpp"
 #include "FaitEntier.hpp"
 #include "FaitAbstrait.hpp"
+#include "ExceptionFaitInconnu.hpp"
 
 namespace sysexp
 {
@@ -13,15 +14,18 @@ namespace sysexp
             nom_( nom )
         { }
 
-        const long int &
+        long int
         FeuilleFait::interpret( const BaseFait & baseFait ) const
         {
+
             if( baseFait.appartient( nom_ ) )
             {
                 FaitEntier::PtrFaitEntier fait = std::dynamic_pointer_cast<FaitEntier>( baseFait.trouver( nom_ ));
                 return fait->lireValeur();
             }
-            return 0;
+
+            // On n'a pas trouvé le fait recherché.
+            throw ExceptionFaitInconnu();
         }
 
     }

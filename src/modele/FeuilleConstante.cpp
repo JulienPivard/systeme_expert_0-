@@ -12,9 +12,11 @@ namespace sysexp
             valeur_( valeur )
         { }
 
-        const long int &
+        long int
         FeuilleConstante::interpret( const BaseFait & baseFait ) const
         {
+            // oui c'est bien crade comme y faut mais j'en ai mare du warning associé
+            baseFait.appartient("");
             return valeur_;
         }
 

@@ -48,7 +48,7 @@ namespace sysexp
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
                  * */
-                const long int &
+                long int
                 interpret( const BaseFait & baseFait ) const;
 
             protected:

@@ -49,7 +49,7 @@ namespace sysexp
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
                  * */
-                virtual const long int & interpret( const BaseFait & baseFait ) const = 0;
+                virtual long int interpret( const BaseFait & baseFait ) const = 0;
 
                 /**
                  * Destructeur virtuel.

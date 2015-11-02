@@ -23,6 +23,20 @@ namespace sysexp
     * */
     namespace modele
     {
+
+        /**
+         * @enum TypeFait
+         * @brief Énumération des différents type de fait.
+         *
+         * Les différents type de fait que l'on peut rencontrer.
+         * */
+        enum TypeFait
+        {
+            faitBool,          /**< un fait de type FaitBool */
+            faitEntier,        /**< un fait de type FaitEntier */
+            faitSymbolique     /**< un fait de type FaitSymbolique */
+        };
+
         /**
          * @class FaitAbstrait FaitAbstrait.hpp
          *
@@ -48,7 +62,7 @@ namespace sysexp
                  * @param[in] nom
                  * Le @ref nom_ du fait.
                  * */
-                FaitAbstrait( const std::string & nom );
+                FaitAbstrait( const std::string & nom, const TypeFait & type );
 
                 /**
                  * Accesseur
@@ -56,6 +70,13 @@ namespace sysexp
                  * @return Le @ref nom_ du fait.
                  * */
                 const std::string & lireNom() const;
+
+                /**
+                 * Permet de connaitre le type du fait.
+                 *
+                 * @return Le @type_ du fait.
+                 * */
+                const TypeFait & type() const;
 
                 /**
                  * La méthode virtuel destructeur.
@@ -69,6 +90,11 @@ namespace sysexp
                  * Le nom n'est pas censé changer je le met donc constant.
                  * */
                 const std::string nom_;
+
+                /**
+                 * Le type de fait que l'on va manipuler.
+                 * */
+                const TypeFait type_;
 
         };
     }

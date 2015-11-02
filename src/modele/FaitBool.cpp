@@ -7,7 +7,7 @@ namespace sysexp
     namespace modele
     {
         FaitBool::FaitBool( const std::string & nom, const bool & valeur ):
-            FaitAbstrait( nom ),
+            FaitAbstrait( nom, TypeFait::faitBool ),
             valeur_( valeur )
         {
         }
