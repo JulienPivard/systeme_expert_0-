@@ -7,7 +7,7 @@ namespace sysexp
 
         void BaseFait::afficher() const
         {
-            for( const std::pair<std::string, FaitAbstrait::PtrFaitAbstrait> & couple : baseFait_ )
+            for( const std::pair< std::string, FaitAbstrait::PtrFaitAbstrait > & couple : baseFait_ )
             {
 
                 FaitAbstrait::PtrFaitAbstrait faitAbstrait =  couple.second;
@@ -17,7 +17,7 @@ namespace sysexp
 
                     case TypeFait::faitBool:
                         {
-                            const FaitBool* fait = static_cast<const FaitBool*>( faitAbstrait.get() );
+                            const FaitBool* fait = static_cast< const FaitBool* >( faitAbstrait.get() );
                             std::cout << " valeur "
                                 << std::boolalpha
                                 << fait->lireValeur()
@@ -27,7 +27,7 @@ namespace sysexp
 
                     case TypeFait::faitEntier:
                         {
-                            const FaitEntier* fait = static_cast<const FaitEntier*>( faitAbstrait.get() );
+                            const FaitEntier* fait = static_cast< const FaitEntier* >( faitAbstrait.get() );
                             std::cout << " valeur "
                                 << fait->lireValeur()
                                 << std::endl;
@@ -36,7 +36,7 @@ namespace sysexp
 
                     case TypeFait::faitSymbolique:
                         {
-                            const FaitSymbolique* fait = static_cast<const FaitSymbolique*>( faitAbstrait.get() );
+                            const FaitSymbolique* fait = static_cast< const FaitSymbolique* >( faitAbstrait.get() );
                             std::cout << " valeur "
                                 << fait->lireValeur()
                                 << std::endl;
@@ -49,7 +49,7 @@ namespace sysexp
                         // TODO
                         // Ajouter un type d'exception pour les fait inconnu.
                         throw ExceptionFaitInconnu();
-                    break;
+                        break;
 
                 }
 

@@ -38,6 +38,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrFeuilleConstante
+                 *
+                 * Un shared_ptr sur une feuille constante.
+                 * */
+                typedef std::shared_ptr< FeuilleConstante > PtrFeuilleConstante;
+
+            public:
+
+                /**
                 * Constructeur logique
                 *
                 * @param[in] valeur

@@ -38,6 +38,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrOperateurPlus
+                 *
+                 * Un shared_ptr sur l'opérateur addition.
+                 * */
+                typedef std::shared_ptr< OperateurPlus > PtrOperateurPlus;
+
+            public:
+
+                /**
                  * Constructeur logique
                  *
                  * @param[in] filsGauche

@@ -37,6 +37,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrOperateurMoins
+                 *
+                 * Un shared_ptr pour l'opérateur de soustraction.
+                 * */
+                typedef std::shared_ptr< OperateurMoins > PtrOperateurMoins;
+
+            public:
+
+                /**
                  * Constructeur logique.
                  *
                  * @param[in] filsGauche

@@ -35,6 +35,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrOperateurDiv
+                 *
+                 * Un shared_ptr de l'opérateur division.
+                 * */
+                typedef std::shared_ptr< OperateurDiv > PtrOperateurDiv;
+
+            public:
+
+                /**
                  * Constructeur logique
                  *
                  * @param[in] filsGauche

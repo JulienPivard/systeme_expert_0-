@@ -75,7 +75,7 @@ namespace sysexp
                  * Le nom du fait recherché.
                  * @throws ExceptionFaitInconnu
                  * Le fait demandé n'existe pas.
-                 * @return Le fait trouvé. Voir @see FaitAbstrait
+                 * @return Le fait trouvé. @see FaitAbstrait
                  * */
                 const FaitAbstrait::PtrFaitAbstrait & trouver( const std::string & nomFait ) const;
 
@@ -83,7 +83,7 @@ namespace sysexp
                  * Ajoute un fait à la base de fait.
                  *
                  * @param[in] fait
-                 * Le fait à ajouter à la base de faits. Voir @see FaitAbstrait
+                 * Le fait à ajouter à la base de faits. @see FaitAbstrait
                  * @throws ExceptionFaitDejaAjoute
                  * Le fait existe déjà et ne peut pas être modifié.
                  * */

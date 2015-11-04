@@ -42,6 +42,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrFeuilleFait
+                 *
+                 * Un shared_ptr sur une feuille de fait.
+                 * */
+                typedef std::shared_ptr< FeuilleFait > PtrFeuilleFait;
+
+            public:
+
+                /**
                  * Constructeur logique.
                  *
                  * @param[in] nom

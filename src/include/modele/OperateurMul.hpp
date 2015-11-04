@@ -37,6 +37,15 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrOperateurMul
+                 *
+                 * Un shared_ptr de l'opérateur multiplication.
+                 * */
+                typedef std::shared_ptr< OperateurMul > PtrOperateurMul;
+
+            public:
+
+                /**
                  * Constructeur logique
                  *
                  * @param[in] filsGauche

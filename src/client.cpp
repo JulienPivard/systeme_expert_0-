@@ -15,10 +15,18 @@
 #include "FaitEntier.hpp"
 #include "FaitBool.hpp"
 #include "FaitAbstrait.hpp"
+
+#include "ValeurAbstraite.hpp"
+#include "FeuilleConstante.hpp"
+#include "FeuilleFait.hpp"
+#include "OperateurAbstrait.hpp"
+#include "OperateurPlus.hpp"
+#include "OperateurMoins.hpp"
+#include "OperateurMul.hpp"
+#include "OperateurDiv.hpp"
+
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
-#include "FeuilleConstante.hpp"
-#include "ValeurAbstraite.hpp"
 #include "lexical.hpp"
 
 using namespace sysexp::builders;
@@ -68,6 +76,11 @@ int main( int argc, char* argv[] )
     }
     */
 
+    std::cout << " (=^.^=)Début des tests de ValeurAbstraite(=^.^=)"
+        << std::endl
+        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+        << std::endl
+        << std::endl;
 	sysexp::modele::BaseFait base;
     sysexp::modele::FaitEntier::PtrFaitEntier fait1( new sysexp::modele::FaitEntier("machin", 5) );
     base.ajouter(fait1);
@@ -89,7 +102,7 @@ int main( int argc, char* argv[] )
             << std::endl;
     }
 
-    sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait5( new sysexp::modele::FaitSymbolique("cheval", "genial") );
+    sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait5( new sysexp::modele::FaitSymbolique("cheval", "génial") );
     base.ajouter(fait5);
 
     std::cout << "================================"
@@ -112,6 +125,42 @@ int main( int argc, char* argv[] )
     std::cout << "\nOn a trouve bidule dans la base de fait : "
         << std::boolalpha
         << trouve
+        << std::endl;
+    std::cout << " (=^.^=)Fin des tests de BaseFait(=^.^=)"
+        << std::endl
+        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+        << std::endl
+        << std::endl;
+
+    std::cout << " (=^.^=)Début des tests de ValeurAbstraite(=^.^=)"
+        << std::endl
+        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+        << std::endl
+        << std::endl;
+
+    sysexp::modele::FeuilleConstante::PtrFeuilleConstante f1( new sysexp::modele::FeuilleConstante(3) );
+    sysexp::modele::FeuilleConstante::PtrFeuilleConstante f2( new sysexp::modele::FeuilleConstante(2) );
+    sysexp::modele::OperateurPlus::PtrOperateurPlus opplus( new sysexp::modele::OperateurPlus( f1, f2 ) );
+    sysexp::modele::ValeurAbstraite::Valeur val(opplus);
+
+    std::cout << "La valeur de 3+2 = "
+        << val->interpret( base )
+        << std::endl;
+
+    sysexp::modele::FeuilleFait::PtrFeuilleFait f3( new sysexp::modele::FeuilleFait( "machin" ) );
+    sysexp::modele::FeuilleConstante::PtrFeuilleConstante f4( new sysexp::modele::FeuilleConstante(10) );
+    sysexp::modele::OperateurMoins::PtrOperateurMoins opm( new sysexp::modele::OperateurMoins( f3, f4 ) );
+    sysexp::modele::OperateurPlus::PtrOperateurPlus opp( new sysexp::modele::OperateurPlus( f1, opm ) );
+    sysexp::modele::ValeurAbstraite::Valeur val2(opp);
+
+    std::cout << "La valeur de 3 + ( 5 - 10 ) = "
+        << val2->interpret( base )
+        << std::endl;
+
+    std::cout << "Fin des tests de ValeurAbstraite"
+        << std::endl
+        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+        << std::endl
         << std::endl;
 
     /*
