@@ -77,18 +77,72 @@ namespace sysexp
         {
             if( appartient( fait->lireNom() ) )
             {
-                FaitAbstrait::PtrFaitAbstrait faitBase( trouver( fait->lireNom() ) );
-                //if( faitBase->type() != fait->type() || faitBase->lireValeur() == fait->lireValeur() )
-                //{
 
-                //    // TODO
-                //    // Ajouter un type d'exception pour un fait déjà existant dans la base de fait.
-                //    throw ExceptionFaitInconnu();
+                // On récupère le fait qui existe déjà dans la base avec ce nom.
+                FaitAbstrait::PtrFaitAbstrait faitDansBase( trouver( fait->lireNom() ) );
+                // Ici le fait de même nom n'est pas de même type.
+                if( faitDansBase->type() != fait->type() )
+                {
+                    throw ExceptionFaitDejaAjoute();
+                }
+                else        // Les faits sont de même type.
+                {
 
-                //}
+                    switch( fait->type() )
+                    {
+                        case TypeFait::faitBool:
+                        {
+
+                            const FaitBool* ptrFait = static_cast< const FaitBool* >( fait.get() );
+                            const FaitBool* ptrFaitDansBase = static_cast< const FaitBool* >( faitDansBase.get() );
+                            if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
+                            {
+                                throw ExceptionFaitDejaAjoute();
+                            }
+
+                        }
+                        break;
+
+                        case TypeFait::faitEntier:
+                        {
+
+                            const FaitEntier* ptrFait = static_cast< const FaitEntier* >( fait.get() );
+                            const FaitEntier* ptrFaitDansBase = static_cast< const FaitEntier* >( faitDansBase.get() );
+                            if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
+                            {
+                                throw ExceptionFaitDejaAjoute();
+                            }
+
+                        }
+                        break;
+
+                        case TypeFait::faitSymbolique:
+                        {
+
+                            const FaitSymbolique* ptrFait = static_cast< const FaitSymbolique* >( fait.get() );
+                            const FaitSymbolique* ptrFaitDansBase = static_cast< const FaitSymbolique* >( faitDansBase.get() );
+                            if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
+                            {
+                                throw ExceptionFaitDejaAjoute();
+                            }
+
+                        }
+                        break;
+
+                        default:
+                            std::cerr << "Le type du fait n'existe pas !"
+                                << std::endl;
+
+
+                    }
+
+                }
 
             }
-            baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
+            else
+            {
+                baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
+            }
         }
 
     }

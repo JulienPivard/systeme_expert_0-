@@ -35,12 +35,12 @@ namespace sysexp
          * ou le déclenchement de la conclusion entière.
          * incoherenceFait uniquement pour le déclenchement des conclusions.
          * */
-        typedef enum class Erreurs
+        enum class Erreurs
         {
             toutVaBien,         /**< Pas d'erreur */
             divParZero,         /**< Erreur division par zéro rencontrée. */
             incoherenceFait     /**< Erreur incohérence détectée dans la base de fait. */
-        }Erreurs;
+        };
 
 
         /**

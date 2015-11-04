@@ -84,28 +84,41 @@ int main( int argc, char* argv[] )
         << std::endl
         << std::endl;
 	sysexp::modele::BaseFait base;
-    sysexp::modele::FaitEntier::PtrFaitEntier fait1( new sysexp::modele::FaitEntier("machin", 5) );
-    base.ajouter(fait1);
+    {
+        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("machin", 5) );
+        base.ajouter(fait);
+    }
 
-    sysexp::modele::FaitEntier::PtrFaitEntier fait2( new sysexp::modele::FaitEntier("bidule", 15) );
-    base.ajouter(fait2);
+    {
+        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("bidule", 15) );
+        base.ajouter(fait);
+    }
 
-    sysexp::modele::FaitBool::PtrFaitBool fait3( new sysexp::modele::FaitBool("blabla", true) );
-    base.ajouter(fait3);
+    {
+        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("blabla", 9) );
+        base.ajouter(fait);
+    }
+
+    {
+        sysexp::modele::FaitBool::PtrFaitBool fait( new sysexp::modele::FaitBool("nul", true) );
+        base.ajouter(fait);
+    }
 
     try
     {
-        sysexp::modele::FaitEntier::PtrFaitEntier fait4( new sysexp::modele::FaitEntier("blabla", 9) );
-        base.ajouter(fait4);
+        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("bidule", 10) );
+        base.ajouter(fait);
     }
-    catch(std::exception & e)
+    catch( sysexp::modele::ExceptionFaitDejaAjoute & e )
     {
-        std::cerr << "Erreur "
+        std::cerr << "Erreur la base de règle est incohérente."
             << std::endl;
     }
 
-    sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait5( new sysexp::modele::FaitSymbolique("cheval", "génial") );
-    base.ajouter(fait5);
+    {
+        sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait( new sysexp::modele::FaitSymbolique("cheval", "génial") );
+        base.ajouter(fait);
+    }
 
     std::cout << "================================"
         << std::endl;
@@ -172,6 +185,29 @@ int main( int argc, char* argv[] )
         << ") = "
         << val2->interpret( base )
         << std::endl;
+
+    sysexp::modele::OperateurMul::PtrOperateurMul opmul( new sysexp::modele::OperateurMul( f1, f2 ) );
+    sysexp::modele::ValeurAbstraite::Valeur val3(opmul);
+
+    std::cout << "La valeur de "
+        << f1->interpret( base )
+        << " * "
+        << f2->interpret( base )
+        << " = "
+        << val3->interpret( base )
+        << std::endl;
+
+    sysexp::modele::OperateurDiv::PtrOperateurDiv opd( new sysexp::modele::OperateurDiv( f4, f2 ) );
+    sysexp::modele::ValeurAbstraite::Valeur val4(opd);
+
+    std::cout << "La valeur de "
+        << f4->interpret( base )
+        << " / "
+        << f2->interpret( base )
+        << " = "
+        << val4->interpret( base )
+        << std::endl;
+
 
     std::cout << "========================================================================================="
         << std::endl;

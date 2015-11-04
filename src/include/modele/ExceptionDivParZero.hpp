@@ -25,11 +25,6 @@ namespace sysexp
     {
 
         /**
-         * @namespace sysexp::modele
-         * */
-        namespace modele
-
-        /**
          * @class ExceptionDivParZero ExceptionDivParZero.hpp
          *
          * Déclaration de l'exception pour la division par zéro.

@@ -22,6 +22,7 @@
 #include "FaitBool.hpp"
 #include "FaitSymbolique.hpp"
 #include "ExceptionFaitInconnu.hpp"
+#include "ExceptionFaitDejaAjoute.hpp"
 
 /**
  * @namespace sysexp
@@ -90,6 +91,7 @@ namespace sysexp
                 void ajouter( const FaitAbstrait::PtrFaitAbstrait & fait );
 
             protected:
+
                 /**
                 * La liste de tout les faits. Voir @see FaitAbstrait.
                 * */

@@ -38,7 +38,7 @@ namespace sysexp
                  * Le fait existe déjà dans la base de fait.
                  * */
                 ExceptionFaitDejaAjoute():
-                    std::runtime_error( "Erreur ! Le fait existe deja dans la base de fait." )
+                    std::runtime_error( "Erreur ! Le fait existe déjà. La base de règle est incohérente." )
                 { }
         };
 

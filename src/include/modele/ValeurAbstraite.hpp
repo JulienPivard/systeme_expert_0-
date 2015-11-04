@@ -26,7 +26,7 @@ namespace sysexp
     {
 
         /**
-         * @class Valeur ValeurAbstraite.hpp
+         * @class ValeurAbstraite ValeurAbstraite.hpp
          *
          * Déclaration de la classe abstraite Valeur.
          * */
