@@ -23,15 +23,27 @@ namespace sysexp{
 				Lexical(const std::string & nomFichier);
 				
 			  public: 
-				//const std::ifstream & lireLecteur();
+				const std::string & lireNomFichier();
 				
 				const std::string & lireLigne();
 				
 				unsigned int lirePosition();
 				
+				const Jeton suivant();
+				
+			  protected:
+			  
 				bool avancer();
 				
-				const Jeton suivant();
+				bool estSi(char & caractere, unsigned int & position);
+				
+				bool estNon(char & caractere, unsigned int & position);
+				
+				bool estEt(char & caractere, unsigned int & position);
+				
+				bool estAlors(char & caractere, unsigned int & position);
+				
+				const Jeton extraireEntier();
 			
 			protected: 
 				const std::string ligne_;

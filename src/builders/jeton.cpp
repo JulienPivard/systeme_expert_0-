@@ -109,6 +109,11 @@ namespace sysexp{
 		Jeton::estFinFichier(){
 			return type_ == type::finFichier;
 		}
+		
+		bool
+		Jeton::estEntier(){
+			return type_ == type::entier;
+		}
 
 	}
 }

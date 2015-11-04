@@ -137,6 +137,8 @@
                   */
 				static const Jeton finFichier();
 				
+				static const Jeton entier(const std::string & representation);
+				
 				static const Jeton identificateur(const std::string & representation);
 				
 				static const Jeton inconnu(const std::string & representation);
@@ -158,6 +160,7 @@
 				static const Jeton alors_;
 				static const Jeton separateur_;
 				static const Jeton finFichier_;
+				static const Jeton entier_;
 				
 		};
 	 }

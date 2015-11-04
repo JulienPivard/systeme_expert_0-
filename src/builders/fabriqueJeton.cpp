@@ -4,7 +4,6 @@
 namespace sysexp{
 	
 	namespace builders{
-		// multiton a faire 
 		const Jeton FabriqueJeton::parentheseOuvrante_(Jeton(type::parentheseOuvrante, "("));
 		const Jeton FabriqueJeton::parentheseFermante_(Jeton(type::parentheseFermante, ")"));
 		const Jeton FabriqueJeton::superieur_(Jeton(type::superieur, ">"));
@@ -31,6 +30,11 @@ namespace sysexp{
 		const Jeton 
 		FabriqueJeton::inconnu(const std::string & representation){
 			return Jeton(type::inconnu, representation);
+		}
+		
+		const Jeton 
+		FabriqueJeton::entier(const std::string & representation){
+			return Jeton(type::entier, representation);
 		}
 		
 		const Jeton 

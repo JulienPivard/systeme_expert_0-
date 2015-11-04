@@ -10,12 +10,12 @@ namespace sysexp{
 			nomFichier_(nomFichier)
 			{}
 		
-		/*
-		const std::ifstream &
-		Lexical::lireLecteur(){
-			return fichier_;
+		
+		const std::string &
+		Lexical::lireNomFichier(){
+			return nomFichier_;
 		}
-		*/
+		
 		const std::string &
 		Lexical::lireLigne(){
 			return ligne_;
@@ -93,11 +93,11 @@ namespace sysexp{
 			case ';':
 				position_ ++;
 				return FabriqueJeton::finExpression();
-			/*	
-			case 'si':
-				position_ ++ ;
-				return FabriqueJeton::si();
 				
+			case ',':
+				position_ ++;
+				return FabriqueJeton::separateur();
+			/*
 			case 'non': 
 				position_ ++;
 				return FabriqueJeton::non();
@@ -110,21 +110,118 @@ namespace sysexp{
 				position_ ++;
 				return FabriqueJeton::alors();
 			*/	
-			case ',':
-				position_ ++;
-				return FabriqueJeton::separateur();
-			default: // Chiffre ou bien representation inconnue.
-				/*
-				if (Character.isDigit(caractere)) {
+			
+			default: // mot ou entier ou  bien representation inconnue.
+				// si
+				if(estSi(caractere, position_ )){
+					return FabriqueJeton::si();
+				}
+				// non
+				if(estNon(caractere, position_ )){
+					return FabriqueJeton::non();
+				}
+				// et
+				if(estEt(caractere, position_ )){
+					return FabriqueJeton::et();
+				}
+				// alors
+				if(estAlors(caractere, position_ )){
+					return FabriqueJeton::et();
+				}
+				// entier
+				if (isdigit(caractere)) {
 				return extraireEntier();
 				}
-				* */
 				// C'est la representation inconnue.
 				position_ ++;
 				return FabriqueJeton::inconnu(ligne_.substr(position_ - 1, 
 									 position_));
-			return FabriqueJeton::si();
+			
 			}
 		}
+		bool
+		Lexical::estSi(char & caractere, unsigned int & position){
+			if(caractere == 's'){
+				position ++;
+				if( caractere == 'i'){
+					position ++;
+					if(caractere == ' '){
+						position ++;
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+		
+		bool
+		Lexical::estNon(char & caractere, unsigned int & position){
+			if(caractere == 'n'){
+				position ++;
+				if( caractere == 'o'){
+					position ++;
+					if(caractere == 'n'){
+						position ++;
+						if(caractere == ' '){
+							position ++;
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
+		
+		bool
+		Lexical::estEt(char & caractere, unsigned int & position){
+			if(caractere == 'e'){
+				position ++;
+				if( caractere == 't'){
+					position ++;
+					if(caractere == ' '){
+						position ++;
+						return true;
+					}
+				}
+			}
+			return false;
+		}		
+		
+		bool
+		Lexical::estAlors(char & caractere, unsigned int & position){
+			if(caractere == 'a'){
+				position ++;
+				if( caractere == 'l'){
+					position ++;
+					if(caractere == 'o'){
+						position ++;
+						if(caractere == 'r'){
+							position ++;
+							if(caractere == 's'){
+								position ++;
+								if(caractere == ' '){
+									position ++;
+									return true;
+								}
+							}
+						}
+					}
+				}
+			}
+			return false;
+		}
+		
+		const Jeton 
+		Lexical::extraireEntier() {
+			unsigned int fin = position_ + 1;
+			while (fin < ligne_.size() && isdigit(ligne_.at(fin))) {
+				fin ++;
+			}
+			int debut = position_;
+			position_ = fin;
+			return FabriqueJeton::entier(ligne_.substr(debut, fin));
+
+		}
+		
 	}	
 }

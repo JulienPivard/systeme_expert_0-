@@ -18,7 +18,7 @@
 		  */
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
-					egal, finExpression, identificateur,
+					egal, finExpression, identificateur,entier,
 					si, non, et, alors, separateur, inconnu, finFichier}Type;
 	}
 	 /**
@@ -138,12 +138,14 @@
 				 * Indique si le jeton est fin du fichier.
 				 */
 				bool estFinFichier();
-
-			public:
+				
 				/**
-				 * Constructeur de Jeton.
-				 * A CHANGER EN PROTECTED.
+				 * Indique si le jeton est fin du fichier.
 				 */
+				bool estEntier();
+
+			private:
+				friend class FabriqueJeton;
 				Jeton(const type::Type & typeJeton, const std::string & representation);
 			protected:
 				/**
