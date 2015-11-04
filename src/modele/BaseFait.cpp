@@ -77,9 +77,16 @@ namespace sysexp
         {
             if( appartient( fait->lireNom() ) )
             {
-                // TODO
-                // Ajouter un type d'exception pour un fait déjà existant dans la base de fait.
-                throw ExceptionFaitInconnu();
+                FaitAbstrait::PtrFaitAbstrait faitBase( trouver( fait->lireNom() ) );
+                //if( faitBase->type() != fait->type() || faitBase->lireValeur() == fait->lireValeur() )
+                //{
+
+                //    // TODO
+                //    // Ajouter un type d'exception pour un fait déjà existant dans la base de fait.
+                //    throw ExceptionFaitInconnu();
+
+                //}
+
             }
             baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
         }

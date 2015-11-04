@@ -76,9 +76,11 @@ int main( int argc, char* argv[] )
     }
     */
 
-    std::cout << " (=^.^=)Début des tests de ValeurAbstraite(=^.^=)"
-        << std::endl
-        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+    std::cout << "========================================================================================="
+        << std::endl;
+    std::cout << "=                            Début des tests de ValeurAbstraite                         ="
+        << std::endl;
+    std::cout << "========================================================================================="
         << std::endl
         << std::endl;
 	sysexp::modele::BaseFait base;
@@ -117,7 +119,7 @@ int main( int argc, char* argv[] )
         << std::endl;
     std::cout << "================================"
         << std::endl;
-    std::cout << "= Test de présence de fait ="
+    std::cout << "=   Test de présence de fait   ="
         << std::endl;
     std::cout << "================================"
         << std::endl;
@@ -126,15 +128,19 @@ int main( int argc, char* argv[] )
         << std::boolalpha
         << trouve
         << std::endl;
-    std::cout << " (=^.^=)Fin des tests de BaseFait(=^.^=)"
-        << std::endl
-        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
-        << std::endl
+
+    std::cout << "========================================================================================="
+        << std::endl;
+    std::cout << "=                              Fin des tests de BaseFait                                ="
+        << std::endl;
+    std::cout << "========================================================================================="
         << std::endl;
 
-    std::cout << " (=^.^=)Début des tests de ValeurAbstraite(=^.^=)"
-        << std::endl
-        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+    std::cout << "========================================================================================="
+        << std::endl;
+    std::cout << "=                     Début des tests de ValeurAbstraite                                ="
+        << std::endl;
+    std::cout << "========================================================================================="
         << std::endl
         << std::endl;
 
@@ -143,23 +149,35 @@ int main( int argc, char* argv[] )
     sysexp::modele::OperateurPlus::PtrOperateurPlus opplus( new sysexp::modele::OperateurPlus( f1, f2 ) );
     sysexp::modele::ValeurAbstraite::Valeur val(opplus);
 
-    std::cout << "La valeur de 3+2 = "
+    std::cout << "La valeur de "
+        << f1->interpret( base )
+        << " + "
+        << f2->interpret( base )
+        << " = "
         << val->interpret( base )
         << std::endl;
 
-    sysexp::modele::FeuilleFait::PtrFeuilleFait f3( new sysexp::modele::FeuilleFait( "machin" ) );
+    sysexp::modele::FeuilleFait::PtrFeuilleFait f3( new sysexp::modele::FeuilleFait( "bidule" ) );
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f4( new sysexp::modele::FeuilleConstante(10) );
     sysexp::modele::OperateurMoins::PtrOperateurMoins opm( new sysexp::modele::OperateurMoins( f3, f4 ) );
     sysexp::modele::OperateurPlus::PtrOperateurPlus opp( new sysexp::modele::OperateurPlus( f1, opm ) );
     sysexp::modele::ValeurAbstraite::Valeur val2(opp);
 
-    std::cout << "La valeur de 3 + ( 5 - 10 ) = "
+    std::cout << "La valeur de "
+        << f1->interpret( base )
+        << " + ("
+        << f3->interpret( base )
+        << " - "
+        << f4->interpret( base )
+        << ") = "
         << val2->interpret( base )
         << std::endl;
 
-    std::cout << "Fin des tests de ValeurAbstraite"
-        << std::endl
-        << " (=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=)(=^.^=) "
+    std::cout << "========================================================================================="
+        << std::endl;
+    std::cout << "=                            Fin des tests de ValeurAbstraite                           ="
+        << std::endl;
+    std::cout << "========================================================================================="
         << std::endl
         << std::endl;
 
