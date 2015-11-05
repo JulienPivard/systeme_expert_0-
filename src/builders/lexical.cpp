@@ -53,10 +53,7 @@ namespace sysexp{
 			}
 			
 			char caractere = ligne_.at(position_); 
-			if( isalnum(caractere)){
-				return extraireIdentificateur(); 
-				position_ ++;
-			}
+			
 			switch(caractere) {   
 		 
 			case '(': // Parenthese ouvrante.
@@ -121,6 +118,11 @@ namespace sysexp{
 				// entier
 				if (isdigit(caractere)) {
 				return extraireEntier();
+				}
+				//identificateur
+				if(isalpha(caractere)){
+					return extraireIdentificateur(); 
+					position_ ++;
 				}
 				// C'est la representation inconnue.
 				position_ ++;

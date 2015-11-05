@@ -7,11 +7,19 @@
 #include <iostream>
 using namespace sysexp::builders;
 
-sysexp::type::Type
+void
 representationJeton(std::istream & chaine) {
+	const char* types[] = {"parentheseOuvrante", "parentheseFermante", "superieur", "inferieur",
+					"operateurPlus", "operateurMoins", "operateurMul", "operateurDiv",
+					"egal", "finExpression", "identificateur", "entier",
+					"si", "non", "et", "alors", "separateur", "inconnu", "finFichier"};
 	Lexical lexical = Lexical(chaine);
 	Jeton jeton = lexical.suivant();
-	return jeton.lireType();
+	while(!jeton.estFinFichier()){
+		sysexp::type::Type typeJeton = jeton.lireType();
+		std::cout << types[typeJeton] << std::endl;
+		jeton = lexical.suivant();
+	}
 }
 
 int
@@ -29,8 +37,8 @@ main(int argc, char* argv[] ){
             << std::endl;
         return EXIT_FAILURE;
     }
-	std::istringstream chaine("vache");
-	std::cout << representationJeton(chaine) << std::endl;
+	std::istringstream chaine("alors et si non");
+	representationJeton(chaine);
 	return EXIT_SUCCESS;
 }
 
