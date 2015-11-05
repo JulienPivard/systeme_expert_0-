@@ -34,6 +34,11 @@ ADD_EXECUTABLE( client
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp
     )
-
+ADD_EXECUTABLE( test
+    src/tests.cpp
+    src/builders/jeton.cpp
+    src/builders/fabriqueJeton.cpp
+    src/builders/lexical.cpp
+)
 # Faire parler le make.
 set( CMAKE_VERBOSE_MAKEFILE off )

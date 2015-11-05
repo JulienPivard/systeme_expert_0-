@@ -4,19 +4,19 @@ namespace sysexp{
 
 	 namespace builders{
 		
-		Lexical::Lexical(const std::string & nomFichier):
+		Lexical::Lexical(std::istream & fichier):
 			ligne_(""),
 			position_(0),
-			nomFichier_(nomFichier)
+			fichier_(fichier)
 			{}
 		
 		
-		const std::string &
-		Lexical::lireNomFichier(){
-			return nomFichier_;
+		std::istream &
+		Lexical::lireFichier(){
+			return fichier_;
 		}
 		
-		const std::string &
+		std::string &
 		Lexical::lireLigne(){
 			return ligne_;
 		}
@@ -28,18 +28,16 @@ namespace sysexp{
 			
 		bool
 		Lexical::avancer(){
-			std::string ligne = ligne_;
-			std::ifstream fichier(nomFichier_);
 			while(true){
-				while (position_ < ligne.size() && 
-					isspace(ligne.at(position_))) {
+				while (position_ < ligne_.size() && 
+					isspace(ligne_.at(position_))) {
 					position_ ++;
 				}
-				 if (position_ == ligne.size()) {
-					std::getline(fichier,ligne);
-					if (fichier.eof()) {
+				 if (position_ == ligne_.size()) {
+					if (fichier_.eof()) {
 						return false;
 					}
+				std::getline(fichier_,ligne_);
 				position_ = 0;
 				}
 				else{
@@ -53,7 +51,12 @@ namespace sysexp{
 			if (!avancer()){
 				return FabriqueJeton::finFichier();
 			}
+			
 			char caractere = ligne_.at(position_); 
+			if( isalnum(caractere)){
+				return extraireIdentificateur(); 
+				position_ ++;
+			}
 			switch(caractere) {   
 		 
 			case '(': // Parenthese ouvrante.
@@ -97,19 +100,6 @@ namespace sysexp{
 			case ',':
 				position_ ++;
 				return FabriqueJeton::separateur();
-			/*
-			case 'non': 
-				position_ ++;
-				return FabriqueJeton::non();
-				
-			case 'et':
-				position_ ++; 
-				return FabriqueJeton::et();
-				
-			case 'alors':
-				position_ ++;
-				return FabriqueJeton::alors();
-			*/	
 			
 			default: // mot ou entier ou  bien representation inconnue.
 				// si
@@ -223,5 +213,16 @@ namespace sysexp{
 
 		}
 		
+		const Jeton 
+		Lexical::extraireIdentificateur() {
+			unsigned int fin = position_ + 1;
+			while (fin < ligne_.size() && isalnum(ligne_.at(fin))) {
+				fin ++;
+			}
+			int debut = position_;
+			position_ = fin;
+			return FabriqueJeton::identificateur(ligne_.substr(debut, fin));
+
+		}
 	}	
 }

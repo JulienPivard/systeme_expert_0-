@@ -51,98 +51,98 @@
 				/**
 				 * Indique si le jeton est une parenthese ouvrante.
 				 */
-				bool estParentheseOuvrante();
+				bool estParentheseOuvrante() const;
 
 				/**
 				 * Indique si le jeton est une parenthese fermante.
 				 */
-				bool estParentheseFermante();
+				bool estParentheseFermante() const;
 
 				/**
 				 * Indique si le jeton est superieur.
 				 */
-				bool estSuperieur();
+				bool estSuperieur() const;
 
 				/**
 				 * Indique si le jeton est inferieur.
 				 */
-				bool estInferieur();
+				bool estInferieur() const;
 
 				/**
 				 * Indique si le jeton est un plus.
 				 */
-				bool estOperateurPlus();
+				bool estOperateurPlus() const;
 
 				/**
 				 * Indique si le jeton est un moins.
 				 */
-				bool estOperateurMoins();
+				bool estOperateurMoins() const;
 
 				/**
 				 * Indique si le jeton est un fois.
 				 */
-				bool estOperateurMul();
+				bool estOperateurMul() const;
 
 				/**
 				 * Indique si le jeton est un div.
 				 */
-				bool estOperateurDiv();
+				bool estOperateurDiv() const;
 
 				/**
 				 * Indique si le jeton est un egal
 				 */
-				bool estEgal();
+				bool estEgal() const;
 
 				/**
 				 * Indique si le jeton est un point virgule.
 				 */
-				bool estFinExpression();
+				bool estFinExpression() const;
 
 				/**
 				 * Indique si le jeton est un identificateur.
 				 */
-				bool estIdentificateur();
+				bool estIdentificateur() const;
 
 				/**
 				 * Indique si le jeton est un si .
 				 */
-				bool estSi();
+				bool estSi() const;
 
 				/**
 				 * Indique si le jeton est un non.
 				 */
-				bool estNon();
+				bool estNon() const;
 
 
 				/**
 				 * Indique si le jeton est un et.
 				 */
-				bool estEt();
+				bool estEt() const;
 
 				/**
 				 * Indique si le jeton est un alors.
 				 */
-				bool estAlors();
+				bool estAlors() const;
 
 				/**
 				 * Indique si le jeton est une virgule .
 				 */
-				bool estSeparateur();
+				bool estSeparateur() const;
 
 				/**
 				 * Indique si le jeton est inconnu.
 				 */
-				bool estInconnu();
+				bool estInconnu() const;
 				
 				/**
 				 * Indique si le jeton est fin du fichier.
 				 */
-				bool estFinFichier();
+				bool estFinFichier() const;
 				
 				/**
 				 * Indique si le jeton est fin du fichier.
 				 */
-				bool estEntier();
+				bool estEntier() const;
 
 			private:
 				friend class FabriqueJeton;

@@ -2,6 +2,7 @@
 #define Lexical_hpp
 
 #include <iostream>
+#include <istream>
 #include <fstream>
 #include <string>
 #include <cctype>
@@ -20,12 +21,12 @@ namespace sysexp{
           */
           class Lexical{
 			  public:
-				Lexical(const std::string & nomFichier);
+				Lexical(std::istream & fichier);
 				
 			  public: 
-				const std::string & lireNomFichier();
+				std::istream & lireFichier();
 				
-				const std::string & lireLigne();
+				std::string & lireLigne();
 				
 				unsigned int lirePosition();
 				
@@ -44,13 +45,15 @@ namespace sysexp{
 				bool estAlors(char & caractere, unsigned int & position);
 				
 				const Jeton extraireEntier();
+				
+				const Jeton extraireIdentificateur();
 			
 			protected: 
-				const std::string ligne_;
+				std::string ligne_;
 				
 				unsigned int position_;
 				
-				const std::string & nomFichier_;
+				std::istream & fichier_;
           };
      }
 }

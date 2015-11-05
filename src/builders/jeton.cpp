@@ -21,97 +21,97 @@ namespace sysexp{
 		}
 
 		bool 
-		Jeton::estParentheseOuvrante() {
+		Jeton::estParentheseOuvrante() const {
 			return type_ == type::parentheseOuvrante;
 		}
 
 		bool 
-		Jeton::estParentheseFermante() {
+		Jeton::estParentheseFermante() const {
 			return type_ == type::parentheseFermante;
 		}
 
 		bool 
-		Jeton::estSuperieur() {
+		Jeton::estSuperieur() const {
 			return type_ == type::superieur;
 		}
 
 		bool 
-		Jeton::estInferieur() {
+		Jeton::estInferieur() const {
 			return type_ == type::inferieur;
 		}
 
 		bool 
-		Jeton::estOperateurPlus() {
+		Jeton::estOperateurPlus() const {
 			return type_ == type::operateurPlus;
 		}
 
 		bool 
-		Jeton::estOperateurMoins() {
+		Jeton::estOperateurMoins() const {
 			return type_ == type::operateurMoins;
 		}
 
 		bool 
-		Jeton::estOperateurMul() {
+		Jeton::estOperateurMul() const {
 			return type_ == type::operateurMul;
 		}
 
 		bool 
-		Jeton::estOperateurDiv() {
+		Jeton::estOperateurDiv() const {
 			return type_ == type::operateurDiv;
 		}
 
 		bool 
-		Jeton::estEgal() {
+		Jeton::estEgal() const {
 			return type_ == type::egal;
 		}
 
 		bool 
-		Jeton::estFinExpression() {
+		Jeton::estFinExpression() const {
 			return type_ == type::finExpression;
 		}
 
 		bool 
-		Jeton::estIdentificateur() {
+		Jeton::estIdentificateur() const {
 			return type_ == type::identificateur;
 		}
 
 		bool 
-		Jeton::estSi() {
+		Jeton::estSi() const {
 			return type_ == type::si;
 		}
 
 		bool 
-		Jeton::estNon() {
+		Jeton::estNon() const {
 			return type_ ==type::non;
 		}
 		
 		bool 
-		Jeton::estEt() {
+		Jeton::estEt() const {
 			return type_ ==type::et;
 		}
 
 		bool 
-		Jeton::estAlors() {
+		Jeton::estAlors() const {
 			return type_ == type::alors;
 		}
 
 		bool 
-		Jeton::estSeparateur() {
+		Jeton::estSeparateur() const {
 			return type_ == type::separateur;
 		}
 
 		bool 
-		Jeton::estInconnu() {
+		Jeton::estInconnu() const {
 			return type_ == type::inconnu;
 		}
 		
 		bool
-		Jeton::estFinFichier(){
+		Jeton::estFinFichier() const{
 			return type_ == type::finFichier;
 		}
 		
 		bool
-		Jeton::estEntier(){
+		Jeton::estEntier() const{
 			return type_ == type::entier;
 		}
 
