@@ -14,8 +14,21 @@ representationJeton(std::istream & chaine) {
 	return jeton.lireType();
 }
 
-int 
+int
 main(int argc, char* argv[] ){
+    // Controle du nombre d'argument sur la ligne de commande
+    if( argc > 1 )
+    {
+        std::cout << "Usage "
+            << argv[0]
+            << std::endl;
+    }
+    if( argc != 1 )
+    {
+        std::cerr << "Trop d'argument, tartine de pus !"
+            << std::endl;
+        return EXIT_FAILURE;
+    }
 	std::istringstream chaine("vache");
 	std::cout << representationJeton(chaine) << std::endl;
 	return EXIT_SUCCESS;
