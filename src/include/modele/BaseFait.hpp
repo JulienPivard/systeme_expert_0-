@@ -47,6 +47,13 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrBaseFait
+                 *
+                 * Le shared pointer vers la base de fait.
+                 * */
+                typedef std::shared_ptr< BaseFait > PtrBaseFait;
+
+                /**
                  * @typedef Contenu
                  *
                  * Nom pour faciliter l'écriture et la manipulation de la variable @ref baseFait_
@@ -93,7 +100,7 @@ namespace sysexp
             protected:
 
                 /**
-                * La liste de tout les faits. Voir @see FaitAbstrait.
+                * La liste de tout les faits. @see FaitAbstrait.
                 * */
                 Contenu baseFait_;
 

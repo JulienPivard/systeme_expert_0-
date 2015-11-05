@@ -1,32 +1,33 @@
-#include "VisiteurFormesAbstrait.hpp"
+#include "VisiteurFormeAbstrait.hpp"
 
 namespace sysexp
 {
     namespace modele
     {
-        VisiteurFormesAbstrait::VisiteurFormesAbstrait( const VisiteurFormesAbstrait::PtrBaseFait & baseFait ):
+
+        VisiteurFormeAbstrait::VisiteurFormeAbstrait( const BaseFait::PtrBaseFait & baseFait ):
             baseFait_( baseFait ),
             premisseVerifiee_( false ),
             conclusionDeclenchee_( false ),
             erreur_( Erreurs::toutVaBien )
         { }
 
-        void VisiteurFormesAbstrait::visiterConclusionBool()
+        void VisiteurFormeAbstrait::visiterConclusionBool()
         {
             conclusionDeclenchee_ = false;
         }
 
-        bool VisiteurFormesAbstrait::getPremisseVerifiee() const
+        bool VisiteurFormeAbstrait::getPremisseVerifiee() const
         {
             return premisseVerifiee_;
         }
 
-        bool VisiteurFormesAbstrait::getConclusionDeclenchee() const
+        bool VisiteurFormeAbstrait::getConclusionDeclenchee() const
         {
             return conclusionDeclenchee_;
         }
 
-        Erreurs VisiteurFormesAbstrait::getCodeErreurExecution() const
+        Erreurs VisiteurFormeAbstrait::getCodeErreurExecution() const
         {
             return erreur_;
         }
