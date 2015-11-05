@@ -25,8 +25,6 @@
 #include "OperateurMul.hpp"
 #include "OperateurDiv.hpp"
 #include "ExceptionDivParZero.hpp"
-#include "FormeConclusionBoolTrue.hpp"
-#include "VisiteurForme.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
@@ -105,7 +103,7 @@ int main( int argc, char* argv[] )
     */
 
     // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    std::cout << affichageTest("Début des tests de BaseFait") << std::endl
+    /*std::cout << affichageTest("Début des tests de BaseFait") << std::endl
         << std::endl;
 
 	sysexp::modele::BaseFait base;

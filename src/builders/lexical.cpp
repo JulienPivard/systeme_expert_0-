@@ -33,12 +33,12 @@ namespace sysexp{
 					isspace(ligne_.at(position_))) {
 					position_ ++;
 				}
-				 if (position_ == ligne_.size()) {
+				if (position_ == ligne_.size()) {
 					if (fichier_.eof()) {
 						return false;
 					}
-				std::getline(fichier_,ligne_);
-				position_ = 0;
+					std::getline(fichier_,ligne_);
+					position_ = 0;
 				}
 				else{
 					return true;
@@ -99,96 +99,19 @@ namespace sysexp{
 				return FabriqueJeton::separateur();
 			
 			default: // mot ou entier ou  bien representation inconnue.
-				// si
-				if(estSi(caractere)){
-					return FabriqueJeton::si();
-				}
-				// non
-				if(estNon(caractere)){
-					return FabriqueJeton::non();
-				}
-				// et
-				if(estEt(caractere)){
-					return FabriqueJeton::et();
-				}
-				// alors
-				if(estAlors(caractere)){
-					return FabriqueJeton::alors();
-				}
 				// entier
 				if (isdigit(caractere)) {
-				return extraireEntier();
+					return extraireEntier();
 				}
 				//identificateur
 				if(isalpha(caractere)){
-					return extraireIdentificateur(); 
-					position_ ++;
+					return extraireChaine(); 
 				}
 				// C'est la representation inconnue.
 				position_ ++;
-				return FabriqueJeton::inconnu(ligne_.substr(position_ - 1, 
-									 position_));
+				return FabriqueJeton::inconnu(ligne_.substr(position_ - 1, 1));
 			
 			}
-		}
-		bool
-		Lexical::estSi(char & caractere){
-			if(caractere == 's'){
-				position_ ++;
-				if( ligne_.at(position_) == 'i'){
-					position_++;
-					return true;
-				}
-			}
-				return false;
-		}
-		
-		bool
-		Lexical::estNon(char & caractere){
-			if(caractere == 'n'){
-				position_++;
-				if( ligne_.at(position_) == 'o'){
-					position_++;
-					if(ligne_.at(position_) == 'n'){
-						position_++;
-						return true;
-					}
-				}
-			}
-			return false;
-		}
-		
-		bool
-		Lexical::estEt(char & caractere){
-			if(caractere == 'e'){
-				position_++;
-				if( ligne_.at(position_) == 't'){
-					position_++;
-					return true;
-				}
-			}
-			return false;
-		}		
-		
-		bool
-		Lexical::estAlors(char & caractere){
-			if(caractere == 'a'){
-				position_++;
-				if( ligne_.at(position_) == 'l'){
-					position_++;
-					if(ligne_.at(position_) == 'o'){
-						position_++;
-						if(ligne_.at(position_) == 'r'){
-							position_++;
-							if(ligne_.at(position_) == 's'){
-								position_++;
-								return true;
-							}
-						}
-					}
-				}
-			}
-			return false;
 		}
 		
 		const Jeton 
@@ -199,19 +122,32 @@ namespace sysexp{
 			}
 			int debut = position_;
 			position_ = fin;
-			return FabriqueJeton::entier(ligne_.substr(debut, fin));
+			return FabriqueJeton::entier(ligne_.substr(debut, fin-debut));
 
 		}
 		
 		const Jeton 
-		Lexical::extraireIdentificateur() {
+		Lexical::extraireChaine() {
 			unsigned int fin = position_ + 1;
 			while (fin < ligne_.size() && isalnum(ligne_.at(fin))) {
 				fin ++;
 			}
 			int debut = position_;
 			position_ = fin;
-			return FabriqueJeton::identificateur(ligne_.substr(debut, fin));
+			std::string mot = ligne_.substr(debut, fin-debut);
+			if(mot == "si"){
+				return FabriqueJeton::si();
+			}
+			else if(mot == "et") {
+				return FabriqueJeton::et();
+			}
+			else if(mot == "non"){
+				return FabriqueJeton::non();
+			}
+			else if(mot == "alors"){
+				return FabriqueJeton::alors();
+			}
+			return FabriqueJeton::identificateur(ligne_.substr(debut, fin-debut));
 
 		}
 	}	

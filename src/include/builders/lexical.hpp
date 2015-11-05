@@ -8,6 +8,7 @@
 #include <cctype>
 #include "jeton.hpp"
 #include "fabriqueJeton.hpp"
+
 namespace sysexp{
  
 	 /**
@@ -46,7 +47,7 @@ namespace sysexp{
 				
 				const Jeton extraireEntier();
 				
-				const Jeton extraireIdentificateur();
+				const Jeton extraireChaine();
 			
 			protected: 
 				std::string ligne_;

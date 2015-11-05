@@ -18,7 +18,7 @@
 		  */
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
-					egal, finExpression, identificateur,entier,
+					egal, finExpression, identificateur, entier,
 					si, non, et, alors, separateur, inconnu, finFichier}Type;
 	}
 	 /**

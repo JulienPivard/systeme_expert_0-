@@ -24,10 +24,8 @@ ADD_EXECUTABLE( client
     src/modele/FeuilleConstante.cpp
     src/modele/FeuilleFait.cpp
     src/modele/VisiteurFormeAbstrait.cpp
-    src/modele/VisiteurForme.cpp
     src/modele/FormeAbstraite.cpp
     src/modele/FormeAbstraiteConclusion.cpp
-    src/modele/FormeConclusionBoolTrue.cpp
     src/modele/OperateurAbstrait.cpp
     src/modele/OperateurPlus.cpp
     src/modele/OperateurMoins.cpp
