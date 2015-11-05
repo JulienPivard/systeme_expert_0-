@@ -25,6 +25,8 @@
 #include "OperateurMul.hpp"
 #include "OperateurDiv.hpp"
 #include "ExceptionDivParZero.hpp"
+#include "FormeConclusionBoolTrue.hpp"
+#include "VisiteurForme.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
@@ -101,6 +103,8 @@ int main( int argc, char* argv[] )
         return EXIT_FAILURE;
     }
     */
+
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     std::cout << affichageTest("Début des tests de BaseFait") << std::endl
         << std::endl;
 
@@ -121,7 +125,7 @@ int main( int argc, char* argv[] )
     }
 
     {
-        sysexp::modele::FaitBool::PtrFaitBool fait( new sysexp::modele::FaitBool("nul", true) );
+        sysexp::modele::FaitBool::PtrFaitBool fait( new sysexp::modele::FaitBool("temaere", true) );
         base.ajouter(fait);
     }
 
@@ -164,6 +168,26 @@ int main( int argc, char* argv[] )
         << std::endl;
 
     std::cout << affichageTest("Fin des tests de BaseFait") << std::endl;
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    std::cout << affichageTest("Début des tests sur visiteur.") << std::endl
+        << std::endl;
+
+    sysexp::modele::BaseFait::PtrBaseFait base2( new sysexp::modele::BaseFait() );
+    sysexp::modele::FormeConclusionBoolTrue conclusion = sysexp::modele::FormeConclusionBoolTrue( "truc" );
+    sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base2 ) );
+    conclusion.accept( visiteur );
+
+    std::cout << "================================"
+        << std::endl;
+    std::cout << "= Affichage de la base de fait ="
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
+    base2->afficher();
+
+    std::cout << std::endl;
+    std::cout << affichageTest("Fin des tests sur visiteur.") << std::endl;
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     std::cout << affichageTest("Début des tests de ValeurAbstraite") << std::endl
         << std::endl;
 
@@ -241,6 +265,7 @@ int main( int argc, char* argv[] )
 
     std::cout << affichageTest("Fin des tests de ValeurAbstraite") << std::endl
         << std::endl;
+    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     /*
 	// test sur les jetons (ça marche)

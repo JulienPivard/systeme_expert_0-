@@ -12,11 +12,6 @@ namespace sysexp
             erreur_( Erreurs::toutVaBien )
         { }
 
-        void VisiteurFormeAbstrait::visiterConclusionBool()
-        {
-            conclusionDeclenchee_ = false;
-        }
-
         bool VisiteurFormeAbstrait::getPremisseVerifiee() const
         {
             return premisseVerifiee_;

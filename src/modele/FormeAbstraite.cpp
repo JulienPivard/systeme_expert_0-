@@ -9,5 +9,10 @@ namespace sysexp
             nom_( nom )
         { }
 
+        const std::string & FormeAbstraite::lireNom() const
+        {
+            return nom_;
+        }
+
     }
 }

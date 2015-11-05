@@ -12,6 +12,8 @@
 #define formeabstraite_hpp
 
 #include <string>
+#include <memory>
+#include "VisiteurFormeAbstrait.hpp"
 
 /**
  * @namespace sysexp
@@ -23,8 +25,6 @@ namespace sysexp
      * */
     namespace modele
     {
-
-        class VisiteurFormesAbstrait;
 
         /**
          * @class FormeAbstraite FormeAbstraite.hpp
@@ -50,7 +50,14 @@ namespace sysexp
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la FormeAbstraite.
                  * */
-                virtual void accept( const VisiteurFormesAbstrait & visiteur ) = 0;
+                virtual void accept( const std::shared_ptr< VisiteurFormeAbstrait > & visiteur ) = 0;
+
+                /**
+                 * Accesseur
+                 *
+                 * @return Le @ref nom_ de la forme.
+                 * */
+                const std::string & lireNom() const;
 
                 /**
                  * Le destructeur rendu virtuel.
@@ -63,6 +70,7 @@ namespace sysexp
                  * Le nom de la FormeAbstraite.
                  * */
                 const std::string nom_;
+
         };
 
     }
