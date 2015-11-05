@@ -12,6 +12,10 @@ namespace sysexp
         long int
         OperateurDiv::interpret( const BaseFait & baseFait ) const
         {
+            if( filsDroit_->interpret( baseFait ) == 0 )
+            {
+                throw ExceptionDivParZero();
+            }
             return filsGauche_->interpret( baseFait ) / filsDroit_->interpret( baseFait );
         }
     }

@@ -12,6 +12,7 @@
 #define operateurdiv_hpp
 
 #include "OperateurAbstrait.hpp"
+#include "ExceptionDivParZero.hpp"
 
 /**
  * @namespace sysexp

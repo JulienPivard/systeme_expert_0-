@@ -24,10 +24,36 @@
 #include "OperateurMoins.hpp"
 #include "OperateurMul.hpp"
 #include "OperateurDiv.hpp"
+#include "ExceptionDivParZero.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 #include "lexical.hpp"
+
+/*
+ * Fonction d'affichage de séparateur de zone,
+ * pour faciliter la lecture sur la sortie standard.
+ * */
+std::string affichageTest( std::string nomZone )
+{
+
+    if( nomZone.size() % 2 == 1 )
+    {
+        nomZone += ' ';
+    }
+
+    std::string ligne =  "==========================================================================================";
+    int nbEspaceBlanc = ligne.size() - nomZone.size() - 2;
+    std::string blanc;
+
+    for( int i = 0; i < nbEspaceBlanc / 2; i++ )
+    {
+        blanc += ' ';
+    }
+
+    return ligne + "\n=" + blanc + nomZone + blanc + "=\n" + ligne;
+
+}
 
 using namespace sysexp::builders;
 /**
@@ -75,14 +101,9 @@ int main( int argc, char* argv[] )
         return EXIT_FAILURE;
     }
     */
+    std::cout << affichageTest("Début des tests de BaseFait") << std::endl
+        << std::endl;
 
-    std::cout << "========================================================================================="
-        << std::endl;
-    std::cout << "=                            Début des tests de ValeurAbstraite                         ="
-        << std::endl;
-    std::cout << "========================================================================================="
-        << std::endl
-        << std::endl;
 	sysexp::modele::BaseFait base;
     {
         sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("machin", 5) );
@@ -128,33 +149,22 @@ int main( int argc, char* argv[] )
         << std::endl;
     base.afficher();
 
-    std::cout << std::endl
-        << std::endl;
+    std::cout << std::endl;
     std::cout << "================================"
         << std::endl;
     std::cout << "=   Test de présence de fait   ="
         << std::endl;
     std::cout << "================================"
         << std::endl;
+
     bool trouve = base.appartient( "bidule" );
     std::cout << "\nOn a trouve bidule dans la base de fait : "
         << std::boolalpha
         << trouve
         << std::endl;
 
-    std::cout << "========================================================================================="
-        << std::endl;
-    std::cout << "=                              Fin des tests de BaseFait                                ="
-        << std::endl;
-    std::cout << "========================================================================================="
-        << std::endl;
-
-    std::cout << "========================================================================================="
-        << std::endl;
-    std::cout << "=                     Début des tests de ValeurAbstraite                                ="
-        << std::endl;
-    std::cout << "========================================================================================="
-        << std::endl
+    std::cout << affichageTest("Fin des tests de BaseFait") << std::endl;
+    std::cout << affichageTest("Début des tests de ValeurAbstraite") << std::endl
         << std::endl;
 
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f1( new sysexp::modele::FeuilleConstante(3) );
@@ -208,13 +218,28 @@ int main( int argc, char* argv[] )
         << val4->interpret( base )
         << std::endl;
 
+    sysexp::modele::FeuilleConstante::PtrFeuilleConstante f5( new sysexp::modele::FeuilleConstante(0) );
+    sysexp::modele::OperateurDiv::PtrOperateurDiv opd2( new sysexp::modele::OperateurDiv( f2, f5 ) );
+    sysexp::modele::ValeurAbstraite::Valeur val5(opd2);
 
-    std::cout << "========================================================================================="
-        << std::endl;
-    std::cout << "=                            Fin des tests de ValeurAbstraite                           ="
-        << std::endl;
-    std::cout << "========================================================================================="
-        << std::endl
+    std::cout << "La valeur de "
+        << f2->interpret( base )
+        << " / "
+        << f5->interpret( base )
+        << " = ";
+
+    try
+    {
+        std::cout << val5->interpret( base )
+            << std::endl;
+    }
+    catch( sysexp::modele::ExceptionDivParZero & e )
+    {
+        std::cerr << "Erreur division par zéro."
+            << std::endl;
+    }
+
+    std::cout << affichageTest("Fin des tests de ValeurAbstraite") << std::endl
         << std::endl;
 
     /*
