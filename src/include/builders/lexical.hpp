@@ -36,13 +36,13 @@ namespace sysexp{
 			  
 				bool avancer();
 				
-				bool estSi(char & caractere, unsigned int & position);
+				bool estSi(char & caractere);
 				
-				bool estNon(char & caractere, unsigned int & position);
+				bool estNon(char & caractere);
 				
-				bool estEt(char & caractere, unsigned int & position);
+				bool estEt(char & caractere);
 				
-				bool estAlors(char & caractere, unsigned int & position);
+				bool estAlors(char & caractere);
 				
 				const Jeton extraireEntier();
 				

@@ -64,7 +64,7 @@ namespace sysexp{
 		
 		const Jeton 
 		FabriqueJeton::operateurMoins(){
-			return operateurPlus_;
+			return operateurMoins_;
 		}
 		
 		const Jeton 
@@ -101,7 +101,7 @@ namespace sysexp{
 		}
 		const Jeton 
 		FabriqueJeton::alors(){
-			return finExpression_;
+			return alors_;
 		}
 		const Jeton 
 		FabriqueJeton::separateur(){

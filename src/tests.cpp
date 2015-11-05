@@ -37,7 +37,7 @@ main(int argc, char* argv[] ){
             << std::endl;
         return EXIT_FAILURE;
     }
-	std::istringstream chaine("alors et si non");
+	std::istringstream chaine("si(pape et)alors, non  +  / = *  < > - 4; ?!_");
 	representationJeton(chaine);
 	return EXIT_SUCCESS;
 }

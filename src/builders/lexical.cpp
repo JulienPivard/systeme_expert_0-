@@ -100,20 +100,20 @@ namespace sysexp{
 			
 			default: // mot ou entier ou  bien representation inconnue.
 				// si
-				if(estSi(caractere, position_ )){
+				if(estSi(caractere)){
 					return FabriqueJeton::si();
 				}
 				// non
-				if(estNon(caractere, position_ )){
+				if(estNon(caractere)){
 					return FabriqueJeton::non();
 				}
 				// et
-				if(estEt(caractere, position_ )){
+				if(estEt(caractere)){
 					return FabriqueJeton::et();
 				}
 				// alors
-				if(estAlors(caractere, position_ )){
-					return FabriqueJeton::et();
+				if(estAlors(caractere)){
+					return FabriqueJeton::alors();
 				}
 				// entier
 				if (isdigit(caractere)) {
@@ -132,32 +132,26 @@ namespace sysexp{
 			}
 		}
 		bool
-		Lexical::estSi(char & caractere, unsigned int & position){
+		Lexical::estSi(char & caractere){
 			if(caractere == 's'){
-				position ++;
-				if( caractere == 'i'){
-					position ++;
-					if(caractere == ' '){
-						position ++;
-						return true;
-					}
+				position_ ++;
+				if( ligne_.at(position_) == 'i'){
+					position_++;
+					return true;
 				}
 			}
-			return false;
+				return false;
 		}
 		
 		bool
-		Lexical::estNon(char & caractere, unsigned int & position){
+		Lexical::estNon(char & caractere){
 			if(caractere == 'n'){
-				position ++;
-				if( caractere == 'o'){
-					position ++;
-					if(caractere == 'n'){
-						position ++;
-						if(caractere == ' '){
-							position ++;
-							return true;
-						}
+				position_++;
+				if( ligne_.at(position_) == 'o'){
+					position_++;
+					if(ligne_.at(position_) == 'n'){
+						position_++;
+						return true;
 					}
 				}
 			}
@@ -165,36 +159,30 @@ namespace sysexp{
 		}
 		
 		bool
-		Lexical::estEt(char & caractere, unsigned int & position){
+		Lexical::estEt(char & caractere){
 			if(caractere == 'e'){
-				position ++;
-				if( caractere == 't'){
-					position ++;
-					if(caractere == ' '){
-						position ++;
-						return true;
-					}
+				position_++;
+				if( ligne_.at(position_) == 't'){
+					position_++;
+					return true;
 				}
 			}
 			return false;
 		}		
 		
 		bool
-		Lexical::estAlors(char & caractere, unsigned int & position){
+		Lexical::estAlors(char & caractere){
 			if(caractere == 'a'){
-				position ++;
-				if( caractere == 'l'){
-					position ++;
-					if(caractere == 'o'){
-						position ++;
-						if(caractere == 'r'){
-							position ++;
-							if(caractere == 's'){
-								position ++;
-								if(caractere == ' '){
-									position ++;
-									return true;
-								}
+				position_++;
+				if( ligne_.at(position_) == 'l'){
+					position_++;
+					if(ligne_.at(position_) == 'o'){
+						position_++;
+						if(ligne_.at(position_) == 'r'){
+							position_++;
+							if(ligne_.at(position_) == 's'){
+								position_++;
+								return true;
 							}
 						}
 					}
