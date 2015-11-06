@@ -1,15 +1,15 @@
 /**
- * @file FormeConclusionBoolTrue.hpp
+ * @file FormeConclusionBoolFalse.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier FormeConclusionBoolTrue.cpp.
- * Définit la classe concrète FormeConclusionBoolTrue.
+ * Header pour le fichier FormeConclusionBoolFalse.cpp.
+ * Définit la classe abstraite FormeConclusionBoolFalse.
  * */
 
 
-#ifndef formeconclusionbooltrue_hpp
-#define formeconclusionbooltrue_hpp
+#ifndef formeconclusionboolfalse_hpp
+#define formeconclusionboolfalse_hpp
 
 #include <string>
 
@@ -27,11 +27,11 @@ namespace sysexp
     {
 
         /**
-         * @class FormeConclusionBoolTrue FormeConclusionBoolTrue.hpp
+         * @class FormeConclusionBoolFalse FormeConclusionBoolFalse.hpp
          *
-         * Déclaration de la classe FormeConclusionBoolTrue.
+         * Déclaration de la classe FormeConclusionBoolFalse.
          * */
-        class FormeConclusionBoolTrue : public FormeAbstraiteConclusion
+        class FormeConclusionBoolFalse : public FormeAbstraiteConclusion
         {
 
             public:
@@ -42,7 +42,7 @@ namespace sysexp
                  * @param[in] nom
                  * Le nom de la conclusion booléenne.
                  * */
-                FormeConclusionBoolTrue( const std::string & nom );
+                FormeConclusionBoolFalse( const std::string & nom );
 
                 /**
                  * Méthode de visite.
