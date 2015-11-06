@@ -1,10 +1,7 @@
 #ifndef Syntaxique_hpp
 #define Syntaxique_hpp
 
-#include "jeton.hpp"
-#include "fabriqueJeton.hpp"
 #include "lexical.hpp"
-#include <string>
 
 
 /**
@@ -17,6 +14,7 @@
 	   *
 	  **/
 	 namespace builders{
+		
 		/**
 		 * @class Syntaxique syntaxique.hpp
 		 * Classe representant un analyseur syntaxique de la grammaire.
@@ -39,46 +37,16 @@
 				*/
 				const Lexical lireLexical();
 				
-				/**
-				* Analyse l'expression connectee a l'analyseur lexical.
-				*
-				* @return true si l'expression est syntaxiquement correcte sinon false.
-				* 
-				*/
-				bool verifier();
-			
-			protected:
-				/**
-				* Methode associee a la regle "Expression".
-				*
-				* @return true si la regle est satisfaite sinon false.
-				* 
-				*/
-				bool estExpression();
-				
-				/**
-				* Methode associee a la regle "Terme".
-				*
-				* @return true si la regle est satisfaite sinon false.
-				*/
-				bool estTerme();
-				
-				/**
-				* Methode associee a la regle "Facteur".
-				*
-				* @return true si la regle est satisfaite sinon false.
-				*/
-				bool estFacteur();
 				
 			protected:
 				/**
 				* Analyseur lexical.
 				*/
-				const Lexical lexical;
+				Lexical & lexical_;
 				/**
 				* Dernier jeton precharge.
 				*/
-				Jeton precharge;
+				Jeton precharge_;
 		};
 	}
 }

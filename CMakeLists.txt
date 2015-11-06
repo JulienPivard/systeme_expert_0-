@@ -43,7 +43,7 @@ ADD_EXECUTABLE( test
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp
-    src/builders/syntaxique.cpp
+  
 )
 # Faire parler le make.
 set( CMAKE_VERBOSE_MAKEFILE off )
