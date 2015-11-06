@@ -133,34 +133,113 @@
 				/**
 				  * Retourne le jeton associe a la fin du fichier.
                   *
-                  * @return le jeton associe a la foin du fichier.
+                  * @return le jeton associe a la fin du fichier.
                   */
 				static const Jeton finFichier();
 				
+				/**
+				  * Retourne le jeton associe a un entier.
+                  *
+                  * @return le jeton associe a un entier.
+                  */
 				static const Jeton entier(const std::string & representation);
 				
+				/**
+				  * Retourne le jeton associe a un identificateur.
+                  *
+                  * @return le jeton associe a un identificateur.
+                  */
 				static const Jeton identificateur(const std::string & representation);
 				
+				/**
+				  * Retourne le jeton associe a un inconnu.
+                  *
+                  * @return le jeton associe a un inconnu.
+                  */
 				static const Jeton inconnu(const std::string & representation);
 				
 			protected:
+			
+				/**
+				 * jeton parenthese ouvrante.
+				 */
 				static const Jeton parentheseOuvrante_; 
+				
+				/**
+				 * jeton parenthese fermante.
+				 */
 				static const Jeton parentheseFermante_; 
+				
+				/**
+				 * jeton superieur.
+				 */
 				static const Jeton superieur_;
+				
+				/**
+				 * jeton inferieur.
+				 */
 				static const Jeton inferieur_; 
+				
+				/**
+				 * jeton operateur plus.
+				 */
 				static const Jeton operateurPlus_; 
+				
+				/**
+				 * jeton operateur moins.
+				 */
 				static const Jeton operateurMoins_;
+				
+				/**
+				 * jeton operateur multiplie.
+				 */
 				static const Jeton operateurMul_; 
+				
+				/**
+				 * jeton operateur divise.
+				 */
 				static const Jeton operateurDiv_;
+				
+				/**
+				 * jeton egal.
+				 */
 				static const Jeton egal_;
+				
+				/**
+				 * jeton fin d'expression.
+				 */
 				static const Jeton finExpression_;
+				
+				/**
+				 * jeton si.
+				 */
 				static const Jeton si_;
+				
+				/**
+				 * jeton non.
+				 */
 				static const Jeton non_;
+				
+				/**
+				 * jeton et.
+				 */
 				static const Jeton et_;
+				/**
+				 * jeton alors.
+				 */
 				static const Jeton alors_;
+				
+				/**
+				 * jeton separateur.
+				 */
 				static const Jeton separateur_;
+				
+				/**
+				 * jeton fin du fichier.
+				 */
 				static const Jeton finFichier_;
-				static const Jeton entier_;
+				
+				
 				
 		};
 	 }
