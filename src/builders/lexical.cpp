@@ -66,9 +66,17 @@ namespace sysexp{
 				
 			case '>':
 				position_ ++;
+				if (ligne_.at(position_) == '='){
+					position_++;
+					return FabriqueJeton::supEgal();
+				}
 				return FabriqueJeton::superieur();
 			case '<':
 				position_ ++;
+				if (ligne_.at(position_) == '='){
+					position_++;
+					return FabriqueJeton::infEgal();
+				}
 				return FabriqueJeton::inferieur();
 				
 			case '+': // Operateur d'addition.
@@ -85,6 +93,10 @@ namespace sysexp{
 
 			case '/': // Operateur de division.
 				position_ ++;
+				if (ligne_.at(position_) == '='){
+					position_++;
+					return FabriqueJeton::different();
+				}
 				return FabriqueJeton::operateurDiv();
 				
 			case '=':
@@ -129,7 +141,7 @@ namespace sysexp{
 		const Jeton 
 		Lexical::extraireChaine() {
 			unsigned int fin = position_ + 1;
-			while (fin < ligne_.size() && isalnum(ligne_.at(fin))) {
+			while (fin < ligne_.size() && (isalnum(ligne_.at(fin)) || ligne_.at(fin) == '_')) {
 				fin ++;
 			}
 			int debut = position_;

@@ -115,5 +115,19 @@ namespace sysexp{
 			return type_ == type::entier;
 		}
 
+		bool
+		Jeton::estSupEgal() const{
+			return type_ == type::supEgal;
+		}
+
+		bool 
+		Jeton::estInfEgal() const{
+			return type_ == type::infEgal;
+		}
+
+		bool
+		Jeton::estDifferent() const{
+			return type_ == type::different;
+		}
 	}
 }

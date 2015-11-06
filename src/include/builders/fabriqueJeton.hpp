@@ -138,6 +138,26 @@
 				static const Jeton finFichier();
 				
 				/**
+				  * Retourne le jeton associe a un superieur ou egal.
+                  *
+                  * @return le jeton associe a un superieur ou egal.
+                  */
+				static const Jeton supEgal();
+
+				/**
+				  * Retourne le jeton associe a un inferieur ou egal.
+                  *
+                  * @return le jeton associe a un inferieur ou egal.
+                  */
+				static const Jeton infEgal();
+
+				/**
+				  * Retourne le jeton associe a un different.
+                  *
+                  * @return le jeton associe a un different.
+                  */
+				static const Jeton different();
+				/**
 				  * Retourne le jeton associe a un entier.
                   *
                   * @return le jeton associe a un entier.
@@ -238,6 +258,21 @@
 				 * jeton fin du fichier.
 				 */
 				static const Jeton finFichier_;
+
+				/**
+				 * jeton sueprieur ou egal.
+				 */
+				static const Jeton supEgal_;
+
+				/**
+				 * jeton inferieur ou egal.
+				 */
+				static const Jeton infEgal_;
+
+				/**
+				 * jeton different.
+				 */
+				static const Jeton different_;
 				
 				
 				

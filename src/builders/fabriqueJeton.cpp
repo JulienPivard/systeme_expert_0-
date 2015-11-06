@@ -20,6 +20,9 @@ namespace sysexp{
 		const Jeton FabriqueJeton::alors_(Jeton(type::alors, "alors"));
 		const Jeton FabriqueJeton::separateur_(Jeton(type::separateur, ","));
 		const Jeton FabriqueJeton::finFichier_(Jeton(type::finFichier, ""));
+		const Jeton FabriqueJeton::supEgal_(Jeton(type::supEgal, ">="));
+		const Jeton FabriqueJeton::infEgal_(Jeton(type::infEgal, "<="));
+		const Jeton FabriqueJeton::different_(Jeton(type::different, "/="));
 		
 		
 		const Jeton
@@ -111,6 +114,21 @@ namespace sysexp{
 		const Jeton 
 		FabriqueJeton::finFichier(){
 			return finFichier_;
+		}
+
+		const Jeton
+		FabriqueJeton::supEgal(){
+			return supEgal_;
+		}
+
+		const Jeton
+		FabriqueJeton::infEgal(){
+			return infEgal_;
+		}
+
+		const Jeton
+		FabriqueJeton::different(){
+			return different_;
 		}
 	}
 }
