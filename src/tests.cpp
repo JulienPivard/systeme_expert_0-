@@ -1,23 +1,10 @@
 #include "jeton.hpp"
 #include "fabriqueJeton.hpp"
 #include "lexical.hpp"
-#include "gtest/gtest.h"
 #include <sstream>
 #include <iostream>
-using namespace sysexp::builders;
-#include "jeton.hpp"
-
-#include "fabriqueJeton.hpp"
-
-#include "lexical.hpp"
-
-#include <sstream>
-
 #include <istream>
-
 #include <fstream>
-
-#include <iostream>
 
 using namespace sysexp::builders;
 
