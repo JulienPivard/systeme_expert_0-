@@ -129,5 +129,21 @@ namespace sysexp{
 		Jeton::estDifferent() const{
 			return type_ == type::different;
 		}
+
+		bool 
+		Jeton::estFaitBool() const{
+			return type_ == type::faitBool;
+		}
+
+		bool
+		Jeton::estFaitSymb() const{
+			return type_ == type::faitSymb;
+		}
+
+		bool 
+		Jeton::estFaitEnt() const{
+			return type_ == type::faitEnt;
+		}
 	}
+
 }

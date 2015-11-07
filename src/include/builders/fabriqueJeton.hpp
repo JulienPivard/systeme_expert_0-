@@ -157,6 +157,28 @@
                   * @return le jeton associe a un different.
                   */
 				static const Jeton different();
+
+				/**
+				  * Retourne le jeton associe a faits_booleens.
+                  *
+                  * @return le jeton associe a faits_booleens.
+                  */
+				static const Jeton faitBool();
+
+				/**
+				  * Retourne le jeton associe a faits_symboliques.
+                  *
+                  * @return le jeton associe a faits_symboliques.
+                  */
+				static const Jeton faitSymb();
+
+				/**
+				  * Retourne le jeton associe a faits_entiers.
+                  *
+                  * @return le jeton associe a faits_entiers.
+                  */
+				static const Jeton faitEnt();
+
 				/**
 				  * Retourne le jeton associe a un entier.
                   *
@@ -177,6 +199,8 @@
                   * @return le jeton associe a un inconnu.
                   */
 				static const Jeton inconnu(const std::string & representation);
+
+
 				
 			protected:
 			
@@ -274,6 +298,20 @@
 				 */
 				static const Jeton different_;
 				
+				/**
+				 * jeton fait_booleens.
+				 */
+				static const Jeton faitBool_;
+
+				/**
+				 * jeton fait_symboliques.
+				 */
+				static const Jeton faitSymb_;
+
+				/**
+				 * jeton fait_entiers.
+				 */
+				static const Jeton faitEnt_;
 				
 				
 		};

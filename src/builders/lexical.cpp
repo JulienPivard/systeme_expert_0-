@@ -159,6 +159,15 @@ namespace sysexp{
 			else if(mot == "alors"){
 				return FabriqueJeton::alors();
 			}
+			else if(mot == "faits_booleens"){
+				return FabriqueJeton::faitBool();
+			}
+			else if(mot == "faits_symboliques"){
+				return FabriqueJeton::faitSymb();
+			}
+			else if(mot == "faits_entiers"){
+				return FabriqueJeton::faitEnt();
+			}
 			return FabriqueJeton::identificateur(ligne_.substr(debut, fin-debut));
 
 		}

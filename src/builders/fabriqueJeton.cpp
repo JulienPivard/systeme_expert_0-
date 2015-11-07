@@ -23,7 +23,9 @@ namespace sysexp{
 		const Jeton FabriqueJeton::supEgal_(Jeton(type::supEgal, ">="));
 		const Jeton FabriqueJeton::infEgal_(Jeton(type::infEgal, "<="));
 		const Jeton FabriqueJeton::different_(Jeton(type::different, "/="));
-		
+		const Jeton FabriqueJeton::faitBool_(Jeton(type::faitBool, "faits_booleens"));
+		const Jeton FabriqueJeton::faitSymb_(Jeton(type::faitSymb, "faits_symboliques"));
+		const Jeton FabriqueJeton::faitEnt_(Jeton(type::faitEnt, "faits_entiers"));
 		
 		const Jeton
 		FabriqueJeton::identificateur(const std::string & representation){
@@ -129,6 +131,21 @@ namespace sysexp{
 		const Jeton
 		FabriqueJeton::different(){
 			return different_;
+		}
+
+		const Jeton
+		FabriqueJeton::faitBool(){
+			return faitBool_;
+		}
+
+		const Jeton
+		FabriqueJeton::faitSymb(){
+			return faitSymb_;
+		}
+
+		const Jeton
+		FabriqueJeton::faitEnt(){
+			return faitEnt_;
 		}
 	}
 }

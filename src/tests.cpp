@@ -13,7 +13,8 @@ representationJeton(std::istream & chaine) {
         const char* types[] = {"parentheseOuvrante", "parentheseFermante", "superieur", "inferieur",
                               "operateurPlus", "operateurMoins", "operateurMul", "operateurDiv",
                               "egal", "finExpression", "identificateur", "entier",
-                              "si", "non", "et", "alors", "separateur", "inconnu", "finFichier", "supEgal", "infEgal", "different"};
+                              "si", "non", "et", "alors", "separateur", "inconnu", "finFichier", 
+                              "supEgal", "infEgal", "different", "faitBool", "faitSymb", "faitEnt"};
         Lexical lexical = Lexical(chaine);
         Jeton jeton = lexical.suivant();
         while(!jeton.estFinFichier()){
@@ -35,8 +36,8 @@ main(int argc, char* argv[] ){
             << std::endl;
         return EXIT_FAILURE;
     }
-        std::istringstream chaine("si(bite et)alors , non  +  /= / <= >=  = *  < > - 4; ?!_\
-                                    truc_bidule ");
+        std::istringstream chaine("si(faits_booleens et)alors , non  +  /= / <= >= faits_entiers = *  < > - 4; ?!_\
+                                    faits_symboliques ");
         representationJeton(chaine);
         return EXIT_SUCCESS;
 }

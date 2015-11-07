@@ -19,7 +19,8 @@
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
 					egal, finExpression, identificateur, entier,
-					si, non, et, alors, separateur, inconnu, finFichier, supEgal, infEgal, different}Type;
+					si, non, et, alors, separateur, inconnu, finFichier, supEgal, infEgal, different, 
+					faitBool, faitSymb, faitEnt}Type;
 	}
 	 /**
 	   * @namespace sysexp::builders
@@ -202,6 +203,27 @@
 				 * @retval FALSE si le jeton n'est pas un different.
 				 */
 				bool estDifferent() const;
+
+				/**
+				 * Indique si le jeton est fait_booleen.
+				 * @retval TRUE si le jeton est fait_booleen.
+				 * @retval FALSE si le jeton est fait_booleen
+				 */
+				bool estFaitBool() const;
+
+				/**
+				 * Indique si le jeton est fait_symbolique.
+				 * @retval TRUE si le jeton est fait_symbolique.
+				 * @retval FALSE si le jeton est fait_symbolique.
+				 */
+				bool estFaitSymb() const;
+
+				/**
+				 * Indique si le jeton est fait_entier.
+				 * @retval TRUE si le jeton est fait_entier.
+				 * @retval FALSE si le jeton est fait_entier.
+				 */
+				bool estFaitEnt() const;
 
 			private:
 				friend class FabriqueJeton;
