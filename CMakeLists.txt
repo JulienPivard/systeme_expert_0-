@@ -42,6 +42,9 @@ ADD_EXECUTABLE( client
     src/modele/FormeConclusionSymboliqueConstante.cpp
     src/modele/FormeConclusionSymboliqueFait.cpp
 
+    src/modele/RegleAbstraite.cpp
+    src/modele/RegleSansPremisse.cpp
+
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp

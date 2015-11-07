@@ -12,8 +12,10 @@
 #define regleabstraite_hpp
 
 #include <cstdlib>
+#include <memory>
 
 #include "FormeAbstraiteConclusion.hpp"
+#include "VisiteurFormeAbstrait.hpp"
 
 /**
  * @namespace sysexp
@@ -36,12 +38,45 @@ namespace sysexp
 
             public:
 
-                RegleAbstraite( const FormeAbstraiteConclusion & conclusion )
+                /**
+                 * @typedef PtrRegleAbstraite
+                 *
+                 * Un alias pour simplifier l'utilisation d'un shared_ptr sur RegleAbstraite.
+                 * */
+                typedef std::shared_ptr< RegleAbstraite > PtrRegleAbstraite;
+
+            public:
+
+                /**
+                 * Constructeur logique.
+                 *
+                 * @param[in] conclusion
+                 * La conclusion de la règle.
+                 * @see FormeAbstraiteConclusion
+                 * */
+                RegleAbstraite( const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
+
+                /**
+                 * Ajoute un successeur à la règle actuelle.
+                 *
+                 * @param[in] successeur
+                 * La règle qui succède à la règle actuelle.
+                 * */
+                void ajouterSuccesseur( const PtrRegleAbstraite & successeur );
+
+                /**
+                 * Méthode pour accepter un visiteur.
+                 *
+                 * @param[in, out] visiteur
+                 * Le visiteur qui vas évaluer la règle abstraite.
+                 * @see VisiteurFormeAbstrait
+                 * */
+                virtual void accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur ) = 0;
 
                 /**
                 * Destructeur de la RegleAbstraite.
                 * */
-                virtual ~RegleAbstraite();
+                virtual ~RegleAbstraite() = default;
 
             protected:
 
@@ -49,12 +84,12 @@ namespace sysexp
                  * La conclusion de la règle.
                  * @see FormeAbstraiteConclusion
                  * */
-                const FormeAbstraiteConclusion conclusion_;
+                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_;
 
                 /**
                  * La règle suivante.
                  * */
-                const RegleAbstraite successeur_;
+                PtrRegleAbstraite successeur_;
 
         };
 

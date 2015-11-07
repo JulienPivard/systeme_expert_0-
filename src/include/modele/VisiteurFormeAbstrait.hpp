@@ -123,10 +123,12 @@ namespace sysexp
          * */
         enum class Erreurs
         {
-            toutVaBien,         /**< Pas d'erreur */
-            divParZero,         /**< Erreur division par zéro rencontrée. */
-            incoherenceFait,    /**< Erreur incohérence détectée dans la base de fait. */
-            faitInconnu         /**< Erreur le fait n'existe pas. */
+            toutVaBien,             /**< Pas d'erreur */
+            divParZero,             /**< Erreur division par zéro rencontrée. */
+            incoherenceFait,        /**< Erreur incohérence détectée dans la base de fait. */
+            faitEntierInconnu,      /**< Erreur le fait entier n'existe pas */
+            faitExpressionInconnu,  /**< Erreur le fait n'existe pas dans l'expression. */
+            faitSymboliqueInconnu   /**< Erreur le fait symbolique n'existe pas. */
         };
 
         /**
@@ -178,6 +180,13 @@ namespace sysexp
                  * @return Le code d'erreur @ref erreur_ qui à été généré.
                  * */
                 Erreurs getCodeErreurExecution() const;
+
+                /**
+                 * Pour faciliter l'affichage des variables de visiteur,
+                 * de manière lisible.
+                 * À n'utiliser qu'à des fins de debogage.
+                 * */
+                void afficher() const;
 
             public:
 

@@ -38,6 +38,7 @@ namespace sysexp
 
         /**
         * @class BaseFait BaseFait.hpp
+        * @brief Stock les faits
         *
         * Déclaration de la classe BaseFait.
         * Cette classe permet d'accéder aux faits.

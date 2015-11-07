@@ -60,6 +60,10 @@ namespace sysexp
                     erreur_ = Erreurs::incoherenceFait;
                 }
             }
+            else
+            {
+                erreur_ = Erreurs::faitSymboliqueInconnu;
+            }
 
         }
 
@@ -73,7 +77,7 @@ namespace sysexp
             }
             catch( ExceptionFaitInconnu & e )
             {
-                erreur_ = Erreurs::faitInconnu;
+                erreur_ = Erreurs::faitExpressionInconnu;
             }
             catch( ExceptionDivParZero & e )
             {
@@ -102,6 +106,10 @@ namespace sysexp
                 {
                     erreur_ = Erreurs::incoherenceFait;
                 }
+            }
+            else
+            {
+                erreur_ = Erreurs::faitEntierInconnu;
             }
 
         }

@@ -12,6 +12,7 @@
 #define formeabstraiteconclusion_hpp
 
 #include <string>
+#include <memory>
 
 #include "FormeAbstraite.hpp"
 
@@ -33,6 +34,15 @@ namespace sysexp
          * */
         class FormeAbstraiteConclusion : public FormeAbstraite
         {
+
+            public:
+
+                /**
+                 * @typedef PtrFormeAbstraiteConclusion
+                 *
+                 * Alias pour faciliter l'utilisation d'un shared_ptr de FormeAbstraiteConclusion.
+                 * */
+                typedef std::shared_ptr< FormeAbstraiteConclusion > PtrFormeAbstraiteConclusion;
 
             public:
 
