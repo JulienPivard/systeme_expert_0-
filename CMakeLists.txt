@@ -37,12 +37,32 @@ ADD_EXECUTABLE( client
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
+    src/builders/monException.cpp
     )
 ADD_EXECUTABLE( test
     src/tests.cpp
+    src/modele/FaitAbstrait.cpp
+    src/modele/FaitBool.cpp
+    src/modele/FaitSymbolique.cpp
+    src/modele/FaitEntier.cpp
+    src/modele/BaseFait.cpp
+    src/modele/FeuilleConstante.cpp
+    src/modele/FeuilleFait.cpp
+    src/modele/VisiteurFormeAbstrait.cpp
+    src/modele/VisiteurForme.cpp
+    src/modele/FormeAbstraite.cpp
+    src/modele/FormeAbstraiteConclusion.cpp
+    src/modele/FormeConclusionBoolTrue.cpp
+    src/modele/OperateurAbstrait.cpp
+    src/modele/OperateurPlus.cpp
+    src/modele/OperateurMoins.cpp
+    src/modele/OperateurMul.cpp
+    src/modele/OperateurDiv.cpp
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp
+    src/builders/syntaxique.cpp
+    src/builders/monException.cpp
   
 )
 # Faire parler le make.

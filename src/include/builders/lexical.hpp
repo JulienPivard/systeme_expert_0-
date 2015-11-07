@@ -9,6 +9,11 @@
 #include "jeton.hpp"
 #include "fabriqueJeton.hpp"
 
+
+/**
+ * @namespace sysexp
+ *
+ **/
 namespace sysexp{
  
 	 /**
@@ -51,6 +56,12 @@ namespace sysexp{
 				 */
 				unsigned int lirePosition();
 				
+				/**
+				 * Accesseur.
+				 *
+				 * @return le numero de la ligne du fichier.
+				 */
+				int lireNumeroLigne();
 				/**
 				 * Permet d'obtenir le jeton suivant.
 				 *
@@ -96,6 +107,8 @@ namespace sysexp{
 				 * fichier a analyser.
 				 */
 				std::istream & fichier_;
+
+				int numeroLigne_;
           };
      }
 }

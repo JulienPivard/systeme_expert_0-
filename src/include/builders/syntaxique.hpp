@@ -36,6 +36,18 @@
 				 * @return l'analyseur lexical de l'analyseur syntaxique.
 				*/
 				const Lexical lireLexical();
+
+				void parser();
+
+				void declarations();
+
+				void declarations_bool();
+
+				void declarations_symb();
+
+				void declarations_ent();
+
+				void listeFaits();
 				
 				
 			protected:

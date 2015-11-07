@@ -1,6 +1,7 @@
 #include "jeton.hpp"
 #include "fabriqueJeton.hpp"
 #include "lexical.hpp"
+#include "syntaxique.hpp"
 #include <sstream>
 #include <iostream>
 #include <istream>
@@ -36,8 +37,13 @@ main(int argc, char* argv[] ){
             << std::endl;
         return EXIT_FAILURE;
     }
-        std::istringstream chaine("si(faits_booleens et)alors , non  +  /= / <= >= faits_entiers = *  < > - 4; ?!_\
-                                    faits_symboliques ");
-        representationJeton(chaine);
+        //"/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt"
+        std::istringstream chaine("faits_booleens = caca, bite; \n\
+                                   faits_symboliques = putite, puti; \n\
+                                   faits_entiers = rot, pet; ");
+        //representationJeton(chaine);
+        Lexical lexical = Lexical(chaine);
+        Syntaxique syn(lexical);
+        syn.parser();
         return EXIT_SUCCESS;
 }

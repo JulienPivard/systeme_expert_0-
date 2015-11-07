@@ -7,7 +7,8 @@ namespace sysexp{
 		Lexical::Lexical(std::istream & fichier):
 			ligne_(""),
 			position_(0),
-			fichier_(fichier)
+			fichier_(fichier),
+			numeroLigne_(0)
 			{}
 		
 		
@@ -25,6 +26,11 @@ namespace sysexp{
 		Lexical::lirePosition(){
 			return position_;
 		}
+
+		int
+		Lexical::lireNumeroLigne(){
+			return numeroLigne_;
+		}
 			
 		bool
 		Lexical::avancer(){
@@ -38,6 +44,7 @@ namespace sysexp{
 						return false;
 					}
 					std::getline(fichier_,ligne_);
+					numeroLigne_ ++;
 					position_ = 0;
 				}
 				else{
