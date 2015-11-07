@@ -1,15 +1,15 @@
 /**
- * @file FormeConclusionEntierFait.hpp
+ * @file FormeConclusionSymboliqueFait.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier FormeConclusionEntierFait.cpp.
- * Définit la classe abstraite FormeConclusionEntierFait.
+ * Header pour le fichier FormeConclusionSymboliqueFait.cpp.
+ * Définit la classe abstraite FormeConclusionSymboliqueFait.
  * */
 
 
-#ifndef formeconclusionentierefait_hpp
-#define formeconclusionentierefait_hpp
+#ifndef formeconclusionsymboliquefait_hpp
+#define formeconclusionsymboliquefait_hpp
 
 #include <string>
 
@@ -27,11 +27,11 @@ namespace sysexp
     {
 
         /**
-        * @class FormeConclusionEntierFait FormeConclusionEntierFait.hpp
-        *
-        * Déclaration de la classe FormeConclusionEntierFait.
-        * */
-        class FormeConclusionEntierFait : public FormeAbstraiteConclusion
+         * @class FormeConclusionSymboliqueFait FormeConclusionSymboliqueFait.hpp
+         *
+         * Déclaration de la classe FormeConclusionSymboliqueFait.
+         * */
+        class FormeConclusionSymboliqueFait : public FormeAbstraiteConclusion
         {
 
             public:
@@ -47,24 +47,24 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion entière.
+                 * Le nom de la conclusion symbolique.
                  * @param[in] nomFait
                  * Le nom du fait entier dont on veut assigner la valeur.
                  * */
-                FormeConclusionEntierFait( const std::string & nom, const std::string & nomFait );
+                FormeConclusionSymboliqueFait( const std::string & nom, const std::string & nomFait );
 
                 /**
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion entière.
+                 * Le visiteur qui vas évaluer la conclusion symbolique.
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
                 /**
                  * Accesseur
                  *
-                 * @return La @ref nomFait_ de la forme entière.
+                 * @return La @ref nomFait_ de la forme symbolique.
                  * */
                 const std::string & lireNomFait() const;
 

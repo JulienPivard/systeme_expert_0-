@@ -5,7 +5,7 @@ namespace sysexp
     namespace modele
     {
 
-        OperateurDiv::OperateurDiv( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit ):
+        OperateurDiv::OperateurDiv( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit ):
             OperateurAbstrait( filsGauche, filsDroit )
         { }
 

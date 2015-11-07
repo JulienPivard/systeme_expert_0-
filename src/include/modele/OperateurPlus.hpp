@@ -54,7 +54,7 @@ namespace sysexp
                  * @param[in] filsDroit
                  * Le fils droit de l'opération. Voir @ref filsDroit_.
                  * */
-                OperateurPlus( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+                OperateurPlus( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
                 /**
                  * Permet d'évaluer la valeur de l'opération addition.

@@ -40,7 +40,7 @@ namespace sysexp
                  *
                  * La valeur stocké sous forme de shared_ptr.
                  * */
-                typedef std::shared_ptr< ValeurAbstraite > Valeur;
+                typedef std::shared_ptr< ValeurAbstraite > PtrValeur;
 
             public:
 

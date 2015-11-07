@@ -1,21 +1,19 @@
 /**
- * @file FormeConclusionEntierExpression.hpp
+ * @file FormeConclusionSymboliqueConstante.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier FormeConclusionEntierExpression.cpp.
- * Définit la classe concrète FormeConclusionEntierExpression.
+ * Header pour le fichier FormeConclusionSymboliqueConstante.cpp.
+ * Définit la classe concrète FormeConclusionSymboliqueConstante.
  * */
 
 
-#ifndef formeconclusionentierexpression_hpp
-#define formeconclusionentierexpression_hpp
+#ifndef formeconclusionsymboliqueconstante_hpp
+#define formeconclusionsymboliqueconstante_hpp
 
 #include <string>
 
 #include "FormeAbstraiteConclusion.hpp"
-#include "ValeurAbstraite.hpp"
-#include "BaseFait.hpp"
 
 /**
  * @namespace sysexp
@@ -29,11 +27,11 @@ namespace sysexp
     {
 
         /**
-            * @class FormeConclusionEntierExpression FormeConclusionEntierExpression.hpp
-            *
-            * Déclaration de la classe FormeConclusionEntierExpression.
-            * */
-        class FormeConclusionEntierExpression : public FormeAbstraiteConclusion
+         * @class FormeConclusionSymboliqueConstante FormeConclusionSymboliqueConstante.hpp
+         *
+         * Déclaration de la classe FormeConclusionSymboliqueConstante.
+         * */
+        class FormeConclusionSymboliqueConstante : public FormeAbstraiteConclusion
         {
 
             public:
@@ -49,33 +47,33 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion entière.
+                 * Le nom de la conclusion symbolique.
                  * @param[in] valeur
-                 * La valeur de l'expression entière.
+                 * La valeur qui vas être assigné au fait.
                  * */
-                FormeConclusionEntierExpression( const std::string & nom, const ValeurAbstraite::PtrValeur & valeur );
+                FormeConclusionSymboliqueConstante( const std::string & nom, const std::string & valeur );
 
                 /**
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion entière.
+                 * Le visiteur qui vas évaluer la conclusion symbolique.
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
                 /**
                  * Accesseur
                  *
-                 * @return La @ref valeur_ de la forme entière.
+                 * @return La @ref valeur_ de la forme symbolique.
                  * */
-                long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
+                const std::string & lireValeur() const;
 
             protected:
 
                 /**
-                 * La valeur qui vas être assignée sous forme d'une expression.
+                 * La valeur constante qui vas être assigné à la valeur.
                  * */
-                const ValeurAbstraite::PtrValeur valeur_;
+                const std::string valeur_;
 
         };
 

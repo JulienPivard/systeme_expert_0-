@@ -44,7 +44,7 @@ namespace sysexp
                  * @param[in] filsDroit
                  * Le fils droit de l'opération. Voir @ref filsDroit_.
                  * */
-                OperateurAbstrait( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+                OperateurAbstrait( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
                 /**
                 * Destructeur de OperateurAbstrait.
@@ -52,15 +52,16 @@ namespace sysexp
                 virtual ~OperateurAbstrait() = default;
 
             protected:
+
                 /**
                 * Le fils gauche de l'opération.
                 * */
-                const ValeurAbstraite::Valeur filsGauche_;
+                const ValeurAbstraite::PtrValeur filsGauche_;
 
                 /**
                 * Le fils droit de l'opération.
                 * */
-                const ValeurAbstraite::Valeur filsDroit_;
+                const ValeurAbstraite::PtrValeur filsDroit_;
 
         };
 

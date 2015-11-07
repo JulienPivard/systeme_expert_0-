@@ -27,5 +27,20 @@ namespace sysexp
             return erreur_;
         }
 
+        void VisiteurFormeAbstrait::AjouterUnFait( const FaitAbstrait::PtrFaitAbstrait & fait )
+        {
+
+            try
+            {
+                baseFait_->ajouter( fait );
+                conclusionDeclenchee_  = true;
+            }
+            catch( ExceptionFaitDejaAjoute & e )
+            {
+                erreur_ = Erreurs::incoherenceFait;
+            }
+
+        }
+
     }
 }

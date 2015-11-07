@@ -52,7 +52,7 @@ namespace sysexp
                  * @param[in] filsDroit
                  * Le fils droit de l'opération. Voir @ref filsDroit_.
                  * */
-                OperateurDiv( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+                OperateurDiv( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
                 /**
                  * Permet d'évaluer la valeur de l'opération division.

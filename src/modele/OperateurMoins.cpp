@@ -5,7 +5,7 @@ namespace sysexp
     namespace modele
     {
 
-        OperateurMoins::OperateurMoins( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit ):
+        OperateurMoins::OperateurMoins( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit ):
             OperateurAbstrait( filsGauche, filsDroit )
         {
         }

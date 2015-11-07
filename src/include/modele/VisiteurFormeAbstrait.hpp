@@ -15,6 +15,7 @@
 #include <memory>
 
 #include "BaseFait.hpp"
+#include "ExceptionFaitDejaAjoute.hpp"
 
 /**
  * @namespace sysexp
@@ -127,7 +128,6 @@ namespace sysexp
             incoherenceFait     /**< Erreur incohérence détectée dans la base de fait. */
         };
 
-
         /**
          * @class VisiteurFormeAbstrait VisiteurFormeAbstrait.hpp
          *
@@ -188,57 +188,59 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionBoolTrue
                  * */
-                virtual void visiterConclusionBool( const FormeConclusionBoolTrue * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionBoolTrue * conclusion ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormeConclusionBoolFalse
-                // * */
-                //virtual void visiterConclusionBool( const FormeConclusionBoolFalse * conclusion ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormeConclusionBoolFalse
+                 * */
+                virtual void visiter( const FormeConclusionBoolFalse * conclusion ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormeConclusionEntierExpression
-                // * */
-                //virtual void visiterConclusionBool( const FormeConclusionEntierExpression * conclusion ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormeConclusionEntierExpression
+                 * */
+                virtual void visiter( const FormeConclusionEntierExpression * conclusion ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormeConclusionEntierFait
-                // * */
-                //virtual void visiterConclusionBool( const FormeConclusionEntierFait * conclusion ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormeConclusionEntierFait
+                 * */
+                virtual void visiter( const FormeConclusionEntierFait * conclusion ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormeConclusionSymboliqueConstante
-                // * */
-                //virtual void visiterConclusionBool( const FormeConclusionSymboliqueConstante * conclusion ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormeConclusionSymboliqueConstante
+                 * */
+                virtual void visiter( const FormeConclusionSymboliqueConstante * conclusion ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormeConclusionSymboliqueFait
-                // * */
-                //virtual void visiterConclusionBool( const FormeConclusionSymboliqueFait * conclusion ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormeConclusionSymboliqueFait
+                 * */
+                virtual void visiter( const FormeConclusionSymboliqueFait * conclusion ) = 0;
+
+            public:
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -248,7 +250,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseBoolTrue
                 // * */
-                //virtual void visiterPremisse( const FormePremisseBoolTrue * premisse ) = 0;
+                //virtual void visiter( const FormePremisseBoolTrue * premisse ) = 0;
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -258,7 +260,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseBoolFalse
                 // * */
-                //virtual void visiterPremisse( const FormePremisseBoolFalse * premisse ) = 0;
+                //virtual void visiter( const FormePremisseBoolFalse * premisse ) = 0;
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -268,7 +270,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseSymboliqueConstante
                 // * */
-                //virtual void visiterPremisse( const FormePremisseSymboliqueConstante * premisse ) = 0;
+                //virtual void visiter( const FormePremisseSymboliqueConstante * premisse ) = 0;
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -278,7 +280,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseSymboliqueFait
                 // * */
-                //virtual void visiterPremisse( const FormePremisseSymboliqueFait * premisse ) = 0;
+                //virtual void visiter( const FormePremisseSymboliqueFait * premisse ) = 0;
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -288,7 +290,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseEntierExpression
                 // * */
-                //virtual void visiterPremisse( const FormePremisseEntierExpression * premisse ) = 0;
+                //virtual void visiter( const FormePremisseEntierExpression * premisse ) = 0;
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -298,7 +300,7 @@ namespace sysexp
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseEntierFait
                 // * */
-                //virtual void visiterPremisse( const FormePremisseEntierFait * premisse ) = 0;
+                //virtual void visiter( const FormePremisseEntierFait * premisse ) = 0;
 
             public:
 
@@ -308,13 +310,23 @@ namespace sysexp
                 virtual ~VisiteurFormeAbstrait() = default;
 
             protected:
+
+                /**
+                 * Ajoute un fait à la base de fait.
+                 * @param[in] fait
+                 * Le fait que l'on veut ajouter à la base de fait.
+                 * */
+                void AjouterUnFait( const FaitAbstrait::PtrFaitAbstrait & fait );
+
+            protected:
+
                 /**
                  * La base de fait ou on vas ajouter les conclusion déclenchée.
                  * */
                 BaseFait::PtrBaseFait baseFait_;
 
                 /**
-                 * Permet de savoir si le premisse est vérifiée.
+                 * Permet de savoir si le prémisse est vérifiée.
                  * */
                 bool premisseVerifiee_;
 

@@ -46,8 +46,6 @@ namespace sysexp
                     default:
                         std::cerr << "Le type du fait n'existe pas."
                             << std::endl;
-                        // TODO
-                        // Ajouter un type d'exception pour les fait inconnu.
                         throw ExceptionFaitInconnu();
                         break;
 
@@ -132,8 +130,6 @@ namespace sysexp
                         default:
                             std::cerr << "Le type du fait n'existe pas !"
                                 << std::endl;
-
-
                     }
 
                 }

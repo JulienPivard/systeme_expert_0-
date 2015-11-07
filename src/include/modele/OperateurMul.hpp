@@ -53,7 +53,7 @@ namespace sysexp
                  * @param[in] filsDroit
                  * Le fils droit de l'opération. Voir @ref filsDroit_.
                  * */
-                OperateurMul( const ValeurAbstraite::Valeur & filsGauche, const ValeurAbstraite::Valeur & filsDroit );
+                OperateurMul( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
                 /**
                  * Permet d'évaluer la valeur de l'opération multiplication.

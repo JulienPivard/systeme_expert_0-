@@ -194,7 +194,7 @@ int main( int argc, char* argv[] )
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f1( new sysexp::modele::FeuilleConstante(3) );
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f2( new sysexp::modele::FeuilleConstante(2) );
     sysexp::modele::OperateurPlus::PtrOperateurPlus opplus( new sysexp::modele::OperateurPlus( f1, f2 ) );
-    sysexp::modele::ValeurAbstraite::Valeur val(opplus);
+    sysexp::modele::ValeurAbstraite::PtrValeur val(opplus);
 
     std::cout << "La valeur de "
         << f1->interpret( base )
@@ -208,7 +208,7 @@ int main( int argc, char* argv[] )
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f4( new sysexp::modele::FeuilleConstante(10) );
     sysexp::modele::OperateurMoins::PtrOperateurMoins opm( new sysexp::modele::OperateurMoins( f3, f4 ) );
     sysexp::modele::OperateurPlus::PtrOperateurPlus opp( new sysexp::modele::OperateurPlus( f1, opm ) );
-    sysexp::modele::ValeurAbstraite::Valeur val2(opp);
+    sysexp::modele::ValeurAbstraite::PtrValeur val2(opp);
 
     std::cout << "La valeur de "
         << f1->interpret( base )
@@ -221,7 +221,7 @@ int main( int argc, char* argv[] )
         << std::endl;
 
     sysexp::modele::OperateurMul::PtrOperateurMul opmul( new sysexp::modele::OperateurMul( f1, f2 ) );
-    sysexp::modele::ValeurAbstraite::Valeur val3(opmul);
+    sysexp::modele::ValeurAbstraite::PtrValeur val3(opmul);
 
     std::cout << "La valeur de "
         << f1->interpret( base )
@@ -232,7 +232,7 @@ int main( int argc, char* argv[] )
         << std::endl;
 
     sysexp::modele::OperateurDiv::PtrOperateurDiv opd( new sysexp::modele::OperateurDiv( f4, f2 ) );
-    sysexp::modele::ValeurAbstraite::Valeur val4(opd);
+    sysexp::modele::ValeurAbstraite::PtrValeur val4(opd);
 
     std::cout << "La valeur de "
         << f4->interpret( base )
@@ -244,7 +244,7 @@ int main( int argc, char* argv[] )
 
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f5( new sysexp::modele::FeuilleConstante(0) );
     sysexp::modele::OperateurDiv::PtrOperateurDiv opd2( new sysexp::modele::OperateurDiv( f2, f5 ) );
-    sysexp::modele::ValeurAbstraite::Valeur val5(opd2);
+    sysexp::modele::ValeurAbstraite::PtrValeur val5(opd2);
 
     std::cout << "La valeur de "
         << f2->interpret( base )

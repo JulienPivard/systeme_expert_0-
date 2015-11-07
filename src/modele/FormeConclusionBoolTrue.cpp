@@ -9,9 +9,9 @@ namespace sysexp
             FormeAbstraiteConclusion( nom )
         { }
 
-        void FormeConclusionBoolTrue::accept( const std::shared_ptr< VisiteurFormeAbstrait > & visiteur )
+        void FormeConclusionBoolTrue::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiterConclusionBool(this);
+            visiteur->visiter( this );
         }
 
     }

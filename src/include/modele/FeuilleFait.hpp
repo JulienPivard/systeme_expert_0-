@@ -69,10 +69,11 @@ namespace sysexp
                 interpret( const BaseFait & baseFait ) const;
 
             protected:
+
                 /**
                 * Le nom du fait.
                 * */
-                std::string nom_;
+                const std::string nom_;
 
         };
 

@@ -65,10 +65,11 @@ namespace sysexp
                 interpret( const BaseFait & baseFait ) const;
 
             protected:
+
                 /**
                 * La valeur de notre feuille.
                 * */
-                long int valeur_;
+                const long int valeur_;
 
         };
 
