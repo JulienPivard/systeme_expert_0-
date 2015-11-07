@@ -8,5 +8,6 @@ namespace sysexp
         FormeAbstraiteConclusion::FormeAbstraiteConclusion( const std::string & nom ):
             FormeAbstraite( nom )
         { }
+
     }
 }

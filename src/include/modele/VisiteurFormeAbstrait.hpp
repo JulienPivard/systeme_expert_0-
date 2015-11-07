@@ -125,7 +125,8 @@ namespace sysexp
         {
             toutVaBien,         /**< Pas d'erreur */
             divParZero,         /**< Erreur division par zéro rencontrée. */
-            incoherenceFait     /**< Erreur incohérence détectée dans la base de fait. */
+            incoherenceFait,    /**< Erreur incohérence détectée dans la base de fait. */
+            faitInconnu         /**< Erreur le fait n'existe pas. */
         };
 
         /**

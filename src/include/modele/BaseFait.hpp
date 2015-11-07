@@ -23,6 +23,7 @@
 #include "FaitSymbolique.hpp"
 #include "ExceptionFaitInconnu.hpp"
 #include "ExceptionFaitDejaAjoute.hpp"
+#include "ExceptionDivParZero.hpp"
 
 /**
  * @namespace sysexp

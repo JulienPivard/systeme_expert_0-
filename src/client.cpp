@@ -17,6 +17,7 @@
 #include "FaitAbstrait.hpp"
 
 #include "ValeurAbstraite.hpp"
+
 #include "FeuilleConstante.hpp"
 #include "FeuilleFait.hpp"
 #include "OperateurAbstrait.hpp"
@@ -24,9 +25,18 @@
 #include "OperateurMoins.hpp"
 #include "OperateurMul.hpp"
 #include "OperateurDiv.hpp"
+
 #include "ExceptionDivParZero.hpp"
+#include "ExceptionFaitDejaAjoute.hpp"
+#include "ExceptionFaitInconnu.hpp"
+
 #include "VisiteurForme.hpp"
 #include "FormeConclusionBoolTrue.hpp"
+#include "FormeConclusionBoolFalse.hpp"
+#include "FormeConclusionEntierExpression.hpp"
+#include "FormeConclusionEntierFait.hpp"
+#include "FormeConclusionSymboliqueConstante.hpp"
+#include "FormeConclusionSymboliqueFait.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
@@ -108,101 +118,13 @@ int main( int argc, char* argv[] )
     std::cout << affichageTest("Début des tests de BaseFait") << std::endl
         << std::endl;
 
-	sysexp::modele::BaseFait base;
-    {
-        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("machin", 5) );
-        base.ajouter(fait);
-    }
-
-    {
-        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("bidule", 15) );
-        base.ajouter(fait);
-    }
-
-    {
-        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("blabla", 9) );
-        base.ajouter(fait);
-    }
-
-    {
-        sysexp::modele::FaitBool::PtrFaitBool fait( new sysexp::modele::FaitBool("temaere", true) );
-        base.ajouter(fait);
-    }
-
-    try
-    {
-        sysexp::modele::FaitEntier::PtrFaitEntier fait( new sysexp::modele::FaitEntier("bidule", 10) );
-        base.ajouter(fait);
-    }
-    catch( sysexp::modele::ExceptionFaitDejaAjoute & e )
-    {
-        std::cerr << "Erreur la base de règle est incohérente."
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::FaitSymbolique::PtrFaitSymbolique fait( new sysexp::modele::FaitSymbolique("cheval", "génial") );
-        base.ajouter(fait);
-    }
-
-    std::cout << "================================"
-        << std::endl;
-    std::cout << "= Affichage de la base de fait ="
-        << std::endl;
-    std::cout << "================================"
-        << std::endl;
-    base.afficher();
-
-    std::cout << std::endl;
-    std::cout << "================================"
-        << std::endl;
-    std::cout << "=   Test de présence de fait   ="
-        << std::endl;
-    std::cout << "================================"
-        << std::endl;
-
-    bool trouve = base.appartient( "bidule" );
-    std::cout << "\nOn a trouve bidule dans la base de fait : "
-        << std::boolalpha
-        << trouve
-        << std::endl;
-
-    std::cout << affichageTest("Fin des tests de BaseFait") << std::endl;
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    std::cout << affichageTest("Début des tests sur visiteur.") << std::endl
-        << std::endl;
-
-    sysexp::modele::BaseFait::PtrBaseFait base2( new sysexp::modele::BaseFait() );
-    sysexp::modele::FormeConclusionBoolTrue conclusion = sysexp::modele::FormeConclusionBoolTrue( "truc" );
-    sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base2 ) );
-    conclusion.accept( visiteur );
-
-    std::cout << "================================"
-        << std::endl;
-    std::cout << "= Affichage de la base de fait ="
-        << std::endl;
-    std::cout << "================================"
-        << std::endl;
-    base2->afficher();
-
-    std::cout << std::endl;
-    std::cout << affichageTest("Fin des tests sur visiteur.") << std::endl;
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    std::cout << affichageTest("Début des tests de ValeurAbstraite") << std::endl
-        << std::endl;
-
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f1( new sysexp::modele::FeuilleConstante(3) );
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f2( new sysexp::modele::FeuilleConstante(2) );
     sysexp::modele::OperateurPlus::PtrOperateurPlus opplus( new sysexp::modele::OperateurPlus( f1, f2 ) );
     sysexp::modele::ValeurAbstraite::PtrValeur val(opplus);
 
-    std::cout << "La valeur de "
-        << f1->interpret( base )
-        << " + "
-        << f2->interpret( base )
-        << " = "
-        << val->interpret( base )
-        << std::endl;
+    sysexp::modele::OperateurMul::PtrOperateurMul opm1( new sysexp::modele::OperateurMul( opplus, f1 ) );
+    sysexp::modele::ValeurAbstraite::PtrValeur val1(opm1);
 
     sysexp::modele::FeuilleFait::PtrFeuilleFait f3( new sysexp::modele::FeuilleFait( "bidule" ) );
     sysexp::modele::FeuilleConstante::PtrFeuilleConstante f4( new sysexp::modele::FeuilleConstante(10) );
@@ -210,62 +132,346 @@ int main( int argc, char* argv[] )
     sysexp::modele::OperateurPlus::PtrOperateurPlus opp( new sysexp::modele::OperateurPlus( f1, opm ) );
     sysexp::modele::ValeurAbstraite::PtrValeur val2(opp);
 
-    std::cout << "La valeur de "
-        << f1->interpret( base )
-        << " + ("
-        << f3->interpret( base )
-        << " - "
-        << f4->interpret( base )
-        << ") = "
-        << val2->interpret( base )
-        << std::endl;
-
     sysexp::modele::OperateurMul::PtrOperateurMul opmul( new sysexp::modele::OperateurMul( f1, f2 ) );
     sysexp::modele::ValeurAbstraite::PtrValeur val3(opmul);
-
-    std::cout << "La valeur de "
-        << f1->interpret( base )
-        << " * "
-        << f2->interpret( base )
-        << " = "
-        << val3->interpret( base )
-        << std::endl;
 
     sysexp::modele::OperateurDiv::PtrOperateurDiv opd( new sysexp::modele::OperateurDiv( f4, f2 ) );
     sysexp::modele::ValeurAbstraite::PtrValeur val4(opd);
 
-    std::cout << "La valeur de "
-        << f4->interpret( base )
-        << " / "
-        << f2->interpret( base )
-        << " = "
-        << val4->interpret( base )
-        << std::endl;
+    sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
 
-    sysexp::modele::FeuilleConstante::PtrFeuilleConstante f5( new sysexp::modele::FeuilleConstante(0) );
-    sysexp::modele::OperateurDiv::PtrOperateurDiv opd2( new sysexp::modele::OperateurDiv( f2, f5 ) );
-    sysexp::modele::ValeurAbstraite::PtrValeur val5(opd2);
-
-    std::cout << "La valeur de "
-        << f2->interpret( base )
-        << " / "
-        << f5->interpret( base )
-        << " = ";
-
-    try
     {
-        std::cout << val5->interpret( base )
+        sysexp::modele::FormeConclusionBoolTrue conclusion = sysexp::modele::FormeConclusionBoolTrue( "truc" );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
             << std::endl;
-    }
-    catch( sysexp::modele::ExceptionDivParZero & e )
-    {
-        std::cerr << "Erreur division par zéro."
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
             << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
     }
 
-    std::cout << affichageTest("Fin des tests de ValeurAbstraite") << std::endl
+    {
+        sysexp::modele::FormeConclusionBoolFalse conclusion = sysexp::modele::FormeConclusionBoolFalse( "machin" );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    {
+        sysexp::modele::FormeConclusionEntierExpression conclusion = sysexp::modele::FormeConclusionEntierExpression( "nepasafficher", val1 );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    {
+        sysexp::modele::FormeConclusionEntierExpression conclusion = sysexp::modele::FormeConclusionEntierExpression( "soustraction", val2 );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    {
+        sysexp::modele::FormeConclusionEntierFait conclusion = sysexp::modele::FormeConclusionEntierFait( "blabla", "bidule" );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    {
+        sysexp::modele::FormeConclusionSymboliqueConstante conclusion = sysexp::modele::FormeConclusionSymboliqueConstante( "cheval", "génial" );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    {
+        sysexp::modele::FormeConclusionSymboliqueFait conclusion = sysexp::modele::FormeConclusionSymboliqueFait( "joker", "cheval" );
+        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
+        conclusion.accept( visiteur );
+
+        std::cout << std::endl
+            << "Règle "
+            << conclusion.lireNom()
+            << std::endl;
+        std::cout << "La prémisse à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getPremisseVerifiee()
+            << std::endl;
+        std::cout << "La conclusion à été déclenchée : "
+            << std::boolalpha
+            << visiteur->getConclusionDeclenchee()
+            << std::endl;
+        std::cout << "Erreur d'exécution : ";
+
+        switch( visiteur->getCodeErreurExecution() )
+        {
+
+            case sysexp::modele::Erreurs::toutVaBien:
+                std::cout << "pas d'erreur.";
+                break;
+
+            case sysexp::modele::Erreurs::incoherenceFait:
+                std::cout << "erreur la base est incohérente.";
+                break;
+
+            case sysexp::modele::Erreurs::divParZero:
+                std::cout << "erreur division par zéro.";
+                break;
+
+            case sysexp::modele::Erreurs::faitInconnu:
+                std::cout << "erreur le fait n'existe pas dans l'expression.";
+                break;
+
+            default:
+                std::cout << "code d'erreur inconnu.";
+                break;
+
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "================================"
         << std::endl;
-    // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    std::cout << "= Affichage de la base de fait ="
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
+    base->afficher();
+
+    std::cout << std::endl;
+    std::cout << affichageTest("Fin des tests sur visiteur.") << std::endl;
 
     /*
 	// test sur les jetons (ça marche)

@@ -39,6 +39,14 @@ namespace sysexp
             {
                 erreur_ = Erreurs::incoherenceFait;
             }
+            catch( ExceptionDivParZero & e )
+            {
+                erreur_ = Erreurs::divParZero;;
+            }
+            catch( ExceptionFaitInconnu & e )
+            {
+                erreur_ = Erreurs::incoherenceFait;
+            }
 
         }
 

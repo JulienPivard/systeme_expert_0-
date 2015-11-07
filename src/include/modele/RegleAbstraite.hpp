@@ -13,6 +13,8 @@
 
 #include <cstdlib>
 
+#include "FormeAbstraiteConclusion.hpp"
+
 /**
  * @namespace sysexp
  * */
@@ -34,16 +36,25 @@ namespace sysexp
 
             public:
 
+                RegleAbstraite( const FormeAbstraiteConclusion & conclusion )
+
                 /**
                 * Destructeur de la RegleAbstraite.
                 * */
                 virtual ~RegleAbstraite();
 
             protected:
+
                 /**
-                 *
+                 * La conclusion de la règle.
+                 * @see FormeAbstraiteConclusion
                  * */
-                Conclusion conclusion_
+                const FormeAbstraiteConclusion conclusion_;
+
+                /**
+                 * La règle suivante.
+                 * */
+                const RegleAbstraite successeur_;
 
         };
 

@@ -37,6 +37,13 @@ namespace sysexp
             public:
 
                 /**
+                 * @typedef PtrVisiteurFormeAbstrait
+                 *
+                 * Un alias pour simplifier l'utilisation d'un shared pointeur de VisiteurFormeAbstrait
+                 * */
+                typedef std::shared_ptr< VisiteurFormeAbstrait > PtrVisiteurFormeAbstrait;
+
+                /**
                  * Constructeur logique
                  *
                  * @param[in] nom
@@ -50,7 +57,7 @@ namespace sysexp
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la FormeAbstraite.
                  * */
-                virtual void accept( const std::shared_ptr< VisiteurFormeAbstrait > & visiteur ) = 0;
+                virtual void accept( const PtrVisiteurFormeAbstrait & visiteur ) = 0;
 
                 /**
                  * Accesseur

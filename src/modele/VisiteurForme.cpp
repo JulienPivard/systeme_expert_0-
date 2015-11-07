@@ -49,17 +49,36 @@ namespace sysexp
                 // On sait que le fait trouvé est forcement un fait symbolique.
                 const FaitSymbolique* faitSymboTrouve = static_cast< const FaitSymbolique* >( faitTrouve.get() );
                 // Lecture de la valeur.
-                std::string valeur = faitSymboTrouve->lireValeur();
-                FaitSymbolique::PtrFaitSymbolique fait( new FaitSymbolique( conclusion->lireNom(), valeur ) );
-                AjouterUnFait( fait );
+                try
+                {
+                    std::string valeur = faitSymboTrouve->lireValeur();
+                    FaitSymbolique::PtrFaitSymbolique fait( new FaitSymbolique( conclusion->lireNom(), valeur ) );
+                    AjouterUnFait( fait );
+                }
+                catch( ExceptionFaitInconnu & e )
+                {
+                    erreur_ = Erreurs::incoherenceFait;
+                }
             }
 
         }
 
         void VisiteurForme::visiter( const FormeConclusionEntierExpression * conclusion )
         {
-            FaitEntier::PtrFaitEntier fait( new FaitEntier( conclusion->lireNom(), conclusion->lireValeur( baseFait_ ) ) );
-            AjouterUnFait( fait );
+            try
+            {
+                const long int valeur = conclusion->lireValeur( baseFait_ );
+                FaitEntier::PtrFaitEntier fait( new FaitEntier( conclusion->lireNom(), valeur ) );
+                AjouterUnFait( fait );
+            }
+            catch( ExceptionFaitInconnu & e )
+            {
+                erreur_ = Erreurs::faitInconnu;
+            }
+            catch( ExceptionDivParZero & e )
+            {
+                erreur_ = Erreurs::divParZero;
+            }
         }
 
         void VisiteurForme::visiter( const FormeConclusionEntierFait * conclusion )
@@ -73,9 +92,16 @@ namespace sysexp
                 // On sait que le fait trouvé est forcement un fait symbolique.
                 const FaitEntier* faitEntierTrouve = static_cast< const FaitEntier* >( faitTrouve.get() );
                 // Lecture de la valeur.
-                long int valeur = faitEntierTrouve->lireValeur();
-                FaitEntier::PtrFaitEntier fait( new FaitEntier( conclusion->lireNom(), valeur ) );
-                AjouterUnFait( fait );
+                try
+                {
+                    long int valeur = faitEntierTrouve->lireValeur();
+                    FaitEntier::PtrFaitEntier fait( new FaitEntier( conclusion->lireNom(), valeur ) );
+                    AjouterUnFait( fait );
+                }
+                catch( ExceptionFaitInconnu & e )
+                {
+                    erreur_ = Erreurs::incoherenceFait;
+                }
             }
 
         }

@@ -106,9 +106,20 @@ namespace sysexp
 
                             const FaitEntier* ptrFait = static_cast< const FaitEntier* >( fait.get() );
                             const FaitEntier* ptrFaitDansBase = static_cast< const FaitEntier* >( faitDansBase.get() );
-                            if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
+                            try
                             {
-                                throw ExceptionFaitDejaAjoute();
+                                if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
+                                {
+                                    throw ExceptionFaitDejaAjoute();
+                                }
+                            }
+                            catch( ExceptionFaitInconnu & e )
+                            {
+                                throw e;
+                            }
+                            catch( ExceptionDivParZero & e )
+                            {
+                                throw e;
                             }
 
                         }

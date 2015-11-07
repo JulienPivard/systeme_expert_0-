@@ -36,7 +36,7 @@ namespace sysexp
             public:
 
                 /**
-                 * @typedef Valeur
+                 * @typedef PtrValeur
                  *
                  * La valeur stocké sous forme de shared_ptr.
                  * */
