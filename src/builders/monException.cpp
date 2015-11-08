@@ -4,8 +4,9 @@ namespace sysexp{
 
 	 namespace builders{
 	 	
-	 	MonException::MonException(Lexical & lexical):
-	 	lexical_(lexical)
+	 	MonException::MonException(Lexical & lexical, std::string erreur):
+	 	lexical_(lexical),
+	 	erreur_(erreur)
 	 	{}
 
 	 	const char*
@@ -21,7 +22,8 @@ namespace sysexp{
 			ligne.at(position - 1) <<
 			"]" <<
 			ligne.substr(position, ligne.size()) <<
-			"\n";
+			"\n" <<
+			erreur_ << std::endl;
 	    	
 	 		return message.str().c_str();
 	 	}

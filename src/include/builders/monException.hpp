@@ -23,12 +23,14 @@ namespace sysexp{
           */
         class MonException : public std::exception {
         	public: 
-        		MonException(Lexical & lexical);
+        		MonException(Lexical & lexical, std::string erreur);
         	public: 
         		const char* what() const throw();
 
         	protected:
         		Lexical & lexical_;
+
+                std::string erreur_;
         };
     }
 }

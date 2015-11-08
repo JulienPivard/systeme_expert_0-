@@ -40,7 +40,10 @@ main(int argc, char* argv[] ){
         //"/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt"
         std::istringstream chaine("faits_booleens = caca, bite; \n\
                                    faits_symboliques = putite, puti; \n\
-                                   faits_entiers = rot, pet; ");
+                                   faits_entiers = rot, pet;\n\
+                                   rot; \n\
+                                   manger;\n\
+                                   non caca; ");
         //representationJeton(chaine);
         Lexical lexical = Lexical(chaine);
         Syntaxique syn(lexical);

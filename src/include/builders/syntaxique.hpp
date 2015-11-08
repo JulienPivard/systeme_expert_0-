@@ -2,8 +2,8 @@
 #define Syntaxique_hpp
 
 #include "lexical.hpp"
-
-
+#include <map>
+#include <iterator>
 /**
  * @namespace sysexp
  *
@@ -47,8 +47,23 @@
 
 				void declarations_ent();
 
-				void listeFaits();
+				void listeFaits(std::string valeur);
 				
+				void regles();
+
+				void regle();
+
+				void regle_sans_premisse();
+
+				void conclusion();
+
+				void conclusion_booleenne();
+
+				void conclusion_symbolique();
+
+				void conclusion_entiere();
+
+				void regle_avec_premisse();
 				
 			protected:
 				/**
@@ -59,6 +74,10 @@
 				* Dernier jeton precharge.
 				*/
 				Jeton precharge_;
+
+				std::map <std::string, std::string> faits_;
+
+
 		};
 	}
 }
