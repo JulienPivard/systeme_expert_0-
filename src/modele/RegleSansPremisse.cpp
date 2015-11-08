@@ -12,6 +12,7 @@ namespace sysexp
         void RegleSansPremisse::accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur )
         {
             conclusion_->accept( visiteur );
+            declenchee_ = visiteur->getConclusionDeclenchee();
         }
 
     }

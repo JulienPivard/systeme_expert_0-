@@ -69,6 +69,7 @@ namespace sysexp
 
         void VisiteurForme::visiter( const FormeConclusionEntierExpression * conclusion )
         {
+
             try
             {
                 const long int valeur = conclusion->lireValeur( baseFait_ );
@@ -83,6 +84,7 @@ namespace sysexp
             {
                 erreur_ = Erreurs::divParZero;
             }
+
         }
 
         void VisiteurForme::visiter( const FormeConclusionEntierFait * conclusion )

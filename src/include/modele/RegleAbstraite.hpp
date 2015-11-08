@@ -75,6 +75,18 @@ namespace sysexp
                 virtual void accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur ) = 0;
 
                 /**
+                 * @return La règle à été déclenchée.
+                 * */
+                bool estDeclenchee() const;
+
+                /**
+                 * @return La règle possède un successeur.
+                 * */
+                bool possedeSuccesseur() const;
+
+            public:
+
+                /**
                 * Destructeur de la RegleAbstraite.
                 * */
                 virtual ~RegleAbstraite() = default;
@@ -91,6 +103,11 @@ namespace sysexp
                  * La règle suivante.
                  * */
                 PtrRegleAbstraite successeur_;
+
+                /**
+                 * La règle à été déclenchée.
+                 * */
+                bool declenchee_;
 
         };
 

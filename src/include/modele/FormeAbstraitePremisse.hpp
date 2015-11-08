@@ -47,10 +47,8 @@ namespace sysexp
                  *
                  * @param[in] nom
                  * Le nom du fait avec lequel sera fait la comparaison.
-                 * @param[in] signe
-                 * Le signe à utiliser pour faire la comparaison.
                  * */
-                FormeAbstraitePremisse( const std::string & nom, const SigneAbstrait & signe );
+                FormeAbstraitePremisse( const std::string & nom );
 
                 /**
                  * Destructeur rendu virtuel.
@@ -63,4 +61,3 @@ namespace sysexp
 }
 
 #endif
-
