@@ -45,6 +45,13 @@ ADD_EXECUTABLE( client
     src/modele/RegleAbstraite.cpp
     src/modele/RegleSansPremisse.cpp
 
+    src/modele/SigneSuperieur.cpp
+    src/modele/SigneInferieur.cpp
+    src/modele/SigneSuperieurEgal.cpp
+    src/modele/SigneInferieurEgal.cpp
+    src/modele/SigneEgalEgal.cpp
+    src/modele/SigneDifferent.cpp
+
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp
     src/builders/lexical.cpp

@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier ValeurAbstraite.cpp.
- * Définit la classe concrète ValeurAbstraite.
+ * Définit la classe abstraite ValeurAbstraite.
  * */
 
 #ifndef valeurabstraite_hpp
@@ -27,6 +27,7 @@ namespace sysexp
 
         /**
          * @class ValeurAbstraite ValeurAbstraite.hpp
+         * @brief Le squelette d'une expression de valeur entière.
          *
          * Déclaration de la classe abstraite Valeur.
          * */

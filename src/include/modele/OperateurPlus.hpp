@@ -29,6 +29,7 @@ namespace sysexp
 
         /**
          * @class OperateurPlus OperateurPlus.hpp
+         * @brief Représente une opération d'addition.
          *
          * Déclaration de la classe OperateurPlus.
          * */

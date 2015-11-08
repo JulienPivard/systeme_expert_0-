@@ -1,10 +1,10 @@
 /**
- * @file RegleSansConclusion.hpp
+ * @file RegleSansPremisse.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier RegleSansConclusion.cpp.
- * Définit la classe concrète RegleSansConclusion.
+ * Header pour le fichier RegleSansPremisse.cpp.
+ * Définit la classe concrète RegleSansPremisse.
  * */
 
 
@@ -26,9 +26,10 @@ namespace sysexp
     {
 
         /**
-         * @class RegleSansConclusion RegleSansConclusion.hpp
+         * @class RegleSansPremisse RegleSansPremisse.hpp
+         * @brief Représente une règle sans prémisse.
          *
-         * Déclaration de la classe RegleSansConclusion.
+         * Déclaration de la classe RegleSansPremisse.
          * */
         class RegleSansPremisse : public RegleAbstraite
         {

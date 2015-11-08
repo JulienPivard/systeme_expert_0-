@@ -4,7 +4,7 @@
  * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FaitAbstrait.cpp.
- * Définit la classe abstraite Fait.
+ * Définit la classe abstraite FaitAbstrait.
  * */
 
 #ifndef faitabstrait_hpp
@@ -40,6 +40,7 @@ namespace sysexp
 
         /**
          * @class FaitAbstrait FaitAbstrait.hpp
+         * @brief Un squelette abstrait pour stocker les faits.
          *
          * Déclaration de la classe abstraite FaitAbstrait.
          * */

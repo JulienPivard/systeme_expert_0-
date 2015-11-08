@@ -27,6 +27,7 @@ namespace sysexp
 
         /**
          * @class FaitEntier FaitEntier.hpp
+         * @brief Représente un fait entier. Sa valeur ne peut pas être modifié.
          *
          * Déclaration de la classe concrète FaitEntier.
          * Cette classe permet de représenter un fait entier et sa valeur.

@@ -26,6 +26,7 @@ namespace sysexp
 
         /**
         * @class ExceptionFaitInconnu ExceptionFaitInconnu.hpp
+        * @brief Le fait demandé n'a pas pu être trouvé dans la base de fait.
         *
         * Déclaration de l'exception pour les faits non trouvé.
         * */

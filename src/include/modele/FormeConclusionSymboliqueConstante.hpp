@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class FormeConclusionSymboliqueConstante FormeConclusionSymboliqueConstante.hpp
+         * @brief Représente une conclusion symbolique de valeur constante.
          *
          * Déclaration de la classe FormeConclusionSymboliqueConstante.
          * */

@@ -29,6 +29,7 @@ namespace sysexp
 
         /**
         * @class FeuilleConstante FeuilleConstante.hpp
+        * @brief Permet de représenter une valeur, seule ou dans une partie gauche ou droit d'une opération.
         *
         * Déclaration de la classe FeuilleConstante.
         * */

@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier BaseFait.cpp.
- * Définit la classe abstraite BaseFait.
+ * Définit la classe concrète BaseFait.
  * */
 
 
@@ -38,7 +38,7 @@ namespace sysexp
 
         /**
         * @class BaseFait BaseFait.hpp
-        * @brief Stock les faits
+        * @brief Permet de gérer les faits facilement et d'afficher la base de fait.
         *
         * Déclaration de la classe BaseFait.
         * Cette classe permet d'accéder aux faits.

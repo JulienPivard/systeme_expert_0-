@@ -26,6 +26,7 @@ namespace sysexp
 
         /**
          * @class ExceptionFaitDejaAjoute ExceptionFaitDejaAjoute.hpp
+         * @brief On a tenté de modifier un fait déjà ajouté à la base de fait.
          *
          * Déclaration de l'exception pour signaler qu'un fait à déjà été ajouté à la base de fait.
          * */

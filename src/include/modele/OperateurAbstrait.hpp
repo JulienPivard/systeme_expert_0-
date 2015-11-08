@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
         * @class OperateurAbstrait OperateurAbstrait.hpp
+        * @brief Un squelette d'opérateur abstrait pour les expressions entière.
         *
         * Déclaration de la classe OperateurAbstrait.
         * */

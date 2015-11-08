@@ -27,6 +27,7 @@ namespace sysexp
 
         /**
          * @class OperateurDiv OperateurDiv.hpp
+         * @brief Représente une opération de division.
          *
          * Déclaration de la classe OperateurDiv.
          * */

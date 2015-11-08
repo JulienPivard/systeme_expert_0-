@@ -29,6 +29,7 @@ namespace sysexp
 
         /**
          * @class FormeAbstraiteConclusion FormeAbstraiteConclusion.hpp
+         * @brief Le squelette de représentation d'une conclusion.
          *
          * Déclaration de la classe FormeAbstraiteConclusion.
          * */

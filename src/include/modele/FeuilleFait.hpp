@@ -33,6 +33,7 @@ namespace sysexp
 
         /**
         * @class FeuilleFait FeuilleFait.hpp
+        * @brief Permet de représenter une variable, seule ou dans une partie gauche ou droit d'une opération.
         *
         * Déclaration de la classe FeuilleFait.
         * */

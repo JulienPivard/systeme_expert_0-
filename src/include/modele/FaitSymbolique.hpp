@@ -26,6 +26,7 @@ namespace sysexp
     {
         /**
          * @class FaitSymbolique FaitSymbolique.hpp
+         * @brief Représente un fait symbolique. Sa valeur ne peut pas être modifié.
          *
          * Déclaration de la classe concrète FaitSymbolique.
          * Cette classe permet de représenter un fait symbolique et sa valeur.

@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class FormeAbstraite FormeAbstraite.hpp
+         * @brief Squelette de représentation d'une prémisse ou d'un conclusion.
          *
          * Déclaration de la classe abstraite FormeAbstraite.
          * */

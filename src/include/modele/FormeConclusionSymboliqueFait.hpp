@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier FormeConclusionSymboliqueFait.cpp.
- * Définit la classe abstraite FormeConclusionSymboliqueFait.
+ * Définit la classe concrète FormeConclusionSymboliqueFait.
  * */
 
 
@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class FormeConclusionSymboliqueFait FormeConclusionSymboliqueFait.hpp
+         * @brief Représente une conclusion symbolique dont la valeur dépend d'un fait symbolique.
          *
          * Déclaration de la classe FormeConclusionSymboliqueFait.
          * */

@@ -26,6 +26,7 @@ namespace sysexp
 
         /**
          * @class ExceptionDivParZero ExceptionDivParZero.hpp
+         * @brief Une ValeurAbstraite à tenté une division par zéro.
          *
          * Déclaration de l'exception pour la division par zéro.
          * */

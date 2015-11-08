@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class FormeConclusionBoolTrue FormeConclusionBoolTrue.hpp
+         * @brief Représente une conclusion booléenne vrais.
          *
          * Déclaration de la classe FormeConclusionBoolTrue.
          * */

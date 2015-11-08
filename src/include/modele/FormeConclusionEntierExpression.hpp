@@ -30,6 +30,7 @@ namespace sysexp
 
         /**
             * @class FormeConclusionEntierExpression FormeConclusionEntierExpression.hpp
+            * @brief Représente une conclusion entière avec une expression mathématique.
             *
             * Déclaration de la classe FormeConclusionEntierExpression.
             * */

@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class OperateurMoins OperateurMoins.hpp
+         * @brief Représente une opération de soustraction.
          *
          * Déclaration de la classe OperateurMoins.
          * */

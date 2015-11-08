@@ -70,7 +70,6 @@ namespace sysexp
          * */
         class FormeConclusionSymboliqueFait;
 
-
         /**
          * @class FormePremisseBoolTrue
          *
@@ -133,6 +132,7 @@ namespace sysexp
 
         /**
          * @class VisiteurFormeAbstrait VisiteurFormeAbstrait.hpp
+         * @brief Le squelette du visiteur de règle avec ou sans prémisse.
          *
          * Déclaration de la classe VisiteurFormeAbstrait.
          * */

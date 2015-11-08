@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier VisiteurForme.cpp.
- * Définit la classe abstraite VisiteurForme.
+ * Définit la classe concrète VisiteurForme.
  * */
 
 
@@ -27,6 +27,7 @@ namespace sysexp
 
         /**
         * @class VisiteurForme VisiteurForme.hpp
+        * @brief Représente le visiteur de règle.
         *
         * Déclaration de la classe VisiteurForme.
         * */

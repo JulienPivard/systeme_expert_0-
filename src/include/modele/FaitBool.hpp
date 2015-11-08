@@ -26,6 +26,7 @@ namespace sysexp
     {
         /**
          * @class FaitBool FaitBool.hpp
+         * @brief Représente un fait booléen. Sa valeur ne peut pas être modifié.
          *
          * Déclaration de la classe concrète FaitBool.
          * Cette classe permet de représenter un fait booléen et sa valeur booléenne.

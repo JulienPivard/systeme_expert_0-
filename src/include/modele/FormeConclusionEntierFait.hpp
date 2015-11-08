@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier FormeConclusionEntierFait.cpp.
- * Définit la classe abstraite FormeConclusionEntierFait.
+ * Définit la classe concrète FormeConclusionEntierFait.
  * */
 
 
@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
         * @class FormeConclusionEntierFait FormeConclusionEntierFait.hpp
+        * @brief Représente une conclusion entière dont la valeur dépend de celle d'un fait entier.
         *
         * Déclaration de la classe FormeConclusionEntierFait.
         * */

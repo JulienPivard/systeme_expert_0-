@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class OperateurMul OperateurMul.hpp
+         * @brief Représente une opération de multiplication.
          *
          * Déclaration de la classe OperateurMul.
          * */

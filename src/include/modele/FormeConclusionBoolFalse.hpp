@@ -4,7 +4,7 @@
  * @author PIVARD Julien
  *
  * Header pour le fichier FormeConclusionBoolFalse.cpp.
- * Définit la classe abstraite FormeConclusionBoolFalse.
+ * Définit la classe concrète FormeConclusionBoolFalse.
  * */
 
 
@@ -28,6 +28,7 @@ namespace sysexp
 
         /**
          * @class FormeConclusionBoolFalse FormeConclusionBoolFalse.hpp
+         * @brief Représente une conclusion booléenne fausse.
          *
          * Déclaration de la classe FormeConclusionBoolFalse.
          * */

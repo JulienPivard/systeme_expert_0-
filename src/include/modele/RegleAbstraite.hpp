@@ -30,6 +30,7 @@ namespace sysexp
 
         /**
         * @class RegleAbstraite RegleAbstraite.hpp
+        * @brief Le squelette d'une règle avec ou sans prémisse.
         *
         * Déclaration de la classe RegleAbstraite.
         * */
