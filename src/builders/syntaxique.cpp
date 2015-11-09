@@ -96,7 +96,9 @@ namespace sysexp{
 			if(precharge_.estSi()){
 				regle_avec_premisse();
 			}
-			regle_sans_premisse();
+			else{
+				regle_sans_premisse();
+			}
 		}
 
 		void 
@@ -181,13 +183,175 @@ namespace sysexp{
 
 		void
 		Syntaxique::conclusion_entiere(){
+			precharge_ = lexical_.suivant();
+			if(!precharge_.estEgal()){
+				throw MonException(lexical_, "attendu: '='");
+			}
+			precharge_ = lexical_.suivant();
+			expressionEntiere();
 
 		}
 
+		void 
+		Syntaxique::expressionEntiere(){
+			if(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
+				precharge_ = lexical_.suivant();
+			}
+			terme();
+			while(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
+				precharge_ = lexical_.suivant();
+				terme();
+			}
+		}
 
 		void
-		Syntaxique::regle_avec_premisse(){
+		Syntaxique::terme(){
+			facteur();
+			while(precharge_.estOperateurMul() || precharge_.estOperateurDiv()){
+				precharge_ = lexical_.suivant();
+				facteur();
+			}
 
 		}
+
+		void
+		Syntaxique::facteur(){
+			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
+			if(it == faits_.end()){
+				if(precharge_.estEntier()){
+					//tout se passe bien ! 
+					precharge_ = lexical_.suivant();
+				}
+				else if(precharge_.estParentheseOuvrante()){
+					//tout se passe bien ! 
+					precharge_ = lexical_.suivant();
+					expressionEntiere();
+					if(!precharge_.estParentheseFermante()){
+						throw MonException(lexical_, "attendu : ')'");
+					}
+					precharge_ = lexical_.suivant();
+				}
+				else{
+					throw MonException(lexical_, "attendu : un entier ou '('");
+				}	
+			}
+			else{ 
+				if(it->second != "entier"){
+					throw MonException(lexical_, "le fait n'est pas entier");
+				}
+				// tout se passe bien
+				precharge_ = lexical_.suivant();
+
+			}
+
+		}
+		void
+		Syntaxique::regle_avec_premisse(){
+			precharge_ = lexical_.suivant();
+			condition();
+			if(!precharge_.estAlors()){
+				throw MonException(lexical_, "attendu: 'alors'");
+			}
+			precharge_ = lexical_.suivant();
+			conclusion();
+		}
+
+		void 
+		Syntaxique::condition(){
+			premisse();
+			while(precharge_.estEt()){
+				precharge_ = lexical_.suivant();
+				premisse();
+
+			}
+		}
+
+		void
+		Syntaxique::premisse(){
+			if(precharge_.estIdentificateur()){
+				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
+				if(it == faits_.end()){
+					throw MonException(lexical_, "le fait n'a pas été declare");
+				}
+				else if(it->second == "booleen"){
+					premisse_booleenne();
+				}
+				else if(it->second == "symbolique"){
+					premisse_symbolique();
+				}
+				else if(it->second == "entier"){
+					premisse_entiere();
+				}
+			}
+			else if(precharge_.estNon()){
+				premisse_booleenne();
+			}
+			else{
+				throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
+			}
+		}
+
+		void
+		Syntaxique::premisse_booleenne(){
+			if(precharge_.estNon()){
+				precharge_ = lexical_.suivant();
+				if(!precharge_.estIdentificateur()){
+					throw MonException(lexical_, "attendu: un fait booléen");
+				}
+				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
+				if(it == faits_.end()){
+					throw MonException(lexical_, "le fait n'a pas été declare");
+				}
+				else if(it->second != "booleen"){
+					throw MonException(lexical_, "le fait n'est pas booléen");
+				}
+				// tout se passe bien ! 
+				precharge_ = lexical_.suivant();
+			}
+			else{
+				// tout se passe bien ! 
+				precharge_ = lexical_.suivant();
+			}
+		}
+		
+
+		void
+		Syntaxique::premisse_symbolique(){
+			precharge_ = lexical_.suivant();
+			if(!precharge_.estEgal() && !precharge_.estDifferent()){
+				throw MonException(lexical_, "attendu: '=' ou '/='");
+			}
+			precharge_ = lexical_.suivant();
+			
+			if(!precharge_.estIdentificateur()){
+					throw MonException(lexical_, "attendu : identificateur");
+			}
+			
+			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
+			if(it == faits_.end()){
+
+				//tout se passe bien ! 
+				precharge_ = lexical_.suivant();
+			}
+			else{ 
+				if(it->second != "symbolique"){
+					throw MonException(lexical_, "le fait n'est pas symbolique");
+				}
+				//tout se passe bien
+				precharge_ = lexical_.suivant();
+			}
+		}
+
+		void
+		Syntaxique::premisse_entiere(){
+			precharge_ = lexical_.suivant();
+			if(!precharge_.estEgal() && !precharge_.estSuperieur() && !precharge_.estInferieur() &&
+				!precharge_.estSupEgal() && !precharge_.estInfEgal() && !precharge_.estDifferent()){
+				throw MonException(lexical_, "attendu : '=' ou '/=' ou '<' ou '>' ou '<=' ou '>='");
+			}
+			precharge_ = lexical_.suivant();
+			expressionEntiere();
+		}
+
 	}
 }

@@ -38,6 +38,8 @@
 				const Lexical lireLexical();
 
 				void parser();
+				
+			protected:
 
 				void declarations();
 
@@ -63,7 +65,23 @@
 
 				void conclusion_entiere();
 
+				void expressionEntiere();
+
+				void terme();
+
+				void facteur();
+
 				void regle_avec_premisse();
+
+				void condition();
+
+				void premisse();
+
+				void premisse_booleenne();
+
+				void premisse_symbolique();
+
+				void premisse_entiere();
 				
 			protected:
 				/**
