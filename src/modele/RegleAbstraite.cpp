@@ -32,5 +32,26 @@ namespace sysexp
             return declenchee_;
         }
 
+        void RegleAbstraite::verifFlagErreurVisiteur( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur ) const
+        {
+            if( visiteur->getCodeErreurExecution() == Erreurs::divParZero )
+            {
+                std::cerr << "Erreur division par zéro dans la règle : "
+                    << numeroRegle_
+                    << "."
+                    << std::endl;
+                throw ExceptionDivParZero();
+            }
+            if( visiteur->getCodeErreurExecution() == Erreurs::incoherenceFait )
+            {
+                std::cerr << "Erreur La base de fait est incohérente,"
+                    << " la règle : "
+                    << numeroRegle_
+                    << " à déjà été ajoutée avec une autre valeur."
+                    << std::endl;
+                throw ExceptionFaitDejaAjoute();
+            }
+        }
+
     }
 }

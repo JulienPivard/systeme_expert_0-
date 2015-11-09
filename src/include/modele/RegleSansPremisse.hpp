@@ -11,6 +11,8 @@
 #ifndef reglesansconclusion_hpp
 #define reglesansconclusion_hpp
 
+#include <exception>
+
 #include "RegleAbstraite.hpp"
 #include "FormeAbstraiteConclusion.hpp"
 #include "VisiteurForme.hpp"
@@ -40,6 +42,9 @@ namespace sysexp
                 /**
                  * Constructeur logique
                  *
+                 * @param[in] numeroRegle
+                 * Le numéro de la règle dans la base de connaissance,
+                 * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
                  * La conclusion de la règle.
                  * */
@@ -48,8 +53,12 @@ namespace sysexp
                 /**
                  * Méthode pour accepter le visiteur.
                  *
-                 * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la règle sans conclusion.
+                 * @param[in, out] base
+                 * La base à partir de laquelle on évalue le déclenchement des règles,
+                 * et à laquelle on vas ajouter la conclusion.
+                 *
+                 * @return La règle à été déclenchée.
+                 * @see BaseFait
                  * */
                 bool declencher( const BaseFait::PtrBaseFait & base );
 

@@ -51,6 +51,9 @@ namespace sysexp
                 /**
                  * Constructeur logique.
                  *
+                 * @param[in] numeroRegle
+                 * Le numéro de la règle dans la base de connaissance,
+                 * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
                  * La conclusion de la règle.
                  * @see FormeAbstraiteConclusion
@@ -78,18 +81,21 @@ namespace sysexp
                 bool possedeSuccesseur() const;
 
                 /**
-                 * Méthode pour accepter un visiteur.
-                 *
-                 * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la règle abstraite.
-                 * @see VisiteurFormeAbstrait
-                 * */
-                virtual bool declencher( const BaseFait::PtrBaseFait & base ) = 0;
-
-                /**
                  * @return La règle à été déclenchée.
                  * */
                 bool estDeclenchee() const;
+
+                /**
+                 * Méthode pour accepter un visiteur.
+                 *
+                 * @param[in, out] base
+                 * La base à partir de laquelle on évalue le déclenchement des règles,
+                 * et à laquelle on vas ajouter la conclusion.
+                 *
+                 * @return La règle à été déclenchée.
+                 * @see BaseFait
+                 * */
+                virtual bool declencher( const BaseFait::PtrBaseFait & base ) = 0;
 
                 /**
                  * Parcours la base de règle.
@@ -107,6 +113,22 @@ namespace sysexp
                 * Destructeur de la RegleAbstraite.
                 * */
                 virtual ~RegleAbstraite() = default;
+
+            protected:
+
+                /**
+                 * Vérifie les flags d'erreur du visiteur.
+                 *
+                 * @param[in] visiteur
+                 * Le visiteur qui à déclenché la conclusion ou les prémisses.
+                 *
+                 * @throw ExceptionDivParZero
+                 * Division par zéro rencontré impossible de continuer.
+                 * @throw ExceptionFaitDejaAjoute
+                 * On tente de modifier un fait déjà ajouté a la base de fait.
+                 * Impossible de continuer.
+                 * */
+                void verifFlagErreurVisiteur( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur ) const;
 
             protected:
 

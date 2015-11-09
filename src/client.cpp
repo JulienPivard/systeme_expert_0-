@@ -163,37 +163,42 @@ int main( int argc, char* argv[] )
     base->afficher();
     std::cout << std::endl;
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion7( new sysexp::modele::FormeConclusionSymboliqueFait( "joker", "cheval" ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion7( new sysexp::modele::FormeConclusionSymboliqueFait( "jokey", "cheval" ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle7( new sysexp::modele::RegleSansPremisse( 7, conclusion7 ) );
 
     sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion6( new sysexp::modele::FormeConclusionSymboliqueConstante( "cheval", "génial" ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle6( new sysexp::modele::RegleSansPremisse( 6, conclusion6 ) );
     regle6->ajouterSuccesseur( regle7 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion5( new sysexp::modele::FormeConclusionEntierFait( "blabla", "bidule" ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion5( new sysexp::modele::FormeConclusionEntierFait( "reprendValDevriaetrebidul", "devraisetrebidul" ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle5( new sysexp::modele::RegleSansPremisse( 5, conclusion5 ) );
     regle5->ajouterSuccesseur( regle6 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion4( new sysexp::modele::FormeConclusionEntierExpression( "soustraction", val2 ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion4( new sysexp::modele::FormeConclusionEntierExpression( "nepasafficher", val2 ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle4( new sysexp::modele::RegleSansPremisse( 4, conclusion4 ) );
     regle4->ajouterSuccesseur( regle5 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion3( new sysexp::modele::FormeConclusionEntierExpression( "divpar0", opd0 ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion3( new sysexp::modele::FormeConclusionEntierExpression( "division", opd ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle3( new sysexp::modele::RegleSansPremisse( 3, conclusion3 ) );
     regle3->ajouterSuccesseur( regle4 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion2( new sysexp::modele::FormeConclusionEntierExpression( "nepasafficher", val1 ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion2( new sysexp::modele::FormeConclusionEntierExpression( "devraisetrebidul", val1 ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle2( new sysexp::modele::RegleSansPremisse( 2, conclusion2 ) );
     regle2->ajouterSuccesseur( regle3 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion1( new sysexp::modele::FormeConclusionBoolFalse( "machin" ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion1( new sysexp::modele::FormeConclusionBoolFalse( "trucFaux" ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle1( new sysexp::modele::RegleSansPremisse( 1, conclusion1 ) );
     regle1->ajouterSuccesseur( regle2 );
 
-    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolTrue( "truc" ) );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolTrue( "trucVrais" ) );
     sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle( new sysexp::modele::RegleSansPremisse( 0, conclusion ) );
     regle->ajouterSuccesseur( regle1 );
-    regle->iter( base );
+    bool resultat = regle->iter( base );
+    std::cout << std::endl
+        << "Au moins une règle a été déclenchée : "
+        << std::boolalpha
+        << resultat
+        << std::endl;
 
     std::cout << std::endl;
     std::cout << "================================"

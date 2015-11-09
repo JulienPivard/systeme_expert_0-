@@ -16,23 +16,29 @@ namespace sysexp
             declenchee_ = visiteur->getConclusionDeclenchee();
             // Pour mieux voir ce qui se passe lors du déclenchement.
             std::cout << std::endl
-                << "Règle "
+                << "Règle numéro "
+                << numeroRegle_
+                << " nom "
                 << conclusion_->lireNom()
                 << std::endl;
             visiteur->afficher();
             // Fin de debogage.
+            // Vérification des flags d'erreur du visiteur.
+            verifFlagErreurVisiteur( visiteur );
             return declenchee_;
         }
 
         bool RegleSansPremisse::iter( const BaseFait::PtrBaseFait & base )
         {
-            bool resMoi = declencher( base );
-            bool resSuccesseur = false;
+            // On récupère le résultat de notre propre déclenchement.
+            bool resultat = declencher( base );
+            bool resultatSuccesseur = false;
             if( possedeSuccesseur() )
             {
-                resSuccesseur = successeur_->iter( base );
+                // On récupère le résultat du déclenchement du successeur.
+                resultatSuccesseur = successeur_->iter( base );
             }
-            return resMoi || resSuccesseur;
+            return resultat || resultatSuccesseur;
         }
 
     }
