@@ -13,6 +13,7 @@
 
 #include "RegleAbstraite.hpp"
 #include "FormeAbstraiteConclusion.hpp"
+#include "VisiteurForme.hpp"
 
 /**
  * @namespace sysexp
@@ -42,7 +43,7 @@ namespace sysexp
                  * @param[in] conclusion
                  * La conclusion de la règle.
                  * */
-                RegleSansPremisse( const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
+                RegleSansPremisse( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
                  * Méthode pour accepter le visiteur.
@@ -50,7 +51,17 @@ namespace sysexp
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la règle sans conclusion.
                  * */
-                void accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur );
+                bool declencher( const BaseFait::PtrBaseFait & base );
+
+                /**
+                 * Parcours la base de règle.
+                 *
+                 * @param[in, out] base
+                 * La base de fait utilisé pour évaluer les règles.
+                 *
+                 * @return Une règle au moins à été déclenchée.
+                 * */
+                bool iter( const BaseFait::PtrBaseFait & base );
 
         };
 

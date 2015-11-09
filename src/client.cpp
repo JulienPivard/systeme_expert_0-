@@ -153,110 +153,49 @@ int main( int argc, char* argv[] )
 
     sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
 
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolTrue( "truc" ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
+    std::cout << std::endl;
+    std::cout << "================================"
+        << std::endl;
+    std::cout << "= Affichage de la base de fait ="
+        << std::endl;
+    std::cout << "================================"
+        << std::endl;
+    base->afficher();
+    std::cout << std::endl;
 
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion7( new sysexp::modele::FormeConclusionSymboliqueFait( "joker", "cheval" ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle7( new sysexp::modele::RegleSansPremisse( 7, conclusion7 ) );
 
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolFalse( "machin" ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion6( new sysexp::modele::FormeConclusionSymboliqueConstante( "cheval", "génial" ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle6( new sysexp::modele::RegleSansPremisse( 6, conclusion6 ) );
+    regle6->ajouterSuccesseur( regle7 );
 
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion5( new sysexp::modele::FormeConclusionEntierFait( "blabla", "bidule" ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle5( new sysexp::modele::RegleSansPremisse( 5, conclusion5 ) );
+    regle5->ajouterSuccesseur( regle6 );
 
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionEntierExpression( "nepasafficher", val1 ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion4( new sysexp::modele::FormeConclusionEntierExpression( "soustraction", val2 ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle4( new sysexp::modele::RegleSansPremisse( 4, conclusion4 ) );
+    regle4->ajouterSuccesseur( regle5 );
 
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion3( new sysexp::modele::FormeConclusionEntierExpression( "divpar0", opd0 ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle3( new sysexp::modele::RegleSansPremisse( 3, conclusion3 ) );
+    regle3->ajouterSuccesseur( regle4 );
 
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionEntierExpression( "divpar0", opd0 ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion2( new sysexp::modele::FormeConclusionEntierExpression( "nepasafficher", val1 ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle2( new sysexp::modele::RegleSansPremisse( 2, conclusion2 ) );
+    regle2->ajouterSuccesseur( regle3 );
 
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion1( new sysexp::modele::FormeConclusionBoolFalse( "machin" ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle1( new sysexp::modele::RegleSansPremisse( 1, conclusion1 ) );
+    regle1->ajouterSuccesseur( regle2 );
 
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionEntierExpression( "soustraction", val2 ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
+    sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolTrue( "truc" ) );
+    sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle( new sysexp::modele::RegleSansPremisse( 0, conclusion ) );
+    regle->ajouterSuccesseur( regle1 );
+    regle->iter( base );
 
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
-
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionEntierFait( "blabla", "bidule" ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
-
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
-
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionSymboliqueConstante( "cheval", "génial" ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
-
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
-
-    {
-        sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionSymboliqueFait( "joker", "cheval" ) );
-        sysexp::modele::RegleSansPremisse regle = sysexp::modele::RegleSansPremisse( conclusion );
-        sysexp::modele::VisiteurForme::PtrVisiteurForme visiteur( new sysexp::modele::VisiteurForme( base ) );
-        regle.accept( visiteur );
-
-        std::cout << std::endl
-            << "Règle "
-            << conclusion->lireNom()
-            << std::endl;
-        visiteur->afficher();
-    }
-
+    std::cout << std::endl;
     std::cout << "================================"
         << std::endl;
     std::cout << "= Affichage de la base de fait ="

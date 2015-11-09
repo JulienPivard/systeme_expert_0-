@@ -5,7 +5,8 @@ namespace sysexp
     namespace modele
     {
 
-        RegleAbstraite::RegleAbstraite( const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
+        RegleAbstraite::RegleAbstraite( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
+            numeroRegle_( numeroRegle ),
             conclusion_( conclusion ),
             successeur_( nullptr ),
             declenchee_( false )
@@ -16,14 +17,19 @@ namespace sysexp
             successeur_ = successeur;
         }
 
-        bool RegleAbstraite::estDeclenchee() const
+        const RegleAbstraite::PtrRegleAbstraite & RegleAbstraite::lireSuccesseur() const
         {
-            return declenchee_;
+            return successeur_;
         }
 
         bool RegleAbstraite::possedeSuccesseur() const
         {
             return successeur_ != nullptr;
+        }
+
+        bool RegleAbstraite::estDeclenchee() const
+        {
+            return declenchee_;
         }
 
     }

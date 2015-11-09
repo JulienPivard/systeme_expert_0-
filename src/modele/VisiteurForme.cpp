@@ -20,10 +20,8 @@ namespace sysexp
 
         void VisiteurForme::visiter( const FormeConclusionBoolTrue * conclusion )
         {
-
             FaitBool::PtrFaitBool fait( new FaitBool( conclusion->lireNom(), true ) );
             AjouterUnFait( fait );
-
         }
 
         void VisiteurForme::visiter( const FormeConclusionBoolFalse * conclusion )
