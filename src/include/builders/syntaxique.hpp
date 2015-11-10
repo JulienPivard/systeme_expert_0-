@@ -37,6 +37,7 @@
 				*/
 				const Lexical lireLexical();
 
+				
 				/**
 				 * parseur de la grammaire lorraine.
 				 *
@@ -44,7 +45,12 @@
 				void parser();
 
 			protected:
-
+				/**
+				 * passe au jeton suivant.
+				 *
+				*/
+				void suivant();
+				
 				/**
 				 * brique parsant les déclarations.
 				 *

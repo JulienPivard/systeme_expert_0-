@@ -18,6 +18,11 @@ namespace sysexp{
 		 }
 			
 		void
+		Syntaxique::suivant(){
+			precharge_ = lexical_.suivant();
+			
+		}
+		void
 		Syntaxique::parser(){
 			declarations();
 			for(const std::pair< std::string, std::string > & couple : faits_){
@@ -38,7 +43,7 @@ namespace sysexp{
 
 			if(!precharge_.estFaitBool())
 				throw MonException(lexical_, "attendu: 'faits_booleens'");
-			precharge_ = lexical_.suivant();
+			suivant();
 			listeFaits("booleen");
 		}
 		
@@ -47,7 +52,7 @@ namespace sysexp{
 	 	Syntaxique::declarations_symb(){
 	 		if(!precharge_.estFaitSymb())
 				throw MonException(lexical_,"attendu: 'faits_symboliques'");
-			precharge_ = lexical_.suivant();
+			suivant();
 			listeFaits("symbolique");	
 		}
 
@@ -55,7 +60,7 @@ namespace sysexp{
 		Syntaxique::declarations_ent(){
 			if(!precharge_.estFaitEnt())
 				throw MonException(lexical_, "attendu: 'faits_entiers'");
-			precharge_ = lexical_.suivant();
+			suivant();
 			listeFaits("entier");	
 		}
 
@@ -63,21 +68,21 @@ namespace sysexp{
 		Syntaxique::listeFaits(std::string valeur){
 			if (!precharge_.estEgal())
 				throw MonException(lexical_, "attendu: '='");
-			precharge_ = lexical_.suivant();
+			suivant();
 
 			while(!precharge_.estFinExpression()){
 				if(!precharge_.estIdentificateur())
-					throw MonException(lexical_, "attendu: un mot contenant des lettres ou des chiffres ou un  '_'");
-				faits_[precharge_.lireRepresentation()] =valeur;
-				precharge_ = lexical_.suivant();
+					throw MonException(lexical_, "attendu: un identificateur ou un '_'");
+				faits_[precharge_.lireRepresentation()] = valeur;
+				suivant();
 
 				if(precharge_.estFinExpression()){
-					precharge_ = lexical_.suivant();
+					suivant();
 					break;
 				}
 				if (!precharge_.estSeparateur())
 					throw MonException(lexical_,"attendu: ','");
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 
@@ -87,7 +92,7 @@ namespace sysexp{
 				regle();
 				if (!precharge_.estFinExpression())
 					throw MonException(lexical_,"attendu: ';'");
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 
@@ -134,7 +139,7 @@ namespace sysexp{
 		void
 		Syntaxique::conclusion_booleenne(){
 			if(precharge_.estNon()){
-				precharge_ = lexical_.suivant();
+				suivant();
 				if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu: un fait booléen");
 				}
@@ -146,21 +151,21 @@ namespace sysexp{
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
 				// tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 			else{
 				// tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 	
 		void
 		Syntaxique::conclusion_symbolique(){
-			precharge_ = lexical_.suivant();
+			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu '='");
 			}
-			precharge_ = lexical_.suivant();
+			suivant();
 			
 			if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu : identificateur");
@@ -170,24 +175,24 @@ namespace sysexp{
 			if(it == faits_.end()){
 
 				//tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 			else{ 
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
 				//tout se passe bien
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 
 		void
 		Syntaxique::conclusion_entiere(){
-			precharge_ = lexical_.suivant();
+			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu: '='");
 			}
-			precharge_ = lexical_.suivant();
+			suivant();
 			expressionEntiere();
 
 		}
@@ -195,11 +200,11 @@ namespace sysexp{
 		void 
 		Syntaxique::expressionEntiere(){
 			if(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 			terme();
 			while(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
-				precharge_ = lexical_.suivant();
+				suivant();
 				terme();
 			}
 		}
@@ -208,7 +213,7 @@ namespace sysexp{
 		Syntaxique::terme(){
 			facteur();
 			while(precharge_.estOperateurMul() || precharge_.estOperateurDiv()){
-				precharge_ = lexical_.suivant();
+				suivant();
 				facteur();
 			}
 
@@ -220,16 +225,16 @@ namespace sysexp{
 			if(it == faits_.end()){
 				if(precharge_.estEntier()){
 					//tout se passe bien ! 
-					precharge_ = lexical_.suivant();
+					suivant();
 				}
 				else if(precharge_.estParentheseOuvrante()){
 					//tout se passe bien ! 
-					precharge_ = lexical_.suivant();
+					suivant();
 					expressionEntiere();
 					if(!precharge_.estParentheseFermante()){
 						throw MonException(lexical_, "attendu : ')'");
 					}
-					precharge_ = lexical_.suivant();
+					suivant();
 				}
 				else{
 					throw MonException(lexical_, "attendu : un entier ou '('");
@@ -240,19 +245,19 @@ namespace sysexp{
 					throw MonException(lexical_, "le fait n'est pas entier");
 				}
 				// tout se passe bien
-				precharge_ = lexical_.suivant();
+				suivant();
 
 			}
 
 		}
 		void
 		Syntaxique::regle_avec_premisse(){
-			precharge_ = lexical_.suivant();
+			suivant();
 			condition();
 			if(!precharge_.estAlors()){
 				throw MonException(lexical_, "attendu: 'alors'");
 			}
-			precharge_ = lexical_.suivant();
+			suivant();
 			conclusion();
 		}
 
@@ -260,7 +265,7 @@ namespace sysexp{
 		Syntaxique::condition(){
 			premisse();
 			while(precharge_.estEt()){
-				precharge_ = lexical_.suivant();
+				suivant();
 				premisse();
 
 			}
@@ -294,7 +299,7 @@ namespace sysexp{
 		void
 		Syntaxique::premisse_booleenne(){
 			if(precharge_.estNon()){
-				precharge_ = lexical_.suivant();
+				suivant();
 				if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu: un fait booléen");
 				}
@@ -306,22 +311,22 @@ namespace sysexp{
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
 				// tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 			else{
 				// tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 		
 
 		void
 		Syntaxique::premisse_symbolique(){
-			precharge_ = lexical_.suivant();
+			suivant();
 			if(!precharge_.estEgal() && !precharge_.estDifferent()){
 				throw MonException(lexical_, "attendu: '=' ou '/='");
 			}
-			precharge_ = lexical_.suivant();
+			suivant();
 			
 			if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu : identificateur");
@@ -331,25 +336,25 @@ namespace sysexp{
 			if(it == faits_.end()){
 
 				//tout se passe bien ! 
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 			else{ 
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
 				//tout se passe bien
-				precharge_ = lexical_.suivant();
+				suivant();
 			}
 		}
 
 		void
 		Syntaxique::premisse_entiere(){
-			precharge_ = lexical_.suivant();
+			suivant();
 			if(!precharge_.estEgal() && !precharge_.estSuperieur() && !precharge_.estInferieur() &&
 				!precharge_.estSupEgal() && !precharge_.estInfEgal() && !precharge_.estDifferent()){
 				throw MonException(lexical_, "attendu : '=' ou '/=' ou '<' ou '>' ou '<=' ou '>='");
 			}
-			precharge_ = lexical_.suivant();
+			suivant();
 			expressionEntiere();
 		}
 
