@@ -38,13 +38,6 @@
 #include "FormeConclusionSymboliqueConstante.hpp"
 #include "FormeConclusionSymboliqueFait.hpp"
 
-#include "SigneSuperieur.hpp"
-#include "SigneInferieur.hpp"
-#include "SigneSuperieurEgal.hpp"
-#include "SigneInferieurEgal.hpp"
-#include "SigneEgalEgal.hpp"
-#include "SigneDifferent.hpp"
-
 #include "RegleSansPremisse.hpp"
 
 #include "fabriqueJeton.hpp"
@@ -214,53 +207,15 @@ int main( int argc, char* argv[] )
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
     std::cout << affichageTest("Début des tests sur les signes.") << std::endl;
 
-    {
-        sysexp::modele::SigneEgalEgal signe = sysexp::modele::SigneEgalEgal();
-        std::cout << "test 5 == 6 : "
-            << std::boolalpha
-            << signe.comparer( 5, 6 )
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::SigneDifferent signe = sysexp::modele::SigneDifferent();
-        std::cout << "test 5 != 6 : "
-            << std::boolalpha
-            << signe.comparer( 5, 6 )
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::SigneSuperieur signe = sysexp::modele::SigneSuperieur();
-        std::cout << "test 5 > 5 : "
-            << std::boolalpha
-            << signe.comparer( 5, 5 )
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::SigneSuperieurEgal signe = sysexp::modele::SigneSuperieurEgal();
-        std::cout << "test 5 >= 5 : "
-            << std::boolalpha
-            << signe.comparer( 5, 5 )
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::SigneInferieur signe = sysexp::modele::SigneInferieur();
-        std::cout << "test 5 < 5 : "
-            << std::boolalpha
-            << signe.comparer( 5, 5 )
-            << std::endl;
-    }
-
-    {
-        sysexp::modele::SigneInferieurEgal signe = sysexp::modele::SigneInferieurEgal();
-        std::cout << "test 5 <= 5 : "
-            << std::boolalpha
-            << signe.comparer( 5, 5 )
-            << std::endl;
-    }
+    int a = 5, b = 4;
+    std::equal_to<int> c;
+    std::cout << "Test de == :\n"
+        << a
+        << " == "
+        << b
+        << " : "
+        << c( a, b )
+        << std::endl;
 
     std::cout << affichageTest("Fin des tests sur les signes.") << std::endl;
 
