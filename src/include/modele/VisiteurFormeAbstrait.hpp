@@ -302,15 +302,15 @@ namespace sysexp
                  * */
                 virtual void visiter( const FormePremisseEntierExpression * premisse ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseEntierFait
-                // * */
-                //virtual void visiter( const FormePremisseEntierFait * premisse ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseEntierFait
+                 * */
+                virtual void visiter( const FormePremisseEntierFait * premisse ) = 0;
 
             public:
 

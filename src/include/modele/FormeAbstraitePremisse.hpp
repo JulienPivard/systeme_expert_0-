@@ -44,6 +44,13 @@ namespace sysexp
                  * */
                 typedef std::shared_ptr< FormeAbstraitePremisse > PtrFormeAbstraitePremisse;
 
+                /**
+                 * @typedef OperateurComparaison
+                 *
+                 * Le prototype de l'opérateur de comparaison.
+                 * */
+                typedef bool (&OperateurComparaison)( const long int &, const long int& );
+
             public:
 
                 /**

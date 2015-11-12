@@ -5,7 +5,9 @@ namespace sysexp
     namespace modele
     {
 
-        FormePremisseEntierExpression::FormePremisseEntierExpression( const std::string & nomFait, OperateurComparaison comparateur, const ValeurAbstraite::PtrValeur & expression ):
+        FormePremisseEntierExpression::FormePremisseEntierExpression( const std::string & nomFait,
+                FormeAbstraitePremisse::OperateurComparaison comparateur,
+                const ValeurAbstraite::PtrValeur & expression ):
             FormeAbstraitePremisse( nomFait ),
             signe_( comparateur ),
             expression_( expression )

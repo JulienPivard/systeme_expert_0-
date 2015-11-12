@@ -1,20 +1,17 @@
 /**
- * @file FormePremisseEntierExpression.hpp
+ * @file FormePremisseEntierFait.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier FormePremisseEntierExpression.cpp.
- * Définit la classe concrète FormePremisseEntierExpression.
+ * Header pour le fichier FormePremisseEntierFait.cpp.
+ * Définit la classe concrète FormePremisseEntierFait.
  * */
 
 
-#ifndef formepremisseentierexpression_hpp
-#define formepremisseentierexpression_hpp
-
-#include <string>
+#ifndef formepremisseentierfait_hpp
+#define formepremisseentierfait_hpp
 
 #include "FormeAbstraitePremisse.hpp"
-#include "ValeurAbstraite.hpp"
 #include "BaseFait.hpp"
 
 /**
@@ -29,12 +26,11 @@ namespace sysexp
     {
 
         /**
-         * @class FormePremisseEntierExpression FormePremisseEntierExpression.hpp
-         * @brief Représente la comparaison de la valeur d'un fait et d'une expression.
+         * @class FormePremisseEntierFait FormePremisseEntierFait.hpp
          *
-         * Déclaration de la classe FormePremisseEntierExpression.
+         * Déclaration de la classe FormePremisseEntierFait.
          * */
-        class FormePremisseEntierExpression : public FormeAbstraitePremisse
+        class FormePremisseEntierFait : public FormeAbstraitePremisse
         {
 
             public:
@@ -46,12 +42,12 @@ namespace sysexp
                  * Le nom du fait entier dans la comparaison.
                  * @param[in] comparateur
                  * L'opérateur de comparaison pour tester l'expression entière.
-                 * @param[in] expression
-                 * L'expression entière à laquelle on va comparer le fait.
+                 * @param[in] nomAutreFait
+                 * Le nom du fait dont on veut récupérer la valeur pour la comparer.
                  * */
-                FormePremisseEntierExpression( const std::string & nomFait,
+                FormePremisseEntierFait( const std::string & nomFait,
                         FormeAbstraitePremisse::OperateurComparaison comparateur,
-                        const ValeurAbstraite::PtrValeur & expression );
+                        const std::string & nomAutreFait );
 
                 /**
                  * Méthode de visite.
@@ -76,7 +72,7 @@ namespace sysexp
                  * La base de fait qui vas permettre d'évaluer l'expression.
                  * @return La valeur de l'expression.
                  * */
-                long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
+                const std::string & lireNomAutreFait() const;
 
             protected:
 
@@ -88,7 +84,7 @@ namespace sysexp
                 /**
                  * L'expression de la prémisse entière.
                  * */
-                const ValeurAbstraite::PtrValeur expression_;
+                const std::string nomAutreFait_;
 
         };
 

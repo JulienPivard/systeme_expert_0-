@@ -24,6 +24,7 @@
 #include "FormePremisseBoolTrue.hpp"
 #include "FormePremisseBoolFalse.hpp"
 #include "FormePremisseEntierExpression.hpp"
+#include "FormePremisseEntierFait.hpp"
 
 #include "FaitAbstrait.hpp"
 
@@ -178,15 +179,15 @@ namespace sysexp
                  * */
                 void visiter( const FormePremisseEntierExpression * premisse );
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Mémorise que la prémisse est valide.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseEntierFait
-                // * */
-                //void visiter( const FormePremisseEntierFait * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Mémorise que la prémisse est valide.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseEntierFait
+                 * */
+                void visiter( const FormePremisseEntierFait * premisse );
 
         };
 
