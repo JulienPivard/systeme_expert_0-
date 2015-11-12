@@ -164,7 +164,7 @@ namespace sysexp
             }
         }
 
-        void visiter( const FormePremisseEntierFait * premisse )
+        void VisiteurForme::visiter( const FormePremisseEntierFait * premisse )
         {
             std::string nom = premisse->lireNom();
         }

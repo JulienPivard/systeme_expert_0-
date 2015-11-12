@@ -68,9 +68,7 @@ namespace sysexp
                 /**
                  * Accesseur
                  *
-                 * @param[in] baseFait
-                 * La base de fait qui vas permettre d'évaluer l'expression.
-                 * @return La valeur de l'expression.
+                 * @return Le nom du fait qui contient la valeur à tester.
                  * */
                 const std::string & lireNomAutreFait() const;
 
