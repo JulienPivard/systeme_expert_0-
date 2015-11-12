@@ -27,6 +27,105 @@ namespace sysexp
     {
 
         /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche < partieDroite.
+         * */
+        bool compLess( const long int & partieGauche, const long int & partieDroite );
+
+        /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche <= partieDroite.
+         * */
+        bool compLessEqual( const long int & partieGauche, const long int & partieDroite );
+
+        /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche > partieDroite.
+         * */
+        bool compSup( const long int & partieGauche, const long int & partieDroite );
+
+        /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche >= partieDroite.
+         * */
+        bool compSupEqual( const long int & partieGauche, const long int & partieDroite );
+
+        /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche == partieDroite.
+         * */
+        bool compEqualEqual( const long int & partieGauche, const long int & partieDroite );
+
+        /**
+         * Comparaison de deux entiers long.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche != partieDroite.
+         * */
+        bool compDiff( const long int & partieGauche, const long int & partieDroite );
+
+        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        /**
+         * Comparaison de deux string.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche == partieDroite.
+         * */
+        bool compEqualEqual( const std::string & partieGauche, const std::string & partieDroite );
+
+        /**
+         * Comparaison de deux string.
+         *
+         * @param[in] partieGauche
+         * La partie gauche de la comparaison.
+         * @param[in] partieDroite
+         * La partie droite de la comparaison.
+         *
+         * @return partieGauche != partieDroite.
+         * */
+        bool compDiff( const std::string & partieGauche, const std::string & partieDroite );
+
+
+        /**
          * @class FormeAbstraitePremisse FormeAbstraitePremisse.hpp
          * @brief Le squelette de représentation d'une prémisse.
          *

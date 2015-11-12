@@ -51,6 +51,8 @@ ADD_EXECUTABLE( client
     src/modele/FormePremisseSymboliqueConstante.cpp
     src/modele/FormePremisseSymboliqueFait.cpp
 
+    src/modele/OperateurComparaison.cpp
+
     src/modele/RegleAbstraite.cpp
     src/modele/RegleSansPremisse.cpp
     src/modele/RegleAvecPremisse.cpp

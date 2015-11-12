@@ -42,18 +42,23 @@
 #include "FormePremisseBoolTrue.hpp"
 #include "FormePremisseBoolFalse.hpp"
 #include "FormePremisseEntierExpression.hpp"
+#include "FormePremisseEntierFait.hpp"
+#include "FormePremisseSymboliqueConstante.hpp"
+#include "FormePremisseSymboliqueFait.hpp"
 
 #include "RegleSansPremisse.hpp"
 #include "RegleAvecPremisse.hpp"
+
+#include "OperateurComparaison.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 #include "lexical.hpp"
 
-bool compless( const long int& g, const long int & d )
-{
-    return g <= d;
-}
+//bool compless( const long int& g, const long int & d )
+//{
+//    return g <= d;
+//}
 
 /*
  * Fonction d'affichage de séparateur de zone,
@@ -232,7 +237,7 @@ int main( int argc, char* argv[] )
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle9( new sysexp::modele::RegleAvecPremisse( 9, premisse1, conclusion9, trace ) );
     regle9->ajouterSuccesseur( regle10 );
 
-    sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression( "division", compless, val ) );
+    sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression( "division", sysexp::modele::compLess, val ) );
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle8( new sysexp::modele::RegleAvecPremisse( 8, premisse, conclusion8, trace ) );
     regle8->ajouterSuccesseur( regle9 );
 
