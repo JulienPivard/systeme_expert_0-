@@ -65,6 +65,14 @@ ADD_EXECUTABLE( test
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
     src/builders/monException.cpp
+    src/modele/FormeAbstraite.cpp
+    src/modele/FormeAbstraiteConclusion.cpp
+    src/modele/FormeConclusionBoolTrue.cpp
+    src/modele/FormeConclusionBoolFalse.cpp
+    src/modele/FormeConclusionEntierExpression.cpp
+    src/modele/FormeConclusionEntierFait
+    src/modele/FormeConclusionSymboliqueConstante.cpp
+    src/modele/FormeConclusionSymboliqueFait.cpp
 
 )
 # Faire parler le make.

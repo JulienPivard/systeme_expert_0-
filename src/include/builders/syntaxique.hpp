@@ -2,6 +2,13 @@
 #define Syntaxique_hpp
 
 #include "lexical.hpp"
+#include "VisiteurForme.hpp"
+#include "FormeConclusionBoolTrue.hpp"
+#include "FormeConclusionBoolFalse.hpp"
+#include "FormeConclusionEntierExpression.hpp"
+#include "FormeConclusionEntierFait.hpp"
+#include "FormeConclusionSymboliqueConstante.hpp"
+#include "FormeConclusionSymboliqueFait.hpp"
 #include <map>
 #include <iterator>
 /**

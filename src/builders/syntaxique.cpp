@@ -88,6 +88,7 @@ namespace sysexp{
 
 		void 
 		Syntaxique::regles(){
+			// base de regle, , attention on a besoin de la regle precedente ! 
 			while(!precharge_.estFinFichier()){
 				regle();
 				if (!precharge_.estFinExpression())
@@ -109,10 +110,12 @@ namespace sysexp{
 		void 
 		Syntaxique::regle_sans_premisse(){
 			conclusion();
+			// construire la regle
 		}
 
 		void 
 		Syntaxique::conclusion(){
+			// retourner la conclusion contruite
 			if(precharge_.estIdentificateur()){
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 				if(it == faits_.end()){
@@ -138,6 +141,7 @@ namespace sysexp{
 
 		void
 		Syntaxique::conclusion_booleenne(){
+			// retourner la conslusion constuite
 			if(precharge_.estNon()){
 				suivant();
 				if(!precharge_.estIdentificateur()){
@@ -150,17 +154,21 @@ namespace sysexp{
 				else if(it->second != "booleen"){
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
-				// tout se passe bien ! 
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolFalse(it->first)); 
+				std::cout << conclusion->lireNom() << std::endl;
 				suivant();
 			}
 			else{
-				// tout se passe bien ! 
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolTrue(precharge_.lireRepresentation())); 
+				std::cout << conclusion->lireNom() << std::endl;
 				suivant();
 			}
 		}
 	
 		void
 		Syntaxique::conclusion_symbolique(){
+			// retourner la conclusion construite 
+			Jeton symb = precharge_ ; 
 			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu '='");
@@ -174,20 +182,21 @@ namespace sysexp{
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 
-				//tout se passe bien ! 
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionSymboliqueConstante(symb.lireRepresentation(), precharge_.lireRepresentation()));
 				suivant();
 			}
 			else{ 
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
-				//tout se passe bien
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionSymboliqueConstante(symb.lireRepresentation(), it->first));
 				suivant();
 			}
 		}
 
 		void
 		Syntaxique::conclusion_entiere(){
+			// la conclusion sera probablement construite ici.
 			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu: '='");
@@ -221,10 +230,11 @@ namespace sysexp{
 
 		void
 		Syntaxique::facteur(){
+			// ici ça serait bien de renvoyer du string 
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 				if(precharge_.estEntier()){
-					//tout se passe bien ! 
+					//tout se passe bien ! pour les entier c'est la merde !!! 
 					suivant();
 				}
 				else if(precharge_.estParentheseOuvrante()){
@@ -259,6 +269,7 @@ namespace sysexp{
 			}
 			suivant();
 			conclusion();
+			// construire la regle et la retourner
 		}
 
 		void 
@@ -273,6 +284,7 @@ namespace sysexp{
 
 		void
 		Syntaxique::premisse(){
+			// retourner la premisse
 			if(precharge_.estIdentificateur()){
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 				if(it == faits_.end()){
@@ -310,11 +322,11 @@ namespace sysexp{
 				else if(it->second != "booleen"){
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
-				// tout se passe bien ! 
+				// premisse bool false
 				suivant();
 			}
 			else{
-				// tout se passe bien ! 
+				// premisse bool true
 				suivant();
 			}
 		}
@@ -335,14 +347,14 @@ namespace sysexp{
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 
-				//tout se passe bien ! 
+				//premisse symb constante
 				suivant();
 			}
 			else{ 
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
-				//tout se passe bien
+				//premisse symb fait
 				suivant();
 			}
 		}
@@ -356,6 +368,7 @@ namespace sysexp{
 			}
 			suivant();
 			expressionEntiere();
+			// premisse entiere
 		}
 
 	}

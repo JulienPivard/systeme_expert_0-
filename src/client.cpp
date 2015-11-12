@@ -80,7 +80,7 @@ std::string affichageTest( std::string nomZone )
 
 }
 
-using namespace sysexp::builders;
+//using namespace sysexp::builders;
 /**
  * Programme principal.
  *
