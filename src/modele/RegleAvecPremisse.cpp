@@ -5,8 +5,8 @@ namespace sysexp
     namespace modele
     {
 
-        RegleAvecPremisse::RegleAvecPremisse( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
-            RegleAbstraite( conclusion )
+        RegleAvecPremisse::RegleAvecPremisse( const unsigned int & numeroRegle, const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
+            RegleAbstraite( numeroRegle, conclusion )
         {
             ajouterPremisse( premisse );
         }
@@ -16,9 +16,20 @@ namespace sysexp
             premisses_.insert( premisse );
         }
 
-        void RegleAvecPremisse::accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur )
+        bool RegleAvecPremisse::verifierPremisses( const BaseFait::PtrBaseFait & base )
         {
-            declenchee_ = visiteur->getConclusionDeclenchee();
+            bool resultat = true;
+            for( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & prem : premisses_ )
+            {
+                VisiteurForme::PtrVisiteurForme visiteur( new VisiteurForme( base ) );
+                prem->accept( visiteur );
+                resultat = resultat && visiteur->getPremisseVerifiee();
+                if( !resultat )
+                {
+                    break;
+                }
+            }
+            return resultat;
         }
 
     }

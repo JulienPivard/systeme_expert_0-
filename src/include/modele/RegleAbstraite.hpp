@@ -16,6 +16,7 @@
 
 #include "FormeAbstraiteConclusion.hpp"
 #include "VisiteurFormeAbstrait.hpp"
+#include "VisiteurForme.hpp"
 
 /**
  * @namespace sysexp
@@ -95,7 +96,7 @@ namespace sysexp
                  * @return La règle à été déclenchée.
                  * @see BaseFait
                  * */
-                virtual bool declencher( const BaseFait::PtrBaseFait & base ) = 0;
+                bool declencher( const BaseFait::PtrBaseFait & base );
 
                 /**
                  * Parcours la base de règle.
@@ -105,7 +106,17 @@ namespace sysexp
                  *
                  * @return Une règle au moins à été déclenchée.
                  * */
-                virtual bool iter( const BaseFait::PtrBaseFait & base ) = 0;
+                bool iter( const BaseFait::PtrBaseFait & base );
+
+                /**
+                 * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.
+                 *
+                 * @param[in] base
+                 * La base de fait utilisé pour vérifier les prémisses.
+                 *
+                 * @return Toutes les prémisses de @ref premisses_ sont vérifié.
+                 * */
+                virtual bool verifierPremisses( const BaseFait::PtrBaseFait & base ) = 0;
 
             public:
 

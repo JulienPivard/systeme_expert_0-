@@ -44,7 +44,7 @@ namespace sysexp
                  *
                  * Le prototype de l'opérateur de comparaison.
                  * */
-                typedef bool (&OperateurComparaison)( long int, long int );
+                typedef bool (&OperateurComparaison)( const long int &, const long int& );
 
             public:
 

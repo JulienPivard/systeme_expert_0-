@@ -11,8 +11,6 @@
 #include <memory>
 #include <exception>
 #include <functional>
-#include <algorithm>
-#include <utility>
 
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
@@ -44,10 +42,16 @@
 #include "FormePremisseEntierExpression.hpp"
 
 #include "RegleSansPremisse.hpp"
+#include "RegleAvecPremisse.hpp"
 
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 #include "lexical.hpp"
+
+bool compless( const long int& g, const long int & d )
+{
+    return g <= d;
+}
 
 /*
  * Fonction d'affichage de séparateur de zone,
@@ -191,6 +195,7 @@ int main( int argc, char* argv[] )
     sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion( new sysexp::modele::FormeConclusionBoolTrue( "trucVrais" ) );
     sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle( new sysexp::modele::RegleSansPremisse( 0, conclusion ) );
     regle->ajouterSuccesseur( regle1 );
+
     bool resultat = regle->iter( base );
     std::cout << std::endl
         << "Au moins une règle a été déclenchée : "
@@ -212,7 +217,14 @@ int main( int argc, char* argv[] )
     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     std::cout << affichageTest("Début des tests sur les signes.") << std::endl;
 
-    //sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression( "division", std::less<long int>(long int &, long int &), val );
+    sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression( "division", compless, val ) );
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle8( new sysexp::modele::RegleAvecPremisse( 8, premisse, conclusion ) );
+    resultat = regle8->iter( base );
+    std::cout << std::endl
+        << "Au moins une règle a été déclenchée : "
+        << std::boolalpha
+        << resultat
+        << std::endl;
 
     std::cout << affichageTest("Fin des tests sur les signes.") << std::endl;
     /*

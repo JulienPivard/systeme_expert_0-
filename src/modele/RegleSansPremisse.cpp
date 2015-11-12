@@ -9,36 +9,17 @@ namespace sysexp
             RegleAbstraite( numeroRegle, conclusion )
         { }
 
-        bool RegleSansPremisse::declencher( const BaseFait::PtrBaseFait & base )
+        bool RegleSansPremisse::verifierPremisses( const BaseFait::PtrBaseFait & base )
         {
-            VisiteurForme::PtrVisiteurForme visiteur( new VisiteurForme( base ) );
-            conclusion_->accept( visiteur );
-            declenchee_ = visiteur->getConclusionDeclenchee();
-            // Pour mieux voir ce qui se passe lors du déclenchement.
-            std::cout << std::endl
-                << "Règle numéro "
-                << numeroRegle_
-                << " nom "
-                << conclusion_->lireNom()
-                << std::endl;
-            visiteur->afficher();
-            // Fin de debogage.
-            // Vérification des flags d'erreur du visiteur.
-            verifFlagErreurVisiteur( visiteur );
-            return declenchee_;
-        }
-
-        bool RegleSansPremisse::iter( const BaseFait::PtrBaseFait & base )
-        {
-            // On récupère le résultat de notre propre déclenchement.
-            bool resultat = declencher( base );
-            bool resultatSuccesseur = false;
-            if( possedeSuccesseur() )
+            try
             {
-                // On récupère le résultat du déclenchement du successeur.
-                resultatSuccesseur = successeur_->iter( base );
+                base->trouver("");
             }
-            return resultat || resultatSuccesseur;
+            catch( ExceptionFaitInconnu & e )
+            {
+            }
+            // Ici il n'y a pas de prémisses donc elles sont forcément vérifié.
+            return true;
         }
 
     }

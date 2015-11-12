@@ -50,6 +50,7 @@ ADD_EXECUTABLE( client
 
     src/modele/RegleAbstraite.cpp
     src/modele/RegleSansPremisse.cpp
+    src/modele/RegleAvecPremisse.cpp
 
     src/builders/jeton.cpp
     src/builders/fabriqueJeton.cpp

@@ -256,7 +256,7 @@ namespace sysexp
                  * Visite la règle passé en argument.
                  * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                  *
-                 * @param[in,out] conclusion
+                 * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseBoolTrue
                  * */
@@ -266,7 +266,7 @@ namespace sysexp
                  * Visite la règle passé en argument.
                  * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                  *
-                 * @param[in,out] conclusion
+                 * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseBoolFalse
                  * */
@@ -276,7 +276,7 @@ namespace sysexp
                 // * Visite la règle passé en argument.
                 // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                 // *
-                // * @param[in,out] conclusion
+                // * @param[in,out] premisse
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseSymboliqueConstante
                 // * */
@@ -286,7 +286,7 @@ namespace sysexp
                 // * Visite la règle passé en argument.
                 // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                 // *
-                // * @param[in,out] conclusion
+                // * @param[in,out] premisse
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseSymboliqueFait
                 // * */
@@ -296,7 +296,7 @@ namespace sysexp
                  * Visite la règle passé en argument.
                  * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                  *
-                 * @param[in,out] conclusion
+                 * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseEntierExpression
                  * */
@@ -306,7 +306,7 @@ namespace sysexp
                 // * Visite la règle passé en argument.
                 // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
                 // *
-                // * @param[in,out] conclusion
+                // * @param[in,out] premisse
                 // * La conclusion que l'on veut visiter.
                 // * @see FormePremisseEntierFait
                 // * */

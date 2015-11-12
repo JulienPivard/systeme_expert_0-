@@ -53,5 +53,42 @@ namespace sysexp
             }
         }
 
+        bool RegleAbstraite::declencher( const BaseFait::PtrBaseFait & base )
+        {
+            VisiteurForme::PtrVisiteurForme visiteur( new VisiteurForme( base ) );
+            conclusion_->accept( visiteur );
+            declenchee_ = visiteur->getConclusionDeclenchee();
+            // Pour mieux voir ce qui se passe lors du déclenchement.
+            std::cout << std::endl
+                << "Règle numéro "
+                << numeroRegle_
+                << " nom "
+                << conclusion_->lireNom()
+                << std::endl;
+            visiteur->afficher();
+            // Fin de debogage.
+            // Vérification des flags d'erreur du visiteur.
+            verifFlagErreurVisiteur( visiteur );
+            return declenchee_;
+        }
+
+        bool RegleAbstraite::iter( const BaseFait::PtrBaseFait & base )
+        {
+            bool resultat = false;
+            // On test si toutes les prémisse ont pu se déclencher.
+            if( verifierPremisses( base ) )
+            {
+                // On récupère le résultat de notre propre déclenchement.
+                resultat = declencher( base );
+            }
+            bool resultatSuccesseur = false;
+            if( possedeSuccesseur() )
+            {
+                // On récupère le résultat du déclenchement du successeur.
+                resultatSuccesseur = successeur_->iter( base );
+            }
+            return resultat || resultatSuccesseur;
+        }
+
     }
 }

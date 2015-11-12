@@ -44,6 +44,8 @@ namespace sysexp
                  * */
                 typedef std::shared_ptr< VisiteurFormeAbstrait > PtrVisiteurFormeAbstrait;
 
+            public:
+
                 /**
                  * Constructeur logique
                  *

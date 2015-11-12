@@ -16,6 +16,7 @@
 #include "RegleAbstraite.hpp"
 #include "FormeAbstraiteConclusion.hpp"
 #include "FormeAbstraitePremisse.hpp"
+#include "VisiteurForme.hpp"
 
 /**
  * @namespace sysexp
@@ -51,20 +52,14 @@ namespace sysexp
                 /**
                  * Constructeur logique
                  *
+                 * @param[in] numeroRegle
+                 * Le numéro de la règle.
                  * @param[in] conclusion
                  * La conclusion de la règle.
                  * @param[in] premisse
                  * La premisse qui sert d'hypothèse, d'autres peuvent être ajouté avec @ref ajouterPremisse.
                  * */
-                RegleAvecPremisse( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
-
-                /**
-                 * Méthode pour accepter le visiteur.
-                 *
-                 * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la règle sans conclusion.
-                 * */
-                void accept( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur );
+                RegleAvecPremisse( const unsigned int & numeroRegle, const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
                  * Méthode pour ajouter une prémisse.
@@ -74,6 +69,26 @@ namespace sysexp
                  * La prémisse à ajouter aux hypothèses de la règle.
                  * */
                 void ajouterPremisse( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse );
+
+                /**
+                 * Parcours la base de règle.
+                 *
+                 * @param[in, out] base
+                 * La base de fait utilisé pour évaluer les règles.
+                 *
+                 * @return Une règle au moins à été déclenchée.
+                 * */
+                bool iter( const BaseFait::PtrBaseFait & base );
+
+                /**
+                 * Parcours les prémisses @ref premisses_ pour vérifier les prémisses par rapport à la base de fait.
+                 *
+                 * @param[in] base
+                 * La base de fait utilisé pour vérifier la validité des faits.
+                 *
+                 * @return Toutes les prémisses sont vérifiées.
+                 * */
+                bool verifierPremisses( const BaseFait::PtrBaseFait & base );
 
             protected:
 

@@ -51,26 +51,14 @@ namespace sysexp
                 RegleSansPremisse( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
-                 * Méthode pour accepter le visiteur.
+                 * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.
                  *
-                 * @param[in, out] base
-                 * La base à partir de laquelle on évalue le déclenchement des règles,
-                 * et à laquelle on vas ajouter la conclusion.
+                 * @param[in] base
+                 * La base de fait utilisé pour vérifier les prémisses.
                  *
-                 * @return La règle à été déclenchée.
-                 * @see BaseFait
+                 * @return Toutes les prémisses de @ref premisses_ sont vérifié.
                  * */
-                bool declencher( const BaseFait::PtrBaseFait & base );
-
-                /**
-                 * Parcours la base de règle.
-                 *
-                 * @param[in, out] base
-                 * La base de fait utilisé pour évaluer les règles.
-                 *
-                 * @return Une règle au moins à été déclenchée.
-                 * */
-                bool iter( const BaseFait::PtrBaseFait & base );
+                bool verifierPremisses( const BaseFait::PtrBaseFait & base );
 
         };
 
