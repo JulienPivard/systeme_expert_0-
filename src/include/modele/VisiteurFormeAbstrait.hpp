@@ -154,7 +154,7 @@ namespace sysexp
                  * Constructeur logique.
                  *
                  * @param[in,out] baseFait
-                 * La base de fait que l'on veut remplir.
+                 * La @ref baseFait_ de fait que l'on veut remplir.
                  * */
                 VisiteurFormeAbstrait( const BaseFait::PtrBaseFait & baseFait );
 
@@ -184,7 +184,11 @@ namespace sysexp
                 /**
                  * Pour faciliter l'affichage des variables de visiteur,
                  * de manière lisible.
-                 * À n'utiliser qu'à des fins de debogage.
+                 *
+                 * @note À n'utiliser qu'à des fins de debogage.
+                 * Si un nouveau visiteur est instancié pour vérifier chaque prémisse
+                 * et chaque conclusions, il ne peut pas être au courant des prémisses vérifié avant,
+                 * son drapeau @ref premisseVerifiee_ sera donc toujours affiché à faux lors du déclenchement d'une conclusion.
                  * */
                 void afficher() const;
 

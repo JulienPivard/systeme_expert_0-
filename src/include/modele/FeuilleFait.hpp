@@ -64,7 +64,12 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
-                 * @return La valeur de la feuille de l'opération.
+                 *
+                 * @return La valeur de la feuille fait.
+                 *
+                 * @throw ExceptionFaitInconnu
+                 * Le fait n'est pas connu dans la base de fait,
+                 * la feuille ne peut pas être évaluée dans l'immédiat.
                  * */
                 long int
                 interpret( const BaseFait & baseFait ) const;
@@ -72,7 +77,7 @@ namespace sysexp
             protected:
 
                 /**
-                * Le nom du fait.
+                * Le nom du fait dans lequel se trouve la valeur.
                 * */
                 const std::string nom_;
 

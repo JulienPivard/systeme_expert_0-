@@ -42,16 +42,6 @@ namespace sysexp
             return partieGauche == partieDroite;
         }
 
-        /**
-         * Comparaison de deux string.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche != partieDroite.
-         * */
         bool compDiff( const std::string & partieGauche, const std::string & partieDroite )
         {
             return partieGauche != partieDroite;

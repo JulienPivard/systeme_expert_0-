@@ -51,7 +51,7 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion abstraite.
+                 * Le @ref nom_ de la conclusion abstraite.
                  * */
                 FormeAbstraiteConclusion( const std::string & nom );
 

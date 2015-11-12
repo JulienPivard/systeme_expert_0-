@@ -60,7 +60,8 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
-                 * @return La valeur de la feuille de l'opération.
+                 *
+                 * @return La @ref valeur_ de la feuille.
                  * */
                 long int
                 interpret( const BaseFait & baseFait ) const;

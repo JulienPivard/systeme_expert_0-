@@ -50,7 +50,7 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la FormeAbstraite. Voir @ref nom_
+                 * Le @ref nom_ de la FormeAbstraite.
                  * */
                 FormeAbstraite( const std::string & nom );
 

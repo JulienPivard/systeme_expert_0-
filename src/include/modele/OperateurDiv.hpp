@@ -49,9 +49,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] filsGauche
-                 * Le fils gauche de l'opération. Voir @ref filsGauche_.
+                 * Le @ref filsGauche_ de l'opération.
                  * @param[in] filsDroit
-                 * Le fils droit de l'opération. Voir @ref filsDroit_.
+                 * Le @ref filsDroit_ de l'opération.
+                 *
+                 * @see ValeurAbstraite
                  * */
                 OperateurDiv( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
@@ -60,7 +62,9 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
-                 * @return La valeur de l'opération.
+                 *
+                 * @return La résultat de l'opération de division.
+                 *
                  * @throws ExceptionDivParZero
                  * La partie droite de la division est 0. L'opération ne peut pas être évalué.
                  * */

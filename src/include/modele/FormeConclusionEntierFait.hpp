@@ -41,6 +41,7 @@ namespace sysexp
                  * @typedef PtrVisiteurFormeAbstrait
                  *
                  * Un alias pour simplifier l'utilisation d'un shared pointeur de VisiteurFormeAbstrait
+                 * @see VisiteurFormeAbstrait
                  * */
                 typedef std::shared_ptr< VisiteurFormeAbstrait > PtrVisiteurFormeAbstrait;
 
@@ -48,9 +49,9 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion entière.
+                 * Le @ref nom_ de la conclusion entière.
                  * @param[in] nomFait
-                 * Le nom du fait entier dont on veut assigner la valeur.
+                 * Le @ref nomFait_ du fait entier dont on veut assigner la valeur.
                  * */
                 FormeConclusionEntierFait( const std::string & nom, const std::string & nomFait );
 
@@ -59,6 +60,7 @@ namespace sysexp
                  *
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la conclusion entière.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 

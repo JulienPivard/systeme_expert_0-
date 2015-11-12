@@ -24,6 +24,7 @@ namespace sysexp
      * */
     namespace modele
     {
+
         /**
          * @class FaitSymbolique FaitSymbolique.hpp
          * @brief Représente un fait symbolique. Sa valeur ne peut pas être modifié.
@@ -41,9 +42,10 @@ namespace sysexp
                  *
                  * Nom facile pour un shared_ptr de FaitSymbolique.
                  * */
-                typedef std::shared_ptr<FaitSymbolique> PtrFaitSymbolique;
+                typedef std::shared_ptr< FaitSymbolique > PtrFaitSymbolique;
 
             public:
+
                 /**
                  * Constructeur logique du fait symbolique.
                  *
@@ -57,11 +59,12 @@ namespace sysexp
                 /**
                  * Accesseur.
                  *
-                 * @return La valeur du fait symbolique.
+                 * @return La @ref valeur_ du fait symbolique.
                  * */
                 const std::string & lireValeur() const;
 
             protected:
+
                 /**
                  * La valeur de notre fait symbolique, une chaine de caractère.
                  * La valeur d'un fait n'est pas censée changer.

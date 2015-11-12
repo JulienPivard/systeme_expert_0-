@@ -41,6 +41,7 @@ namespace sysexp
                  * @typedef PtrVisiteurFormeAbstrait
                  *
                  * Un alias pour simplifier l'utilisation d'un shared pointeur de VisiteurFormeAbstrait
+                 * @see VisiteurFormeAbstrait
                  * */
                 typedef std::shared_ptr< VisiteurFormeAbstrait > PtrVisiteurFormeAbstrait;
 
@@ -48,9 +49,9 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion symbolique.
+                 * Le @ref nom_ de la conclusion symbolique.
                  * @param[in] valeur
-                 * La valeur qui vas être assigné au fait.
+                 * La @ref valeur_ qui vas être assigné au fait.
                  * */
                 FormeConclusionSymboliqueConstante( const std::string & nom, const std::string & valeur );
 
@@ -59,6 +60,7 @@ namespace sysexp
                  *
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la conclusion symbolique.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 

@@ -41,9 +41,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] filsGauche
-                 * Le fils gauche de l'opération. Voir @ref filsGauche_.
+                 * Le @ref filsGauche_ de l'opération.
                  * @param[in] filsDroit
-                 * Le fils droit de l'opération. Voir @ref filsDroit_.
+                 * Le @ref filsDroit_ de l'opération.
+                 *
+                 * @see ValeurAbstraite
                  * */
                 OperateurAbstrait( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
@@ -56,11 +58,13 @@ namespace sysexp
 
                 /**
                 * Le fils gauche de l'opération.
+                * @see ValeurAbstraite
                 * */
                 const ValeurAbstraite::PtrValeur filsGauche_;
 
                 /**
                 * Le fils droit de l'opération.
+                * @see ValeurAbstraite
                 * */
                 const ValeurAbstraite::PtrValeur filsDroit_;
 

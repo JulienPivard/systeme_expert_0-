@@ -53,13 +53,16 @@ namespace sysexp
                  * Constructeur logique.
                  *
                  * @param[in] numeroRegle
-                 * Le numéro de la règle dans la base de connaissance,
+                 * Le @ref numeroRegle_ de la règle dans la base de connaissance,
                  * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
-                 * La conclusion de la règle.
+                 * La @ref conclusion_ de la règle.
                  * @param[in] traceExecution
                  * Permet d'afficher les traces d'exécution du visiteur,
                  * après chaque visite d'un élément de la règle.
+                 *
+                 * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
+                 *
                  * @see FormeAbstraiteConclusion
                  * */
                 RegleAbstraite( const unsigned int & numeroRegle,
@@ -137,9 +140,11 @@ namespace sysexp
                  *
                  * @param[in] visiteur
                  * Le visiteur qui à déclenché la conclusion ou les prémisses.
+                 * @see VisiteurFormeAbstrait
                  *
                  * @throw ExceptionDivParZero
                  * Division par zéro rencontré impossible de continuer.
+                 *
                  * @throw ExceptionFaitDejaAjoute
                  * On tente de modifier un fait déjà ajouté a la base de fait.
                  * Impossible de continuer.
@@ -174,6 +179,9 @@ namespace sysexp
                 /**
                  * Permet l'affichage de l'état du visiteur,
                  * après à chaque visite d'un élément de la règle.
+                 *
+                 * @note À n'utiliser que à des fins de debogage,
+                 * peut produire un affichage disgracieux.
                  * */
                 bool traceExecution_;
 

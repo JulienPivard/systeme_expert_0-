@@ -11,45 +11,45 @@ namespace sysexp
             {
 
                 FaitAbstrait::PtrFaitAbstrait faitAbstrait =  couple.second;
-                std::cout << "Nom : " << faitAbstrait->lireNom();
+                std::cout << "Nom : "
+                    << faitAbstrait->lireNom()
+                    << "  Fait : ";
+
                 switch( faitAbstrait->type() )
                 {
 
                     case TypeFait::faitBool:
                         {
                             const FaitBool* fait = static_cast< const FaitBool* >( faitAbstrait.get() );
-                            std::cout << " valeur "
+                            std::cout << "booléen  valeur : "
                                 << std::boolalpha
-                                << fait->lireValeur()
-                                << std::endl;
+                                << fait->lireValeur();
                         }
                         break;
 
                     case TypeFait::faitEntier:
                         {
                             const FaitEntier* fait = static_cast< const FaitEntier* >( faitAbstrait.get() );
-                            std::cout << " valeur "
-                                << fait->lireValeur()
-                                << std::endl;
+                            std::cout << "entier  valeur : "
+                                << fait->lireValeur();
                         }
                         break;
 
                     case TypeFait::faitSymbolique:
                         {
                             const FaitSymbolique* fait = static_cast< const FaitSymbolique* >( faitAbstrait.get() );
-                            std::cout << " valeur "
-                                << fait->lireValeur()
-                                << std::endl;
+                            std::cout << "symbolique  valeur : "
+                                << fait->lireValeur();
                         }
                         break;
 
                     default:
-                        std::cerr << "Le type du fait n'existe pas."
-                            << std::endl;
+                        std::cerr << "Le type du fait n'existe pas.";
                         throw ExceptionFaitInconnu();
                         break;
 
                 }
+                std::cout << std::endl;
 
             }
         }
@@ -79,6 +79,7 @@ namespace sysexp
                 // On récupère le fait qui existe déjà dans la base avec ce nom.
                 FaitAbstrait::PtrFaitAbstrait faitDansBase( trouver( fait->lireNom() ) );
                 // Ici le fait de même nom n'est pas de même type.
+                // N'est présent que par soucis d'exhaustivité, n'est normalement jamais déclenché.
                 if( faitDansBase->type() != fait->type() )
                 {
                     throw ExceptionFaitDejaAjoute();
@@ -130,6 +131,7 @@ namespace sysexp
                         default:
                             std::cerr << "Le type du fait n'existe pas !"
                                 << std::endl;
+                        break;
                     }
 
                 }
@@ -137,6 +139,7 @@ namespace sysexp
             }
             else
             {
+                // Le fait n'existe pas déjà dans la base de fait.
                 baseFait_.insert( std::pair<std::string, FaitAbstrait::PtrFaitAbstrait>( fait->lireNom(), fait ) );
             }
         }

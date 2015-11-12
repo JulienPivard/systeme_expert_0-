@@ -163,7 +163,7 @@ namespace sysexp
                  * Constructeur logique.
                  *
                  * @param[in] nom
-                 * Le nom du fait avec lequel sera fait la comparaison.
+                 * Le @ref nom_ du fait avec lequel sera fait la comparaison.
                  * */
                 FormeAbstraitePremisse( const std::string & nom );
 

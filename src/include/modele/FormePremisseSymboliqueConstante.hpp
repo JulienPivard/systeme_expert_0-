@@ -42,11 +42,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nomFait
-                 * Le nom du fait symbolique dans la comparaison.
+                 * Le @ref nom_ du fait symbolique dans la comparaison.
                  * @param[in] comparateur
-                 * L'opérateur de comparaison pour tester l'expression symbolique.
+                 * L'opérateur (@ref signe_) de comparaison pour tester l'expression symbolique.
                  * @param[in] valeur
-                 * La valeur à tester sur celle du fait symbolique.
+                 * La @ref valeur_ à tester sur celle du fait symbolique.
                  * */
                 FormePremisseSymboliqueConstante( const std::string & nomFait,
                         FormeAbstraitePremisse::OperateurComparaisonString comparateur,
@@ -58,6 +58,7 @@ namespace sysexp
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer le prémisse entier,
                  * de façon nomFait signe valeurExpression.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
@@ -69,14 +70,14 @@ namespace sysexp
                  * @param[in] partieDroite
                  * La partie droite de la comparaison.
                  *
-                 * @return Le signe de l'opération booléenne à effectuer.
+                 * @return Le test partieGauche @ref signe_ partieDroite.
                  * */
                 bool test( const std::string & partieGauche, const std::string & partieDroite ) const;
 
                 /**
                  * Accesseur
                  *
-                 * @return La valeur de l'expression.
+                 * @return La @ref valeur_ de l'expression.
                  * */
                 const std::string & lireValeur() const;
 

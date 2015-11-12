@@ -51,9 +51,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] filsGauche
-                 * Le fils gauche de l'opération. Voir @ref filsGauche_.
+                 * Le @ref filsGauche_ de l'opération.
                  * @param[in] filsDroit
-                 * Le fils droit de l'opération. Voir @ref filsDroit_.
+                 * Le @ref filsDroit_ de l'opération.
+                 *
+                 * @see ValeurAbstraite
                  * */
                 OperateurPlus( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
@@ -62,7 +64,8 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
-                 * @return La valeur de l'opération d'addition.
+                 *
+                 * @return Le résultat de l'opération d'addition.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
 

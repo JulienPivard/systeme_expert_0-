@@ -41,7 +41,7 @@ namespace sysexp
                  *
                  * Nom facile pour un shared_ptr de FaitBool.
                  * */
-                typedef std::shared_ptr<FaitBool> PtrFaitBool;
+                typedef std::shared_ptr< FaitBool > PtrFaitBool;
 
             public:
 
@@ -49,7 +49,7 @@ namespace sysexp
                  * Constructeur logique du fait booléen.
                  *
                  * @param[in] nom
-                 * Le @ref nom_ du Fait booléen.
+                 * Le @ref nom_ du fait booléen.
                  * @param[in] valeur
                  * La @ref valeur_ du fait booléen.
                  * */
@@ -58,14 +58,15 @@ namespace sysexp
                 /**
                  * Accesseur.
                  *
-                 * @return La valeur du fait booléen.
+                 * @return La @ref valeur_ du fait booléen.
                  * */
                 bool lireValeur() const;
 
             protected:
+
                 /**
                  * La valeur de notre fait booléen, soit true soit false.
-                 * La valeur d'un fait n'est pas censée changer.
+                 * La valeur d'un fait n'est pas censé changer.
                  * */
                 const bool valeur_;
 

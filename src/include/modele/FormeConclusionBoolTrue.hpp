@@ -41,6 +41,7 @@ namespace sysexp
                  * @typedef PtrVisiteurFormeAbstrait
                  *
                  * Un alias pour simplifier l'utilisation d'un shared pointeur de VisiteurFormeAbstrait
+                 * @see VisiteurFormeAbstrait
                  * */
                 typedef std::shared_ptr< VisiteurFormeAbstrait > PtrVisiteurFormeAbstrait;
 
@@ -48,7 +49,7 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom de la conclusion booléenne.
+                 * Le @ref nom_ de la conclusion booléenne.
                  * */
                 FormeConclusionBoolTrue( const std::string & nom );
 
@@ -57,6 +58,7 @@ namespace sysexp
                  *
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer la conclusion booléenne.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 

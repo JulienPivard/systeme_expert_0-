@@ -42,7 +42,7 @@ namespace sysexp
                  *
                  * Nom facile pour un shared_ptr de FaitEntier.
                  * */
-                typedef std::shared_ptr<FaitEntier> PtrFaitEntier;
+                typedef std::shared_ptr< FaitEntier > PtrFaitEntier;
 
             public:
                 /**
@@ -58,11 +58,12 @@ namespace sysexp
                 /**
                  * Accesseur.
                  *
-                 * @return La valeur du fait symbolique.
+                 * @return La @ref valeur_ du fait symbolique.
                  * */
                 const long int & lireValeur() const;
 
             protected:
+
                 /**
                  * La valeur de notre fait entier.
                  * La valeur n'est pas censé changer.

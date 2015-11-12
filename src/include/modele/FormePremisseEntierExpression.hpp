@@ -43,11 +43,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nomFait
-                 * Le nom du fait entier dans la comparaison.
+                 * Le @ref nom_ du fait entier dans la comparaison.
                  * @param[in] comparateur
-                 * L'opérateur de comparaison pour tester l'expression entière.
+                 * La fonction (@ref signe_) de comparaison pour tester l'expression entière.
                  * @param[in] expression
-                 * L'expression entière à laquelle on va comparer le fait.
+                 * L'@ref expression_ entière à laquelle on va comparer le fait.
                  * */
                 FormePremisseEntierExpression( const std::string & nomFait,
                         FormeAbstraitePremisse::OperateurComparaisonEntier comparateur,
@@ -59,6 +59,7 @@ namespace sysexp
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer le prémisse entier,
                  * de façon nomFait signe valeurExpression.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
@@ -70,7 +71,7 @@ namespace sysexp
                  * @param[in] partieDroite
                  * La partie droite de la comparaison.
                  *
-                 * @return Le signe de l'opération booléenne à effectuer.
+                 * @return Le @ref signe_ de l'opération booléenne à effectuer.
                  * */
                 bool test( const long int & partieGauche, const long int & partieDroite ) const;
 
@@ -79,6 +80,8 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait qui vas permettre d'évaluer l'expression.
+                 * @see BaseFait
+                 *
                  * @return La valeur de l'expression.
                  * */
                 long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
@@ -92,6 +95,7 @@ namespace sysexp
 
                 /**
                  * L'expression de la prémisse entière.
+                 * @see ValeurAbstraite
                  * */
                 const ValeurAbstraite::PtrValeur expression_;
 

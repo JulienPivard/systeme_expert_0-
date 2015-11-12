@@ -53,15 +53,17 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] numeroRegle
-                 * Le numéro de la règle.
+                 * Le @ref numeroRegle_ de la règle.
                  * @param[in] conclusion
-                 * La conclusion de la règle à ajouter
-                 * dans la base de fait une fois la règle vérifiée..
+                 * La @ref conclusion_ de la règle à ajouter
+                 * dans la base de fait une fois la règle vérifiée.
                  * @param[in] premisse
                  * La premisse qui sert d'hypothèse, d'autres peuvent être ajouté avec @ref ajouterPremisse.
                  * @param[in] traceExecution
                  * Permet d'afficher les traces d'exécution du visiteur,
                  * après chaque visite d'un élément de la règle.
+                 *
+                 * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleAvecPremisse( const unsigned int & numeroRegle,
                         const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,

@@ -41,7 +41,7 @@ namespace sysexp
         * @brief Permet de gérer les faits facilement et d'afficher la base de fait.
         *
         * Déclaration de la classe BaseFait.
-        * Cette classe permet d'accéder aux faits.
+        * Cette classe permet d'accéder et de stocker les faits.
         * */
         class BaseFait
         {
@@ -74,7 +74,8 @@ namespace sysexp
                  *
                  * @param[in] nomFait
                  * Le nom du fait recherché
-                 * @return Le fait à été trouvé.
+                 *
+                 * @return Le fait à été trouvé. @see FaitAbstrait
                  * */
                 bool appartient( const std::string & nomFait ) const;
 
@@ -83,9 +84,11 @@ namespace sysexp
                  *
                  * @param[in] nomFait
                  * Le nom du fait recherché.
+                 *
+                 * @return Le fait trouvé. @see FaitAbstrait
+                 *
                  * @throws ExceptionFaitInconnu
                  * Le fait demandé n'existe pas.
-                 * @return Le fait trouvé. @see FaitAbstrait
                  * */
                 const FaitAbstrait::PtrFaitAbstrait & trouver( const std::string & nomFait ) const;
 
@@ -94,8 +97,10 @@ namespace sysexp
                  *
                  * @param[in] fait
                  * Le fait à ajouter à la base de faits. @see FaitAbstrait
+                 *
                  * @throws ExceptionFaitDejaAjoute
-                 * Le fait existe déjà et ne peut pas être modifié.
+                 * Le fait existe déjà avec une autre valeur,
+                 * la valeur ne peut pas être modifié.
                  * */
                 void ajouter( const FaitAbstrait::PtrFaitAbstrait & fait );
 

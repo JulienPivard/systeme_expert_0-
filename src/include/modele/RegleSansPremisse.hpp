@@ -43,13 +43,15 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] numeroRegle
-                 * Le numéro de la règle dans la base de connaissance,
+                 * Le @ref numeroRegle_ de la règle dans la base de connaissance,
                  * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
-                 * La conclusion de la règle.
+                 * La @ref conclusion_ de la règle.
                  * @param[in] traceExecution
                  * Permet d'afficher les traces d'exécution du visiteur,
                  * après chaque visite d'un élément de la règle.
+                 *
+                 * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleSansPremisse( const unsigned int & numeroRegle,
                         const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,

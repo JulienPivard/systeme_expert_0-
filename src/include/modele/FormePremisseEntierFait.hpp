@@ -42,11 +42,11 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nomFait
-                 * Le nom du premier fait entier que l'on veut comparer.
+                 * Le @ref nom_ du premier fait entier que l'on veut comparer.
                  * @param[in] comparateur
-                 * L'opérateur de comparaison pour tester l'expression entière.
+                 * L'opérateur (@ref signe_) de comparaison pour tester l'expression entière.
                  * @param[in] nomAutreFait
-                 * Le nom du fait dont on veut récupérer la valeur pour la comparer à celle du premier fait.
+                 * Le @ref nomAutreFait_ du second fait dont on veut récupérer la valeur pour la comparer à celle du premier fait.
                  * */
                 FormePremisseEntierFait( const std::string & nomFait,
                         FormeAbstraitePremisse::OperateurComparaisonEntier comparateur,
@@ -57,7 +57,8 @@ namespace sysexp
                  *
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer le prémisse entier,
-                 * de façon nomFait signe valeurExpression.
+                 * de façon valeurFait signe valeurAutreFait.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
@@ -69,14 +70,14 @@ namespace sysexp
                  * @param[in] partieDroite
                  * La partie droite de la comparaison.
                  *
-                 * @return Le signe de l'opération booléenne à effectuer.
+                 * @return Le test partieGauche @ref signe_ partieDroite.
                  * */
                 bool test( const long int & partieGauche, const long int & partieDroite ) const;
 
                 /**
                  * Accesseur
                  *
-                 * @return Le nom du fait qui contient la valeur à tester.
+                 * @return Le @ref nomAutreFait_ du fait qui contient la valeur à tester.
                  * */
                 const std::string & lireNomAutreFait() const;
 

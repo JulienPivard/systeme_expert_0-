@@ -39,7 +39,7 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nom
-                 * Le nom du fait booléen vrai.
+                 * Le @ref nom_ du fait booléen vrai.
                  * */
                 FormePremisseBoolTrue( const std::string & nom );
 
@@ -48,6 +48,7 @@ namespace sysexp
                  *
                  * @param[in, out] visiteur
                  * Le visiteur qui vas évaluer le prémisse booléen.
+                 * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 

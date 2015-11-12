@@ -65,7 +65,7 @@ namespace sysexp
                 * Constructeur logique
                 *
                 * @param[in] baseFait
-                * La base de fait que l'on va remplir.
+                * La @ref baseFait_ de fait que l'on va remplir.
                 * */
                 VisiteurForme( const BaseFait::PtrBaseFait & baseFait );
 

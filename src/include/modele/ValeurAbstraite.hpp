@@ -50,7 +50,8 @@ namespace sysexp
                  *
                  * @param[in] baseFait
                  * La base de fait à utiliser pour évaluer les expressions.
-                 * @return La valeur.
+                 *
+                 * @return La valeur de l'opération ou de la feuille.
                  * */
                 virtual long int interpret( const BaseFait & baseFait ) const = 0;
 
