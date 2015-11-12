@@ -33,6 +33,7 @@ ADD_EXECUTABLE( client
 
     src/modele/VisiteurFormeAbstrait.cpp
     src/modele/VisiteurForme.cpp
+
     src/modele/FormeAbstraite.cpp
     src/modele/FormeAbstraiteConclusion.cpp
     src/modele/FormeConclusionBoolTrue.cpp
@@ -41,6 +42,11 @@ ADD_EXECUTABLE( client
     src/modele/FormeConclusionEntierFait
     src/modele/FormeConclusionSymboliqueConstante.cpp
     src/modele/FormeConclusionSymboliqueFait.cpp
+
+    src/modele/FormeAbstraitePremisse.cpp
+    src/modele/FormePremisseBoolTrue.cpp
+    src/modele/FormePremisseBoolFalse.cpp
+    src/modele/FormePremisseEntierExpression.cpp
 
     src/modele/RegleAbstraite.cpp
     src/modele/RegleSansPremisse.cpp

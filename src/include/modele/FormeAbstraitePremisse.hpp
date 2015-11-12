@@ -11,6 +11,10 @@
 #ifndef formeabstraitepremisse_hpp
 #define formeabstraitepremisse_hpp
 
+#include <memory>
+
+#include "FormeAbstraite.hpp"
+
 /**
  * @namespace sysexp
  * */
@@ -28,7 +32,7 @@ namespace sysexp
          *
          * Déclaration de la classe FormeAbstraitePremisse.
          * */
-        class FormeAbstraitePremisse
+        class FormeAbstraitePremisse : public FormeAbstraite
         {
 
             public:

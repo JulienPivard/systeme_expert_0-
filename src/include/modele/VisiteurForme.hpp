@@ -115,25 +115,25 @@ namespace sysexp
 
             public:
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseBoolTrue
-                // * */
-                //void visiter( const FormePremisseBoolTrue * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseBoolTrue
+                 * */
+                void visiter( const FormePremisseBoolTrue * premisse );
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseBoolFalse
-                // * */
-                //void visiter( const FormePremisseBoolFalse * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseBoolFalse
+                 * */
+                void visiter( const FormePremisseBoolFalse * premisse );
 
                 ///**
                 // * Visite la règle passé en argument.
@@ -155,15 +155,15 @@ namespace sysexp
                 // * */
                 //void visiter( const FormePremisseSymboliqueFait * premisse );
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] conclusion
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseEntierExpression
-                // * */
-                //void visiter( const FormePremisseEntierExpression * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] conclusion
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseEntierExpression
+                 * */
+                void visiter( const FormePremisseEntierExpression * premisse );
 
                 ///**
                 // * Visite la règle passé en argument.

@@ -7,6 +7,10 @@
 #include "FormeConclusionSymboliqueConstante.hpp"
 #include "FormeConclusionSymboliqueFait.hpp"
 
+#include "FormePremisseBoolTrue.hpp"
+#include "FormePremisseBoolFalse.hpp"
+#include "FormePremisseEntierExpression.hpp"
+
 #include "FaitAbstrait.hpp"
 
 namespace sysexp
@@ -112,6 +116,66 @@ namespace sysexp
                 erreur_ = Erreurs::faitEntierInconnu;
             }
 
+        }
+
+        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        void VisiteurForme::visiter( const FormePremisseBoolTrue * premisse )
+        {
+
+            std::string nom = premisse->lireNom();
+            if( baseFait_->appartient( nom ) )
+            {
+                // On récupère le fait.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nom );
+                // On cast le fait en booléen.
+                const FaitBool* faitBoolTrouve = static_cast< const FaitBool* >( faitTrouve.get() );
+                // Ici on test si le fait booléen vaut vrais.
+                premisseVerifiee_ = faitBoolTrouve->lireValeur() == true;
+            }
+
+        }
+
+        void VisiteurForme::visiter( const FormePremisseBoolFalse * premisse )
+        {
+
+            std::string nom = premisse->lireNom();
+            if( baseFait_->appartient( nom ) )
+            {
+                // On récupère le fait.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nom );
+                // On cast le fait en booléen.
+                const FaitBool* faitBoolTrouve = static_cast< const FaitBool* >( faitTrouve.get() );
+                // Ici on test si le fait booléen vaut vrais.
+                premisseVerifiee_ = faitBoolTrouve->lireValeur() == false;
+            }
+
+        }
+
+
+        void VisiteurForme::visiter( const FormePremisseEntierExpression * premisse )
+        {
+            std::string nom = premisse->lireNom();
+            if( baseFait_->appartient( nom ) )
+            {
+                // On récupère le fait.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nom );
+                // On cast en fait entier.
+                const FaitEntier* faitEntierTrouve = static_cast< const FaitEntier* >( faitTrouve.get() );
+                try
+                {
+                    long int valeurExpression = premisse->lireValeur( baseFait_ );
+                    premisseVerifiee_ = premisse->test(faitEntierTrouve->lireValeur(), valeurExpression );
+                }
+                catch( ExceptionFaitInconnu & e )
+                {
+                    erreur_ = Erreurs::faitExpressionInconnu;
+                }
+                catch( ExceptionDivParZero & e )
+                {
+                    erreur_ = Erreurs::divParZero;
+                }
+            }
         }
 
     }

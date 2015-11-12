@@ -10,6 +10,9 @@
 #include <sstream>
 #include <memory>
 #include <exception>
+#include <functional>
+#include <algorithm>
+#include <utility>
 
 #include "BaseFait.hpp"
 #include "FaitEntier.hpp"
@@ -37,6 +40,8 @@
 #include "FormeConclusionEntierFait.hpp"
 #include "FormeConclusionSymboliqueConstante.hpp"
 #include "FormeConclusionSymboliqueFait.hpp"
+
+#include "FormePremisseEntierExpression.hpp"
 
 #include "RegleSansPremisse.hpp"
 
@@ -204,21 +209,12 @@ int main( int argc, char* argv[] )
 
     std::cout << std::endl;
     std::cout << affichageTest("Fin des tests sur visiteur et règle sans prémisse.") << std::endl;
-    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
+    //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     std::cout << affichageTest("Début des tests sur les signes.") << std::endl;
 
-    int a = 5, b = 4;
-    std::equal_to<int> c;
-    std::cout << "Test de == :\n"
-        << a
-        << " == "
-        << b
-        << " : "
-        << c( a, b )
-        << std::endl;
+    //sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression( "division", std::less<long int>(long int &, long int &), val );
 
     std::cout << affichageTest("Fin des tests sur les signes.") << std::endl;
-
     /*
 	// test sur les jetons (ça marche)
 	Jeton parentheseOuvrante = FabriqueJeton::parentheseOuvrante();
