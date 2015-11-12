@@ -55,11 +55,18 @@ namespace sysexp
                  * @param[in] numeroRegle
                  * Le numéro de la règle.
                  * @param[in] conclusion
-                 * La conclusion de la règle.
+                 * La conclusion de la règle à ajouter
+                 * dans la base de fait une fois la règle vérifiée..
                  * @param[in] premisse
                  * La premisse qui sert d'hypothèse, d'autres peuvent être ajouté avec @ref ajouterPremisse.
+                 * @param[in] traceExecution
+                 * Permet d'afficher les traces d'exécution du visiteur,
+                 * après chaque visite d'un élément de la règle.
                  * */
-                RegleAvecPremisse( const unsigned int & numeroRegle, const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
+                RegleAvecPremisse( const unsigned int & numeroRegle,
+                        const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,
+                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ,
+                        const bool & traceExecution = false );
 
                 /**
                  * Méthode pour ajouter une prémisse.

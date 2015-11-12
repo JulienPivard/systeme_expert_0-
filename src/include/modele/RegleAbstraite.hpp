@@ -59,7 +59,9 @@ namespace sysexp
                  * La conclusion de la règle.
                  * @see FormeAbstraiteConclusion
                  * */
-                RegleAbstraite( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
+                RegleAbstraite( const unsigned int & numeroRegle,
+                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
+                        const bool & traceExecution = false );
 
                 /**
                  * Ajoute un successeur à la règle actuelle.
@@ -114,7 +116,7 @@ namespace sysexp
                  * @param[in] base
                  * La base de fait utilisé pour vérifier les prémisses.
                  *
-                 * @return Toutes les prémisses de @ref premisses_ sont vérifié.
+                 * @return Toutes les prémisses sont vérifiées.
                  * */
                 virtual bool verifierPremisses( const BaseFait::PtrBaseFait & base ) = 0;
 
@@ -165,6 +167,12 @@ namespace sysexp
                  * La règle à été déclenchée.
                  * */
                 bool declenchee_;
+
+                /**
+                 * Permet l'affichage de l'état du visiteur,
+                 * après à chaque visite d'un élément de la règle.
+                 * */
+                bool traceExecution_;
 
         };
 

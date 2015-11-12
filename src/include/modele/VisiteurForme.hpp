@@ -14,6 +14,19 @@
 #include "VisiteurFormeAbstrait.hpp"
 #include "BaseFait.hpp"
 
+#include "FormeConclusionBoolTrue.hpp"
+#include "FormeConclusionBoolFalse.hpp"
+#include "FormeConclusionEntierFait.hpp"
+#include "FormeConclusionEntierExpression.hpp"
+#include "FormeConclusionSymboliqueConstante.hpp"
+#include "FormeConclusionSymboliqueFait.hpp"
+
+#include "FormePremisseBoolTrue.hpp"
+#include "FormePremisseBoolFalse.hpp"
+#include "FormePremisseEntierExpression.hpp"
+
+#include "FaitAbstrait.hpp"
+
 /**
  * @namespace sysexp
  * */

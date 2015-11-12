@@ -5,11 +5,14 @@ namespace sysexp
     namespace modele
     {
 
-        RegleAbstraite::RegleAbstraite( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
+        RegleAbstraite::RegleAbstraite( const unsigned int & numeroRegle,
+                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
+                const bool & traceExecution ):
             numeroRegle_( numeroRegle ),
             conclusion_( conclusion ),
             successeur_( nullptr ),
-            declenchee_( false )
+            declenchee_( false ),
+            traceExecution_( traceExecution )
         { }
 
         void RegleAbstraite::ajouterSuccesseur( const PtrRegleAbstraite & successeur )
@@ -59,14 +62,17 @@ namespace sysexp
             conclusion_->accept( visiteur );
             declenchee_ = visiteur->getConclusionDeclenchee();
             // Pour mieux voir ce qui se passe lors du déclenchement.
-            std::cout << std::endl
-                << "Règle numéro "
-                << numeroRegle_
-                << " nom "
-                << conclusion_->lireNom()
-                << std::endl;
-            visiteur->afficher();
-            // Fin de debogage.
+            if( traceExecution_ )
+            {
+                std::cout << std::endl
+                    << "Déclenchement de la conclusion."
+                    << std::endl
+                    << "Nom règle : "
+                    << conclusion_->lireNom()
+                    << std::endl;
+                visiteur->afficher();
+                // Fin de debogage.
+            }
             // Vérification des flags d'erreur du visiteur.
             verifFlagErreurVisiteur( visiteur );
             return declenchee_;
@@ -75,11 +81,33 @@ namespace sysexp
         bool RegleAbstraite::iter( const BaseFait::PtrBaseFait & base )
         {
             bool resultat = false;
+            // Affichage de suivit de trace.
+            // Ajout esthétique pour faciliter la lecture.
+            if( traceExecution_ )
+            {
+                std::cout << "==== Début Règle numéro : "
+                    << numeroRegle_
+                    << " ===="
+                    << std::endl;
+            }
+
             // On test si toutes les prémisse ont pu se déclencher.
             if( verifierPremisses( base ) )
             {
                 // On récupère le résultat de notre propre déclenchement.
                 resultat = declencher( base );
+            }
+
+            // Affichage de suivit de trace.
+            // Ajout esthétique pour faciliter la lecture.
+            if( traceExecution_ )
+            {
+                std::cout << std::endl
+                    << "==== Fin règle numéro : "
+                    << numeroRegle_
+                    << " ===="
+                    << std::endl
+                    << std::endl;
             }
             bool resultatSuccesseur = false;
             if( possedeSuccesseur() )

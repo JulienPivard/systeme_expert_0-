@@ -54,7 +54,7 @@ namespace sysexp
                  * @param[in] nomFait
                  * Le nom du fait entier dans la comparaison.
                  * @param[in] comparateur
-                 * Le signe de comparaison ==.
+                 * L'opérateur de comparaison pour tester l'expression entière.
                  * @param[in] expression
                  * L'expression entière à laquelle on va comparer le fait.
                  * */

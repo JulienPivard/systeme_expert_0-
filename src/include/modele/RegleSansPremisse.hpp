@@ -47,8 +47,13 @@ namespace sysexp
                  * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
                  * La conclusion de la règle.
+                 * @param[in] traceExecution
+                 * Permet d'afficher les traces d'exécution du visiteur,
+                 * après chaque visite d'un élément de la règle.
                  * */
-                RegleSansPremisse( const unsigned int & numeroRegle, const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
+                RegleSansPremisse( const unsigned int & numeroRegle,
+                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
+                       const bool & traceExecution = false );
 
                 /**
                  * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.
@@ -56,7 +61,7 @@ namespace sysexp
                  * @param[in] base
                  * La base de fait utilisé pour vérifier les prémisses.
                  *
-                 * @return Toutes les prémisses de @ref premisses_ sont vérifié.
+                 * @return Toutes les prémisses sont vérifiées.
                  * */
                 bool verifierPremisses( const BaseFait::PtrBaseFait & base );
 
