@@ -57,6 +57,9 @@ namespace sysexp
                  * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
                  * La conclusion de la règle.
+                 * @param[in] traceExecution
+                 * Permet d'afficher les traces d'exécution du visiteur,
+                 * après chaque visite d'un élément de la règle.
                  * @see FormeAbstraiteConclusion
                  * */
                 RegleAbstraite( const unsigned int & numeroRegle,

@@ -257,6 +257,5 @@ int main( int argc, char* argv[] )
     std::cout << affichageTest("Fin des tests sur les signes.") << std::endl;
 
     return EXIT_SUCCESS;
-    return EXIT_SUCCESS;
 
 }

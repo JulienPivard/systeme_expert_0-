@@ -11,6 +11,8 @@
 #ifndef formepremisseentierfait_hpp
 #define formepremisseentierfait_hpp
 
+#include <string>
+
 #include "FormeAbstraitePremisse.hpp"
 #include "BaseFait.hpp"
 
@@ -27,6 +29,7 @@ namespace sysexp
 
         /**
          * @class FormePremisseEntierFait FormePremisseEntierFait.hpp
+         * @brief Représente la comparaison de la valeur d'un fait avec celle d'un autre fait.
          *
          * Déclaration de la classe FormePremisseEntierFait.
          * */
@@ -39,14 +42,14 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nomFait
-                 * Le nom du fait entier dans la comparaison.
+                 * Le nom du premier fait entier que l'on veut comparer.
                  * @param[in] comparateur
                  * L'opérateur de comparaison pour tester l'expression entière.
                  * @param[in] nomAutreFait
-                 * Le nom du fait dont on veut récupérer la valeur pour la comparer.
+                 * Le nom du fait dont on veut récupérer la valeur pour la comparer à celle du premier fait.
                  * */
                 FormePremisseEntierFait( const std::string & nomFait,
-                        FormeAbstraitePremisse::OperateurComparaison comparateur,
+                        FormeAbstraitePremisse::OperateurComparaisonEntier comparateur,
                         const std::string & nomAutreFait );
 
                 /**
@@ -59,7 +62,12 @@ namespace sysexp
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
 
                 /**
-                 * Accesseur
+                 * Permet de tester les valeurs selon l'opérateur de comparaison stocké.
+                 *
+                 * @param[in] partieGauche
+                 * La partie gauche de la comparaison.
+                 * @param[in] partieDroite
+                 * La partie droite de la comparaison.
                  *
                  * @return Le signe de l'opération booléenne à effectuer.
                  * */
@@ -77,7 +85,7 @@ namespace sysexp
                 /**
                  * Le signe de comparaison
                  * */
-                const OperateurComparaison signe_;
+                const OperateurComparaisonEntier signe_;
 
                 /**
                  * L'expression de la prémisse entière.

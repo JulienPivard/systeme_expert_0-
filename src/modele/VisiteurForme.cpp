@@ -141,6 +141,7 @@ namespace sysexp
 
         void VisiteurForme::visiter( const FormePremisseEntierExpression * premisse )
         {
+
             std::string nom = premisse->lireNom();
             if( baseFait_->appartient( nom ) )
             {
@@ -150,7 +151,9 @@ namespace sysexp
                 const FaitEntier* faitEntierTrouve = static_cast< const FaitEntier* >( faitTrouve.get() );
                 try
                 {
+                    // On tente de récupérer la valeur de l'expression à laquelle on doit comparer celle du fait.
                     long int valeurExpression = premisse->lireValeur( baseFait_ );
+                    // On compare la valeur du fait et celle de l'expression.
                     premisseVerifiee_ = premisse->test(faitEntierTrouve->lireValeur(), valeurExpression );
                 }
                 catch( ExceptionFaitInconnu & e )
@@ -162,11 +165,64 @@ namespace sysexp
                     erreur_ = Erreurs::divParZero;
                 }
             }
+
         }
 
         void VisiteurForme::visiter( const FormePremisseEntierFait * premisse )
         {
-            std::string nom = premisse->lireNom();
+
+            // On récupere les nom des deux fait à comparer.
+            const std::string & nom = premisse->lireNom();
+            const std::string & autreNom = premisse->lireNomAutreFait();
+            // On vérifie que les deux fait existe bien dans la base de fait.
+            if( baseFait_->appartient( nom ) && baseFait_->appartient( autreNom ) )
+            {
+                // On récupère les deux fait et on les cast.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nom );
+                const FaitEntier* faitEntierTrouve = static_cast< const FaitEntier* >( faitTrouve.get() );
+
+                FaitAbstrait::PtrFaitAbstrait autreFaitTrouve = baseFait_->trouver( autreNom );
+                const FaitEntier* autreFaitEntierTrouve = static_cast< const FaitEntier* >( autreFaitTrouve.get() );
+                // On test les deux valeurs.
+                premisseVerifiee_ = premisse->test( faitEntierTrouve->lireValeur(), autreFaitEntierTrouve->lireValeur() );
+            }
+
+        }
+
+        void VisiteurForme::visiter( const FormePremisseSymboliqueConstante * premisse )
+        {
+
+            const std::string & nomFait = premisse->lireNom();
+            if( baseFait_->appartient( nomFait ) )
+            {
+                // On récupère le fait et on le cast.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nomFait );
+                const FaitSymbolique* faitSymboliqueTrouve = static_cast< const FaitSymbolique* >( faitTrouve.get() );
+
+                // On test le fait et sa valeur.
+                premisseVerifiee_ = premisse->test( faitSymboliqueTrouve->lireValeur(), premisse->lireValeur() );
+            }
+
+        }
+
+        void VisiteurForme::visiter( const FormePremisseSymboliqueFait * premisse )
+        {
+
+            const std::string & nomFait = premisse->lireNom();
+            const std::string & nomAutreFait = premisse->lireNomAutreFait();
+            // On vérifie que les deux fait existe bien dans la base de fait.
+            if( baseFait_->appartient( nomFait ) && baseFait_->appartient( nomAutreFait ) )
+            {
+                // On récupère les deux fait et on les cast.
+                FaitAbstrait::PtrFaitAbstrait faitTrouve = baseFait_->trouver( nomFait );
+                const FaitSymbolique* faitSymboliqueTrouve = static_cast< const FaitSymbolique* >( faitTrouve.get() );
+
+                FaitAbstrait::PtrFaitAbstrait autreFaitTrouve = baseFait_->trouver( nomAutreFait );
+                const FaitSymbolique* autreFaitSymboliqueTrouve = static_cast< const FaitSymbolique* >( autreFaitTrouve.get() );
+                // On test les deux valeurs.
+                premisseVerifiee_ = premisse->test( faitSymboliqueTrouve->lireValeur(), autreFaitSymboliqueTrouve->lireValeur() );
+            }
+
         }
 
     }

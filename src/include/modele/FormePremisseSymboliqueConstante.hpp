@@ -1,20 +1,19 @@
 /**
- * @file FormePremisseEntierExpression.hpp
+ * @file FormePremisseSymboliqueConstante.hpp
  * @brief header.
  * @author PIVARD Julien
  *
- * Header pour le fichier FormePremisseEntierExpression.cpp.
- * Définit la classe concrète FormePremisseEntierExpression.
+ * Header pour le fichier FormePremisseSymboliqueConstante.cpp.
+ * Définit la classe concrète FormePremisseSymboliqueConstante.
  * */
 
 
-#ifndef formepremisseentierexpression_hpp
-#define formepremisseentierexpression_hpp
+#ifndef formepremissesymboliqueconstante_hpp
+#define formepremissesymboliqueconstante_hpp
 
 #include <string>
 
 #include "FormeAbstraitePremisse.hpp"
-#include "ValeurAbstraite.hpp"
 #include "BaseFait.hpp"
 
 /**
@@ -29,12 +28,12 @@ namespace sysexp
     {
 
         /**
-         * @class FormePremisseEntierExpression FormePremisseEntierExpression.hpp
-         * @brief Représente la comparaison de la valeur d'un fait et d'une expression.
+         * @class FormePremisseSymboliqueConstante FormePremisseSymboliqueConstante.hpp
+         * @brief Représente la comparaison de la valeur d'un fait symbolique et d'une chaine de caractère.
          *
-         * Déclaration de la classe FormePremisseEntierExpression.
+         * Déclaration de la classe FormePremisseSymboliqueConstante.
          * */
-        class FormePremisseEntierExpression : public FormeAbstraitePremisse
+        class FormePremisseSymboliqueConstante : public FormeAbstraitePremisse
         {
 
             public:
@@ -43,15 +42,15 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] nomFait
-                 * Le nom du fait entier dans la comparaison.
+                 * Le nom du fait symbolique dans la comparaison.
                  * @param[in] comparateur
-                 * L'opérateur de comparaison pour tester l'expression entière.
-                 * @param[in] expression
-                 * L'expression entière à laquelle on va comparer le fait.
+                 * L'opérateur de comparaison pour tester l'expression symbolique.
+                 * @param[in] valeur
+                 * La valeur à tester sur celle du fait symbolique.
                  * */
-                FormePremisseEntierExpression( const std::string & nomFait,
-                        FormeAbstraitePremisse::OperateurComparaisonEntier comparateur,
-                        const ValeurAbstraite::PtrValeur & expression );
+                FormePremisseSymboliqueConstante( const std::string & nomFait,
+                        FormeAbstraitePremisse::OperateurComparaisonString comparateur,
+                        const std::string & valeur );
 
                 /**
                  * Méthode de visite.
@@ -72,28 +71,26 @@ namespace sysexp
                  *
                  * @return Le signe de l'opération booléenne à effectuer.
                  * */
-                bool test( const long int & partieGauche, const long int & partieDroite ) const;
+                bool test( const std::string & partieGauche, const std::string & partieDroite ) const;
 
                 /**
                  * Accesseur
                  *
-                 * @param[in] baseFait
-                 * La base de fait qui vas permettre d'évaluer l'expression.
                  * @return La valeur de l'expression.
                  * */
-                long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
+                const std::string & lireValeur() const;
 
             protected:
 
                 /**
                  * Le signe de comparaison
                  * */
-                const OperateurComparaisonEntier signe_;
+                const OperateurComparaisonString signe_;
 
                 /**
-                 * L'expression de la prémisse entière.
+                 * La valeur à laquelle on compare la prémisse symbolique.
                  * */
-                const ValeurAbstraite::PtrValeur expression_;
+                const std::string valeur_;
 
         };
 

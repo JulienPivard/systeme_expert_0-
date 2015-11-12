@@ -48,6 +48,8 @@ ADD_EXECUTABLE( client
     src/modele/FormePremisseBoolFalse.cpp
     src/modele/FormePremisseEntierExpression.cpp
     src/modele/FormePremisseEntierFait.cpp
+    src/modele/FormePremisseSymboliqueConstante.cpp
+    src/modele/FormePremisseSymboliqueFait.cpp
 
     src/modele/RegleAbstraite.cpp
     src/modele/RegleSansPremisse.cpp

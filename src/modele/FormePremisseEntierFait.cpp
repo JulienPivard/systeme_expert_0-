@@ -6,7 +6,7 @@ namespace sysexp
     {
 
         FormePremisseEntierFait::FormePremisseEntierFait( const std::string & nomFait,
-                        FormeAbstraitePremisse::OperateurComparaison comparateur,
+                        FormeAbstraitePremisse::OperateurComparaisonEntier comparateur,
                         const std::string & nomAutreFait ):
             FormeAbstraitePremisse( nomFait ),
             signe_( comparateur ),

@@ -272,25 +272,25 @@ namespace sysexp
                  * */
                 virtual void visiter( const FormePremisseBoolFalse * premisse ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseSymboliqueConstante
-                // * */
-                //virtual void visiter( const FormePremisseSymboliqueConstante * premisse ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseSymboliqueConstante
+                 * */
+                virtual void visiter( const FormePremisseSymboliqueConstante * premisse ) = 0;
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseSymboliqueFait
-                // * */
-                //virtual void visiter( const FormePremisseSymboliqueFait * premisse ) = 0;
+                /**
+                 * Visite la règle passé en argument.
+                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseSymboliqueFait
+                 * */
+                virtual void visiter( const FormePremisseSymboliqueFait * premisse ) = 0;
 
                 /**
                  * Visite la règle passé en argument.

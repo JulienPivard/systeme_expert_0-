@@ -25,6 +25,8 @@
 #include "FormePremisseBoolFalse.hpp"
 #include "FormePremisseEntierExpression.hpp"
 #include "FormePremisseEntierFait.hpp"
+#include "FormePremisseSymboliqueConstante.hpp"
+#include "FormePremisseSymboliqueFait.hpp"
 
 #include "FaitAbstrait.hpp"
 
@@ -149,25 +151,25 @@ namespace sysexp
                  * */
                 void visiter( const FormePremisseBoolFalse * premisse );
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Mémorise que la prémisse est valide.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseSymboliqueConstante
-                // * */
-                //void visiter( const FormePremisseSymboliqueConstante * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Mémorise que la prémisse est valide.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseSymboliqueConstante
+                 * */
+                void visiter( const FormePremisseSymboliqueConstante * premisse );
 
-                ///**
-                // * Visite la règle passé en argument.
-                // * Mémorise que la prémisse est valide.
-                // *
-                // * @param[in,out] premisse
-                // * La conclusion que l'on veut visiter.
-                // * @see FormePremisseSymboliqueFait
-                // * */
-                //void visiter( const FormePremisseSymboliqueFait * premisse );
+                /**
+                 * Visite la règle passé en argument.
+                 * Mémorise que la prémisse est valide.
+                 *
+                 * @param[in,out] premisse
+                 * La conclusion que l'on veut visiter.
+                 * @see FormePremisseSymboliqueFait
+                 * */
+                void visiter( const FormePremisseSymboliqueFait * premisse );
 
                 /**
                  * Visite la règle passé en argument.
