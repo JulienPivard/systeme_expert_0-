@@ -49,8 +49,6 @@
 #include "RegleSansPremisse.hpp"
 #include "RegleAvecPremisse.hpp"
 
-#include "OperateurComparaison.hpp"
-
 #include "fabriqueJeton.hpp"
 #include "jeton.hpp"
 #include "lexical.hpp"
