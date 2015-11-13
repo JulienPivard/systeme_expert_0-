@@ -106,6 +106,13 @@ namespace sysexp
                  * */
                 bool verifierPremisses( const BaseFait::PtrBaseFait & base );
 
+                /**
+                 * Affiche les variable interne de la règle.
+                 *
+                 * @note À n'utiliser que pour le debogage.
+                 * */
+                void afficher() const;
+
             protected:
 
                 /**

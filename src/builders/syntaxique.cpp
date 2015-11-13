@@ -112,7 +112,7 @@ namespace sysexp{
 
 		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite
 		Syntaxique::regle_sans_premisse(int i){
-			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion()));
+			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion(), true));
 			return regle;
 		}
 
@@ -304,7 +304,7 @@ namespace sysexp{
 			}
 			suivant();
             // On chope le premier element.
-			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, premisses.front(), conclusion()));
+			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, premisses.front(), conclusion(), true));
 			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin()++; it != premisses.end(); ++it){
     			regle->ajouterPremisse(*it);
     		}

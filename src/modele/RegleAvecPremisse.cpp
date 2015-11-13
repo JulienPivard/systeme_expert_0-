@@ -54,5 +54,18 @@ namespace sysexp
             return resultat;
         }
 
+        void RegleAvecPremisse::afficher() const
+        {
+            RegleAbstraite::afficher();
+            std::cout << "La/Les prémisse(s) : "
+                << std::endl;
+            for( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & prem : premisses_ )
+            {
+                std::cout << "Nom prémisse : "
+                    << prem->lireNom()
+                    << std::endl;
+            }
+        }
+
     }
 }

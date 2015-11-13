@@ -118,5 +118,20 @@ namespace sysexp
             return resultat || resultatSuccesseur;
         }
 
+        void RegleAbstraite::afficher() const
+        {
+            std::cout << "==== Règle numéro : "
+                << numeroRegle_
+                << " ===="
+                << std::endl
+                << "Possède successeur : "
+                << std::boolalpha
+                << possedeSuccesseur()
+                << std::endl
+                << "Nom conclusion : "
+                << conclusion_->lireNom()
+                << std::endl;
+        }
+
     }
 }

@@ -133,6 +133,13 @@ namespace sysexp
                 * */
                 virtual ~RegleAbstraite() = default;
 
+                /**
+                 * Affiche les variable interne de la règle.
+                 *
+                 * @note À n'utiliser que pour le debogage.
+                 * */
+                void afficher() const;
+
             protected:
 
                 /**
