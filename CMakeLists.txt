@@ -61,6 +61,9 @@ ADD_EXECUTABLE( client
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
     src/builders/monException.cpp
+    
+    src/builders/concreteBuilderLorraine.cpp
+    src/builders/directeur.cpp
     )
 ADD_EXECUTABLE( test
     src/tests.cpp
