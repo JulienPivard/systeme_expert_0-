@@ -111,6 +111,7 @@ ADD_EXECUTABLE( test
     src/builders/monException.cpp
     
     src/builders/concreteBuilderLorraine.cpp
+    src/builders/directeur.cpp
 
 )
 # Faire parler le make.

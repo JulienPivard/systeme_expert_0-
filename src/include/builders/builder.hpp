@@ -23,11 +23,23 @@
 		class Builder{
 
 			public:
+				/**
+				* methode abstraite qui constuit un jeu de regle
+				*/
 				virtual void construireJeuDeRegle() = 0;
 				
+				/**
+				*
+				* retourne un jeu de regle complet.
+				*  @return une base de regle d'une grammaire.
+				*
+				*/
 				virtual sysexp::modele::RegleAbstraite::PtrRegleAbstraite getResult() const = 0;
 				
 			public:
+				/**
+				* destructeur.
+				*/
 				virtual ~Builder() = default;
 			
 		};
