@@ -11,7 +11,8 @@ INCLUDE_DIRECTORIES(
 SET ( EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE} )
 
 # Option du compilateur pour supporter C++ 2011.
-SET( CMAKE_CXX_FLAGS "-std=c++11")
+SET( CMAKE_CXX_FLAGS "-std=c++11 -pedantic")
+
 
 # Création des exécutables.
 ADD_EXECUTABLE( client

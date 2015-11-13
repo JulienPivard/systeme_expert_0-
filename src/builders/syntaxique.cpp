@@ -89,9 +89,12 @@ namespace sysexp{
 
 		void 
 		Syntaxique::regles(){
-			// base de regle, , attention on a besoin de la regle precedente ! 
+			sysexp::modele::RegleAbstraite::PtrRegleAbstraite reglePrec;
+			int i = 0;
 			while(!precharge_.estFinFichier()){
-				regle();
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv = regle(int i);
+				reglePrec.ajouterSuccesseur(reglesuiv);
+				i++;
 				if (!precharge_.estFinExpression())
 					throw MonException(lexical_,"attendu: ';'");
 				suivant();
@@ -99,22 +102,21 @@ namespace sysexp{
 		}
 
 		void
-		Syntaxique::regle(){
+		Syntaxique::regle(int i){
 			if(precharge_.estSi()){
-				regle_avec_premisse();
+				regle_avec_premisse(int i);
 			}
 			else{
-				regle_sans_premisse();
+				regle_sans_premisse(int i);
 			}
 		}
 
-		void 
-		Syntaxique::regle_sans_premisse(){
-			conclusion();
-			// construire la regle
+		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite 
+		Syntaxique::regle_sans_premisse(int i){
+			return sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion(),));
 		}
 
-		void 
+		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion 
 		Syntaxique::conclusion(){
 			// retourner la conclusion contruite
 			if(precharge_.estIdentificateur()){
@@ -123,21 +125,19 @@ namespace sysexp{
 					throw MonException(lexical_, "le fait n'a pas été declare");
 				}
 				else if(it->second == "booleen"){
-					conclusion_booleenne();
+					return conclusion_booleenne();
 				}
 				else if(it->second == "symbolique"){
-					conclusion_symbolique();
+					return conclusion_symbolique();
 				}
 				else if(it->second == "entier"){
-					conclusion_entiere();
+					return conclusion_entiere();
 				}
 			}
 			else if(precharge_.estNon()){
-				conclusion_booleenne();
+				return conclusion_booleenne();
 			}
-			else{
-				throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
-			}
+			throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
 		}
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
@@ -197,28 +197,50 @@ namespace sysexp{
 			}
 		}
 
-		void
+		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_entiere(){
+			Jeton ent = precharge_;
 			// la conclusion sera probablement construite ici.
 			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu: '='");
 			}
 			suivant();
-			expressionEntiere();
-
+			sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionEntierExpression(ent.lireRepresentation(), expressionEntiere()));
+			return conclusion;
 		}
 
-		void 
+		sysexp::modele::ValeurAbstraite::PtrValeur 
 		Syntaxique::expressionEntiere(){
-			if(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
+			sysexp::modele::ValeurAbstraite::PtrValeur facteur_g;
+			if(precharge_.estOperateurPlus()){
+				suivant();
+				facteur_g = terme();
+			} 
+			else if(precharge_.estOperateurMoins()){
+				sysexp::modele::FeuilleConstante::PtrFeuilleConstante f(new sysexp::modele::FeuilleConstante(0));
+				facteur_g = terme();
+				sysexp::modele::OperateurMoins::PtrOperateurMoins opm(new sysexp::modele::OperateurMoins(f, facteur_g));
 				suivant();
 			}
-			terme();
+			else{
+				facteur_g = terme();
+			}
 			while(precharge_.estOperateurPlus() || precharge_.estOperateurMoins()){
-				suivant();
-				terme();
+				if(precharge_.estOperateurPlus()){
+					suivant();
+					sysexp::modele::ValeurAbstraite::PtrValeur facteur_d = terme();
+					sysexp::modele::OperateurPlus::PtrOperateurPlus oppl(new sysexp::modele::OperateurPlus(facteur_g, facteur_d));
+					facteur_g = oppl;
+				}
+				if(precharge_.estOperateurMoins()){
+					suivant();
+					sysexp::modele::ValeurAbstraite::PtrValeur facteur_d = terme();
+					sysexp::modele::OperateurMoins::PtrOperateurMoins opm(new sysexp::modele::OperateurMoins(facteur_g, facteur_d));
+					facteur_g = opm;
+				}
 			}
+			return facteur_g;
 		}
 
 		sysexp::modele::ValeurAbstraite::PtrValeur
@@ -238,6 +260,7 @@ namespace sysexp{
 					facteur_g = opd;
 				}
 			}
+			return facteur_g;
 		}
 
 		sysexp::modele::ValeurAbstraite::PtrValeur

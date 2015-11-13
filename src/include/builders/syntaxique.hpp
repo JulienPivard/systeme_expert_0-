@@ -16,6 +16,8 @@
 #include "OperateurMoins.hpp"
 #include "OperateurMul.hpp"
 #include "OperateurDiv.hpp"
+#include "RegleSansPremisse.hpp"
+#include "RegleAvecPremisse.hpp"
 #include <map>
 #include <iterator>
 /**
@@ -117,7 +119,7 @@
 				 * brique parsant une conclusion.
 				 *
 				*/
-				void conclusion();
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion();
 
 				/**
 				 * brique parsant une conclusion booléenne.
@@ -135,13 +137,13 @@
 				 * brique parsant une conclusion entiere.
 				 *
 				*/
-				void conclusion_entiere();
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_entiere();
 
 				/**
 				 * brique parsant une expression entiere.
 				 *
 				*/
-				void expressionEntiere();
+				sysexp::modele::ValeurAbstraite::PtrValeur expressionEntiere();
 
 				/**
 				 * brique parsant un terme.
