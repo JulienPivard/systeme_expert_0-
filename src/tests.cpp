@@ -2,6 +2,9 @@
 #include "fabriqueJeton.hpp"
 #include "lexical.hpp"
 #include "syntaxique.hpp"
+#include "builder.hpp"
+#include "concreteBuilderLorraine.hpp"
+#include "directeur.hpp"
 #include <sstream>
 #include <iostream>
 #include <istream>
@@ -45,9 +48,13 @@ main(int argc, char* argv[] ){
     std::ifstream chaine("/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt");
     //std::ifstream chaine("/home/etudiants/21001698/Master1/Parallellisme/Devoir/projet-c/src/lorraine.txt");
     //representationJeton(chaine);
-    Lexical lexical = Lexical(chaine);
-    Syntaxique syn(lexical);
-    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
+    ConcreteBuilderLorraine::PtrConcreteBuilderLorraine truc(new ConcreteBuilderLorraine(chaine));
+    Directeur directeur = Directeur(truc);
+    directeur.construire();
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = directeur.livrer();
+    //Lexical lexical = Lexical(chaine);
+    //Syntaxique syn(lexical);
+    //sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleTmp = regle;
 
     while( regleTmp != nullptr ){

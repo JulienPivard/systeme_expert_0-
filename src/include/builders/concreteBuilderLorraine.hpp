@@ -21,6 +21,10 @@
 		 */
 		class ConcreteBuilderLorraine : public Builder {
 			public:
+			
+					typedef std::shared_ptr<ConcreteBuilderLorraine> PtrConcreteBuilderLorraine;
+				
+			public:
 				/**
 				*  
 				* Constructeur du concrete builder Lorraine.
