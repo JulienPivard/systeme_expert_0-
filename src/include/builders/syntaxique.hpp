@@ -9,6 +9,13 @@
 #include "FormeConclusionEntierFait.hpp"
 #include "FormeConclusionSymboliqueConstante.hpp"
 #include "FormeConclusionSymboliqueFait.hpp"
+#include "FeuilleConstante.hpp"
+#include "FeuilleFait.hpp"
+#include "OperateurAbstrait.hpp"
+#include "OperateurPlus.hpp"
+#include "OperateurMoins.hpp"
+#include "OperateurMul.hpp"
+#include "OperateurDiv.hpp"
 #include <map>
 #include <iterator>
 /**
@@ -116,13 +123,13 @@
 				 * brique parsant une conclusion booléenne.
 				 *
 				*/
-				void conclusion_booleenne();
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_booleenne();
 
 				/**
 				 * brique parsant une conclusion symbolique.
 				 *
 				*/
-				void conclusion_symbolique();
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_symbolique();
 
 				/**
 				 * brique parsant une conclusion entiere.
@@ -140,13 +147,13 @@
 				 * brique parsant un terme.
 				 *
 				*/
-				void terme();
+				sysexp::modele::ValeurAbstraite::PtrValeur terme();
 
 				/**
 				 * brique parsant un facteur.
 				 *
 				*/
-				void facteur();
+				sysexp::modele::ValeurAbstraite::PtrValeur facteur();
 
 				/**
 				 * brique parsant une regle avec premisse.

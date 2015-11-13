@@ -3,6 +3,7 @@
 #include <iostream>
 
 
+
 namespace sysexp{
 
 	 namespace builders{
@@ -139,7 +140,7 @@ namespace sysexp{
 			}
 		}
 
-		void
+		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_booleenne(){
 			// retourner la conslusion constuite
 			if(precharge_.estNon()){
@@ -155,17 +156,17 @@ namespace sysexp{
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolFalse(it->first)); 
-				std::cout << conclusion->lireNom() << std::endl;
 				suivant();
+				return conclusion;
 			}
 			else{
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolTrue(precharge_.lireRepresentation())); 
-				std::cout << conclusion->lireNom() << std::endl;
 				suivant();
+				return conclusion;
 			}
 		}
 	
-		void
+		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_symbolique(){
 			// retourner la conclusion construite 
 			Jeton symb = precharge_ ; 
@@ -184,6 +185,7 @@ namespace sysexp{
 
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionSymboliqueConstante(symb.lireRepresentation(), precharge_.lireRepresentation()));
 				suivant();
+				return conclusion;
 			}
 			else{ 
 				if(it->second != "symbolique"){
@@ -191,6 +193,7 @@ namespace sysexp{
 				}
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionSymboliqueConstante(symb.lireRepresentation(), it->first));
 				suivant();
+				return conclusion;
 			}
 		}
 
@@ -218,27 +221,35 @@ namespace sysexp{
 			}
 		}
 
-		void
+		sysexp::modele::ValeurAbstraite::PtrValeur
 		Syntaxique::terme(){
-			facteur();
+			sysexp::modele::ValeurAbstraite::PtrValeur facteur_g = facteur();
 			while(precharge_.estOperateurMul() || precharge_.estOperateurDiv()){
-				suivant();
-				facteur();
+				if(precharge_.estOperateurMul()){
+					suivant();
+					sysexp::modele::ValeurAbstraite::PtrValeur facteur_d = facteur();
+					sysexp::modele::OperateurMul::PtrOperateurMul opmul(new sysexp::modele::OperateurMul(facteur_g, facteur_d));
+					facteur_g = opmul;
+				}
+				if(precharge_.estOperateurDiv()){
+					suivant();
+					sysexp::modele::ValeurAbstraite::PtrValeur facteur_d = facteur();
+					sysexp::modele::OperateurDiv::PtrOperateurDiv opd(new sysexp::modele::OperateurDiv(facteur_g, facteur_d));
+					facteur_g = opd;
+				}
 			}
-
 		}
 
-		void
-		Syntaxique::facteur(){
-			// ici ça serait bien de renvoyer du string 
+		sysexp::modele::ValeurAbstraite::PtrValeur
+		Syntaxique::facteur(){ 
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 				if(precharge_.estEntier()){
-					//tout se passe bien ! pour les entier c'est la merde !!! 
+					sysexp::modele::FeuilleConstante::PtrFeuilleConstante val(new sysexp::modele::FeuilleConstante(std::stoi(precharge_.lireRepresentation())));
 					suivant();
+					return val;
 				}
 				else if(precharge_.estParentheseOuvrante()){
-					//tout se passe bien ! 
 					suivant();
 					expressionEntiere();
 					if(!precharge_.estParentheseFermante()){
@@ -254,12 +265,12 @@ namespace sysexp{
 				if(it->second != "entier"){
 					throw MonException(lexical_, "le fait n'est pas entier");
 				}
-				// tout se passe bien
+				sysexp::modele::FeuilleFait::PtrFeuilleFait val(new sysexp::modele::FeuilleFait(it->first));
 				suivant();
-
+				return val;	
 			}
-
 		}
+
 		void
 		Syntaxique::regle_avec_premisse(){
 			suivant();

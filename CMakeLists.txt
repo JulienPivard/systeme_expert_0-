@@ -63,11 +63,25 @@ ADD_EXECUTABLE( client
     )
 ADD_EXECUTABLE( test
     src/tests.cpp
-    src/builders/jeton.cpp
-    src/builders/fabriqueJeton.cpp
-    src/builders/lexical.cpp
-    src/builders/syntaxique.cpp
-    src/builders/monException.cpp
+    
+    src/modele/FaitAbstrait.cpp
+    src/modele/FaitBool.cpp
+    src/modele/FaitSymbolique.cpp
+    src/modele/FaitEntier.cpp
+
+    src/modele/BaseFait.cpp
+
+    src/modele/FeuilleConstante.cpp
+    src/modele/FeuilleFait.cpp
+    src/modele/OperateurAbstrait.cpp
+    src/modele/OperateurPlus.cpp
+    src/modele/OperateurMoins.cpp
+    src/modele/OperateurMul.cpp
+    src/modele/OperateurDiv.cpp
+
+    src/modele/VisiteurFormeAbstrait.cpp
+    src/modele/VisiteurForme.cpp
+
     src/modele/FormeAbstraite.cpp
     src/modele/FormeAbstraiteConclusion.cpp
     src/modele/FormeConclusionBoolTrue.cpp
@@ -76,6 +90,24 @@ ADD_EXECUTABLE( test
     src/modele/FormeConclusionEntierFait
     src/modele/FormeConclusionSymboliqueConstante.cpp
     src/modele/FormeConclusionSymboliqueFait.cpp
+
+    src/modele/FormeAbstraitePremisse.cpp
+    src/modele/FormePremisseBoolTrue.cpp
+    src/modele/FormePremisseBoolFalse.cpp
+    src/modele/FormePremisseEntierExpression.cpp
+    src/modele/FormePremisseEntierFait.cpp
+    src/modele/FormePremisseSymboliqueConstante.cpp
+    src/modele/FormePremisseSymboliqueFait.cpp
+
+    src/modele/RegleAbstraite.cpp
+    src/modele/RegleSansPremisse.cpp
+    src/modele/RegleAvecPremisse.cpp
+
+    src/builders/jeton.cpp
+    src/builders/fabriqueJeton.cpp
+    src/builders/lexical.cpp
+    src/builders/syntaxique.cpp
+    src/builders/monException.cpp
 
 )
 # Faire parler le make.
