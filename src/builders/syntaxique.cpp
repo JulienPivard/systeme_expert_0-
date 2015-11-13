@@ -86,18 +86,18 @@ namespace sysexp{
 
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite 
 		Syntaxique::regles(){
-			sysexp::modele::RegleAbstraite::PtrRegleAbstraite reglePrec;
+			sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv;
 			int i = 0;
 			while(!precharge_.estFinFichier()){
-				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv = regle(i);
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite reglePrec = regle(i);
 				reglePrec->ajouterSuccesseur(regleSuiv);
-				reglePrec = regleSuiv;
+				regleSuiv = reglePrec;
 				i++;
 				if (!precharge_.estFinExpression())
 					throw MonException(lexical_,"attendu: ';'");
 				suivant();
 			}
-			return reglePrec;
+			return regleSuiv;
 		}
 
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
@@ -218,10 +218,10 @@ namespace sysexp{
 				facteur_g = terme();
 			} 
 			else if(precharge_.estOperateurMoins()){
+				suivant();
 				sysexp::modele::FeuilleConstante::PtrFeuilleConstante f(new sysexp::modele::FeuilleConstante(0));
 				facteur_g = terme();
 				sysexp::modele::OperateurMoins::PtrOperateurMoins opm(new sysexp::modele::OperateurMoins(f, facteur_g));
-				suivant();
 			}
 			else{
 				facteur_g = terme();
@@ -274,11 +274,12 @@ namespace sysexp{
 				}
 				else if(precharge_.estParentheseOuvrante()){
 					suivant();
-					expressionEntiere();
+					sysexp::modele::ValeurAbstraite::PtrValeur expr = expressionEntiere();
 					if(!precharge_.estParentheseFermante()){
 						throw MonException(lexical_, "attendu : ')'");
 					}
 					suivant();
+					return expr;
 				}
 				else{
 					throw MonException(lexical_, "attendu : un entier ou '('");
@@ -302,7 +303,6 @@ namespace sysexp{
 				throw MonException(lexical_, "attendu: 'alors'");
 			}
 			suivant();
-			conclusion();
 			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, conclusion()));
 			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin(); it != premisses.end(); ++it){
     			regle->ajouterPremisse(*it);

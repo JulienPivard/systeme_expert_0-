@@ -36,13 +36,19 @@ main(int argc, char* argv[] ){
         std::cerr << "Trop d'argument, tartine de pus !"
             << std::endl;
         return EXIT_FAILURE;
+
     }
-		//"/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt"
-        //"/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt"
-        std::ifstream chaine("/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt");
-        //representationJeton(chaine);
-        Lexical lexical = Lexical(chaine);
-        Syntaxique syn(lexical);
-        sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
-        return EXIT_SUCCESS;
+	//"/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt"
+    //"/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt"
+    std::ifstream chaine("/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt");
+    //representationJeton(chaine);
+    Lexical lexical = Lexical(chaine);
+    Syntaxique syn(lexical);
+    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
+    while(regle->possedeSuccesseur()){
+        std::cout << regle << std::endl;
+        regle = regle->lireSuccesseur();
+    }
+    std::cout << regle << std::endl;
+    return EXIT_SUCCESS;
 }
