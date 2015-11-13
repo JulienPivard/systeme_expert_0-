@@ -92,7 +92,7 @@ namespace sysexp
             }
 
             // On test si toutes les prémisse ont pu se déclencher.
-            if( verifierPremisses( base ) )
+            if( verifierPremisses( base ) && !declenchee_ )
             {
                 // On récupère le résultat de notre propre déclenchement.
                 resultat = declencher( base );

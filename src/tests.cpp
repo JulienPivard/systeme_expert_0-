@@ -56,13 +56,13 @@ main(int argc, char* argv[] ){
         std::cout << std::endl;
     }
 
-    //sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
-    //bool iterer;
-    //do
-    //{
-    //    iterer = regle->iter( base );
-    //} while( iterer );
-    //base->afficher();
+    sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
+    bool iterer;
+    do
+    {
+        iterer = regle->iter( base );
+    } while( iterer );
+    base->afficher();
 
     return EXIT_SUCCESS;
 }
