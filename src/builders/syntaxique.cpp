@@ -222,6 +222,7 @@ namespace sysexp{
 				sysexp::modele::FeuilleConstante::PtrFeuilleConstante f(new sysexp::modele::FeuilleConstante(0));
 				facteur_g = terme();
 				sysexp::modele::OperateurMoins::PtrOperateurMoins opm(new sysexp::modele::OperateurMoins(f, facteur_g));
+                facteur_g = opm;
 			}
 			else{
 				facteur_g = terme();
