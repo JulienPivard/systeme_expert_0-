@@ -107,7 +107,10 @@ namespace sysexp{
 				 * fichier a analyser.
 				 */
 				std::istream & fichier_;
-
+				
+				/**
+				 * Numéro de la ligne du fichier a analyser.
+				 */
 				int numeroLigne_;
           };
      }

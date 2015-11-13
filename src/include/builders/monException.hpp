@@ -22,14 +22,30 @@ namespace sysexp{
           *
           */
         class MonException : public std::exception {
-        	public: 
+        	public:
+				/**
+				* Constructeur de l'exception.
+				*
+				*/ 
         		MonException(Lexical & lexical, std::string erreur);
-        	public: 
+        	public:
+				/**
+				* Chaine de caractere renvoyée lors d'une exception.
+				*@return une chaine de caractere décrivant l'exception.
+				*/ 
         		const char* what() const throw();
 
         	protected:
+				/**
+				* le lexical.
+				*
+				*/ 
         		Lexical & lexical_;
-
+				
+				/**
+				* la chaine de caractere décrivant l'erreur.
+				*
+				*/
                 std::string erreur_;
         };
     }

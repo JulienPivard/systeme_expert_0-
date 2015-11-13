@@ -109,6 +109,8 @@ ADD_EXECUTABLE( test
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
     src/builders/monException.cpp
+    
+    src/builders/concreteBuilderLorraine.cpp
 
 )
 # Faire parler le make.
