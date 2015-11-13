@@ -55,13 +55,13 @@ main(int argc, char* argv[] ){
     //Lexical lexical = Lexical(chaine);
     //Syntaxique syn(lexical);
     //sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
-    sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleTmp = regle;
+    //sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleTmp = regle;
 
-    while( regleTmp != nullptr ){
-        regleTmp->afficher();
-        regleTmp = regleTmp->lireSuccesseur();
-        std::cout << std::endl;
-    }
+    //while( regleTmp != nullptr ){
+    //    regleTmp->afficher();
+    //    regleTmp = regleTmp->lireSuccesseur();
+    //    std::cout << std::endl;
+    //}
 
     sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
     bool iterer;

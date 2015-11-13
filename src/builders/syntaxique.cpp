@@ -112,7 +112,7 @@ namespace sysexp{
 
 		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite
 		Syntaxique::regle_sans_premisse(int i){
-			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion(), true));
+			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion() ));
 			return regle;
 		}
 
@@ -305,7 +305,7 @@ namespace sysexp{
 			}
 			suivant();
             // On chope le premier element.
-			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, premisses.front(), conclusion(), true));
+			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, premisses.front(), conclusion() ));
 			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin()++; it != premisses.end(); ++it){
     			regle->ajouterPremisse(*it);
     		}
@@ -344,9 +344,7 @@ namespace sysexp{
 			else if(precharge_.estNon()){
 				return premisse_booleenne();
 			}
-			else{
-				throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
-			}
+            throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
 		}
 
 		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
@@ -402,6 +400,10 @@ namespace sysexp{
 					suivant();
 					return premisse;
 				}
+                else
+                {
+                    throw "La partie n'a pas été trouvée.";
+                }
 			}
 			else{
 				if(it->second != "symbolique"){
@@ -418,7 +420,12 @@ namespace sysexp{
 					suivant();
 					return premisse;
 				}
+                else
+                {
+                    throw "La partie n'a pas été trouvée.";
+                }
 			}
+
 		}
 
 		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
@@ -460,6 +467,10 @@ namespace sysexp{
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compDiff, expressionEntiere()));
 				return premisse;
 			}
+            else
+            {
+                throw "L'opérateur n'a pas été trouvé.";
+            }
 		}
 	}
 }
