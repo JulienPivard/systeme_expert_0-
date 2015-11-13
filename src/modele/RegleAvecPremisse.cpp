@@ -6,10 +6,13 @@ namespace sysexp
     {
 
         RegleAvecPremisse::RegleAvecPremisse( const unsigned int & numeroRegle,
+                const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,
                 const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
                 const bool & traceExecution ):
             RegleAbstraite( numeroRegle, conclusion , traceExecution)
-        {}
+        {
+            ajouterPremisse( premisse );
+        }
 
         void RegleAvecPremisse::ajouterPremisse( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse )
         {

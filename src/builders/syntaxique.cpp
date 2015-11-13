@@ -7,21 +7,21 @@
 namespace sysexp{
 
 	 namespace builders{
-		 
+
 		 Syntaxique::Syntaxique(Lexical & lexical):
 			lexical_(lexical),
 			precharge_(lexical_.suivant())
 			{}
-		
-		 const Lexical	
+
+		 const Lexical
 		 Syntaxique::lireLexical(){
 			 return lexical_;
 		 }
-			
+
 		void
 		Syntaxique::suivant(){
 			precharge_ = lexical_.suivant();
-			
+
 		}
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::parser(){
@@ -29,14 +29,14 @@ namespace sysexp{
 			return regles();
 		}
 
-		void 
+		void
 		Syntaxique::declarations(){
 			declarations_bool();
 			declarations_symb();
 			declarations_ent();
 		}
 
-		void 
+		void
 		Syntaxique::declarations_bool(){
 
 			if(!precharge_.estFaitBool())
@@ -44,14 +44,14 @@ namespace sysexp{
 			suivant();
 			listeFaits("booleen");
 		}
-		
+
 
 		void
 	 	Syntaxique::declarations_symb(){
 	 		if(!precharge_.estFaitSymb())
 				throw MonException(lexical_,"attendu: 'faits_symboliques'");
 			suivant();
-			listeFaits("symbolique");	
+			listeFaits("symbolique");
 		}
 
 		void
@@ -59,7 +59,7 @@ namespace sysexp{
 			if(!precharge_.estFaitEnt())
 				throw MonException(lexical_, "attendu: 'faits_entiers'");
 			suivant();
-			listeFaits("entier");	
+			listeFaits("entier");
 		}
 
 		void
@@ -84,7 +84,7 @@ namespace sysexp{
 			}
 		}
 
-		sysexp::modele::RegleAbstraite::PtrRegleAbstraite 
+		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::regles(){
 			sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv;
 			int i = 0;
@@ -110,13 +110,13 @@ namespace sysexp{
 			}
 		}
 
-		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite 
+		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite
 		Syntaxique::regle_sans_premisse(int i){
 			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion()));
-			return regle;		
+			return regle;
 		}
 
-		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion 
+		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion(){
 			// retourner la conclusion contruite
 			if(precharge_.estIdentificateur()){
@@ -155,31 +155,31 @@ namespace sysexp{
 				else if(it->second != "booleen"){
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
-				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolFalse(it->first)); 
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolFalse(it->first));
 				suivant();
 				return conclusion;
 			}
 			else{
-				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolTrue(precharge_.lireRepresentation())); 
+				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new sysexp::modele::FormeConclusionBoolTrue(precharge_.lireRepresentation()));
 				suivant();
 				return conclusion;
 			}
 		}
-	
+
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_symbolique(){
-			// retourner la conclusion construite 
-			Jeton symb = precharge_ ; 
+			// retourner la conclusion construite
+			Jeton symb = precharge_ ;
 			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu '='");
 			}
 			suivant();
-			
+
 			if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu : identificateur");
 			}
-			
+
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 
@@ -187,7 +187,7 @@ namespace sysexp{
 				suivant();
 				return conclusion;
 			}
-			else{ 
+			else{
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
@@ -210,13 +210,13 @@ namespace sysexp{
 			return conclusion;
 		}
 
-		sysexp::modele::ValeurAbstraite::PtrValeur 
+		sysexp::modele::ValeurAbstraite::PtrValeur
 		Syntaxique::expressionEntiere(){
 			sysexp::modele::ValeurAbstraite::PtrValeur facteur_g;
 			if(precharge_.estOperateurPlus()){
 				suivant();
 				facteur_g = terme();
-			} 
+			}
 			else if(precharge_.estOperateurMoins()){
 				suivant();
 				sysexp::modele::FeuilleConstante::PtrFeuilleConstante f(new sysexp::modele::FeuilleConstante(0));
@@ -264,7 +264,7 @@ namespace sysexp{
 		}
 
 		sysexp::modele::ValeurAbstraite::PtrValeur
-		Syntaxique::facteur(){ 
+		Syntaxique::facteur(){
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 				if(precharge_.estEntier()){
@@ -283,15 +283,15 @@ namespace sysexp{
 				}
 				else{
 					throw MonException(lexical_, "attendu : un entier ou '('");
-				}	
+				}
 			}
-			else{ 
+			else{
 				if(it->second != "entier"){
 					throw MonException(lexical_, "le fait n'est pas entier");
 				}
 				sysexp::modele::FeuilleFait::PtrFeuilleFait val(new sysexp::modele::FeuilleFait(it->first));
 				suivant();
-				return val;	
+				return val;
 			}
 		}
 
@@ -303,14 +303,15 @@ namespace sysexp{
 				throw MonException(lexical_, "attendu: 'alors'");
 			}
 			suivant();
-			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, conclusion()));
-			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin(); it != premisses.end(); ++it){
+            // On chope le premier element.
+			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, premisses.front(), conclusion()));
+			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin()++; it != premisses.end(); ++it){
     			regle->ajouterPremisse(*it);
     		}
 			return regle;
 		}
 
-		std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> 
+		std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>
 		Syntaxique::condition(){
 			std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> premisses;
 			premisses.push_back(premisse());
@@ -371,7 +372,7 @@ namespace sysexp{
 				return premisse;
 			}
 		}
-		
+
 
 		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse_symbolique(){
@@ -380,13 +381,13 @@ namespace sysexp{
 			if(!precharge_.estEgal() && !precharge_.estDifferent()){
 				throw MonException(lexical_, "attendu: '=' ou '/='");
 			}
-			Jeton signe = precharge_; 
+			Jeton signe = precharge_;
 			suivant();
-			
+
 			if(!precharge_.estIdentificateur()){
 					throw MonException(lexical_, "attendu : identificateur");
 			}
-			
+
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 				if(signe.estEgal()){
@@ -401,7 +402,7 @@ namespace sysexp{
 					return premisse;
 				}
 			}
-			else{ 
+			else{
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
@@ -441,7 +442,7 @@ namespace sysexp{
 			else if(signe.estInferieur()){
 				suivant();
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compLess, expressionEntiere()));
-				return premisse;			
+				return premisse;
 			}
 			else if(signe.estSupEgal()){
 				suivant();

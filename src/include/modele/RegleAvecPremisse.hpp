@@ -50,7 +50,7 @@ namespace sysexp
                 /**
                  * @typedef Premisses
                  *
-                 * CASSE LES COUILLES AVEC TES POINTEURS A LA CON  !
+                 * Alias pour le shared pointer sur une règle avec prémisse.
                  * */
                  typedef std::shared_ptr<RegleAvecPremisse> PtrRegleAvecPremisse;
 
@@ -73,6 +73,7 @@ namespace sysexp
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleAvecPremisse( const unsigned int & numeroRegle,
+                        const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,
                         const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ,
                         const bool & traceExecution = false );
 
