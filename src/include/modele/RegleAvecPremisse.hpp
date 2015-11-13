@@ -47,6 +47,13 @@ namespace sysexp
                  * */
                 typedef std::set< FormeAbstraitePremisse::PtrFormeAbstraitePremisse > Premisses;
 
+                /**
+                 * @typedef Premisses
+                 *
+                 * CASSE LES COUILLES AVEC TES POINTEURS A LA CON  !
+                 * */
+                 typedef std::shared_ptr<RegleAvecPremisse> PtrRegleAvecPremisse;
+
             public:
 
                 /**
@@ -66,7 +73,6 @@ namespace sysexp
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleAvecPremisse( const unsigned int & numeroRegle,
-                        const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,
                         const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ,
                         const bool & traceExecution = false );
 

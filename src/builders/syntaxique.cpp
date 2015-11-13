@@ -1,6 +1,6 @@
 #include "syntaxique.hpp"
 #include "monException.hpp"
-#include <iostream>
+
 
 
 
@@ -23,13 +23,10 @@ namespace sysexp{
 			precharge_ = lexical_.suivant();
 			
 		}
-		void
+		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::parser(){
 			declarations();
-			for(const std::pair< std::string, std::string > & couple : faits_){
-				std::cout << couple.first << " " << couple.second << std::endl;
-			}
-			regles();
+			return regles();
 		}
 
 		void 
@@ -87,33 +84,36 @@ namespace sysexp{
 			}
 		}
 
-		void 
+		sysexp::modele::RegleAbstraite::PtrRegleAbstraite 
 		Syntaxique::regles(){
 			sysexp::modele::RegleAbstraite::PtrRegleAbstraite reglePrec;
 			int i = 0;
 			while(!precharge_.estFinFichier()){
-				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv = regle(int i);
-				reglePrec.ajouterSuccesseur(reglesuiv);
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv = regle(i);
+				reglePrec->ajouterSuccesseur(regleSuiv);
+				reglePrec = regleSuiv;
 				i++;
 				if (!precharge_.estFinExpression())
 					throw MonException(lexical_,"attendu: ';'");
 				suivant();
 			}
+			return reglePrec;
 		}
 
-		void
+		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::regle(int i){
 			if(precharge_.estSi()){
-				regle_avec_premisse(int i);
+				return regle_avec_premisse(i);
 			}
 			else{
-				regle_sans_premisse(int i);
+				return regle_sans_premisse(i);
 			}
 		}
 
 		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite 
 		Syntaxique::regle_sans_premisse(int i){
-			return sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion(),));
+			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion()));
+			return regle;		
 		}
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion 
@@ -294,55 +294,60 @@ namespace sysexp{
 			}
 		}
 
-		void
-		Syntaxique::regle_avec_premisse(){
+		sysexp::modele::RegleAvecPremisse::PtrRegleAbstraite
+		Syntaxique::regle_avec_premisse(int i){
 			suivant();
-			condition();
+			std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>  premisses = condition();
 			if(!precharge_.estAlors()){
 				throw MonException(lexical_, "attendu: 'alors'");
 			}
 			suivant();
 			conclusion();
-			// construire la regle et la retourner
+			sysexp::modele::RegleAvecPremisse::PtrRegleAvecPremisse regle( new sysexp::modele::RegleAvecPremisse(i, conclusion()));
+			for(std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>::iterator it = premisses.begin(); it != premisses.end(); ++it){
+    			regle->ajouterPremisse(*it);
+    		}
+			return regle;
 		}
 
-		void 
+		std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> 
 		Syntaxique::condition(){
-			premisse();
+			std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> premisses;
+			premisses.push_back(premisse());
 			while(precharge_.estEt()){
 				suivant();
-				premisse();
+				premisses.push_back(premisse());
 
 			}
+			return premisses;
 		}
 
-		void
+		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse(){
-			// retourner la premisse
 			if(precharge_.estIdentificateur()){
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 				if(it == faits_.end()){
 					throw MonException(lexical_, "le fait n'a pas été declare");
 				}
 				else if(it->second == "booleen"){
-					premisse_booleenne();
+					return premisse_booleenne();
 				}
 				else if(it->second == "symbolique"){
-					premisse_symbolique();
+					return premisse_symbolique();
 				}
 				else if(it->second == "entier"){
-					premisse_entiere();
+					return premisse_entiere();
 				}
 			}
 			else if(precharge_.estNon()){
-				premisse_booleenne();
+				return premisse_booleenne();
 			}
 			else{
 				throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
 			}
 		}
 
-		void
+		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse_booleenne(){
 			if(precharge_.estNon()){
 				suivant();
@@ -356,22 +361,26 @@ namespace sysexp{
 				else if(it->second != "booleen"){
 					throw MonException(lexical_, "le fait n'est pas booléen");
 				}
-				// premisse bool false
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse(new sysexp::modele::FormePremisseBoolFalse(it->first));
 				suivant();
+				return premisse;
 			}
 			else{
-				// premisse bool true
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse(new sysexp::modele::FormePremisseBoolTrue(precharge_.lireRepresentation()));
 				suivant();
+				return premisse;
 			}
 		}
 		
 
-		void
+		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse_symbolique(){
+			Jeton symb = precharge_;
 			suivant();
 			if(!precharge_.estEgal() && !precharge_.estDifferent()){
 				throw MonException(lexical_, "attendu: '=' ou '/='");
 			}
+			Jeton signe = precharge_; 
 			suivant();
 			
 			if(!precharge_.estIdentificateur()){
@@ -380,30 +389,75 @@ namespace sysexp{
 			
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
+				if(signe.estEgal()){
+					sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseSymboliqueConstante(symb.lireRepresentation(), sysexp::modele::compEqualEqual, precharge_.lireRepresentation()));
+					suivant();
+					return premisse;
+				}
 
-				//premisse symb constante
-				suivant();
+				else if(signe.estDifferent()){
+					sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseSymboliqueConstante(symb.lireRepresentation(), sysexp::modele::compDiff, precharge_.lireRepresentation()));
+					suivant();
+					return premisse;
+				}
 			}
 			else{ 
 				if(it->second != "symbolique"){
 					throw MonException(lexical_, "le fait n'est pas symbolique");
 				}
-				//premisse symb fait
-				suivant();
+				if(signe.estEgal()){
+					sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseSymboliqueConstante(symb.lireRepresentation(), sysexp::modele::compEqualEqual, it->first));
+					suivant();
+					return premisse;
+				}
+
+				else if(signe.estDifferent()){
+					sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseSymboliqueConstante(symb.lireRepresentation(), sysexp::modele::compDiff, it->first));
+					suivant();
+					return premisse;
+				}
 			}
 		}
 
-		void
+		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse_entiere(){
+			Jeton ent = precharge_;
 			suivant();
 			if(!precharge_.estEgal() && !precharge_.estSuperieur() && !precharge_.estInferieur() &&
 				!precharge_.estSupEgal() && !precharge_.estInfEgal() && !precharge_.estDifferent()){
 				throw MonException(lexical_, "attendu : '=' ou '/=' ou '<' ou '>' ou '<=' ou '>='");
 			}
-			suivant();
-			expressionEntiere();
-			// premisse entiere
+			Jeton signe = precharge_;
+			if(signe.estEgal()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compEqualEqual, expressionEntiere()));
+				return premisse;
+			}
+			else if(signe.estSuperieur()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compSup, expressionEntiere()));
+				return premisse;
+			}
+			else if(signe.estInferieur()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compLess, expressionEntiere()));
+				return premisse;			
+			}
+			else if(signe.estSupEgal()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compSupEqual, expressionEntiere()));
+				return premisse;
+			}
+			else if(signe.estInfEgal()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compLessEqual, expressionEntiere()));
+				return premisse;
+			}
+			else if(signe.estDifferent()){
+				suivant();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new sysexp::modele::FormePremisseEntierExpression(ent.lireRepresentation(), sysexp::modele::compDiff, expressionEntiere()));
+				return premisse;
+			}
 		}
-
 	}
 }

@@ -43,6 +43,6 @@ main(int argc, char* argv[] ){
         //representationJeton(chaine);
         Lexical lexical = Lexical(chaine);
         Syntaxique syn(lexical);
-        syn.parser();
+        sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle = syn.parser();
         return EXIT_SUCCESS;
 }

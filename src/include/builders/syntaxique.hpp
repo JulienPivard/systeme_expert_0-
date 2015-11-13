@@ -20,6 +20,8 @@
 #include "RegleAvecPremisse.hpp"
 #include <map>
 #include <iterator>
+#include <list>
+#include <iostream>
 /**
  * @namespace sysexp
  *
@@ -58,7 +60,7 @@
 				 * parseur de la grammaire lorraine.
 				 *
 				*/
-				void parser();
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite parser();
 
 			protected:
 				/**
@@ -101,19 +103,19 @@
 				 * brique parsant les regles.
 				 *
 				*/
-				void regles();
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regles();
 
 				/**
 				 * brique parsant une regle.
 				 *
 				*/
-				void regle();
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle(int i);
 
 				/**
 				 * brique parsant une regle sans premisse.
 				 *
 				*/
-				void regle_sans_premisse();
+				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle_sans_premisse(int i);
 
 				/**
 				 * brique parsant une conclusion.
@@ -161,37 +163,37 @@
 				 * brique parsant une regle avec premisse.
 				 *
 				*/
-				void regle_avec_premisse();
+				sysexp::modele::RegleAvecPremisse::PtrRegleAbstraite regle_avec_premisse(int i);
 
 				/**
 				 * brique parsant une condition.
 				 *
 				*/
-				void condition();
+				std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> condition();
 				
 				/**
 				 * brique parsant une premisse.
 				 *
 				*/
-				void premisse();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse();
 
 				/**
 				 * brique parsant une premisse booléenne.
 				 *
 				*/
-				void premisse_booleenne();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_booleenne();
 
 				/**
 				 * brique parsant une premisse symbolique.
 				 *
 				*/
-				void premisse_symbolique();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_symbolique();
 
 				/**
 				 * brique parsant une premisse entiere.
 				 *
 				*/
-				void premisse_entiere();
+				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_entiere();
 				
 			protected:
 				/**
