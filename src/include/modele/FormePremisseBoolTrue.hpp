@@ -26,7 +26,7 @@ namespace sysexp
 
         /**
          * @class FormePremisseBoolTrue FormePremisseBoolTrue.hpp
-         * @brief Représente une prémisse vraie.
+         * @brief Représente une prémisse vrais.
          *
          * Déclaration de la classe FormePremisseBoolTrue.
          * */

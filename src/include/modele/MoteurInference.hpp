@@ -20,7 +20,7 @@
 namespace sysexp
 {
     /**
-     * @namespace modele::sysexp
+     * @namespace sysexp::modele
      * */
     namespace modele
     {
