@@ -13,7 +13,7 @@
 	   *
 	  **/
 	 namespace builders{
-		
+
 		/**
 		 * @class Directeur
 		 * Classe representant le directeur du builder.
@@ -22,28 +22,30 @@
 		class Directeur {
 			public:
 				/**
-                 * @typedef Builder
+                 * @typedef PtrBuilder
                  *
                  * Le shared pointer sur le builder.
                  * */
 				typedef std::shared_ptr<Builder> PtrBuilder;
-				
-			public: 
+
+			public:
 				/**
-				*  
+				*
 				* Constructeur du Directeur.
+                * @param[in] builder
+                * Le builder utilisé pour construire la base de règles.
 				*
 				*/
 				Directeur(const PtrBuilder & builder);
-			
-			public: 
+
+			public:
 				/**
 				*  accesseur.
 				* @return un pointeur vers le builder courant.
 				*
 				*/
 				PtrBuilder getBuilder() const;
-				
+
 				/**
 				*  mutateur.
 				* @param[in] builder
@@ -51,22 +53,22 @@
 				*
 				*/
 				void setBuilder(const PtrBuilder & builder);
-				
+
 				/**
 				* methode qui permet de construire une base de regle.
 				*
 				*/
 				void construire();
-				
+
 				/**
 				* méthode qui livre une base de regle.
 				* @return une base de regle.
 				*
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite livrer();
-				
-			protected: 
-			
+
+			protected:
+
 				PtrBuilder  builder_;
 		};
 	}

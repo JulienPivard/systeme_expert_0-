@@ -47,9 +47,6 @@ namespace sysexp
                  * à l'intention de l'utilisateur en cas d'erreur d'exécution.
                  * @param[in] conclusion
                  * La @ref conclusion_ de la règle.
-                 * @param[in] traceExecution
-                 * Permet d'afficher les traces d'exécution du visiteur,
-                 * après chaque visite d'un élément de la règle.
                  *
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */

@@ -40,7 +40,7 @@ namespace sysexp
                 /**
                  * Constructeur logique
                  *
-                 * @param[in] baseDeRegle
+                 * @param[in] baseDeRegles
                  * La base de règles qui vas être utilisé pour produire la base de faits.
                  * */
                 MoteurInference( const RegleAbstraite::PtrRegleAbstraite & baseDeRegles );

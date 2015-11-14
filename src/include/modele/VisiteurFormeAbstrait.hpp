@@ -335,12 +335,12 @@ namespace sysexp
             protected:
 
                 /**
-                 * La base de fait ou on vas ajouter les conclusion déclenchée.
+                 * La base de fait où on vas ajouter les conclusions déclenchée.
                  * */
                 BaseFait::PtrBaseFait baseFait_;
 
                 /**
-                 * Permet de savoir si le prémisse est vérifiée.
+                 * Permet de savoir si la prémisse est vérifiée.
                  * */
                 bool premisseVerifiee_;
 
