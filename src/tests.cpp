@@ -11,6 +11,7 @@
 #include <fstream>
 
 #include "BaseFait.hpp"
+#include "MoteurInference.hpp"
 
 using namespace sysexp::builders;
 
@@ -47,6 +48,7 @@ main(int argc, char* argv[] ){
     //"/home/sandy/Documents/M1/C++/projet-c/src/lorraine.txt"
     std::ifstream chaine("/home/etudiants/20905973/Bureau/projet-c/src/lorraine.txt");
     //std::ifstream chaine("/home/etudiants/21001698/Master1/Parallellisme/Devoir/projet-c/src/lorraine.txt");
+    //std::ifstream chaine("/home/asmodee/Programmation/Master1/Parallellisme/Devoir/projet-c/src/lorraine.txt");
     //representationJeton(chaine);
     ConcreteBuilderLorraine::PtrConcreteBuilderLorraine truc(new ConcreteBuilderLorraine(chaine));
     Directeur directeur = Directeur(truc);
@@ -63,13 +65,21 @@ main(int argc, char* argv[] ){
     //    std::cout << std::endl;
     //}
 
-    sysexp::modele::BaseFait::PtrBaseFait base( new sysexp::modele::BaseFait() );
-    bool iterer;
-    do
-    {
-        iterer = regle->iter( base );
-    } while( iterer );
-    base->afficher();
+    std::cout << std::endl;
+    std::cout << "========== Test du moteur d'inférence =========="
+        << std::endl;
+    sysexp::modele::MoteurInference moteur = sysexp::modele::MoteurInference( regle );
+
+    std::cout << std::endl;
+    std::cout << "========== Exécution de l'analyse de la base de règle. =========="
+        << std::endl;
+    moteur.analyserBaseRegles();
+
+    std::cout << std::endl;
+    std::cout << "========== Affichage de la base de fait. =========="
+        << std::endl
+        << std::endl;
+    moteur.afficherBaseFaits();
 
     return EXIT_SUCCESS;
 }

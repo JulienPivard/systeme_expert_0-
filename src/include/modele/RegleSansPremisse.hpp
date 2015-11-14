@@ -54,8 +54,7 @@ namespace sysexp
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleSansPremisse( const unsigned int & numeroRegle,
-                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
-                       const bool & traceExecution = false );
+                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
                  * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.

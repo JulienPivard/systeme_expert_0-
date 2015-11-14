@@ -66,16 +66,12 @@ namespace sysexp
                  * dans la base de fait une fois la règle vérifiée.
                  * @param[in] premisse
                  * La premisse qui sert d'hypothèse, d'autres peuvent être ajouté avec @ref ajouterPremisse.
-                 * @param[in] traceExecution
-                 * Permet d'afficher les traces d'exécution du visiteur,
-                 * après chaque visite d'un élément de la règle.
                  *
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
                 RegleAvecPremisse( const unsigned int & numeroRegle,
                         const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse,
-                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ,
-                        const bool & traceExecution = false );
+                        const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
                  * Méthode pour ajouter une prémisse.

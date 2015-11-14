@@ -6,9 +6,8 @@ namespace sysexp
     {
 
         RegleSansPremisse::RegleSansPremisse( const unsigned int & numeroRegle,
-                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
-                const bool & traceExecution ):
-            RegleAbstraite( numeroRegle, conclusion, traceExecution )
+                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
+            RegleAbstraite( numeroRegle, conclusion )
         { }
 
         bool RegleSansPremisse::verifierPremisses( const BaseFait::PtrBaseFait & base )

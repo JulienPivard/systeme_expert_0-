@@ -61,13 +61,15 @@ ADD_EXECUTABLE( client
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
     src/builders/monException.cpp
-    
+
     src/builders/concreteBuilderLorraine.cpp
     src/builders/directeur.cpp
+
+    src/modele/MoteurInference.cpp
     )
 ADD_EXECUTABLE( test
     src/tests.cpp
-    
+
     src/modele/FaitAbstrait.cpp
     src/modele/FaitBool.cpp
     src/modele/FaitSymbolique.cpp
@@ -112,10 +114,11 @@ ADD_EXECUTABLE( test
     src/builders/lexical.cpp
     src/builders/syntaxique.cpp
     src/builders/monException.cpp
-    
+
     src/builders/concreteBuilderLorraine.cpp
     src/builders/directeur.cpp
 
+    src/modele/MoteurInference.cpp
 )
 # Faire parler le make.
 set( CMAKE_VERBOSE_MAKEFILE off )

@@ -6,13 +6,12 @@ namespace sysexp
     {
 
         RegleAbstraite::RegleAbstraite( const unsigned int & numeroRegle,
-                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion,
-                const bool & traceExecution ):
+                const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion ):
             numeroRegle_( numeroRegle ),
             conclusion_( conclusion ),
             successeur_( nullptr ),
             declenchee_( false ),
-            traceExecution_( traceExecution )
+            traceExecution_( false )
         { }
 
         void RegleAbstraite::ajouterSuccesseur( const PtrRegleAbstraite & successeur )
