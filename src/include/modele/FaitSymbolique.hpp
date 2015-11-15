@@ -16,18 +16,20 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
 
         /**
          * @class FaitSymbolique FaitSymbolique.hpp
-         * @brief Représente un fait symbolique. Sa valeur ne peut pas être modifié.
+         * @brief Représente un fait symbolique. Sa valeur ne peut pas être modifiée.
          *
          * Déclaration de la classe concrète FaitSymbolique.
          * Cette classe permet de représenter un fait symbolique et sa valeur.

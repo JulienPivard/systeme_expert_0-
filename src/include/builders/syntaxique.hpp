@@ -1,6 +1,19 @@
+/**
+ * @file syntaxique.hpp
+ * @brief header.
+ * @author PIVARD Julien, CLECH Sandy.
+ *
+ * Header pour le fichier syntaxique.cpp.
+ * Définit la classe Syntaxique.
+ * */
+
 #ifndef Syntaxique_hpp
 #define Syntaxique_hpp
 
+#include <map>
+#include <iterator>
+#include <list>
+#include <iostream>
 #include "lexical.hpp"
 #include "VisiteurForme.hpp"
 #include "FormeConclusionBoolTrue.hpp"
@@ -18,25 +31,22 @@
 #include "OperateurDiv.hpp"
 #include "RegleSansPremisse.hpp"
 #include "RegleAvecPremisse.hpp"
-#include <map>
-#include <iterator>
-#include <list>
-#include <iostream>
+
 /**
  * @namespace sysexp
- *
+ * // namespace global de l'application.
  **/
  namespace sysexp{
- /**
+ 	/**
 	   * @namespace sysexp::builders
-	   *
+	   * // namespace builders de l'application.
 	  **/
 	 namespace builders{
 		
 		/**
 		 * @class Syntaxique syntaxique.hpp
+		 * @brief Représente un analyseur syntaxique et sémantique de la grammaire lorraine.
 		 * Classe representant un analyseur syntaxique de la grammaire.
-		 *
 		 */
 		class Syntaxique{
 			
@@ -50,165 +60,141 @@
 			public: 
 				/**
 				 * Accesseur.
-				 *
 				 * @return l'analyseur lexical de l'analyseur syntaxique.
 				*/
 				const Lexical lireLexical();
 
 				
 				/**
-				 * parseur de la grammaire lorraine.
-				 * @return une base de regle de la grammaire lorraine.
-				 *
+				 * Parseur de la grammaire lorraine.
+				 * @return une base de règle de la grammaire lorraine.
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite parser();
 
 			protected:
 				/**
-				 * passe au jeton suivant.
-				 *
+				 * Passe au jeton suivant.
 				*/
 				void suivant();
 				
 				/**
-				 * brique parsant les déclarations.
-				 *
+				 * Brique parsant les déclarations.
 				*/
 				void declarations();
 
 				/**
-				 * brique parsant les déclarations booléennes.
-				 *
+				 * Brique parsant les déclarations booléennes.
 				*/
 				void declarations_bool();
 
 				/**
-				 * brique parsant les déclarations symboliques.
-				 *
+				 * Brique parsant les déclarations symboliques.
 				*/
 				void declarations_symb();
 
 				/**
-				 * brique parsant les déclarations entieres.
-				 *
+				 * Brique parsant les déclarations entieres.
 				*/
 				void declarations_ent();
 
 				/**
-				 * brique parsant les faits.
-				 *
+				 * Brique parsant les faits.
 				*/
 				void listeFaits(std::string valeur);
 				
 				/**
-				 * brique parsant les regles.
-				 * @return une base de regle de la grammaire lorraine.
-				 *
+				 * Brique parsant les règles.
+				 * @return une base de règle de la grammaire lorraine.
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regles();
 
 				/**
-				 * brique parsant une regle.
-				 * @return une regle.
-				 *
+				 * Brique parsant une règle.
+				 * @return une règle.
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle(int i);
 
 				/**
-				 * brique parsant une regle sans premisse.
-				 * @return une regle sans premisse.
-				 *
+				 * Brique parsant une règle sans prémisse.
+				 * @return une règle sans prémisse.
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite regle_sans_premisse(int i);
 
 				/**
-				 * brique parsant une conclusion.
+				 * Brique parsant une conclusion.
 				 * @return une conclusion.
-				 *
 				*/
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion();
 
 				/**
-				 * brique parsant une conclusion booléenne.
+				 * Brique parsant une conclusion booléenne.
 				 * @return une conclusion booléenne.
-				 *
 				*/
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_booleenne();
 
 				/**
-				 * brique parsant une conclusion symbolique.
+				 * Brique parsant une conclusion symbolique.
 				 * @return une conclusion symbolique.
-				 *
 				*/
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_symbolique();
 
 				/**
-				 * brique parsant une conclusion entiere.
+				 * Brique parsant une conclusion entiere.
 				 * @return une conclusion entiere.
-				 *
 				*/
 				sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion_entiere();
 
 				/**
-				 * brique parsant une expression entiere.
+				 * Brique parsant une expression entiere.
 				 * @return une expression entiere.
-				 *
 				*/
 				sysexp::modele::ValeurAbstraite::PtrValeur expressionEntiere();
 
 				/**
-				 * brique parsant un terme.
-				 * @return une terme.
-				 *
+				 * Brique parsant un terme.
+				 * @return un terme.
 				*/
 				sysexp::modele::ValeurAbstraite::PtrValeur terme();
 
 				/**
-				 * brique parsant un facteur.
+				 * Brique parsant un facteur.
 				 * @return un facteur.
-				 *
 				*/
 				sysexp::modele::ValeurAbstraite::PtrValeur facteur();
 
 				/**
-				 * brique parsant une regle avec premisse.
-				 * @return une regle avec premisse.
-				 *
+				 * Brique parsant une règle avec prémisse.
+				 * @return une règle avec prémisse.
 				*/
 				sysexp::modele::RegleAvecPremisse::PtrRegleAbstraite regle_avec_premisse(int i);
 
 				/**
-				 * brique parsant une condition.
+				 * Brique parsant une condition.
 				 * @return une condition.
-				 *
 				*/
 				std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> condition();
 				
 				/**
-				 * brique parsant une premisse.
-				 * @return une premisse.
-				 *
+				 * Brique parsant une prémisse.
+				 * @return une prémisse.
 				*/
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse();
 
 				/**
-				 * brique parsant une premisse booléenne.
-				 * @return une premisse booléenne.
-				 *
+				 * Brique parsant une prémisse booléenne.
+				 * @return une prémisse booléenne.
 				*/
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_booleenne();
 
 				/**
-				 * brique parsant une premisse symbolique.
-				 * @return une premisse symbolique.
-				 *
+				 * Brique parsant une prémisse symbolique.
+				 * @return une prémisse symbolique.
 				*/
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_symbolique();
 
 				/**
-				 * brique parsant une premisse entiere.
-				 * @return une premisse entiere.
-				 *
+				 * Brique parsant une prémisse entiere.
+				 * @return une prémisse entiere.
 				*/
 				sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_entiere();
 				
@@ -219,7 +205,7 @@
 				Lexical & lexical_;
 				
 				/**
-				* Dernier jeton precharge.
+				* Dernier jeton prechargé.
 				*/
 				Jeton precharge_;
 
@@ -227,8 +213,6 @@
 				 * map de faits.
 				*/
 				std::map <std::string, std::string> faits_;
-
-
 		};
 	}
 }

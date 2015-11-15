@@ -35,6 +35,7 @@ namespace sysexp{
 		bool
 		Lexical::avancer(){
 			while(true){
+				//tant qu'on est dans la ligne et qu'on rencontre un espace, on passe au suivant.
 				while (position_ < ligne_.size() && 
 					isspace(ligne_.at(position_))) {
 					position_ ++;
@@ -43,8 +44,11 @@ namespace sysexp{
 					if (fichier_.eof()) {
 						return false;
 					}
+					//on récupere la ligne
 					std::getline(fichier_,ligne_);
+					//on incremente le numéro de ligne
 					numeroLigne_ ++;
+					// on se place qu début de celle ci
 					position_ = 0;
 				}
 				else{
@@ -55,6 +59,7 @@ namespace sysexp{
 		
 		const Jeton 
 		Lexical::suivant(){
+			// si on ne peut plus avancer on est a la fin du fichier.
 			if (!avancer()){
 				return FabriqueJeton::finFichier();
 			}
@@ -71,14 +76,14 @@ namespace sysexp{
 				position_ ++;
 				return FabriqueJeton::parentheseFermante();
 				
-			case '>':
+			case '>': //superieur
 				position_ ++;
 				if (ligne_.at(position_) == '='){
 					position_++;
 					return FabriqueJeton::supEgal();
 				}
 				return FabriqueJeton::superieur();
-			case '<':
+			case '<': //inferieur
 				position_ ++;
 				if (ligne_.at(position_) == '='){
 					position_++;
@@ -106,23 +111,23 @@ namespace sysexp{
 				}
 				return FabriqueJeton::operateurDiv();
 				
-			case '=':
+			case '=': //egal
 				position_ ++;
 				return FabriqueJeton::egal();
-			case ';':
+			case ';': // fin d'expression
 				position_ ++;
 				return FabriqueJeton::finExpression();
 				
-			case ',':
+			case ',': // séparateur
 				position_ ++;
 				return FabriqueJeton::separateur();
 			
-			default: // mot ou entier ou  bien representation inconnue.
+			default: // identificateur ou entier ou bien representation inconnue.
 				// entier
 				if (isdigit(caractere)) {
 					return extraireEntier();
 				}
-				//identificateur
+				//identificateur + "si, et, non, alors"
 				if(isalpha(caractere)){
 					return extraireChaine(); 
 				}

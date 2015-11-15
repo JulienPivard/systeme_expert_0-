@@ -1,20 +1,17 @@
 #include "syntaxique.hpp"
 #include "monException.hpp"
 
-
-
-
 namespace sysexp{
 
 	 namespace builders{
 
-		 Syntaxique::Syntaxique(Lexical & lexical):
+		Syntaxique::Syntaxique(Lexical & lexical):
 			lexical_(lexical),
 			precharge_(lexical_.suivant())
 			{}
 
-		 const Lexical
-		 Syntaxique::lireLexical(){
+		const Lexical
+		Syntaxique::lireLexical(){
 			 return lexical_;
 		 }
 
@@ -25,12 +22,14 @@ namespace sysexp{
 		}
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::parser(){
+			// pour avoir une base de règle il faut parser les déclarations et les règles.
 			declarations();
 			return regles();
 		}
 
 		void
 		Syntaxique::declarations(){
+			// il y a trois types de déclarations.
 			declarations_bool();
 			declarations_symb();
 			declarations_ent();
@@ -38,32 +37,39 @@ namespace sysexp{
 
 		void
 		Syntaxique::declarations_bool(){
-
+			// on regarde si on est dans les déclarations booléennes.
 			if(!precharge_.estFaitBool())
 				throw MonException(lexical_, "attendu: 'faits_booleens'");
 			suivant();
+			// on construit la map contenant un fait et son type.
 			listeFaits("booleen");
 		}
 
 
 		void
 	 	Syntaxique::declarations_symb(){
+	 		// on regarde si on est dans les déclarations symboliques.
 	 		if(!precharge_.estFaitSymb())
 				throw MonException(lexical_,"attendu: 'faits_symboliques'");
 			suivant();
+			// on construit la map contenant un fait et son type.
 			listeFaits("symbolique");
 		}
 
 		void
 		Syntaxique::declarations_ent(){
+			// on regarde si on est dans les déclarations entières
 			if(!precharge_.estFaitEnt())
 				throw MonException(lexical_, "attendu: 'faits_entiers'");
 			suivant();
+			// on construit la map contenant un fait et son type.
 			listeFaits("entier");
 		}
 
 		void
 		Syntaxique::listeFaits(std::string valeur){
+			// on regarde si la structure des déclarations est bien respectée.
+			// une déclaration est de la forme "faits_type = liste_de_faits_séparés_par_une_virgule ;"
 			if (!precharge_.estEgal())
 				throw MonException(lexical_, "attendu: '='");
 			suivant();
@@ -71,6 +77,7 @@ namespace sysexp{
 			while(!precharge_.estFinExpression()){
 				if(!precharge_.estIdentificateur())
 					throw MonException(lexical_, "attendu: un identificateur ou un '_'");
+				// ici on ajoute le fait et son type à la map.
 				faits_[precharge_.lireRepresentation()] = valeur;
 				suivant();
 
@@ -86,6 +93,8 @@ namespace sysexp{
 
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::regles(){
+			// apres avoir parsé les déclarations, il nous reste que des regles.
+			// pour créer la base de regle on a besoin d'une regle pour la chainer a son successeur.
 			sysexp::modele::RegleAbstraite::PtrRegleAbstraite regleSuiv;
 			int i = 0;
 			while(!precharge_.estFinFichier()){
@@ -102,6 +111,7 @@ namespace sysexp{
 
 		sysexp::modele::RegleAbstraite::PtrRegleAbstraite
 		Syntaxique::regle(int i){
+			// une règle est soit sans prémisse, soit avec prémisse.
 			if(precharge_.estSi()){
 				return regle_avec_premisse(i);
 			}
@@ -112,13 +122,14 @@ namespace sysexp{
 
 		sysexp::modele::RegleSansPremisse::PtrRegleAbstraite
 		Syntaxique::regle_sans_premisse(int i){
+			// une règle sans prémisse est uniquement composée d'une conclusion.
 			sysexp::modele::RegleSansPremisse::PtrRegleAbstraite regle(new sysexp::modele::RegleSansPremisse(i, conclusion() ));
 			return regle;
 		}
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion(){
-			// retourner la conclusion contruite
+			// une conclusion peut être booléenne, symbolique ou entière.
 			if(precharge_.estIdentificateur()){
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 				if(it == faits_.end()){
@@ -142,7 +153,7 @@ namespace sysexp{
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_booleenne(){
-			// retourner la conslusion constuite
+			// une conclusion booléenne est constituée soit d'un fait_booléen ou de "non" fait_booléen.
 			if(precharge_.estNon()){
 				suivant();
 				if(!precharge_.estIdentificateur()){
@@ -168,7 +179,7 @@ namespace sysexp{
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_symbolique(){
-			// retourner la conclusion construite
+			// une conclusion symbolique est de la forme fait_symb = (fait_sybm || constante_symb).
 			Jeton symb = precharge_ ;
 			suivant();
 			if(!precharge_.estEgal()){
@@ -199,8 +210,8 @@ namespace sysexp{
 
 		sysexp::modele::FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
 		Syntaxique::conclusion_entiere(){
+			// une conclusion entière est composée d'un fait entier d'un = et d'une expression entière.
 			Jeton ent = precharge_;
-			// la conclusion sera probablement construite ici.
 			suivant();
 			if(!precharge_.estEgal()){
 				throw MonException(lexical_, "attendu: '='");
@@ -212,6 +223,7 @@ namespace sysexp{
 
 		sysexp::modele::ValeurAbstraite::PtrValeur
 		Syntaxique::expressionEntiere(){
+			// une expression est composée de (+||-)(terme)[(+||-)(terme)]*
 			sysexp::modele::ValeurAbstraite::PtrValeur facteur_g;
 			if(precharge_.estOperateurPlus()){
 				suivant();
@@ -246,6 +258,7 @@ namespace sysexp{
 
 		sysexp::modele::ValeurAbstraite::PtrValeur
 		Syntaxique::terme(){
+			// un terme est composé d'un facteur (x facteur)*
 			sysexp::modele::ValeurAbstraite::PtrValeur facteur_g = facteur();
 			while(precharge_.estOperateurMul() || precharge_.estOperateurDiv()){
 				if(precharge_.estOperateurMul()){
@@ -266,6 +279,7 @@ namespace sysexp{
 
 		sysexp::modele::ValeurAbstraite::PtrValeur
 		Syntaxique::facteur(){
+			// un facteur est composé d'une constante entiere, d'un fait entier ou d'une expression entiere entre parenthèse.
 			std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 			if(it == faits_.end()){
 				if(precharge_.estEntier()){
@@ -298,6 +312,7 @@ namespace sysexp{
 
 		sysexp::modele::RegleAvecPremisse::PtrRegleAbstraite
 		Syntaxique::regle_avec_premisse(int i){
+			// une regle avec prémisse est constituée d'un si suivi d'une condition d'un alors et d'une conclusion.
 			suivant();
 			std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>  premisses = condition();
 			if(!precharge_.estAlors()){
@@ -314,6 +329,7 @@ namespace sysexp{
 
 		std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse>
 		Syntaxique::condition(){
+			// contition (et condition)*
 			std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> premisses;
 			premisses.push_back(premisse());
 			while(precharge_.estEt()){
@@ -326,6 +342,7 @@ namespace sysexp{
 
 		sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 		Syntaxique::premisse(){
+			// premisse_bool || premisse_symb || premisse_ent
 			if(precharge_.estIdentificateur()){
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());
 				if(it == faits_.end()){

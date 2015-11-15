@@ -1,7 +1,7 @@
 /**
  * @file FormeConclusionBoolFalse.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormeConclusionBoolFalse.cpp.
  * Définit la classe concrète FormeConclusionBoolFalse.
@@ -17,11 +17,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
@@ -57,7 +59,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion booléenne.
+                 * Le visiteur qui va évaluer la conclusion booléenne.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );

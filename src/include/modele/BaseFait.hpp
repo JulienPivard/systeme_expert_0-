@@ -1,7 +1,7 @@
 /**
  * @file BaseFait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier BaseFait.cpp.
  * Définit la classe concrète BaseFait.
@@ -27,18 +27,20 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
 
         /**
         * @class BaseFait BaseFait.hpp
-        * @brief Permet de gérer les faits facilement et d'afficher la base de fait.
+        * @brief Permet de gérer les faits facilement et d'afficher la base de faits.
         *
         * Déclaration de la classe BaseFait.
         * Cette classe permet d'accéder et de stocker les faits.
@@ -51,7 +53,7 @@ namespace sysexp
                 /**
                  * @typedef PtrBaseFait
                  *
-                 * Le shared pointer vers la base de fait.
+                 * Le shared pointer vers la base de faits.
                  * */
                 typedef std::shared_ptr< BaseFait > PtrBaseFait;
 
@@ -65,12 +67,12 @@ namespace sysexp
             public:
 
                 /**
-                 * Affiche le contenu de la base de fait sur la sortie standard.
+                 * Affiche le contenu de la base de faits sur la sortie standard.
                  * */
                 void afficher() const;
 
                 /**
-                 * Test si un fait existe dans la base de fait.
+                 * Test si un fait existe dans la base de faits.
                  *
                  * @param[in] nomFait
                  * Le nom du fait recherché
@@ -93,14 +95,14 @@ namespace sysexp
                 const FaitAbstrait::PtrFaitAbstrait & trouver( const std::string & nomFait ) const;
 
                 /**
-                 * Ajoute un fait à la base de fait.
+                 * Ajoute un fait à la base de faits.
                  *
                  * @param[in] fait
                  * Le fait à ajouter à la base de faits. @see FaitAbstrait
                  *
                  * @throws ExceptionFaitDejaAjoute
                  * Le fait existe déjà avec une autre valeur,
-                 * la valeur ne peut pas être modifié.
+                 * la valeur ne peut pas être modifiée.
                  * */
                 void ajouter( const FaitAbstrait::PtrFaitAbstrait & fait );
 

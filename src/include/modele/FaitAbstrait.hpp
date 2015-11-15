@@ -16,20 +16,22 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
     * @namespace sysexp::modele
+    * // namespace modele de l'application.
     * */
     namespace modele
     {
 
         /**
          * @enum TypeFait
-         * @brief Énumération des différents type de fait.
+         * @brief Énumération des différents types de fait.
          *
-         * Les différents type de fait que l'on peut rencontrer.
+         * Les différents types de fait que l'on peut rencontrer.
          * */
         enum class TypeFait
         {
@@ -91,7 +93,7 @@ namespace sysexp
 
                 /**
                  * Le nom qu'on a donné au fait.
-                 * Le nom n'est pas censé changer je le met donc constant.
+                 * Le nom n'est pas censé changer il est donc constant.
                  * */
                 const std::string nom_;
 

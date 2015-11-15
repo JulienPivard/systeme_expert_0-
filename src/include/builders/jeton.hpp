@@ -1,3 +1,12 @@
+/**
+ * @file jeton.hpp
+ * @brief header.
+ * @author PIVARD Julien, CLECH Sandy.
+ *
+ * Header pour le fichier jeton.cpp.
+ * Définit la classe Jeton.
+ * */
+
 #ifndef Jeton_hpp
 #define Jeton_hpp
 
@@ -6,15 +15,18 @@
 
 /**
  * @namespace sysexp
- *
+ * // namespace global de l'application.
  **/
  namespace sysexp{
 
-
+ 	/**
+	 * @namespace sysexp::type
+	 * // namespace type de jeton de l'application
+	 **/
 	 namespace type{
 		 /**
-		  * Type enumere fortement type representant les differentes types de
-		  * jetons.
+		  * @typedef Type
+		  * Énumération des types de jetons .
 		  */
 		 typedef enum {parentheseOuvrante, parentheseFermante, superieur, inferieur,
 					operateurPlus, operateurMoins, operateurMul, operateurDiv,
@@ -22,14 +34,16 @@
 					si, non, et, alors, separateur, inconnu, finFichier, supEgal, infEgal, different, 
 					faitBool, faitSymb, faitEnt}Type;
 	}
+	 
 	 /**
 	   * @namespace sysexp::builders
-	   *
+	   * // namespace builders de l'application.
 	  **/
 	 namespace builders{
 		/**
 		 * @class Jeton jeton.hpp
-		 * Classe representant un jeton de la grammaire.
+		 * @brief Représente un jeton de la grammaire Lorraine.
+		 * Classe représentant un jeton de la grammaire.
 		 *
 		 */
 		class Jeton{
@@ -50,178 +64,153 @@
 				const std::string& lireRepresentation() const;
 
 				/**
-				 * Indique si le jeton est une parenthese ouvrante.
-				 * @retval TRUE si le jeton est une parenthese ouvrante.
-				 * @retval FALSE si le jeton n'est pas une parenthese ouvrante.
+				 * Indique si le jeton est une parenthèse ouvrante.
+				 * @return true si le jeton est une parenthèse ouvrante, false sinon.
 				 */
 				bool estParentheseOuvrante() const;
 
 				/**
-				 * Indique si le jeton est une parenthese fermante.
-				 * @retval TRUE si le jeton est une parenthese fermante.
-				 * @retval FALSE si le jeton n'est pas une parenthese fermante.
+				 * Indique si le jeton est une parenthèse fermante.
+				 * @return true si le jeton est une parenthèse fermante, false sinon.
 				 */
 				bool estParentheseFermante() const;
 
 				/**
-				 * Indique si le jeton est superieur.
-				 * @retval TRUE si le jeton est un superieur.
-				 * @retval FALSE si le jeton n'est pas un superieur.
+				 * Indique si le jeton est supérieur.
+				 * @return true si le jeton est un supérieur, false sinon.
 				 */
 				bool estSuperieur() const;
 
 				/**
 				 * Indique si le jeton est inferieur.
-				 * @retval TRUE si le jeton est un inferieur.
-				 * @retval FALSE si le jeton n'est pas un inferieur.
+				 * @return true si le jeton est un inférieur, false sinon.
 				 */
 				bool estInferieur() const;
 
 				/**
 				 * Indique si le jeton est un plus.
-				 * @retval TRUE si le jeton est un plus.
-				 * @retval FALSE si le jeton n'est pas un plus.
+				 * @return true si le jeton est un plus, false sinon.
 				 */
 				bool estOperateurPlus() const;
 
 				/**
 				 * Indique si le jeton est un moins.
-				 * @retval TRUE si le jeton est un moins.
-				 * @retval FALSE si le jeton n'est pas un moins.
+				 * @return true si le jeton est un moins, false sinon.
 				 */
 				bool estOperateurMoins() const;
 
 				/**
 				 * Indique si le jeton est un fois.
-				 * @retval TRUE si le jeton est un fois.
-				 * @retval FALSE si le jeton n'est pas un fois.
+				 * @return true si le jeton est un fois, false sinon.
 				 */
 				bool estOperateurMul() const;
 
 				/**
 				 * Indique si le jeton est un div.
-				 * @retval TRUE si le jeton est un div.
-				 * @retval FALSE si le jeton n'est pas un div.
+				 * @return true si le jeton est un div, false sinon.
 				 */
 				bool estOperateurDiv() const;
 
 				/**
-				 * Indique si le jeton est un egal
-				 * @retval TRUE si le jeton est un egal.
-				 * @retval FALSE si le jeton n'est pas un egal.
+				 * Indique si le jeton est un égal
+				 * @return true si le jeton est un égal, false sinon.
 				 */
 				bool estEgal() const;
 
 				/**
 				 * Indique si le jeton est un point virgule.
-				 * @retval TRUE si le jeton est un point virgule.
-				 * @retval FALSE si le jeton n'est pas un point virgule.
+				 * @return true si le jeton est un point virgule, false sinon.
 				 */
 				bool estFinExpression() const;
 
 				/**
 				 * Indique si le jeton est un identificateur.
-				 * @retval TRUE si le jeton est un identificateur.
-				 * @retval FALSE si le jeton n'est pas un identificateur.
+				 * @return true si le jeton est un identificateur, false sinon.
 				 */
 				bool estIdentificateur() const;
 
 				/**
 				 * Indique si le jeton est un si .
-				 * @retval TRUE si le jeton est un si.
-				 * @retval FALSE si le jeton n'est pas un si.
+				 * @return true si le jeton est un si, false sinon.
 				 */
 				bool estSi() const;
 
 				/**
 				 * Indique si le jeton est un non.
-				 * @retval TRUE si le jeton est un non.
-				 * @retval FALSE si le jeton n'est pas un non.
+				 * @return true si le jeton est un non, false sinon.
 				 */
 				bool estNon() const;
 
 
 				/**
 				 * Indique si le jeton est un et.
-				 * @retval TRUE si le jeton est un et.
-				 * @retval FALSE si le jeton n'est pas un et.
+				 * @return true si le jeton est un et, false sinon.
 				 */
 				bool estEt() const;
 
 				/**
 				 * Indique si le jeton est un alors.
-				 * @retval TRUE si le jeton est un alors.
-				 * @retval FALSE si le jeton n'est pas un alors.
+				 * @return true si le jeton est un alors, false sinon.
 				 */
 				bool estAlors() const;
 
 				/**
 				 * Indique si le jeton est une virgule.
-				 * @retval TRUE si le jeton est une vigule.
-				 * @retval FALSE si le jeton n'est pas une virgule.
+				 *@return true si le jeton est une virgule, false sinon.
 				 */
 				bool estSeparateur() const;
 
 				/**
 				 * Indique si le jeton est inconnu.
-				 * @retval TRUE si le jeton est un inconnu.
-				 * @retval FALSE si le jeton n'est pas un inconnu.
+				 * @return true si le jeton est un inconnu, false sinon.
 				 */
 				bool estInconnu() const;
 				
 				/**
 				 * Indique si le jeton est fin du fichier.
-				 * @retval TRUE si le jeton est fin du fichier.
-				 * @retval FALSE si le jeton n'est pas fin du fichier.
+				 * @return true si le jeton est fin du fichier, false sinon.
 				 */
 				bool estFinFichier() const;
 				
 				/**
 				 * Indique si le jeton est un entier.
-				 * @retval TRUE si le jeton est un entier.
-				 * @retval FALSE si le jeton n'est pas un entier.
+				 * @return true si le jeton est un entier, false sinon.
 				 */
 				bool estEntier() const;
 
 				/**
-				 * Indique si le jeton est un superieur ou egal.
-				 * @retval TRUE si le jeton est un superieur ou egal.
-				 * @retval FALSE si le jeton n'est pas un superieur ou egal.
+				 * Indique si le jeton est un supérieur ou égal.
+				 * @return true si le jeton est un supérieur ou égal, false sinon.
 				 */
 				bool estSupEgal() const;
 
 				/**
-				 * Indique si le jeton est un inferieur ou egal.
-				 * @retval TRUE si le jeton est un inferieur ou egal.
-				 * @retval FALSE si le jeton n'est pas un inferieur ou egal.
+				 * Indique si le jeton est un inférieur ou égal.
+				 * @return true si le jeton est un inférieur ou égal, false sinon.
 				 */
 				bool estInfEgal() const;
 
 				/**
-				 * Indique si le jeton est un different.
-				 * @retval TRUE si le jeton est un different.
-				 * @retval FALSE si le jeton n'est pas un different.
+				 * Indique si le jeton est un différent.
+				 * @return true si le jeton est un différent, false sinon.
 				 */
 				bool estDifferent() const;
 
 				/**
 				 * Indique si le jeton est fait_booleen.
-				 * @retval TRUE si le jeton est fait_booleen.
-				 * @retval FALSE si le jeton est fait_booleen
+				 *@return true si le jeton est fait_booleen, false sinon.
 				 */
 				bool estFaitBool() const;
 
 				/**
 				 * Indique si le jeton est fait_symbolique.
-				 * @retval TRUE si le jeton est fait_symbolique.
-				 * @retval FALSE si le jeton est fait_symbolique.
+				 * @return true si le jeton est fait_symbolique, false sinon.
 				 */
 				bool estFaitSymb() const;
 
 				/**
 				 * Indique si le jeton est fait_entier.
-				 * @retval TRUE si le jeton est fait_entier.
-				 * @retval FALSE si le jeton est fait_entier.
+				 * @return true si le jeton est fait_entier, false sinon.
 				 */
 				bool estFaitEnt() const;
 
@@ -230,7 +219,7 @@
 				/**
 				  * Constructeur de la classe FabriqueJeton
                   * @param [in] typeJeton  type du jeton.
-                  * @param [in] representation  representation textuelle du jeton.
+                  * @param [in] representation  répresentation textuelle du jeton.
                   */
 				Jeton(const type::Type & typeJeton, const std::string & representation);
 			protected:
@@ -240,7 +229,7 @@
 				type::Type type_;
 				
 				/**
-				 * Representation du jeton.
+				 * Représentation du jeton.
 				 */
 				 std::string representation_;
 		};

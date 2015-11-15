@@ -1,202 +1,211 @@
+/**
+ * @file fabriqueJeton.hpp
+ * @brief header.
+ * @author PIVARD Julien, CLECH Sandy.
+ *
+ * Header pour le fichier fabriqueJeton.cpp.
+ * Définit la classe FabriqueJeton.
+ * */
+
 #ifndef FabriqueJeton_hpp
 #define FabriqueJeton_hpp
 
 #include "jeton.hpp"
 /**
  * @namespace sysexp
- * 
+ * // namespace global de l'application.
  **/
  namespace sysexp{
  
 	 /**
 	   * @namespace sysexp::builders
-	   * 
+	   * // namespace builders de l'application.
 	  **/
 	 namespace builders{
 		/**
-		  * Classe representant une fabrique de jetons de la grammaire. 
-          *
+		  * @class FabriqueJeton fabriqueJeton.hpp
+		  * @brief Représente une fabrique de jetons de la grammaire lorraine.
+		  * Classe representant une fabrique de jetons de la grammaire.
           */
 		class FabriqueJeton{
 			public:
 				/**
 				  * Constructeur de la classe FabriqueJeton
-                  *
                   */
 				FabriqueJeton();
 				
 				/**
-				  * Retourne le jeton associe a la parenthese ouvrante.
+				  * Retourne le jeton associé à la parenthèse ouvrante.
                   *
-                  * @return le jeton associe a la parenthese ouvrante.
+                  * @return le jeton associé à la parenthèse ouvrante.
                   */
 				static const Jeton parentheseOuvrante();
 				
 				/**
-				  * Retourne le jeton associe a la parenthese fermante.
+				  * Retourne le jeton associé à la parenthèse fermante.
                   *
-                  * @return le jeton associe a la parenthese fermante.
+                  * @return le jeton associé à la parenthèse fermante.
                   */
 				static const Jeton parentheseFermante();
 				
 				/**
-				  * Retourne le jeton associe au signe inferieur.
+				  * Retourne le jeton associé au signe inférieur.
                   *
-                  * @return le jeton associe au signe inferieur.
+                  * @return le jeton associé au signe inférieur.
                   */
 				static const Jeton inferieur();
 				
 				/**
-				  * Retourne le jeton associe au signe superieur.
+				  * Retourne le jeton associé au signe supérieur.
                   *
-                  * @return le jeton associe au signe inferieur.
+                  * @return le jeton associé au signe supérieur.
                   */
 				static const Jeton superieur();
 				
 				/**
-				  * Retourne le jeton associe a l'operateur plus.
+				  * Retourne le jeton associé à l'opérateur plus.
                   *
-                  * @return le jeton associe a l'operateur plus.
+                  * @return le jeton associé à l'opérateur plus.
                   */
 				static const Jeton operateurPlus();
 				
 				/**
-				  * Retourne le jeton associe a l'operateur moins.
+				  * Retourne le jeton associé à l'opérateur moins.
                   *
-                  * @return le jeton associe a l'operateur moins.
+                  * @return le jeton associé à l'opérateur moins.
                   */
 				static const Jeton operateurMoins();
 				
 				/**
-				  * Retourne le jeton associe a l'operateur multiplie.
+				  * Retourne le jeton associé à l'opérateur multiplié.
                   *
-                  * @return le jeton associe a l'operateur multiplie.
+                  * @return le jeton associé à l'opérateur multiplié.
                   */
 				static const Jeton operateurMul();
 				
 				/**
-				  * Retourne le jeton associe a l'operateur divise.
+				  * Retourne le jeton associé à l'opérateur divisé.
                   *
-                  * @return le jeton associe a l'operateur divise.
+                  * @return le jeton associé à l'opérateur divisé.
                   */
 				static const Jeton operateurDiv();
 				
 				/**
-				  * Retourne le jeton associe au signe egal.
+				  * Retourne le jeton associé au signe égal.
                   *
-                  * @return le jeton associe au signe egal.
+                  * @return le jeton associé au signe égal.
                   */
 				static const Jeton egal();
 				
 				/**
-				  * Retourne le jeton associe au point virgule.
+				  * Retourne le jeton associé au point virgule.
                   *
-                  * @return le jeton associe au point virgule.
+                  * @return le jeton associé au point virgule.
                   */
 				static const Jeton finExpression();
 				
 				/**
-				  * Retourne le jeton associe au si.
+				  * Retourne le jeton associé au si.
                   *
-                  * @return le jeton associe au si.
+                  * @return le jeton associé au si.
                   */
 				static const Jeton si();
 				
 				/**
-				  * Retourne le jeton associe au non.
+				  * Retourne le jeton associé au non.
                   *
-                  * @return le jeton associe au non.
+                  * @return le jeton associé au non.
                   */
 				static const Jeton non();
 				
 				/**
-				  * Retourne le jeton associe au alors.
+				  * Retourne le jeton associé au et.
                   *
-                  * @return le jeton associe au alors.
+                  * @return le jeton associé au et.
                   */
 				static const Jeton et();
 				
 				/**
-				  * Retourne le jeton associe au alors.
+				  * Retourne le jeton associé au alors.
                   *
-                  * @return le jeton associe au alors.
+                  * @return le jeton associé au alors.
                   */
 				static const Jeton alors();
 				
 				/**
-				  * Retourne le jeton associe a la virgule.
+				  * Retourne le jeton associé à la virgule.
                   *
-                  * @return le jeton associe a la virgule.
+                  * @return le jeton associé à la virgule.
                   */
 				static const Jeton separateur();
 				
 				/**
-				  * Retourne le jeton associe a la fin du fichier.
+				  * Retourne le jeton associé à la fin du fichier.
                   *
-                  * @return le jeton associe a la fin du fichier.
+                  * @return le jeton associé à la fin du fichier.
                   */
 				static const Jeton finFichier();
 				
 				/**
-				  * Retourne le jeton associe a un superieur ou egal.
+				  * Retourne le jeton associé à un supérieur ou égal.
                   *
-                  * @return le jeton associe a un superieur ou egal.
+                  * @return le jeton associé à un supérieur ou égal.
                   */
 				static const Jeton supEgal();
 
 				/**
-				  * Retourne le jeton associe a un inferieur ou egal.
+				  * Retourne le jeton associé à un inférieur ou égal.
                   *
-                  * @return le jeton associe a un inferieur ou egal.
+                  * @return le jeton associé à un inférieur ou égal.
                   */
 				static const Jeton infEgal();
 
 				/**
-				  * Retourne le jeton associe a un different.
+				  * Retourne le jeton associé à un différent.
                   *
-                  * @return le jeton associe a un different.
+                  * @return le jeton associé à un différent.
                   */
 				static const Jeton different();
 
 				/**
-				  * Retourne le jeton associe a faits_booleens.
+				  * Retourne le jeton associé à faits_booleens.
                   *
-                  * @return le jeton associe a faits_booleens.
+                  * @return le jeton associé à faits_booleens.
                   */
 				static const Jeton faitBool();
 
 				/**
-				  * Retourne le jeton associe a faits_symboliques.
+				  * Retourne le jeton associé à faits_symboliques.
                   *
-                  * @return le jeton associe a faits_symboliques.
+                  * @return le jeton associé à faits_symboliques.
                   */
 				static const Jeton faitSymb();
 
 				/**
-				  * Retourne le jeton associe a faits_entiers.
+				  * Retourne le jeton associé a faits_entiers.
                   *
-                  * @return le jeton associe a faits_entiers.
+                  * @return le jeton associé a faits_entiers.
                   */
 				static const Jeton faitEnt();
 
 				/**
-				  * Retourne le jeton associe a un entier.
+				  * Retourne le jeton associé à un entier.
                   *
-                  * @return le jeton associe a un entier.
+                  * @return le jeton associé à un entier.
                   */
 				static const Jeton entier(const std::string & representation);
 				
 				/**
-				  * Retourne le jeton associe a un identificateur.
+				  * Retourne le jeton associé à un identificateur.
                   *
-                  * @return le jeton associe a un identificateur.
+                  * @return le jeton associé à un identificateur.
                   */
 				static const Jeton identificateur(const std::string & representation);
 				
 				/**
-				  * Retourne le jeton associe a un inconnu.
+				  * Retourne le jeton associé à un inconnu.
                   *
-                  * @return le jeton associe a un inconnu.
+                  * @return le jeton associé à un inconnu.
                   */
 				static const Jeton inconnu(const std::string & representation);
 
@@ -205,47 +214,47 @@
 			protected:
 			
 				/**
-				 * jeton parenthese ouvrante.
+				 * jeton parenthèse ouvrante.
 				 */
 				static const Jeton parentheseOuvrante_; 
 				
 				/**
-				 * jeton parenthese fermante.
+				 * jeton parenthèse fermante.
 				 */
 				static const Jeton parentheseFermante_; 
 				
 				/**
-				 * jeton superieur.
+				 * jeton supérieur.
 				 */
 				static const Jeton superieur_;
 				
 				/**
-				 * jeton inferieur.
+				 * jeton inférieur.
 				 */
 				static const Jeton inferieur_; 
 				
 				/**
-				 * jeton operateur plus.
+				 * jeton opérateur plus.
 				 */
 				static const Jeton operateurPlus_; 
 				
 				/**
-				 * jeton operateur moins.
+				 * jeton opérateur moins.
 				 */
 				static const Jeton operateurMoins_;
 				
 				/**
-				 * jeton operateur multiplie.
+				 * jeton opérateur multiplie.
 				 */
 				static const Jeton operateurMul_; 
 				
 				/**
-				 * jeton operateur divise.
+				 * jeton opérateur divise.
 				 */
 				static const Jeton operateurDiv_;
 				
 				/**
-				 * jeton egal.
+				 * jeton égal.
 				 */
 				static const Jeton egal_;
 				
@@ -274,7 +283,7 @@
 				static const Jeton alors_;
 				
 				/**
-				 * jeton separateur.
+				 * jeton séparateur.
 				 */
 				static const Jeton separateur_;
 				
@@ -284,17 +293,17 @@
 				static const Jeton finFichier_;
 
 				/**
-				 * jeton sueprieur ou egal.
+				 * jeton supérieur ou égal.
 				 */
 				static const Jeton supEgal_;
 
 				/**
-				 * jeton inferieur ou egal.
+				 * jeton inférieur ou égal.
 				 */
 				static const Jeton infEgal_;
 
 				/**
-				 * jeton different.
+				 * jeton différent.
 				 */
 				static const Jeton different_;
 				

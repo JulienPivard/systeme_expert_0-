@@ -1,7 +1,7 @@
 /**
  * @file FormeAbstraitePremisse.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormeAbstraitePremisse.cpp.
  * Définit la classe abstraite FormeAbstraitePremisse.
@@ -17,11 +17,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {

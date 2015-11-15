@@ -1,47 +1,49 @@
+/**
+ * @file builder.hpp
+ * @brief header.
+ * @author PIVARD Julien, CLECH Sandy.
+ *
+ * Header pour le fichier builder.cpp.
+ * Définit la classe Builder.
+ * */
+
 #ifndef Builder_hpp
 #define Builder_hpp
 
-
 #include "syntaxique.hpp"
 
-/**
- * @namespace sysexp
- *
- **/
+/// Paquetage maitre du système expert.
  namespace sysexp{
 	 /**
 	   * @namespace sysexp::builders
-	   *
+	   * namespace builders de l'application.
 	  **/
 	 namespace builders{
 		
 		/**
-		 * @class ConcreteBuilderLorraine 
-		 * Classe representant le builder de la grammaire Lorraine.
-		 *
+		 * @class Builder builder.hpp
+		 * @brief Permet de construire une base de règle.
+		 * Classe représentant un builder d'une grammaire.
 		 */
 		class Builder{
 
 			public:
 				/**
-				* methode abstraite qui constuit un jeu de regle
+				* Méthode abstraite qui constuit un jeu de règle.
 				*/
 				virtual void construireJeuDeRegle() = 0;
 				
 				/**
-				*
-				* retourne un jeu de regle complet.
-				*  @return une base de regle d'une grammaire.
-				*
+				* Méthode abstraite retournant une base de règle construite.
+				*  @return une base de règle d'une grammaire.
 				*/
 				virtual sysexp::modele::RegleAbstraite::PtrRegleAbstraite getResult() const = 0;
 				
 			public:
 				/**
-				* destructeur.
+				* Destructeur.
 				*/
 				virtual ~Builder() = default;
-			
 		};
 	}
 }

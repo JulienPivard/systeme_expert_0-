@@ -1,7 +1,7 @@
 /**
  * @file FormeConclusionSymboliqueFait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormeConclusionSymboliqueFait.cpp.
  * Définit la classe concrète FormeConclusionSymboliqueFait.
@@ -17,11 +17,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
@@ -59,7 +61,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion symbolique.
+                 * Le visiteur qui va évaluer la conclusion symbolique.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );

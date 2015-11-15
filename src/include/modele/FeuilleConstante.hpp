@@ -1,7 +1,7 @@
 /**
  * @file FeuilleConstante.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FeuilleConstante.cpp.
  * Définit la classe concrète FeuilleConstante.
@@ -18,18 +18,20 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
 
         /**
         * @class FeuilleConstante FeuilleConstante.hpp
-        * @brief Permet de représenter une valeur, seule ou dans une partie gauche ou droit d'une opération.
+        * @brief Permet de représenter une valeur, seule ou dans une partie gauche ou droite d'une opération.
         *
         * Déclaration de la classe FeuilleConstante.
         * */
@@ -59,7 +61,7 @@ namespace sysexp
                  * Permet d'évaluer la valeur de l'objet.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return La @ref valeur_ de la feuille.
                  * */

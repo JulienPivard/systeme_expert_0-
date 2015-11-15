@@ -1,7 +1,7 @@
 /**
  * @file ExceptionDivParZero.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier ExceptionDivParZero.cpp.
  * Définit la classe d'exception concrète ExceptionDivParZero.
@@ -15,11 +15,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {

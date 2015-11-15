@@ -1,7 +1,7 @@
 /**
  * @file FormeConclusionSymboliqueConstante.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormeConclusionSymboliqueConstante.cpp.
  * Définit la classe concrète FormeConclusionSymboliqueConstante.
@@ -17,11 +17,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace modele de l'application.
      * */
     namespace modele
     {
@@ -51,7 +53,7 @@ namespace sysexp
                  * @param[in] nom
                  * Le @ref nom_ de la conclusion symbolique.
                  * @param[in] valeur
-                 * La @ref valeur_ qui vas être assigné au fait.
+                 * La @ref valeur_ qui va être assignée au fait.
                  * */
                 FormeConclusionSymboliqueConstante( const std::string & nom, const std::string & valeur );
 
@@ -59,7 +61,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion symbolique.
+                 * Le visiteur qui va évaluer la conclusion symbolique.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
@@ -74,7 +76,7 @@ namespace sysexp
             protected:
 
                 /**
-                 * La valeur constante qui vas être assigné à la valeur.
+                 * La valeur constante qui va être assignée à la valeur.
                  * */
                 const std::string valeur_;
 

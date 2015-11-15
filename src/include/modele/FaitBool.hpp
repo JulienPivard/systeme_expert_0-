@@ -16,17 +16,19 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
     * @namespace sysexp::modele
+    * // namespace modele de l'application.
     * */
     namespace modele
     {
         /**
          * @class FaitBool FaitBool.hpp
-         * @brief Représente un fait booléen. Sa valeur ne peut pas être modifié.
+         * @brief Représente un fait booléen. Sa valeur ne peut pas être modifiée.
          *
          * Déclaration de la classe concrète FaitBool.
          * Cette classe permet de représenter un fait booléen et sa valeur booléenne.

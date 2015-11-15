@@ -59,7 +59,7 @@ int main( int argc, char* argv[] )
             << " nomFichierReglesLorraine."
             << std::endl;
     }
-    if( argc != 2 )
+    else if( argc != 2 )
     {
         std::cerr << "Trop d'argument, un seul attendu."
             << std::endl;

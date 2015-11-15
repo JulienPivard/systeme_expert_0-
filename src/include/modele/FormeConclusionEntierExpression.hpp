@@ -1,7 +1,7 @@
 /**
  * @file FormeConclusionEntierExpression.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormeConclusionEntierExpression.cpp.
  * Définit la classe concrète FormeConclusionEntierExpression.
@@ -19,11 +19,13 @@
 
 /**
  * @namespace sysexp
+ * // namespace global de l'application.
  * */
 namespace sysexp
 {
     /**
      * @namespace sysexp::modele
+     * // namespace global de l'application.
      * */
     namespace modele
     {
@@ -61,7 +63,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer la conclusion entière.
+                 * Le visiteur qui va évaluer la conclusion entière.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
@@ -76,7 +78,7 @@ namespace sysexp
             protected:
 
                 /**
-                 * La valeur qui vas être assignée sous forme d'une expression.
+                 * La valeur qui va être assignée sous forme d'une expression.
                  * */
                 const ValeurAbstraite::PtrValeur valeur_;
 

@@ -1,6 +1,5 @@
 #include "directeur.hpp"
 
-
  namespace sysexp{
 	 
 	 namespace builders{
