@@ -12,16 +12,12 @@
 
 #include "syntaxique.hpp"
 
-/// Paquetage maitre du système expert.
- namespace sysexp{
-	 /**
-	   * @namespace sysexp::builders
-	   * namespace builders de l'application.
-	  **/
-	 namespace builders{
+
+namespace sysexp{
+	
+	namespace builders{
 		
 		/**
-		 * @class Builder builder.hpp
 		 * @brief Permet de construire une base de règle.
 		 * Classe représentant un builder d'une grammaire.
 		 */

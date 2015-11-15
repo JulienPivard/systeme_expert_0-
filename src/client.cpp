@@ -77,7 +77,7 @@ int main( int argc, char* argv[] )
     }
 
     // Mise en place du monteur de règles.
-    sysexp::builders::ConcreteBuilderLorraine::PtrConcreteBuilderLorraine monteurRegle( new sysexp::builders::ConcreteBuilderLorraine( baseDeConnaissances ) );
+    sysexp::builders::lorraine::ConcreteBuilderLorraine::PtrConcreteBuilderLorraine monteurRegle( new sysexp::builders::lorraine::ConcreteBuilderLorraine( baseDeConnaissances ) );
     sysexp::builders::Directeur directeur = sysexp::builders::Directeur( monteurRegle );
     // Construction de la base de règles.
     directeur.construire();

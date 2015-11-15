@@ -12,19 +12,15 @@
 
 #include "builder.hpp"
 
- /// Paquetage maitre du système expert.
- namespace sysexp{
-	 /**
-	   * @namespace sysexp::builders
-	   * // namespace builders de l'application.
-	  **/
-	 namespace builders{
+/// Paquetage maitre du système expert.
+namespace sysexp{
+	
+	/// Paquetage builders du système expert.
+	namespace builders{
 
 		/**
-		 * @class Directeur directeur.hpp
 		 * @brief Directeur de la construction de la base de règles.
 		 * Classe représentant le directeur du builder.
-		 *
 		 */
 		class Directeur {
 			public:
