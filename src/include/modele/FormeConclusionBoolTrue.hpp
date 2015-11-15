@@ -15,21 +15,13 @@
 
 #include "FormeAbstraiteConclusion.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormeConclusionBoolTrue FormeConclusionBoolTrue.hpp
          * @brief Représente une conclusion booléenne vraie.
          *
          * Déclaration de la classe FormeConclusionBoolTrue.

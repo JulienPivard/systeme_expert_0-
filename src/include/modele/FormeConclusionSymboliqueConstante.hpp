@@ -15,21 +15,14 @@
 
 #include "FormeAbstraiteConclusion.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormeConclusionSymboliqueConstante FormeConclusionSymboliqueConstante.hpp
          * @brief Représente une conclusion symbolique de valeur constante.
          *
          * Déclaration de la classe FormeConclusionSymboliqueConstante.

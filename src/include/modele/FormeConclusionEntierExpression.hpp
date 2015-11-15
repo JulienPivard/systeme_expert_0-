@@ -17,25 +17,18 @@
 #include "ValeurAbstraite.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace global de l'application.
-     * */
+    
     namespace modele
     {
 
-        /**
-            * @class FormeConclusionEntierExpression FormeConclusionEntierExpression.hpp
-            * @brief Représente une conclusion entière avec une expression mathématique.
-            *
-            * Déclaration de la classe FormeConclusionEntierExpression.
-            * */
+        /**   
+        * @brief Représente une conclusion entière avec une expression mathématique.
+        *
+        * Déclaration de la classe FormeConclusionEntierExpression.
+        * */
         class FormeConclusionEntierExpression : public FormeAbstraiteConclusion
         {
 

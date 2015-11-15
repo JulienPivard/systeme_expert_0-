@@ -1,7 +1,7 @@
 /**
  * @file OperateurAbstrait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier OperateurAbstrait.cpp.
  * Définit la classe abstraite OperateurAbstrait.
@@ -15,19 +15,14 @@
 
 #include "ValeurAbstraite.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class OperateurAbstrait OperateurAbstrait.hpp
         * @brief Un squelette d'opérateur abstrait pour les expressions entière.
         *
         * Déclaration de la classe OperateurAbstrait.

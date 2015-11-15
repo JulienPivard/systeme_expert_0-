@@ -58,6 +58,7 @@ int main( int argc, char* argv[] )
             << argv[0]
             << " nomFichierReglesLorraine."
             << std::endl;
+        return EXIT_FAILURE;
     }
     else if( argc != 2 )
     {

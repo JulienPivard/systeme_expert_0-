@@ -22,7 +22,6 @@ namespace sysexp{
 		
 			/**
 			 * @brief Représente le builder de le grammaire Lorraine.
-			 * Classe représentant le builder de la grammaire Lorraine.
 			 */
 			class ConcreteBuilderLorraine : public Builder {
 				public:
@@ -48,7 +47,6 @@ namespace sysexp{
 					void construireJeuDeRegle() override;
 					
 					/**
-					* Retourne le jeu de règle complet.
 					*  @return une base de règle de la grammaire lorraine.
 					*/
 					sysexp::modele::RegleAbstraite::PtrRegleAbstraite getResult() const override;

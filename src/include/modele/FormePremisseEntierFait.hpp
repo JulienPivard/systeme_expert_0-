@@ -1,7 +1,7 @@
 /**
  * @file FormePremisseEntierFait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormePremisseEntierFait.cpp.
  * Définit la classe concrète FormePremisseEntierFait.
@@ -16,19 +16,14 @@
 #include "FormeAbstraitePremisse.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormePremisseEntierFait FormePremisseEntierFait.hpp
          * @brief Représente la comparaison de la valeur d'un fait avec celle d'un autre fait.
          *
          * Déclaration de la classe FormePremisseEntierFait.
@@ -56,7 +51,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer le prémisse entier,
+                 * Le visiteur qui va évaluer la prémisse entiere,
                  * de façon valeurFait signe valeurAutreFait.
                  * @see VisiteurFormeAbstrait
                  * */

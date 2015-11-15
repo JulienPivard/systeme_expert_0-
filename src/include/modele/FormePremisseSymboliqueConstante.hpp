@@ -1,7 +1,7 @@
 /**
  * @file FormePremisseSymboliqueConstante.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier FormePremisseSymboliqueConstante.cpp.
  * Définit la classe concrète FormePremisseSymboliqueConstante.
@@ -16,19 +16,14 @@
 #include "FormeAbstraitePremisse.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormePremisseSymboliqueConstante FormePremisseSymboliqueConstante.hpp
          * @brief Représente la comparaison de la valeur d'un fait symbolique et d'une chaine de caractère.
          *
          * Déclaration de la classe FormePremisseSymboliqueConstante.
@@ -56,8 +51,8 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer le prémisse entier,
-                 * de façon nomFait signe valeurExpression.
+                 * Le visiteur qui va évaluer la prémisse,
+                 * de façon nomFait signe valeur.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );

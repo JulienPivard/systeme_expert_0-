@@ -15,16 +15,10 @@
 
 #include "FormeAbstraite.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
@@ -128,7 +122,6 @@ namespace sysexp
 
 
         /**
-         * @class FormeAbstraitePremisse FormeAbstraitePremisse.hpp
          * @brief Le squelette de représentation d'une prémisse.
          *
          * Déclaration de la classe FormeAbstraitePremisse.

@@ -13,23 +13,15 @@
 
 #include <stdexcept>
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class ExceptionFaitDejaAjoute ExceptionFaitDejaAjoute.hpp
          * @brief On a tenté de modifier un fait déjà ajouté à la base de faits.
-         *
          * Déclaration de l'exception pour signaler qu'un fait à déjà été ajouté à la base de faits.
          * */
         class ExceptionFaitDejaAjoute : public std::runtime_error

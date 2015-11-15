@@ -27,7 +27,6 @@ namespace sysexp{
 		
 			/**
 			  * @brief Représente un analyseur lexical de la grammaire lorraine.
-			  * Classe représentant un analyseur lexical de la grammaire lorraine.
 	          */
 	          class Lexical{
 				public:
@@ -63,7 +62,6 @@ namespace sysexp{
 					int lireNumeroLigne();
 					
 					/**
-					 * Permet d'obtenir le jeton suivant.
 					 * @return le jeton suivant.
 					 */
 					const Jeton suivant();

@@ -1,7 +1,7 @@
 /**
  * @file FormePremisseSymboliqueFait.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier FormePremisseSymboliqueFait.cpp.
  * Définit la classe concrète FormePremisseSymboliqueFait.
@@ -16,19 +16,14 @@
 #include "FormeAbstraitePremisse.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormePremisseSymboliqueFait FormePremisseSymboliqueFait.hpp
          * @brief Représente la comparaison de la valeur d'un fait symbolique avec celle d'un autre fait symbolique.
          *
          * Déclaration de la classe FormePremisseSymboliqueFait.
@@ -56,8 +51,8 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer le prémisse entier,
-                 * de façon nomFait signe valeurExpression.
+                 * Le visiteur qui va évaluer la prémisse,
+                 * de façon nomFait signe valeur.
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );

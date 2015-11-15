@@ -13,23 +13,15 @@
 
 #include <stdexcept>
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class ExceptionDivParZero ExceptionDivParZero.hpp
          * @brief Une ValeurAbstraite à tenté une division par zéro.
-         *
          * Déclaration de l'exception pour la division par zéro.
          * */
         class ExceptionDivParZero : public std::runtime_error

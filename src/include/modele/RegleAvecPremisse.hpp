@@ -1,7 +1,7 @@
 /**
  * @file RegleAvecPremisse.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier RegleAvecPremisse.cpp.
  * Définit la classe abstraite RegleAvecPremisse.
@@ -18,19 +18,14 @@
 #include "FormeAbstraitePremisse.hpp"
 #include "VisiteurForme.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class RegleAvecPremisse RegleAvecPremisse.hpp
          * @brief Représente une règle avec prémisses.
          *
          * Déclaration de la classe RegleAvecPremisse.
@@ -63,9 +58,9 @@ namespace sysexp
                  * Le @ref numeroRegle_ de la règle.
                  * @param[in] conclusion
                  * La @ref conclusion_ de la règle à ajouter
-                 * dans la base de fait une fois la règle vérifiée.
+                 * dans la base de faits une fois la règle vérifiée.
                  * @param[in] premisse
-                 * La premisse qui sert d'hypothèse, d'autres peuvent être ajouté avec @ref ajouterPremisse.
+                 * La premisse qui sert d'hypothèse, d'autres peuvent être ajoutées avec @ref ajouterPremisse.
                  *
                  * @note N'utiliser traceExecution que pour le debogage ! Laissez le champ vide sinon.
                  * */
@@ -75,7 +70,7 @@ namespace sysexp
 
                 /**
                  * Méthode pour ajouter une prémisse.
-                 * Le liens logique entre les prémisses est l'opérateur logique and.
+                 * Le lien logique entre les prémisses est l'opérateur logique and.
                  *
                  * @param[in] premisse
                  * La prémisse à ajouter aux hypothèses de la règle.
@@ -86,17 +81,17 @@ namespace sysexp
                  * Parcours la base de règle.
                  *
                  * @param[in, out] base
-                 * La base de fait utilisé pour évaluer les règles.
+                 * La base de faits utilisée pour évaluer les règles.
                  *
                  * @return Une règle au moins à été déclenchée.
                  * */
                 bool iter( const BaseFait::PtrBaseFait & base );
 
                 /**
-                 * Parcours les prémisses @ref premisses_ pour vérifier les prémisses par rapport à la base de fait.
+                 * Parcoure les prémisses @ref premisses_ pour vérifier les prémisses par rapport à la base de faits.
                  *
                  * @param[in] base
-                 * La base de fait utilisé pour vérifier la validité des faits.
+                 * La base de faits utilisée pour vérifier la validité des faits.
                  *
                  * @return Toutes les prémisses sont vérifiées.
                  * */
@@ -113,7 +108,7 @@ namespace sysexp
 
                 /**
                  * La liste des prémisses.
-                 * Le liens logique entre les prémisses est le and.
+                 * Le lien logique entre les prémisses est le and.
                  * */
                 Premisses premisses_;
 

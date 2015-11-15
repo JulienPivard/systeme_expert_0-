@@ -1,7 +1,7 @@
 /**
  * @file OperateurMoins.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier OperateurMoins.cpp.
  * Définit la classe concrète OperateurMoins.
@@ -15,19 +15,14 @@
 
 #include "OperateurAbstrait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class OperateurMoins OperateurMoins.hpp
          * @brief Représente une opération de soustraction.
          *
          * Déclaration de la classe OperateurMoins.
@@ -62,7 +57,7 @@ namespace sysexp
                  * Permet d'évaluer la valeur de l'opération soustraction.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return La résultat de l'opération de soustraction.
                  * */

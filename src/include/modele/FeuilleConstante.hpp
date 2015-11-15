@@ -16,21 +16,14 @@
 #include "BaseFait.hpp"
 #include "ValeurAbstraite.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class FeuilleConstante FeuilleConstante.hpp
         * @brief Permet de représenter une valeur, seule ou dans une partie gauche ou droite d'une opération.
         *
         * Déclaration de la classe FeuilleConstante.

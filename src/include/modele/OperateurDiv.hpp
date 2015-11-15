@@ -1,7 +1,7 @@
 /**
  * @file OperateurDiv.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier OperateurDiv.cpp.
  * Définit la classe concrète OperateurDiv.
@@ -14,19 +14,14 @@
 #include "OperateurAbstrait.hpp"
 #include "ExceptionDivParZero.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class OperateurDiv OperateurDiv.hpp
          * @brief Représente une opération de division.
          *
          * Déclaration de la classe OperateurDiv.
@@ -61,12 +56,12 @@ namespace sysexp
                  * Permet d'évaluer la valeur de l'opération division.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return La résultat de l'opération de division.
                  *
                  * @throws ExceptionDivParZero
-                 * La partie droite de la division est 0. L'opération ne peut pas être évalué.
+                 * La partie droite de la division est 0. L'opération ne peut pas être évaluée.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
 

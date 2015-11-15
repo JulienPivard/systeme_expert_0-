@@ -31,7 +31,6 @@ namespace sysexp{
 
 			/**
 			 * @brief Représente un jeton de la grammaire Lorraine.
-			 * Classe représentant un jeton de la grammaire.
 			 */
 			class Jeton{
 

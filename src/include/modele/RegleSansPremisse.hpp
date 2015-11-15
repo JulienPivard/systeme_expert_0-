@@ -1,7 +1,7 @@
 /**
  * @file RegleSansPremisse.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier RegleSansPremisse.cpp.
  * Définit la classe concrète RegleSansPremisse.
@@ -17,19 +17,14 @@
 #include "FormeAbstraiteConclusion.hpp"
 #include "VisiteurForme.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class RegleSansPremisse RegleSansPremisse.hpp
          * @brief Représente une règle sans prémisse.
          *
          * Déclaration de la classe RegleSansPremisse.
@@ -54,10 +49,10 @@ namespace sysexp
                         const FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion & conclusion );
 
                 /**
-                 * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.
+                 * Vérifie que toutes les prémisses sont vérifiées par rapport à la base de faits.
                  *
                  * @param[in] base
-                 * La base de fait utilisé pour vérifier les prémisses.
+                 * La base de faits utilisée pour vérifier les prémisses.
                  *
                  * @return Toutes les prémisses sont vérifiées.
                  * */

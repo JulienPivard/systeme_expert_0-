@@ -20,21 +20,14 @@
 #include "ValeurAbstraite.hpp"
 #include "ExceptionFaitInconnu.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class FeuilleFait FeuilleFait.hpp
         * @brief Permet de représenter une variable, seule ou dans une partie gauche ou droite d'une opération.
         *
         * Déclaration de la classe FeuilleFait.

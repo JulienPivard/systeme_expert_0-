@@ -15,21 +15,14 @@
 #include <memory>
 #include "VisiteurFormeAbstrait.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormeAbstraite FormeAbstraite.hpp
          * @brief Squelette de représentation d'une prémisse ou d'un conclusion.
          *
          * Déclaration de la classe abstraite FormeAbstraite.

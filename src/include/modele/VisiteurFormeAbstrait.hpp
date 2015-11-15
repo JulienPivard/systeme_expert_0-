@@ -17,14 +17,10 @@
 #include "BaseFait.hpp"
 #include "ExceptionFaitDejaAjoute.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
@@ -132,7 +128,7 @@ namespace sysexp
 
         /**
          * @class VisiteurFormeAbstrait VisiteurFormeAbstrait.hpp
-         * @brief Le squelette du visiteur de règle avec ou sans prémisse.
+         * @brief Le squelette du visiteur de règles avec ou sans prémisse.
          *
          * Déclaration de la classe VisiteurFormeAbstrait.
          * */
@@ -169,7 +165,7 @@ namespace sysexp
                 /**
                  * Accesseur
                  *
-                 * @return Au moins une conclusion à été ajoutée à la base de fait.
+                 * @return Au moins une conclusion à été ajoutée à la base de faits.
                  * voir @ref conclusionDeclenchee_
                  * */
                 bool getConclusionDeclenchee() const;
@@ -195,8 +191,8 @@ namespace sysexp
             public:
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -205,8 +201,8 @@ namespace sysexp
                 virtual void visiter( const FormeConclusionBoolTrue * conclusion ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -215,8 +211,8 @@ namespace sysexp
                 virtual void visiter( const FormeConclusionBoolFalse * conclusion ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -225,8 +221,8 @@ namespace sysexp
                 virtual void visiter( const FormeConclusionEntierExpression * conclusion ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -235,8 +231,8 @@ namespace sysexp
                 virtual void visiter( const FormeConclusionEntierFait * conclusion ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -245,8 +241,8 @@ namespace sysexp
                 virtual void visiter( const FormeConclusionSymboliqueConstante * conclusion ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -257,8 +253,8 @@ namespace sysexp
             public:
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -267,8 +263,8 @@ namespace sysexp
                 virtual void visiter( const FormePremisseBoolTrue * premisse ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -277,8 +273,8 @@ namespace sysexp
                 virtual void visiter( const FormePremisseBoolFalse * premisse ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -287,8 +283,8 @@ namespace sysexp
                 virtual void visiter( const FormePremisseSymboliqueConstante * premisse ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -297,8 +293,8 @@ namespace sysexp
                 virtual void visiter( const FormePremisseSymboliqueFait * premisse ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -307,8 +303,8 @@ namespace sysexp
                 virtual void visiter( const FormePremisseEntierExpression * premisse ) = 0;
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] premisse
                  * La conclusion que l'on veut visiter.
@@ -326,16 +322,16 @@ namespace sysexp
             protected:
 
                 /**
-                 * Ajoute un fait à la base de fait.
+                 * Ajoute un fait à la base de faits.
                  * @param[in] fait
-                 * Le fait que l'on veut ajouter à la base de fait.
+                 * Le fait que l'on veut ajouter à la base de faits.
                  * */
                 void AjouterUnFait( const FaitAbstrait::PtrFaitAbstrait & fait );
 
             protected:
 
                 /**
-                 * La base de fait où on vas ajouter les conclusions déclenchée.
+                 * La base de faits où on va ajouter les conclusions déclenchées.
                  * */
                 BaseFait::PtrBaseFait baseFait_;
 
@@ -345,7 +341,7 @@ namespace sysexp
                 bool premisseVerifiee_;
 
                 /**
-                 * Permet de savoir si on a ajouté une conclusion à la base de fait.
+                 * Permet de savoir si on a ajouté une conclusion à la base de faits.
                  * */
                 bool conclusionDeclenchee_;
 

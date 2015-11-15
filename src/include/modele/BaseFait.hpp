@@ -25,25 +25,15 @@
 #include "ExceptionFaitDejaAjoute.hpp"
 #include "ExceptionDivParZero.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+
     namespace modele
     {
 
         /**
-        * @class BaseFait BaseFait.hpp
         * @brief Permet de gérer les faits facilement et d'afficher la base de faits.
-        *
-        * Déclaration de la classe BaseFait.
-        * Cette classe permet d'accéder et de stocker les faits.
         * */
         class BaseFait
         {

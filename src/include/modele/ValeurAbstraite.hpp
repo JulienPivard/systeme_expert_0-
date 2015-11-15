@@ -14,19 +14,14 @@
 
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+   
     namespace modele
     {
 
         /**
-         * @class ValeurAbstraite ValeurAbstraite.hpp
          * @brief Le squelette d'une expression de valeur entière.
          *
          * Déclaration de la classe abstraite Valeur.
@@ -39,7 +34,7 @@ namespace sysexp
                 /**
                  * @typedef PtrValeur
                  *
-                 * La valeur stocké sous forme de shared_ptr.
+                 * La valeur stockée sous forme de shared_ptr.
                  * */
                 typedef std::shared_ptr< ValeurAbstraite > PtrValeur;
 
@@ -49,7 +44,7 @@ namespace sysexp
                  * Permet d'évaluer la valeur.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return La valeur de l'opération ou de la feuille.
                  * */

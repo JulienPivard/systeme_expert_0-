@@ -1,7 +1,7 @@
 /**
  * @file MoteurInference.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier MoteurInference.cpp.
  * Définit la classe MoteurInference.
@@ -14,21 +14,16 @@
 #include "RegleAbstraite.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class MoteurInference MoteurInference.hpp
-         * @brief Le moteur d'inférence qui vas s'exécuter sur la base de règles,
-         * pour produire la base de fait.
+         * @brief Le moteur d'inférence qui va s'exécuter sur la base de règles,
+         * pour produire la base de faits.
          *
          * Déclaration de la classe MoteurInference.
          * */
@@ -41,7 +36,7 @@ namespace sysexp
                  * Constructeur logique
                  *
                  * @param[in] baseDeRegles
-                 * La base de règles qui vas être utilisé pour produire la base de faits.
+                 * La base de règles qui va être utilisé pour produire la base de faits.
                  * */
                 MoteurInference( const RegleAbstraite::PtrRegleAbstraite & baseDeRegles );
 
@@ -51,7 +46,7 @@ namespace sysexp
                 void creerInstanceBaseFaits();
 
                 /**
-                 * Analyse la base de règles, pour produire la base de fait.
+                 * Analyse la base de règles, pour produire la base de faits.
                  * */
                 void analyserBaseRegles();
 
@@ -63,7 +58,7 @@ namespace sysexp
             protected:
 
                 /**
-                 * La base de fait.
+                 * La base de faits.
                  * */
                 BaseFait::PtrBaseFait baseFaits_;
 

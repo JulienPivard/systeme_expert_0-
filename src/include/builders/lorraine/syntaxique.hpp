@@ -41,7 +41,6 @@
 		
 			/**
 			 * @brief Représente un analyseur syntaxique et sémantique de la grammaire lorraine.
-			 * Classe representant un analyseur syntaxique de la grammaire.
 			 */
 			class Syntaxique{
 				

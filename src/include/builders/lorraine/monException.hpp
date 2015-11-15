@@ -23,8 +23,6 @@ namespace sysexp{
 		namespace lorraine{
 			/**
 			  * @brief Représente une exception.
-			  * Classe représentant une exception.
-	          * 
 	          */
 	        class MonException : public std::exception {
 	        	public:
@@ -34,7 +32,6 @@ namespace sysexp{
 	        		MonException(Lexical & lexical, std::string erreur);
 	        	public:
 					/**
-					* Chaine de caractère renvoyée lors d'une exception.
 					* @return une chaine de caractère décrivant l'exception.
 					*/ 
 	        		const char* what() const throw();

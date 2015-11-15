@@ -13,23 +13,15 @@
 
 #include <stdexcept>
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class ExceptionFaitInconnu ExceptionFaitInconnu.hpp
         * @brief Le fait demandé n'a pas pu être trouvé dans la base de faits.
-        *
         * Déclaration de l'exception pour les faits non trouvés.
         * */
         class ExceptionFaitInconnu : public std::runtime_error

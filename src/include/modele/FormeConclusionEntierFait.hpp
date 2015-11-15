@@ -15,21 +15,14 @@
 
 #include "FormeAbstraiteConclusion.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class FormeConclusionEntierFait FormeConclusionEntierFait.hpp
         * @brief Représente une conclusion entière dont la valeur dépend de celle d'un fait entier.
         *
         * Déclaration de la classe FormeConclusionEntierFait.

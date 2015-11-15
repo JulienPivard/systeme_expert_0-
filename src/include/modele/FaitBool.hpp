@@ -14,16 +14,10 @@
 
 #include "FaitAbstrait.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-    * @namespace sysexp::modele
-    * // namespace modele de l'application.
-    * */
+    
     namespace modele
     {
         /**

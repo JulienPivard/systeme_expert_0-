@@ -1,7 +1,7 @@
 /**
  * @file FormePremisseEntierExpression.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier FormePremisseEntierExpression.cpp.
  * Définit la classe concrète FormePremisseEntierExpression.
@@ -17,19 +17,14 @@
 #include "ValeurAbstraite.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class FormePremisseEntierExpression FormePremisseEntierExpression.hpp
          * @brief Représente la comparaison de la valeur d'un fait et d'une expression.
          *
          * Déclaration de la classe FormePremisseEntierExpression.
@@ -57,7 +52,7 @@ namespace sysexp
                  * Méthode de visite.
                  *
                  * @param[in, out] visiteur
-                 * Le visiteur qui vas évaluer le prémisse entier,
+                 * Le visiteur qui va évaluer la prémisse entiere,
                  * de façon nomFait signe valeurExpression.
                  * @see VisiteurFormeAbstrait
                  * */
@@ -79,7 +74,7 @@ namespace sysexp
                  * Accesseur
                  *
                  * @param[in] baseFait
-                 * La base de fait qui vas permettre d'évaluer l'expression.
+                 * La base de faits qui va permettre d'évaluer l'expression.
                  * @see BaseFait
                  *
                  * @return La valeur de l'expression.

@@ -1,7 +1,7 @@
 /**
  * @file OperateurPlus.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier OperateurPlus.cpp.
  * Définit la classe concrète OperateurPlus.
@@ -16,19 +16,14 @@
 #include "OperateurAbstrait.hpp"
 #include "BaseFait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class OperateurPlus OperateurPlus.hpp
          * @brief Représente une opération d'addition.
          *
          * Déclaration de la classe OperateurPlus.
@@ -63,7 +58,7 @@ namespace sysexp
                  * Permet d'évaluer la valeur de l'opération addition.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return Le résultat de l'opération d'addition.
                  * */

@@ -14,24 +14,16 @@
 #include <string>
 #include <memory>
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-    * @namespace sysexp::modele
-    * // namespace modele de l'application.
-    * */
+    
     namespace modele
     {
 
         /**
          * @enum TypeFait
-         * @brief Énumération des différents types de fait.
-         *
-         * Les différents types de fait que l'on peut rencontrer.
+         * @brief Énumération des différents types de fait que l'on peut rencontrer.
          * */
         enum class TypeFait
         {
@@ -41,9 +33,7 @@ namespace sysexp
         };
 
         /**
-         * @class FaitAbstrait FaitAbstrait.hpp
          * @brief Un squelette abstrait pour stocker les faits.
-         *
          * Déclaration de la classe abstraite FaitAbstrait.
          * */
         class FaitAbstrait
@@ -85,7 +75,7 @@ namespace sysexp
                 const TypeFait & type() const;
 
                 /**
-                 * La méthode virtuel destructeur.
+                 * La méthode virtuelle destructeur.
                  * */
                 virtual ~FaitAbstrait() = default;
 

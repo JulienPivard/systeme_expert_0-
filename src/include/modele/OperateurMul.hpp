@@ -1,7 +1,7 @@
 /**
  * @file OperateurMul.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy.
  *
  * Header pour le fichier OperateurMul.cpp.
  * Définit la classe concrète OperateurMul.
@@ -15,19 +15,14 @@
 
 #include "OperateurAbstrait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-         * @class OperateurMul OperateurMul.hpp
          * @brief Représente une opération de multiplication.
          *
          * Déclaration de la classe OperateurMul.
@@ -62,7 +57,7 @@ namespace sysexp
                  * Permet d'évaluer la valeur de l'opération multiplication.
                  *
                  * @param[in] baseFait
-                 * La base de fait à utiliser pour évaluer les expressions.
+                 * La base de faits à utiliser pour évaluer les expressions.
                  *
                  * @return Le résultat de l'opération de multiplication.
                  * */

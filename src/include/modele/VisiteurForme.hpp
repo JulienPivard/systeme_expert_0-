@@ -1,7 +1,7 @@
 /**
  * @file VisiteurForme.hpp
  * @brief header.
- * @author PIVARD Julien
+ * @author PIVARD Julien, CLECH Sandy
  *
  * Header pour le fichier VisiteurForme.cpp.
  * Définit la classe concrète VisiteurForme.
@@ -30,19 +30,14 @@
 
 #include "FaitAbstrait.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    
     namespace modele
     {
 
         /**
-        * @class VisiteurForme VisiteurForme.hpp
         * @brief Représente le visiteur de règle.
         *
         * Déclaration de la classe VisiteurForme.
@@ -70,8 +65,8 @@ namespace sysexp
                 VisiteurForme( const BaseFait::PtrBaseFait & baseFait );
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -80,8 +75,8 @@ namespace sysexp
                 void visiter( const FormeConclusionBoolTrue * conclusion );
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -90,8 +85,8 @@ namespace sysexp
                 void visiter( const FormeConclusionBoolFalse * conclusion );
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -110,8 +105,8 @@ namespace sysexp
                 void visiter( const FormeConclusionEntierFait * conclusion );
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -120,8 +115,8 @@ namespace sysexp
                 void visiter( const FormeConclusionSymboliqueConstante * conclusion );
 
                 /**
-                 * Visite la règle passé en argument.
-                 * Ajoute la conclusion de la règle à la base de fait si celle ci est déclenchée.
+                 * Visite la règle passée en argument.
+                 * Ajoute la conclusion de la règle à la base de faits si celle ci est déclenchée.
                  *
                  * @param[in,out] conclusion
                  * La conclusion que l'on veut visiter.
@@ -132,7 +127,7 @@ namespace sysexp
             public:
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse
@@ -142,7 +137,7 @@ namespace sysexp
                 void visiter( const FormePremisseBoolTrue * premisse );
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse
@@ -152,7 +147,7 @@ namespace sysexp
                 void visiter( const FormePremisseBoolFalse * premisse );
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse
@@ -162,7 +157,7 @@ namespace sysexp
                 void visiter( const FormePremisseSymboliqueConstante * premisse );
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse
@@ -172,7 +167,7 @@ namespace sysexp
                 void visiter( const FormePremisseSymboliqueFait * premisse );
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse
@@ -182,7 +177,7 @@ namespace sysexp
                 void visiter( const FormePremisseEntierExpression * premisse );
 
                 /**
-                 * Visite la règle passé en argument.
+                 * Visite la règle passée en argument.
                  * Mémorise que la prémisse est valide.
                  *
                  * @param[in,out] premisse

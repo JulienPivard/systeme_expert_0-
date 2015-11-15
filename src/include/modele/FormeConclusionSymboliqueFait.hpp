@@ -15,21 +15,14 @@
 
 #include "FormeAbstraiteConclusion.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+   
     namespace modele
     {
 
         /**
-         * @class FormeConclusionSymboliqueFait FormeConclusionSymboliqueFait.hpp
          * @brief Représente une conclusion symbolique dont la valeur dépend d'un fait symbolique.
          *
          * Déclaration de la classe FormeConclusionSymboliqueFait.

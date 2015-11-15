@@ -18,19 +18,14 @@
 #include "VisiteurFormeAbstrait.hpp"
 #include "VisiteurForme.hpp"
 
-/**
- * @namespace sysexp
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * */
+    /// paquetage contenant les composant logiciels relatifs au modele de données.
     namespace modele
     {
 
         /**
-        * @class RegleAbstraite RegleAbstraite.hpp
         * @brief Le squelette d'une règle avec ou sans prémisse.
         *
         * Déclaration de la classe RegleAbstraite.
@@ -95,7 +90,7 @@ namespace sysexp
                  *
                  * @param[in, out] base
                  * La base à partir de laquelle on évalue le déclenchement des règles,
-                 * et à laquelle on vas ajouter la conclusion.
+                 * et à laquelle on va ajouter la conclusion.
                  *
                  * @return La règle à été déclenchée.
                  * @see BaseFait
@@ -103,20 +98,20 @@ namespace sysexp
                 bool declencher( const BaseFait::PtrBaseFait & base );
 
                 /**
-                 * Parcours la base de règle.
+                 * Parcoure la base de règles.
                  *
                  * @param[in, out] base
-                 * La base de fait utilisé pour évaluer les règles.
+                 * La base de faits utilisé pour évaluer les règles.
                  *
                  * @return Une règle au moins à été déclenchée.
                  * */
                 bool iter( const BaseFait::PtrBaseFait & base );
 
                 /**
-                 * Vérifie que toutes les prémisses sont vérifié par rapport à la base de fait.
+                 * Vérifie que toutes les prémisses sont vérifiées par rapport à la base de faits.
                  *
                  * @param[in] base
-                 * La base de fait utilisé pour vérifier les prémisses.
+                 * La base de faits utilisée pour vérifier les prémisses.
                  *
                  * @return Toutes les prémisses sont vérifiées.
                  * */
@@ -142,14 +137,14 @@ namespace sysexp
                  * Vérifie les flags d'erreur du visiteur.
                  *
                  * @param[in] visiteur
-                 * Le visiteur qui à déclenché la conclusion ou les prémisses.
+                 * Le visiteur qui a déclenché la conclusion ou les prémisses.
                  * @see VisiteurFormeAbstrait
                  *
                  * @throw ExceptionDivParZero
                  * Division par zéro rencontré impossible de continuer.
                  *
                  * @throw ExceptionFaitDejaAjoute
-                 * On tente de modifier un fait déjà ajouté a la base de fait.
+                 * On tente de modifier un fait déjà ajouté a la base de faits.
                  * Impossible de continuer.
                  * */
                 void verifFlagErreurVisiteur( const VisiteurFormeAbstrait::PtrVisiteurFormeAbstrait & visiteur ) const;
@@ -157,7 +152,7 @@ namespace sysexp
             protected:
 
                 /**
-                 * Le numéro de la règle dans la base de règle.
+                 * Le numéro de la règle dans la base de règles.
                  * Pour signaler facilement à l'utilisateur le numéro de la règle
                  * qui a causé une exception.
                  * */

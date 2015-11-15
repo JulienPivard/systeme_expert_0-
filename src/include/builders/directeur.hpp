@@ -20,7 +20,6 @@ namespace sysexp{
 
 		/**
 		 * @brief Directeur de la construction de la base de règles.
-		 * Classe représentant le directeur du builder.
 		 */
 		class Directeur {
 			public:

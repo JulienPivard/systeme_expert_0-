@@ -16,21 +16,14 @@
 
 #include "FormeAbstraite.hpp"
 
-/**
- * @namespace sysexp
- * // namespace global de l'application.
- * */
+
 namespace sysexp
 {
-    /**
-     * @namespace sysexp::modele
-     * // namespace modele de l'application.
-     * */
+   
     namespace modele
     {
 
         /**
-         * @class FormeAbstraiteConclusion FormeAbstraiteConclusion.hpp
          * @brief Le squelette de représentation d'une conclusion.
          *
          * Déclaration de la classe FormeAbstraiteConclusion.
