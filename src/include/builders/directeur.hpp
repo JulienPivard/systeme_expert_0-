@@ -53,13 +53,13 @@ namespace sysexp{
 				void setBuilder(const PtrBuilder & builder);
 
 				/**
-				* Méthode qui permet de construire une base de règle.
+				* Méthode qui permet de construire une base de règles.
 				*/
 				void construire();
 
 				/**
-				* Méthode qui livre une base de règle.
-				* @return une base de règle.
+				* Méthode qui livre une base de règles.
+				* @return une base de règles.
 				*/
 				sysexp::modele::RegleAbstraite::PtrRegleAbstraite livrer();
 
