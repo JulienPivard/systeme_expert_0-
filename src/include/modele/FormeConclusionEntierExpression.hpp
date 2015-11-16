@@ -20,11 +20,11 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
-        /**   
+        /**
         * @brief Représente une conclusion entière avec une expression mathématique.
         *
         * Déclaration de la classe FormeConclusionEntierExpression.
@@ -67,6 +67,12 @@ namespace sysexp
                  * @return La @ref valeur_ de la forme entière.
                  * */
                 long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
+
+            public:
+
+                FormeConclusionEntierExpression( const FormeConclusionEntierExpression & autre ) = delete;
+
+                FormeConclusionEntierExpression & operator=( const FormeConclusionEntierExpression & autre ) = delete;
 
             protected:
 

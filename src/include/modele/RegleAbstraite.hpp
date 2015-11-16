@@ -131,6 +131,12 @@ namespace sysexp
                  * */
                 void afficher() const;
 
+            public:
+
+                RegleAbstraite( const RegleAbstraite & autre ) = delete;
+
+                RegleAbstraite & operator=( const RegleAbstraite & autre ) = delete;
+
             protected:
 
                 /**

@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-   
+
     namespace modele
     {
 
@@ -65,6 +65,12 @@ namespace sysexp
                  * @return La @ref nomFait_ de la forme symbolique.
                  * */
                 const std::string & lireNomFait() const;
+
+            public:
+
+                FormeConclusionSymboliqueFait( const FormeConclusionSymboliqueFait & autre ) = delete;
+
+                FormeConclusionSymboliqueFait & operator=( const FormeConclusionSymboliqueFait & autre ) = delete;
 
             protected:
 

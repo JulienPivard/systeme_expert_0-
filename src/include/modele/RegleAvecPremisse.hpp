@@ -21,7 +21,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -103,6 +103,12 @@ namespace sysexp
                  * @note À n'utiliser que pour le debogage.
                  * */
                 void afficher() const;
+
+            public:
+
+                RegleAvecPremisse( const RegleAvecPremisse & autre ) = delete;
+
+                RegleAvecPremisse & operator=( const RegleAvecPremisse & autre ) = delete;
 
             protected:
 

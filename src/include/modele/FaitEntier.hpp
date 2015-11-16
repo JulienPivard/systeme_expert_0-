@@ -17,7 +17,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -56,6 +56,12 @@ namespace sysexp
                  * @return La @ref valeur_ du fait symbolique.
                  * */
                 const long int & lireValeur() const;
+
+            public:
+
+                FaitEntier( const FaitEntier & autre ) = delete;
+
+                FaitEntier & operator=( const FaitEntier & autre ) = delete;
 
             protected:
 

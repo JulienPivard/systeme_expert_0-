@@ -83,15 +83,20 @@ int main( int argc, char* argv[] )
     // Construction de la base de règles.
     directeur.construire();
 
+    // On récupère la base de règles généré par le monteur.
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite baseDeRegles = directeur.livrer();
 
+    // On initialise le moteur d'inférence avec la base de règles
     sysexp::modele::MoteurInference moteur = sysexp::modele::MoteurInference( baseDeRegles );
     moteur.analyserBaseRegles();
+
+    // On affiche la base de fait une fois que le moteur à exécuté la base de règle.
     std::cout << std::endl;
     std::cout << "========== Affichage de la base de fait. =========="
         << std::endl
         << std::endl;
     moteur.afficherBaseFaits();
+    std::cout << std::endl;
 
     return EXIT_SUCCESS;
 

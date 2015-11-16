@@ -186,6 +186,12 @@ namespace sysexp
                  * */
                 void visiter( const FormePremisseEntierFait & premisse );
 
+            public:
+
+                VisiteurForme( const VisiteurForme & autre ) = delete;
+
+                VisiteurForme & operator=( const VisiteurForme & autre ) = delete;
+
         };
 
     }

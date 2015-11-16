@@ -19,7 +19,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -75,6 +75,12 @@ namespace sysexp
                  * @return La @ref valeur_ de l'expression.
                  * */
                 const std::string & lireValeur() const;
+
+            public:
+
+                FormePremisseSymboliqueConstante( const FormePremisseSymboliqueConstante & autre ) = delete;
+
+                FormePremisseSymboliqueConstante & operator=( const FormePremisseSymboliqueConstante & autre ) = delete;
 
             protected:
 

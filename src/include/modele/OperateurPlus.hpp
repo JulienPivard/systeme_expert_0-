@@ -19,7 +19,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -63,6 +63,12 @@ namespace sysexp
                  * @return Le résultat de l'opération d'addition.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
+
+            public:
+
+                OperateurPlus( const OperateurPlus & autre ) = delete;
+
+                OperateurPlus & operator=( const OperateurPlus & autre ) = delete;
 
         };
 

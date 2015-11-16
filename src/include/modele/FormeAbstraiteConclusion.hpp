@@ -19,7 +19,7 @@
 
 namespace sysexp
 {
-   
+
     namespace modele
     {
 
@@ -54,6 +54,12 @@ namespace sysexp
                  * Destructeur rendu virtuel.
                  * */
                 virtual ~FormeAbstraiteConclusion() = default;
+
+            public:
+
+                FormeAbstraiteConclusion( const FormeAbstraiteConclusion & autre ) = delete;
+
+                FormeAbstraiteConclusion & operator=( const FormeAbstraiteConclusion & autre ) = delete;
 
         };
 

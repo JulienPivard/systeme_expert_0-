@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -65,6 +65,12 @@ namespace sysexp
                  * @return La @ref valeur_ de la forme symbolique.
                  * */
                 const std::string & lireValeur() const;
+
+            public:
+
+                FormeConclusionSymboliqueConstante( const FormeConclusionSymboliqueConstante & autre ) = delete;
+
+                FormeConclusionSymboliqueConstante & operator=( const FormeConclusionSymboliqueConstante & autre ) = delete;
 
             protected:
 

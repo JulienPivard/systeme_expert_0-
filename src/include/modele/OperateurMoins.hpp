@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -62,6 +62,12 @@ namespace sysexp
                  * @return La résultat de l'opération de soustraction.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
+
+            public:
+
+                OperateurMoins( const OperateurMoins & autre ) = delete;
+
+                OperateurMoins & operator=( const OperateurMoins & autre ) = delete;
 
         };
     }

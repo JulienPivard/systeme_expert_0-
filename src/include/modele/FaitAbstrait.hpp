@@ -79,6 +79,12 @@ namespace sysexp
                  * */
                 virtual ~FaitAbstrait() = default;
 
+            public:
+
+                FaitAbstrait( const FaitAbstrait & autre ) = delete;
+
+                FaitAbstrait operator=( const FaitAbstrait & autre ) = delete;
+
             protected:
 
                 /**

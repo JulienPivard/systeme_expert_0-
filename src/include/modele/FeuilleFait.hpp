@@ -23,7 +23,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -68,6 +68,12 @@ namespace sysexp
                  * */
                 long int
                 interpret( const BaseFait & baseFait ) const;
+
+            public:
+
+                FeuilleFait( const FeuilleFait & autre ) = delete;
+
+                FeuilleFait & operator=( const FeuilleFait & autre ) = delete;
 
             protected:
 

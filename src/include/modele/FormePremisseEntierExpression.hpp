@@ -20,7 +20,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -80,6 +80,12 @@ namespace sysexp
                  * @return La valeur de l'expression.
                  * */
                 long int lireValeur( const BaseFait::PtrBaseFait & baseFait ) const;
+
+            public:
+
+                FormePremisseEntierExpression( const FormePremisseEntierExpression & autre ) = delete;
+
+                FormePremisseEntierExpression & operator=( const FormePremisseEntierExpression & autre ) = delete;
 
             protected:
 

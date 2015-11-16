@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -48,6 +48,12 @@ namespace sysexp
                 * Destructeur de OperateurAbstrait.
                 * */
                 virtual ~OperateurAbstrait() = default;
+
+            public:
+
+                OperateurAbstrait( const OperateurAbstrait & autre ) = delete;
+
+                OperateurAbstrait & operator=( const OperateurAbstrait & autre ) = delete;
 
             protected:
 

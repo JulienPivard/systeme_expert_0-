@@ -319,6 +319,12 @@ namespace sysexp
                  * */
                 virtual ~VisiteurFormeAbstrait() = default;
 
+            public:
+
+                VisiteurFormeAbstrait( const VisiteurFormeAbstrait & autre ) = delete;
+
+                VisiteurFormeAbstrait & operator=( const VisiteurFormeAbstrait & autre ) = delete;
+
             protected:
 
                 /**

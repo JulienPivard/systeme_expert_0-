@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -65,6 +65,12 @@ namespace sysexp
                  * @return La @ref nomFait_ de la forme entière.
                  * */
                 const std::string & lireNomFait() const;
+
+            public:
+
+                FormeConclusionEntierFait( const FormeConclusionEntierFait & autre ) = delete;
+
+                FormeConclusionEntierFait & operator=( const FormeConclusionEntierFait & autre ) = delete;
 
             protected:
 

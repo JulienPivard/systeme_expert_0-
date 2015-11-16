@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -68,6 +68,12 @@ namespace sysexp
                  * Le destructeur rendu virtuel.
                  * */
                 virtual ~FormeAbstraite() = default;
+
+            public:
+
+                FormeAbstraite( const FormeAbstraite & autre ) = delete;
+
+                FormeAbstraite & operator=( const FormeAbstraite & autre ) = delete;
 
             protected:
 

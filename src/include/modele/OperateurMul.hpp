@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -62,6 +62,12 @@ namespace sysexp
                  * @return Le résultat de l'opération de multiplication.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
+
+            public:
+
+                OperateurMul( const OperateurMul & autre ) = delete;
+
+                OperateurMul & operator=( const OperateurMul & autre ) = delete;
 
         };
 

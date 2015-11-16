@@ -20,7 +20,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -57,6 +57,12 @@ namespace sysexp
                  * @return Toutes les prémisses sont vérifiées.
                  * */
                 bool verifierPremisses( const BaseFait::PtrBaseFait & base );
+
+            public:
+
+                RegleSansPremisse( const RegleSansPremisse & autre ) = delete;
+
+                RegleSansPremisse & operator=( const RegleSansPremisse & autre ) = delete;
 
         };
 

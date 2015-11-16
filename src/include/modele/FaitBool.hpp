@@ -17,7 +17,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
         /**
@@ -57,6 +57,12 @@ namespace sysexp
                  * @return La @ref valeur_ du fait booléen.
                  * */
                 bool lireValeur() const;
+
+            public:
+
+                FaitBool( const FaitBool & autre ) = delete;
+
+                FaitBool & operator=( const FaitBool & autre ) = delete;
 
             protected:
 

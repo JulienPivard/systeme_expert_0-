@@ -96,6 +96,10 @@ namespace sysexp
                  * */
                 void ajouter( const FaitAbstrait::PtrFaitAbstrait & fait );
 
+            public:
+
+                BaseFait & operator=( const BaseFait & autre ) = delete;
+
             protected:
 
                 /**

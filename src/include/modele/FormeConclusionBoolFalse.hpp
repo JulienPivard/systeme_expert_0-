@@ -18,7 +18,7 @@
 
 namespace sysexp
 {
-   
+
     namespace modele
     {
 
@@ -56,6 +56,12 @@ namespace sysexp
                  * @see VisiteurFormeAbstrait
                  * */
                 void accept( const PtrVisiteurFormeAbstrait & visiteur );
+
+            public:
+
+                FormeConclusionBoolFalse( const FormeConclusionBoolFalse & autre ) = delete;
+
+                FormeConclusionBoolFalse & operator=( const FormeConclusionBoolFalse & autre ) = delete;
 
         };
 

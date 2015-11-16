@@ -19,7 +19,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -75,6 +75,12 @@ namespace sysexp
                  * @return Le @ref nomAutreFait_ du second fait.
                  * */
                 const std::string & lireNomAutreFait() const;
+
+            public:
+
+                FormePremisseSymboliqueFait( const FormePremisseSymboliqueFait & autre ) = delete;
+
+                FormePremisseSymboliqueFait & operator=( const FormePremisseSymboliqueFait & autre ) = delete;
 
             protected:
 

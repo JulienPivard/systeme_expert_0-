@@ -17,7 +17,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -54,6 +54,10 @@ namespace sysexp
                  * Affiche la base de faits sur la sortie standard.
                  * */
                 void afficherBaseFaits();
+
+            public:
+
+                MoteurInference & operator=( const MoteurInference & autre ) = delete;
 
             protected:
 

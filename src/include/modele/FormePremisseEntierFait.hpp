@@ -19,7 +19,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -75,6 +75,12 @@ namespace sysexp
                  * @return Le @ref nomAutreFait_ du fait qui contient la valeur à tester.
                  * */
                 const std::string & lireNomAutreFait() const;
+
+            public:
+
+                FormePremisseEntierFait( const FormePremisseEntierFait & autre ) = delete;
+
+                FormePremisseEntierFait & operator=( const FormePremisseEntierFait & autre ) = delete;
 
             protected:
 
