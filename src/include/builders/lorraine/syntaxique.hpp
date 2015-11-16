@@ -34,43 +34,49 @@
 
 
  namespace sysexp{
- 	
+
 	 namespace builders{
 
 	 	namespace lorraine{
-		
+
 			/**
 			 * @brief Représente un analyseur syntaxique et sémantique de la grammaire lorraine.
 			 */
 			class Syntaxique{
-				
+
 				public:
 					/**
 					  * Constructeur de la classe Syntaxique
 	                  * @param [in] lexical  analyseur lexical.
 	                  */
 					Syntaxique(Lexical & lexical);
-					
-				public: 
+
+				public:
 					/**
 					 * Accesseur.
 					 * @return l'analyseur lexical de l'analyseur syntaxique.
 					*/
 					const Lexical lireLexical();
 
-					
+
 					/**
 					 * Parseur de la grammaire lorraine.
 					 * @return une base de règle de la grammaire lorraine.
 					*/
 					sysexp::modele::RegleAbstraite::PtrRegleAbstraite parser();
 
+                public:
+
+                    Syntaxique( const Syntaxique & autre ) = delete;
+
+                    Syntaxique & operator=( const Syntaxique & autre ) = delete;
+
 				protected:
 					/**
 					 * Passe au jeton suivant.
 					*/
 					void suivant();
-					
+
 					/**
 					 * Brique parsant les déclarations.
 					*/
@@ -95,7 +101,7 @@
 					 * Brique parsant les faits.
 					*/
 					void listeFaits(std::string valeur);
-					
+
 					/**
 					 * Brique parsant les règles.
 					 * @return une base de règle de la grammaire lorraine.
@@ -167,7 +173,7 @@
 					 * @return une condition.
 					*/
 					std::list<sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse> condition();
-					
+
 					/**
 					 * Brique parsant une prémisse.
 					 * @return une prémisse.
@@ -191,13 +197,13 @@
 					 * @return une prémisse entiere.
 					*/
 					sysexp::modele::FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse_entiere();
-					
+
 				protected:
 					/**
 					* Analyseur lexical.
 					*/
 					Lexical & lexical_;
-					
+
 					/**
 					* Dernier jeton prechargé.
 					*/

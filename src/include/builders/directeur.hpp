@@ -63,6 +63,10 @@ namespace sysexp{
 				*/
 				const sysexp::modele::RegleAbstraite::PtrRegleAbstraite & livrer();
 
+            public:
+
+                Directeur & operator=( const Directeur & autre ) = delete;
+
 			protected:
 
 				/**

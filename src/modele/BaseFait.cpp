@@ -7,13 +7,18 @@ namespace sysexp
 
         void BaseFait::afficher() const
         {
+
+            std::cout << std::endl
+                << "========== Affichage de la base de fait. =========="
+                << std::endl << std::endl;
+
+            //const std::string fleche =  "└─────────▶ ";
+            const std::string fleche =  "┗━━━━━━━━━▶ ";
+
             for( const std::pair< std::string, FaitAbstrait::PtrFaitAbstrait > & couple : baseFait_ )
             {
 
                 FaitAbstrait::PtrFaitAbstrait faitAbstrait =  couple.second;
-                std::cout << "Nom : "
-                    << faitAbstrait->lireNom()
-                    << "  Fait : ";
 
                 switch( faitAbstrait->lireType() )
                 {
@@ -21,16 +26,25 @@ namespace sysexp
                     case TypeFait::faitBool:
                         {
                             const FaitBool* fait = static_cast< const FaitBool* >( faitAbstrait.get() );
-                            std::cout << "booléen  valeur : "
-                                << std::boolalpha
-                                << fait->lireValeur();
+                            std::cout << "Booléen "
+                                << std::endl
+                                << fleche;
+                            if( ! fait->lireValeur() )
+                            {
+                                std::cout << "Non ";
+                            }
+                            std::cout << faitAbstrait->lireNom();
                         }
                         break;
 
                     case TypeFait::faitEntier:
                         {
                             const FaitEntier* fait = static_cast< const FaitEntier* >( faitAbstrait.get() );
-                            std::cout << "entier  valeur : "
+                            std::cout << "Entier "
+                                << std::endl
+                                << fleche
+                                << faitAbstrait->lireNom()
+                                << " = "
                                 << fait->lireValeur();
                         }
                         break;
@@ -38,7 +52,11 @@ namespace sysexp
                     case TypeFait::faitSymbolique:
                         {
                             const FaitSymbolique* fait = static_cast< const FaitSymbolique* >( faitAbstrait.get() );
-                            std::cout << "symbolique  valeur : "
+                            std::cout << "Symbolique"
+                                << std::endl
+                                << fleche
+                                << faitAbstrait->lireNom()
+                                << " = "
                                 << fait->lireValeur();
                         }
                         break;
@@ -52,6 +70,11 @@ namespace sysexp
                 std::cout << std::endl;
 
             }
+
+            std::cout << std::endl
+                << "======= Fin d'affichage de la base de fait. ======="
+                << std::endl << std::endl;
+
         }
 
         bool

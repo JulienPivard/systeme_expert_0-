@@ -153,6 +153,12 @@
 	                  */
 					static const Jeton inconnu(const std::string & representation);
 
+                public:
+
+                    FabriqueJeton( const FabriqueJeton & autre ) = delete;
+
+                    FabriqueJeton & operator=( const FabriqueJeton & autre ) = delete;
+
 				protected:
 
 					/**

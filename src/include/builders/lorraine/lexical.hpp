@@ -66,6 +66,10 @@ namespace sysexp{
 					 */
 					const Jeton suivant();
 
+                public:
+
+                    Lexical & operator=( const Lexical & autre ) = delete;
+
 				protected:
 
 					/**

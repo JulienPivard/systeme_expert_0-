@@ -13,11 +13,11 @@
 #include <string>
 
 namespace sysexp{
-	
+
 	namespace builders{
 
 		namespace lorraine{
-			
+
 			/**
 			 * @brief Représente un type de jeton.
 			 */
@@ -25,7 +25,7 @@ namespace sysexp{
 				parentheseOuvrante, parentheseFermante, superieur, inferieur,
 				operateurPlus, operateurMoins, operateurMul, operateurDiv,
 				egal, finExpression, identificateur, entier,
-				si, non, et, alors, separateur, inconnu, finFichier, supEgal, infEgal, different, 
+				si, non, et, alors, separateur, inconnu, finFichier, supEgal, infEgal, different,
 				faitBool, faitSymb, faitEnt
 			};
 
@@ -151,13 +151,13 @@ namespace sysexp{
 					 * @return true si le jeton est un inconnu, false sinon.
 					 */
 					bool estInconnu() const;
-					
+
 					/**
 					 * Indique si le jeton est fin du fichier.
 					 * @return true si le jeton est fin du fichier, false sinon.
 					 */
 					bool estFinFichier() const;
-					
+
 					/**
 					 * Indique si le jeton est un entier.
 					 * @return true si le jeton est un entier, false sinon.
@@ -213,7 +213,7 @@ namespace sysexp{
 					 * Type du jeton.
 					 */
 					TypeJeton type_;
-					
+
 					/**
 					 * Représentation du jeton.
 					 */

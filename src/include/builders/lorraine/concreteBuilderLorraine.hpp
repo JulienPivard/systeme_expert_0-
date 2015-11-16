@@ -51,6 +51,12 @@ namespace sysexp{
 					*/
 					const sysexp::modele::RegleAbstraite::PtrRegleAbstraite & getResult() const override;
 
+                public:
+
+                    ConcreteBuilderLorraine( const ConcreteBuilderLorraine & autre ) = delete;
+
+                    ConcreteBuilderLorraine & operator=( const ConcreteBuilderLorraine & autre ) = delete;
+
 				protected:
 					/**
 					* Fichier avec lequel les règles seront constuites.

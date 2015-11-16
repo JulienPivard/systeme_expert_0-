@@ -39,6 +39,10 @@ namespace sysexp{
 				* Destructeur.
 				*/
 				virtual ~Builder() = default;
+
+            public:
+
+                Builder & operator=( const Builder & autre ) = delete;
 		};
 	}
 }

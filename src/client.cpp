@@ -91,12 +91,7 @@ int main( int argc, char* argv[] )
     moteur.analyserBaseRegles();
 
     // On affiche la base de fait une fois que le moteur à exécuté la base de règle.
-    std::cout << std::endl;
-    std::cout << "========== Affichage de la base de fait. =========="
-        << std::endl
-        << std::endl;
     moteur.afficherBaseFaits();
-    std::cout << std::endl;
 
     return EXIT_SUCCESS;
 
