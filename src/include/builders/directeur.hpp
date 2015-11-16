@@ -14,7 +14,7 @@
 
 /// Paquetage maitre du système expert.
 namespace sysexp{
-	
+
 	/// Paquetage builders du système expert.
 	namespace builders{
 
@@ -61,7 +61,7 @@ namespace sysexp{
 				* Méthode qui livre une base de règles.
 				* @return une base de règles.
 				*/
-				sysexp::modele::RegleAbstraite::PtrRegleAbstraite livrer();
+				const sysexp::modele::RegleAbstraite::PtrRegleAbstraite & livrer();
 
 			protected:
 
