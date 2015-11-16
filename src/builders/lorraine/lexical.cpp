@@ -5,40 +5,40 @@ namespace sysexp{
 	 namespace builders{
 
 	 	namespace lorraine{
-		
+
 			Lexical::Lexical(std::istream & fichier):
 				ligne_(""),
 				position_(0),
 				fichier_(fichier),
 				numeroLigne_(0)
 				{}
-			
-			
-			std::istream &
-			Lexical::lireFichier(){
+
+
+			const std::istream &
+			Lexical::lireFichier() const{
 				return fichier_;
 			}
-			
-			std::string &
-			Lexical::lireLigne(){
+
+			const std::string &
+			Lexical::lireLigne() const{
 				return ligne_;
 			}
-			
-			unsigned int 
-			Lexical::lirePosition(){
+
+			const unsigned int &
+			Lexical::lirePosition() const{
 				return position_;
 			}
 
-			int
-			Lexical::lireNumeroLigne(){
+			const int &
+			Lexical::lireNumeroLigne() const{
 				return numeroLigne_;
 			}
-				
+
 			bool
 			Lexical::avancer(){
 				while(true){
 					//tant qu'on est dans la ligne et qu'on rencontre un espace, on passe au suivant.
-					while (position_ < ligne_.size() && 
+					while (position_ < ligne_.size() &&
 						isspace(ligne_.at(position_))) {
 						position_ ++;
 					}
@@ -58,18 +58,18 @@ namespace sysexp{
 					}
 				}
 			}
-			
-			const Jeton 
+
+			const Jeton
 			Lexical::suivant(){
 				// si on ne peut plus avancer on est a la fin du fichier.
 				if (!avancer()){
 					return FabriqueJeton::finFichier();
 				}
-				
-				char caractere = ligne_.at(position_); 
-				
-				switch(caractere) {   
-			 
+
+				char caractere = ligne_.at(position_);
+
+				switch(caractere) {
+
 				case '(': // Parenthese ouvrante.
 					position_ ++;
 					return FabriqueJeton::parentheseOuvrante();
@@ -77,7 +77,7 @@ namespace sysexp{
 				case ')': // Parenthese fermante.
 					position_ ++;
 					return FabriqueJeton::parentheseFermante();
-					
+
 				case '>': //superieur
 					position_ ++;
 					if (ligne_.at(position_) == '='){
@@ -92,7 +92,7 @@ namespace sysexp{
 						return FabriqueJeton::infEgal();
 					}
 					return FabriqueJeton::inferieur();
-					
+
 				case '+': // Operateur d'addition.
 					position_ ++;
 					return FabriqueJeton::operateurPlus();
@@ -112,18 +112,18 @@ namespace sysexp{
 						return FabriqueJeton::different();
 					}
 					return FabriqueJeton::operateurDiv();
-					
+
 				case '=': //egal
 					position_ ++;
 					return FabriqueJeton::egal();
 				case ';': // fin d'expression
 					position_ ++;
 					return FabriqueJeton::finExpression();
-					
+
 				case ',': // séparateur
 					position_ ++;
 					return FabriqueJeton::separateur();
-				
+
 				default: // identificateur ou entier ou bien representation inconnue.
 					// entier
 					if (isdigit(caractere)) {
@@ -131,16 +131,16 @@ namespace sysexp{
 					}
 					//identificateur + "si, et, non, alors"
 					if(isalpha(caractere)){
-						return extraireChaine(); 
+						return extraireChaine();
 					}
 					// C'est la representation inconnue.
 					position_ ++;
 					return FabriqueJeton::inconnu(ligne_.substr(position_ - 1, 1));
-				
+
 				}
 			}
-			
-			const Jeton 
+
+			const Jeton
 			Lexical::extraireEntier() {
 				unsigned int fin = position_ + 1;
 				while (fin < ligne_.size() && isdigit(ligne_.at(fin))) {
@@ -151,8 +151,8 @@ namespace sysexp{
 				return FabriqueJeton::entier(ligne_.substr(debut, fin-debut));
 
 			}
-			
-			const Jeton 
+
+			const Jeton
 			Lexical::extraireChaine() {
 				unsigned int fin = position_ + 1;
 				while (fin < ligne_.size() && (isalnum(ligne_.at(fin)) || ligne_.at(fin) == '_')) {
@@ -186,5 +186,5 @@ namespace sysexp{
 
 			}
 		}
-	}	
+	}
 }

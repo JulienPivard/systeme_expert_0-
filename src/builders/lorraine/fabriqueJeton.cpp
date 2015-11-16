@@ -2,7 +2,7 @@
 
 
 namespace sysexp{
-	
+
 	namespace builders{
 
 		namespace lorraine{
@@ -28,94 +28,94 @@ namespace sysexp{
 			const Jeton FabriqueJeton::faitBool_(Jeton(TypeJeton::faitBool, "faits_booleens"));
 			const Jeton FabriqueJeton::faitSymb_(Jeton(TypeJeton::faitSymb, "faits_symboliques"));
 			const Jeton FabriqueJeton::faitEnt_(Jeton(TypeJeton::faitEnt, "faits_entiers"));
-			
+
 			const Jeton
 			FabriqueJeton::identificateur(const std::string & representation){
 				return Jeton(TypeJeton::identificateur, representation);
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::inconnu(const std::string & representation){
 				return Jeton(TypeJeton::inconnu, representation);
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::entier(const std::string & representation){
 				return Jeton(TypeJeton::entier, representation);
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::parentheseOuvrante(){
 				return parentheseOuvrante_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::parentheseFermante(){
 				return parentheseFermante_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::superieur(){
 				return superieur_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::inferieur(){
 				return inferieur_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::operateurPlus(){
 				return operateurPlus_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::operateurMoins(){
 				return operateurMoins_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::operateurMul(){
 				return operateurMul_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::operateurDiv(){
 				return operateurDiv_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::egal(){
 				return egal_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::finExpression(){
 				return finExpression_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::si(){
 				return si_;
 			}
-			const Jeton 
+			const Jeton
 			FabriqueJeton::non(){
 				return non_;
 			}
-			const Jeton 
+			const Jeton
 			FabriqueJeton::et(){
 				return et_;
 			}
-			const Jeton 
+			const Jeton
 			FabriqueJeton::alors(){
 				return alors_;
 			}
-			const Jeton 
+			const Jeton
 			FabriqueJeton::separateur(){
 				return separateur_;
 			}
-			
-			const Jeton 
+
+			const Jeton
 			FabriqueJeton::finFichier(){
 				return finFichier_;
 			}
