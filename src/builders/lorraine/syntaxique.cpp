@@ -2,7 +2,7 @@
 #include "monException.hpp"
 
 // on utilise using namespace ici 
-// pour pas que la créations des objets prenne 3 kilometres de long 
+// pour pas que la création des objets prenne 3 kilometres de long 
 // et qu'on s'y retrouve quand on lit le code
 using namespace sysexp::modele;
 
@@ -40,7 +40,7 @@ namespace sysexp{
 				declarations_bool(); // les déclarations booléennes,
 				declarations_symb(); // les déclarations symboliques,
 				declarations_ent(); // et les déclarations entieres.
-				// dans la grammaite lorraine ces déclarations sont dans cet ordre,
+				// dans la grammaire lorraine ces déclarations sont dans cet ordre,
 				// si les déclarations ne sont pas dans cet ordre il y aura une exception.
 			}
 
@@ -179,7 +179,7 @@ namespace sysexp{
 					return conclusion;
 				}
 				else{
-					// si la conclusion booléenne ne commence pas par un non, on sait qu"on a un fait booléen, on construit donc une conclusion booléenne true.
+					// si la conclusion booléenne ne commence pas par un non, on sait qu'on a un fait booléen, on construit donc une conclusion booléenne true.
 					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolTrue(precharge_.lireRepresentation())); 
 					suivant();
 					return conclusion;
@@ -191,12 +191,12 @@ namespace sysexp{
 				// pour construire une conclusion symbolique on a besoin de garder le jeton qui contient le fait.
 				Jeton symb = precharge_ ;
 				suivant();
-				if(!precharge_.estEgal()){// on regarde si on a un egal car la structure d'une conclusion symbolique est : fait_symbolique = (fait_symbolique | constante_symbolique) 
+				if(!precharge_.estEgal()){// on regarde si on a un égal car la structure d'une conclusion symbolique est : fait_symbolique = (fait_symbolique | constante_symbolique) 
 					throw MonException(lexical_, "attendu '='");
 				}
 				suivant();
 
-				if(!precharge_.estIdentificateur()){ // apres le egal on et censé trouver un identificateur
+				if(!precharge_.estIdentificateur()){ // apres le égal on et censé trouver un identificateur
 						throw MonException(lexical_, "attendu : identificateur");
 				}
 
@@ -223,24 +223,24 @@ namespace sysexp{
 				// pour construire une conclusion entiere on a besoin du fait entier que l'on a rencontré.
 				Jeton ent = precharge_;
 				suivant();
-				if(!precharge_.estEgal()){ // on regarde si on a un egal car la structure d'une conclusion entiere est : fait_entier = expressionEntiere
+				if(!precharge_.estEgal()){ // on regarde si on a un égal car la structure d'une conclusion entiere est : fait_entier = expressionEntiere
 					throw MonException(lexical_, "attendu: '='");
 				}
 				suivant();
-				// si tout vas bien, on construit la conclusion entiere
+				// si tout va bien, on construit la conclusion entiere
 				FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionEntierExpression(ent.lireRepresentation(), expressionEntiere()));
 				return conclusion;
 			}
 
 			ValeurAbstraite::PtrValeur
 			Syntaxique::expressionEntiere(){
-				// la structure d' une valeur entiere est (+|-) terme {(+|-) terme}
+				// la structure d'une valeur entiere est (+|-) terme {(+|-) terme}
 				ValeurAbstraite::PtrValeur facteur_g;
 				if(precharge_.estOperateurPlus()){ // si on rencontre un + au début d'une expression entiere ce n'est pas une faute, il est juste ignoré
 					suivant();
 					facteur_g = terme(); // la partie gauche de l'opération prend la valeur du terme rencontré.
 				}
-				else if(precharge_.estOperateurMoins()){ // si on rencontre un orérateur moins
+				else if(precharge_.estOperateurMoins()){ // si on rencontre un opérateur moins
 					suivant();
 					FeuilleConstante::PtrFeuilleConstante f(new FeuilleConstante(0)); // on va faire 0 - (la valeur qui sera rencontrée)
 					facteur_g = terme();
@@ -293,7 +293,7 @@ namespace sysexp{
 				// un facteur est composé d'une constante entiere, d'un fait entier ou d'une expression entiere entre parenthèse.
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regarde si le jeton courant est un fait entier.
 				if(it == faits_.end()){
-					if(precharge_.estEntier()){// si c'en est pas un et sue c'est un entier, on construit une feuille de valeur constante.
+					if(precharge_.estEntier()){// si c'en est pas un et que c'est un entier, on construit une feuille de valeur constante.
 						FeuilleConstante::PtrFeuilleConstante val(new FeuilleConstante(std::stoi(precharge_.lireRepresentation())));
 						suivant();
 						return val;
@@ -343,10 +343,10 @@ namespace sysexp{
 			Syntaxique::condition(){
 				//une condition est constituée d'une ou plusieurs prémisses séparées par le mot "et"
 				std::list<FormeAbstraitePremisse::PtrFormeAbstraitePremisse> premisses;
-				premisses.push_back(premisse());// on a forcément une prémisse, on l'ajoute donc a la liste
-				while(precharge_.estEt()){ // tant qu'on rencontre des et
+				premisses.push_back(premisse());// on a forcément une prémisse, on l'ajoute donc à la liste
+				while(precharge_.estEt()){ // tant qu'on rencontre des "et"
 					suivant();
-					premisses.push_back(premisse());// on ajoute les prémisses a la liste de prémisses
+					premisses.push_back(premisse());// on ajoute les prémisses à la liste de prémisses
 
 				}
 				return premisses;
@@ -356,7 +356,7 @@ namespace sysexp{
 			Syntaxique::premisse(){
 				// une prémisse est soit booléenne, symbolique ou entiere.
 				if(precharge_.estIdentificateur()){ // on regarde si on a un identificateur
-					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regatde si l'identificateur est dans la liste de faits
+					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regarde si l'identificateur est dans la liste de faits
 					if(it == faits_.end()){
 						throw MonException(lexical_, "le fait n'a pas été declare");
 					}
@@ -407,21 +407,21 @@ namespace sysexp{
 
 			FormeAbstraitePremisse::PtrFormeAbstraitePremisse
 			Syntaxique::premisse_symbolique(){
-				// pour crée une prémisse symbolique on a besoin du jeton contenent le fait.
+				// pour créer une prémisse symbolique on a besoin du jeton contenent le fait.
 				Jeton symb = precharge_;
 				suivant();
-				// la sructure d'une prémisse symbolique est : fait_symbolique (= | /=)(fait_symbolique | constante_symbolique)
+				// la structure d'une prémisse symbolique est : fait_symbolique (= | /=)(fait_symbolique | constante_symbolique)
 				if(!precharge_.estEgal() && !precharge_.estDifferent()){ // on regarde donc si on a le signe egal ou différent
 					throw MonException(lexical_, "attendu: '=' ou '/='");
 				}
-				Jeton signe = precharge_;// on gardele signe rencontré pour créer la premisse
+				Jeton signe = precharge_;// on garde le signe rencontré pour créer la premisse
 				suivant();
 
 				if(!precharge_.estIdentificateur()){ // on regarde ensuite si on a un identificateur
 						throw MonException(lexical_, "attendu : identificateur");
 				}
 
-				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// on regarde si cet identificateur est dans le liste de faits
+				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// on regarde si cet identificateur est dans la liste de faits
 				if(it == faits_.end()){
 					if(signe.estEgal()){ // si il n'est pas dans la liste et que le signe rencontré précedemment est un égal
 						// on crée une prémisse symbolique constante
