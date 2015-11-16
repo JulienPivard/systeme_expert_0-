@@ -57,6 +57,12 @@ namespace sysexp{
 
 					/**
 					 * Accesseur.
+					 * @return la position jeton précédent dans la ligne du fichier.
+					 */
+					const unsigned int & lireOldPosition() const;
+
+					/**
+					 * Accesseur.
 					 * @return le numero de la ligne du fichier.
 					 */
 					const int & lireNumeroLigne() const;
@@ -101,6 +107,11 @@ namespace sysexp{
 					 * Position dans le fichier.
 					 */
 					unsigned int position_;
+
+					/**
+					 * Position du jeton précédent dans le fichier (pour l'affichage des erreurs).
+					 */
+					unsigned int oldPosition_;
 
 					/**
 					 * Fichier à analyser.

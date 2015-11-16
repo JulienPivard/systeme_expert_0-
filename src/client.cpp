@@ -13,6 +13,7 @@
 
 #include "directeur.hpp"
 #include "concreteBuilderLorraine.hpp"
+#include "parseException.hpp"
 
 #include "MoteurInference.hpp"
 
@@ -81,7 +82,14 @@ int main( int argc, char* argv[] )
     sysexp::builders::lorraine::ConcreteBuilderLorraine::PtrConcreteBuilderLorraine monteurRegle( new sysexp::builders::lorraine::ConcreteBuilderLorraine( baseDeConnaissances ) );
     sysexp::builders::Directeur directeur = sysexp::builders::Directeur( monteurRegle );
     // Construction de la base de règles.
-    directeur.construire();
+    try {
+        directeur.construire();
+    }
+    catch (const sysexp::builders::lorraine::ParseException& e){
+        std::cerr << "Erreur en parsant le fichier : " << argv[1] << std::endl;
+        std::cerr << e.what() << std::endl;
+        return EXIT_FAILURE;
+    }
 
     // On récupère la base de règles généré par le monteur.
     sysexp::modele::RegleAbstraite::PtrRegleAbstraite baseDeRegles = directeur.livrer();

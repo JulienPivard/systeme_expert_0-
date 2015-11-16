@@ -1,5 +1,5 @@
 #include "syntaxique.hpp"
-#include "monException.hpp"
+#include "parseException.hpp"
 
 // on utilise using namespace ici 
 // pour pas que la création des objets prenne 3 kilometres de long 
@@ -15,18 +15,40 @@ namespace sysexp{
 			Syntaxique::Syntaxique(Lexical & lexical):
 				lexical_(lexical),
 				precharge_(lexical_.suivant())
-				{}
+			{}
 
 			const Lexical
 			Syntaxique::lireLexical(){
 				 return lexical_;
-			 }
+			}
 
 			void
 			Syntaxique::suivant(){
 				precharge_ = lexical_.suivant();
 
 			}
+
+			void
+			Syntaxique::erreurDeParsage(std::string message) const {
+				const std::string ligne = lexical_.lireLigne();
+				const int oldPosition = lexical_.lireOldPosition();
+				const int position = lexical_.lirePosition();
+				std::ostringstream stream;
+
+				stream << "Erreur (entre crochets) en ligne : " << 
+							lexical_.lireNumeroLigne() <<
+							"\n" <<
+							ligne.substr(0, oldPosition) << 
+							"[" <<
+							ligne.substr(oldPosition, position - oldPosition) <<
+							"]" <<
+							ligne.substr(position, ligne.size() - position) <<
+							"\n" <<
+							message;
+
+				throw ParseException(stream.str());
+			}
+
 			RegleAbstraite::PtrRegleAbstraite
 			Syntaxique::parser(){
 				// pour avoir une base de règle il faut parser les déclarations et les règles.
@@ -48,7 +70,7 @@ namespace sysexp{
 			Syntaxique::declarations_bool(){
 				// on regarde si on fait des déclarations booléennes.
 				if(!precharge_.estFaitBool())
-					throw MonException(lexical_, "attendu: 'faits_booleens'");
+					erreurDeParsage("attendu: 'faits_booleens'");
 				suivant();
 				// on construit la map contenant un fait et son type.
 				listeFaits("booleen");
@@ -59,7 +81,7 @@ namespace sysexp{
 		 	Syntaxique::declarations_symb(){
 		 		// on regarde si on fait des déclarations symboliques.
 		 		if(!precharge_.estFaitSymb())
-					throw MonException(lexical_,"attendu: 'faits_symboliques'");
+					erreurDeParsage("attendu: 'faits_symboliques'");
 				suivant();
 				// on construit la map contenant un fait et son type.
 				listeFaits("symbolique");
@@ -69,7 +91,7 @@ namespace sysexp{
 			Syntaxique::declarations_ent(){
 				// on regarde si on fait des déclarations entières
 				if(!precharge_.estFaitEnt())
-					throw MonException(lexical_, "attendu: 'faits_entiers'");
+					erreurDeParsage("attendu: 'faits_entiers'");
 				suivant();
 				// on construit la map contenant un fait et son type.
 				listeFaits("entier");
@@ -79,12 +101,14 @@ namespace sysexp{
 			Syntaxique::listeFaits(std::string valeur){
 				// on regarde si la structure des déclarations est bien respectée.
 				if (!precharge_.estEgal()) // apres le type de fait déclaré, on doit trouver un égal.
-					throw MonException(lexical_, "attendu: '='");
+					erreurDeParsage("attendu: '='");
 				suivant();
 
 				while(!precharge_.estFinExpression()){ // tant qu'on ne rencontre pas un point virgule...
 					if(!precharge_.estIdentificateur()) // on regarde si on a une chaine de caractere...
-						throw MonException(lexical_, "attendu: un identificateur ou un '_'");
+						erreurDeParsage("attendu: un identificateur ou un '_'");
+					if(faits_.find(precharge_.lireRepresentation()) != faits_.end())
+						erreurDeParsage("un fait doit être déclaré une seule fois");
 					faits_[precharge_.lireRepresentation()] = valeur;// on l'ajoute a une map qui associe un fait a sa valeur ( bool, symb, entier)
 					suivant();
 
@@ -93,7 +117,7 @@ namespace sysexp{
 						break;
 					}
 					if (!precharge_.estSeparateur()) // si on est pas a la fin de la déclatation, les faits sont séparés par une virgule, on regarde donc si elle est bien présente.
-						throw MonException(lexical_,"attendu: ','");
+						erreurDeParsage("attendu: ','");
 					suivant();
 				}
 			}
@@ -110,7 +134,7 @@ namespace sysexp{
 					regleSuiv = reglePrec;
 					i++;
 					if (!precharge_.estFinExpression())
-						throw MonException(lexical_,"attendu: ';'");
+						erreurDeParsage("attendu: ';'");
 					suivant();
 				}
 				return regleSuiv;
@@ -140,7 +164,7 @@ namespace sysexp{
 				if(precharge_.estIdentificateur()){ // une conclusion est une chaine de caractere; un identificateur.
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// on regarde si l'identificateur rencontré est dans la map de faits.
 					if(it == faits_.end()){
-						throw MonException(lexical_, "le fait n'a pas été declare");
+						erreurDeParsage("le fait n'a pas été declare");
 					}
 					else if(it->second == "booleen"){ // si il est booléen c'est une conclusion booléenne,
 						return conclusion_booleenne();
@@ -155,7 +179,7 @@ namespace sysexp{
 				else if(precharge_.estNon()){
 					return conclusion_booleenne(); // si l'identificateur rencontré est un non, c'est une conclusion booléenne.
 				}
-				throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
+				erreurDeParsage("attendu: un identificateur ou un 'non'");
 			}
 
 			FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
@@ -164,14 +188,14 @@ namespace sysexp{
 				if(precharge_.estNon()){// si la conclusion booléenne commence par un non, on ne sais pas si le jeton suivant est un fait booléen.
 					suivant();
 					if(!precharge_.estIdentificateur()){// on regarde donc si c'est une chaine de caractere... 
-						throw MonException(lexical_, "attendu: un fait booléen");
+						erreurDeParsage("attendu: un fait booléen");
 					}
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// ...si le fait existe...
 					if(it == faits_.end()){
-						throw MonException(lexical_, "le fait n'a pas été declare");
+						erreurDeParsage("le fait n'a pas été declare");
 					}
 					else if(it->second != "booleen"){ // ...et qu'il est booléen.
-						throw MonException(lexical_, "le fait n'est pas booléen");
+						erreurDeParsage("le fait n'est pas booléen");
 					}
 					// si tout se passe bien, on crée une conclusion booléenne false. 
 					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolFalse(it->first)); 
@@ -192,12 +216,12 @@ namespace sysexp{
 				Jeton symb = precharge_ ;
 				suivant();
 				if(!precharge_.estEgal()){// on regarde si on a un égal car la structure d'une conclusion symbolique est : fait_symbolique = (fait_symbolique | constante_symbolique) 
-					throw MonException(lexical_, "attendu '='");
+					erreurDeParsage("attendu '='");
 				}
 				suivant();
 
 				if(!precharge_.estIdentificateur()){ // apres le égal on et censé trouver un identificateur
-						throw MonException(lexical_, "attendu : identificateur");
+						erreurDeParsage("attendu : identificateur");
 				}
 
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regarde si il est dans la liste de faits...
@@ -209,7 +233,7 @@ namespace sysexp{
 				}
 				else{
 					if(it->second != "symbolique"){
-						throw MonException(lexical_, "le fait n'est pas symbolique");
+						erreurDeParsage("le fait n'est pas symbolique");
 					}
 					// si il est symbolique, on crée une conclusion symbolique fait
 					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionSymboliqueFait(symb.lireRepresentation(), it->first));
@@ -224,7 +248,7 @@ namespace sysexp{
 				Jeton ent = precharge_;
 				suivant();
 				if(!precharge_.estEgal()){ // on regarde si on a un égal car la structure d'une conclusion entiere est : fait_entier = expressionEntiere
-					throw MonException(lexical_, "attendu: '='");
+					erreurDeParsage("attendu: '='");
 				}
 				suivant();
 				// si tout va bien, on construit la conclusion entiere
@@ -302,18 +326,18 @@ namespace sysexp{
 						suivant();
 						ValeurAbstraite::PtrValeur expr = expressionEntiere();
 						if(!precharge_.estParentheseFermante()){
-							throw MonException(lexical_, "attendu : ')'");
+							erreurDeParsage("attendu : ')'");
 						}
 						suivant();
 						return expr;
 					}
 					else{
-						throw MonException(lexical_, "attendu : un entier ou '('");
+						erreurDeParsage("attendu : un entier ou '('");
 					}
 				}
 				else{
 					if(it->second != "entier"){// si le fait est entier
-						throw MonException(lexical_, "le fait n'est pas entier");
+						erreurDeParsage("le fait n'est pas entier");
 					}
 					FeuilleFait::PtrFeuilleFait val(new FeuilleFait(it->first)); // on créé une feuille fait
 					suivant();
@@ -327,7 +351,7 @@ namespace sysexp{
 				suivant();// on a rencontré un si on passe au jeton suivant
 				std::list<FormeAbstraitePremisse::PtrFormeAbstraitePremisse>  premisses = condition(); // on constuit les conditions
 				if(!precharge_.estAlors()){
-					throw MonException(lexical_, "attendu: 'alors'");
+					erreurDeParsage("attendu: 'alors'");
 				}
 				suivant();
 	            // On chope le premier element de la liste des conditions pour créer une regle avec une conclusion.
@@ -358,7 +382,7 @@ namespace sysexp{
 				if(precharge_.estIdentificateur()){ // on regarde si on a un identificateur
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regarde si l'identificateur est dans la liste de faits
 					if(it == faits_.end()){
-						throw MonException(lexical_, "le fait n'a pas été declare");
+						erreurDeParsage("le fait n'a pas été declare");
 					}
 					else if(it->second == "booleen"){ // si il est booléen c'est une prémisse booléenne
 						return premisse_booleenne();
@@ -373,7 +397,7 @@ namespace sysexp{
 				else if(precharge_.estNon()){
 					return premisse_booleenne(); // si c'est un non, c'est une prémisse booléenne
 				}
-	            throw MonException(lexical_, "attendu: un identificateur ou un 'non'");
+	            erreurDeParsage("attendu: un identificateur ou un 'non'");
 			}
 
 			FormeAbstraitePremisse::PtrFormeAbstraitePremisse
@@ -381,14 +405,14 @@ namespace sysexp{
 				if(precharge_.estNon()){ // si on a un non
 					suivant();
 					if(!precharge_.estIdentificateur()){// on regarde si on a un identificateur
-						throw MonException(lexical_, "attendu: un fait booléen");
+						erreurDeParsage("attendu: un fait booléen");
 					}
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// on regarde si il est dans la liste de faits
 					if(it == faits_.end()){
-						throw MonException(lexical_, "le fait n'a pas été declare");
+						erreurDeParsage("le fait n'a pas été declare");
 					}
 					else if(it->second != "booleen"){
-						throw MonException(lexical_, "le fait n'est pas booléen");
+						erreurDeParsage("le fait n'est pas booléen");
 					}
 					// si le fait existe et qu'il est booléen on crée la prémisse booléenne false
 					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse(new FormePremisseBoolFalse(it->first));
@@ -412,13 +436,13 @@ namespace sysexp{
 				suivant();
 				// la structure d'une prémisse symbolique est : fait_symbolique (= | /=)(fait_symbolique | constante_symbolique)
 				if(!precharge_.estEgal() && !precharge_.estDifferent()){ // on regarde donc si on a le signe egal ou différent
-					throw MonException(lexical_, "attendu: '=' ou '/='");
+					erreurDeParsage("attendu: '=' ou '/='");
 				}
 				Jeton signe = precharge_;// on garde le signe rencontré pour créer la premisse
 				suivant();
 
 				if(!precharge_.estIdentificateur()){ // on regarde ensuite si on a un identificateur
-						throw MonException(lexical_, "attendu : identificateur");
+						erreurDeParsage("attendu : identificateur");
 				}
 
 				std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// on regarde si cet identificateur est dans la liste de faits
@@ -443,7 +467,7 @@ namespace sysexp{
 				}
 				else{
 					if(it->second != "symbolique"){
-						throw MonException(lexical_, "le fait n'est pas symbolique");
+						erreurDeParsage("le fait n'est pas symbolique");
 					}
 					if(signe.estEgal()){// si le fait est dans la liste de faits et que le signe rencontré précedemment est un égal
 						// on crée une premisse symbolique fait
@@ -474,7 +498,7 @@ namespace sysexp{
 				// on regarde si on a un signe de comparaison.
 				if(!precharge_.estEgal() && !precharge_.estSuperieur() && !precharge_.estInferieur() &&
 					!precharge_.estSupEgal() && !precharge_.estInfEgal() && !precharge_.estDifferent()){
-					throw MonException(lexical_, "attendu : '=' ou '/=' ou '<' ou '>' ou '<=' ou '>='");
+					erreurDeParsage("attendu : '=' ou '/=' ou '<' ou '>' ou '<=' ou '>='");
 				}
 				Jeton signe = precharge_; // on enregistre le signe rencontré
 				if(signe.estEgal()){ // si le signe rencontré est un egal

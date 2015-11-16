@@ -78,6 +78,11 @@
 					void suivant();
 
 					/**
+					 * Lance une exception en cas d'erreur du parseur.
+					*/
+					void erreurDeParsage(std::string message) const;
+
+					/**
 					 * Brique parsant les déclarations.
 					*/
 					void declarations();

@@ -8,6 +8,7 @@ namespace sysexp{
 
 			Lexical::Lexical(std::istream & fichier):
 				ligne_(""),
+				oldPosition_(0),
 				position_(0),
 				fichier_(fichier),
 				numeroLigne_(0)
@@ -27,6 +28,11 @@ namespace sysexp{
 			const unsigned int &
 			Lexical::lirePosition() const{
 				return position_;
+			}
+
+			const unsigned int &
+			Lexical::lireOldPosition() const{
+				return oldPosition_;
 			}
 
 			const int &
@@ -66,6 +72,7 @@ namespace sysexp{
 					return FabriqueJeton::finFichier();
 				}
 
+				oldPosition_ = position_;
 				char caractere = ligne_.at(position_);
 
 				switch(caractere) {

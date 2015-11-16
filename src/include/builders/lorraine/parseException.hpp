@@ -1,14 +1,14 @@
 /**
- * @file monException.hpp
+ * @file ParseException.hpp
  * @brief header.
  * @author PIVARD Julien, CLECH Sandy.
  *
- * Header pour le fichier monException.cpp.
- * Définit la classe MonException.
+ * Header pour le fichier parseException.cpp.
+ * Définit la classe ParseException.
  * */
 
-#ifndef MonException_hpp
-#define MonException_hpp
+#ifndef ParseException_hpp
+#define ParseException_hpp
 
 #include <exception>
 #include "lexical.hpp"
@@ -24,24 +24,19 @@ namespace sysexp{
 			/**
 			  * @brief Représente une exception.
 	          */
-	        class MonException : public std::exception {
+	        class ParseException : public std::exception {
 	        	public:
 					/**
 					* Constructeur de l'exception.
 					*/ 
-	        		MonException(Lexical & lexical, std::string erreur);
+	        		ParseException(std::string erreur);
 	        	public:
 					/**
 					* @return une chaine de caractère décrivant l'exception.
 					*/ 
-	        		const char* what() const throw();
+	        		const char* what() const throw() override;
 
-	        	protected:
-					/**
-					* Le lexical.
-					*/ 
-	        		Lexical & lexical_;
-					
+	        	protected:					
 					/**
 					* La chaine de caractère décrivant l'erreur.
 					*/
