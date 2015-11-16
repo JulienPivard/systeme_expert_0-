@@ -60,7 +60,7 @@ ADD_EXECUTABLE( client
     src/builders/lorraine/fabriqueJeton.cpp
     src/builders/lorraine/lexical.cpp
     src/builders/lorraine/syntaxique.cpp
-    src/builders/lorraine/monException.cpp
+    src/builders/lorraine/parseException.cpp
 
     src/builders/lorraine/concreteBuilderLorraine.cpp
     src/builders/directeur.cpp
