@@ -12,7 +12,7 @@ namespace sysexp
 
         void FormeConclusionEntierFait::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         const std::string & FormeConclusionEntierFait::lireNomFait() const

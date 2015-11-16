@@ -15,7 +15,7 @@ namespace sysexp
                     << faitAbstrait->lireNom()
                     << "  Fait : ";
 
-                switch( faitAbstrait->type() )
+                switch( faitAbstrait->lireType() )
                 {
 
                     case TypeFait::faitBool:
@@ -80,14 +80,14 @@ namespace sysexp
                 FaitAbstrait::PtrFaitAbstrait faitDansBase( trouver( fait->lireNom() ) );
                 // Ici le fait de même nom n'est pas de même type.
                 // N'est présent que par soucis d'exhaustivité, n'est normalement jamais déclenché.
-                if( faitDansBase->type() != fait->type() )
+                if( faitDansBase->lireType() != fait->lireType() )
                 {
                     throw ExceptionFaitDejaAjoute();
                 }
                 else        // Les faits sont de même type.
                 {
 
-                    switch( fait->type() )
+                    switch( fait->lireType() )
                     {
                         case TypeFait::faitBool:
                         {

@@ -12,7 +12,7 @@ namespace sysexp
 
         void FormeConclusionEntierExpression::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         long int FormeConclusionEntierExpression::lireValeur( const BaseFait::PtrBaseFait & baseFait ) const

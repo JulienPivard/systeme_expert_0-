@@ -11,7 +11,7 @@ namespace sysexp
 
         void FormePremisseBoolFalse::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
     }

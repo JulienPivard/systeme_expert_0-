@@ -15,7 +15,7 @@ namespace sysexp
 
         void FormePremisseEntierExpression::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         bool FormePremisseEntierExpression::test( const long int & partieGauche, const long int & partieDroite ) const

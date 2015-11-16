@@ -17,7 +17,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -72,7 +72,7 @@ namespace sysexp
                  *
                  * @return Le @ref type_ du fait.
                  * */
-                const TypeFait & type() const;
+                const TypeFait & lireType() const;
 
                 /**
                  * La méthode virtuelle destructeur.

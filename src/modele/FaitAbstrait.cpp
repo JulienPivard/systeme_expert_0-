@@ -18,7 +18,7 @@ namespace sysexp
         }
 
         const TypeFait &
-        FaitAbstrait::type() const
+        FaitAbstrait::lireType() const
         {
             return type_;
         }

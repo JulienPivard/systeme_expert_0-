@@ -12,7 +12,7 @@ namespace sysexp
 
         void FormeConclusionSymboliqueFait::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         const std::string & FormeConclusionSymboliqueFait::lireNomFait() const

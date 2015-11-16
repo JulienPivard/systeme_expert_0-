@@ -16,7 +16,7 @@ namespace sysexp
         void
         FormePremisseSymboliqueFait::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         bool

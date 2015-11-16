@@ -16,7 +16,7 @@ namespace sysexp
 
         void FormePremisseEntierFait::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         bool FormePremisseEntierFait::test( const long int & partieGauche, const long int & partieDroite ) const

@@ -15,7 +15,7 @@ namespace sysexp
 
         void FormePremisseSymboliqueConstante::accept( const PtrVisiteurFormeAbstrait & visiteur )
         {
-            visiteur->visiter( this );
+            visiteur->visiter( *this );
         }
 
         bool FormePremisseSymboliqueConstante::test( const std::string & partieGauche, const std::string & partieDroite ) const

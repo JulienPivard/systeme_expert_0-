@@ -20,7 +20,7 @@
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -198,7 +198,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionBoolTrue
                  * */
-                virtual void visiter( const FormeConclusionBoolTrue * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionBoolTrue & conclusion ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -208,7 +208,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionBoolFalse
                  * */
-                virtual void visiter( const FormeConclusionBoolFalse * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionBoolFalse & conclusion ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -218,7 +218,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionEntierExpression
                  * */
-                virtual void visiter( const FormeConclusionEntierExpression * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionEntierExpression & conclusion ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -228,7 +228,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionEntierFait
                  * */
-                virtual void visiter( const FormeConclusionEntierFait * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionEntierFait & conclusion ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -238,7 +238,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionSymboliqueConstante
                  * */
-                virtual void visiter( const FormeConclusionSymboliqueConstante * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionSymboliqueConstante & conclusion ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -248,7 +248,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormeConclusionSymboliqueFait
                  * */
-                virtual void visiter( const FormeConclusionSymboliqueFait * conclusion ) = 0;
+                virtual void visiter( const FormeConclusionSymboliqueFait & conclusion ) = 0;
 
             public:
 
@@ -260,7 +260,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseBoolTrue
                  * */
-                virtual void visiter( const FormePremisseBoolTrue * premisse ) = 0;
+                virtual void visiter( const FormePremisseBoolTrue & premisse ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -270,7 +270,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseBoolFalse
                  * */
-                virtual void visiter( const FormePremisseBoolFalse * premisse ) = 0;
+                virtual void visiter( const FormePremisseBoolFalse & premisse ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -280,7 +280,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseSymboliqueConstante
                  * */
-                virtual void visiter( const FormePremisseSymboliqueConstante * premisse ) = 0;
+                virtual void visiter( const FormePremisseSymboliqueConstante & premisse ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -290,7 +290,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseSymboliqueFait
                  * */
-                virtual void visiter( const FormePremisseSymboliqueFait * premisse ) = 0;
+                virtual void visiter( const FormePremisseSymboliqueFait & premisse ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -300,7 +300,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseEntierExpression
                  * */
-                virtual void visiter( const FormePremisseEntierExpression * premisse ) = 0;
+                virtual void visiter( const FormePremisseEntierExpression & premisse ) = 0;
 
                 /**
                  * Visite la règle passée en argument.
@@ -310,7 +310,7 @@ namespace sysexp
                  * La conclusion que l'on veut visiter.
                  * @see FormePremisseEntierFait
                  * */
-                virtual void visiter( const FormePremisseEntierFait * premisse ) = 0;
+                virtual void visiter( const FormePremisseEntierFait & premisse ) = 0;
 
             public:
 
