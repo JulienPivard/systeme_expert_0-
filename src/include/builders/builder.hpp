@@ -14,9 +14,9 @@
 
 
 namespace sysexp{
-	
+
 	namespace builders{
-		
+
 		/**
 		 * @brief Permet de construire une base de règle.
 		 */
@@ -27,13 +27,13 @@ namespace sysexp{
 				* Méthode abstraite qui constuit un jeu de règle.
 				*/
 				virtual void construireJeuDeRegle() = 0;
-				
+
 				/**
 				* Méthode abstraite.
 				*  @return une base de règle d'une grammaire.
 				*/
-				virtual sysexp::modele::RegleAbstraite::PtrRegleAbstraite getResult() const = 0;
-				
+				virtual const sysexp::modele::RegleAbstraite::PtrRegleAbstraite & getResult() const = 0;
+
 			public:
 				/**
 				* Destructeur.
