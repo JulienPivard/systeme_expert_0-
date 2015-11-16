@@ -2,7 +2,7 @@
 #include "parseException.hpp"
 
 // on utilise using namespace ici 
-// pour pas que la création des objets prenne 3 kilometres de long 
+// pour que la création des objets ne fasse pas 3 kilometres de long 
 // et qu'on s'y retrouve quand on lit le code
 using namespace sysexp::modele;
 
