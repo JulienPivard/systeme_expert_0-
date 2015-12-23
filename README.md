@@ -1,6 +1,6 @@
 # systeme_expert_0+
 Projet C++ de master 1 en binome.
-Le projet était à l'origine un repos svn qui à été transformé en depot git.
+Le projet était à l'origine un repos svn qui à été transformé en dépôt git.
 
 Ma binome à été rendue anonyme inutile de la chercher.
 
@@ -8,17 +8,22 @@ Ma binome à été rendue anonyme inutile de la chercher.
 ##Configurer et compiler avec Cmake
 ###Méthode automatique.
 Exécutez simplement le fichier de configuration comme ceci :
-_./configure_
+* _./configure_
+
+**Cette configuration ne fonctionne que pour les machines GNU/Linux**
 
 ###Méthode manuelle.
 Pour compiler les fichier tapez dans un terminal :
-    cmake -G"Unix Makefiles"
-    make
+* _cmake -G"Unix Makefiles"_
+* Suivez le Lisezmoi.txt pour configurer le cache.
+* _make_
+
+**La commande _cmake -G_ est à adapter à votre système d'exploitation**
 
 ##Exécution
 Exemple d'exécution :
-    ./bin/client lorraine.txt
+* _./bin/client lorraine.txt_
 
 ##Générer la documentation développeur
 Pour générer la documentation placez vous à la racine du dépôt et tapez :
-    doxygen
+* _doxygen_
