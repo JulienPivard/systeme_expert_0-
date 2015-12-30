@@ -1,8 +1,8 @@
 #include "syntaxique.hpp"
 #include "parseException.hpp"
 
-// on utilise using namespace ici 
-// pour que la création des objets ne fasse pas 3 kilometres de long 
+// on utilise using namespace ici
+// pour que la création des objets ne fasse pas 3 kilometres de long
 // et qu'on s'y retrouve quand on lit le code
 using namespace sysexp::modele;
 
@@ -29,16 +29,16 @@ namespace sysexp{
 			}
 
 			void
-			Syntaxique::erreurDeParsage(std::string message) const {
+			Syntaxique::erreurDeParsage(std::string message) const throw() {
 				const std::string ligne = lexical_.lireLigne();
 				const int oldPosition = lexical_.lireOldPosition();
 				const int position = lexical_.lirePosition();
 				std::ostringstream stream;
 
-				stream << "Erreur (entre crochets) en ligne : " << 
+				stream << "Erreur (entre crochets) en ligne : " <<
 							lexical_.lireNumeroLigne() <<
 							"\n" <<
-							ligne.substr(0, oldPosition) << 
+							ligne.substr(0, oldPosition) <<
 							"[" <<
 							ligne.substr(oldPosition, position - oldPosition) <<
 							"]" <<
@@ -112,7 +112,7 @@ namespace sysexp{
 					faits_[precharge_.lireRepresentation()] = valeur;// on l'ajoute a une map qui associe un fait a sa valeur ( bool, symb, entier)
 					suivant();
 
-					if(precharge_.estFinExpression()){ // apres chaque fait trouvé, on regarde si on est a la fin de la déclaration. 
+					if(precharge_.estFinExpression()){ // apres chaque fait trouvé, on regarde si on est a la fin de la déclaration.
 						suivant();
 						break;
 					}
@@ -128,7 +128,7 @@ namespace sysexp{
 				// pour créer la base de regle on a besoin d'une regle pour la chainer à son successeur.
 				RegleAbstraite::PtrRegleAbstraite regleSuiv;
 				int i = 0;
-				while(!precharge_.estFinFichier()){ 
+				while(!precharge_.estFinFichier()){
 					RegleAbstraite::PtrRegleAbstraite reglePrec = regle(i); // on crée une règle
 					reglePrec->ajouterSuccesseur(regleSuiv); // puis on la chaine à son successeur
 					regleSuiv = reglePrec;
@@ -187,7 +187,7 @@ namespace sysexp{
 				// une conclusion booléenne est constituée soit d'un fait_booléen ou de "non" fait_booléen.
 				if(precharge_.estNon()){// si la conclusion booléenne commence par un non, on ne sais pas si le jeton suivant est un fait booléen.
 					suivant();
-					if(!precharge_.estIdentificateur()){// on regarde donc si c'est une chaine de caractere... 
+					if(!precharge_.estIdentificateur()){// on regarde donc si c'est une chaine de caractere...
 						erreurDeParsage("attendu: un fait booléen");
 					}
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation());// ...si le fait existe...
@@ -197,14 +197,14 @@ namespace sysexp{
 					else if(it->second != "booleen"){ // ...et qu'il est booléen.
 						erreurDeParsage("le fait n'est pas booléen");
 					}
-					// si tout se passe bien, on crée une conclusion booléenne false. 
-					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolFalse(it->first)); 
+					// si tout se passe bien, on crée une conclusion booléenne false.
+					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolFalse(it->first));
 					suivant();
 					return conclusion;
 				}
 				else{
 					// si la conclusion booléenne ne commence pas par un non, on sait qu'on a un fait booléen, on construit donc une conclusion booléenne true.
-					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolTrue(precharge_.lireRepresentation())); 
+					FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion conclusion(new FormeConclusionBoolTrue(precharge_.lireRepresentation()));
 					suivant();
 					return conclusion;
 				}
@@ -215,7 +215,7 @@ namespace sysexp{
 				// pour construire une conclusion symbolique on a besoin de garder le jeton qui contient le fait.
 				Jeton symb = precharge_ ;
 				suivant();
-				if(!precharge_.estEgal()){// on regarde si on a un égal car la structure d'une conclusion symbolique est : fait_symbolique = (fait_symbolique | constante_symbolique) 
+				if(!precharge_.estEgal()){// on regarde si on a un égal car la structure d'une conclusion symbolique est : fait_symbolique = (fait_symbolique | constante_symbolique)
 					erreurDeParsage("attendu '='");
 				}
 				suivant();
@@ -269,7 +269,7 @@ namespace sysexp{
 					FeuilleConstante::PtrFeuilleConstante f(new FeuilleConstante(0)); // on va faire 0 - (la valeur qui sera rencontrée)
 					facteur_g = terme();
 					OperateurMoins::PtrOperateurMoins opm(new OperateurMoins(f, facteur_g));
-	                facteur_g = opm;// la partie gauche de l'operation prend donc la valeur de cette soustraction, on a bien -x. 
+	                facteur_g = opm;// la partie gauche de l'operation prend donc la valeur de cette soustraction, on a bien -x.
 				}
 				else{
 					facteur_g = terme(); //sinon tout se passe bien et on a la valeur du terme directement
@@ -382,7 +382,7 @@ namespace sysexp{
 				if(precharge_.estIdentificateur()){ // on regarde si on a un identificateur
 					std::map<std::string, std::string>::iterator it = faits_.find(precharge_.lireRepresentation()); // on regarde si l'identificateur est dans la liste de faits
 					if(it == faits_.end()){
-						erreurDeParsage("le fait n'a pas été declare");
+						erreurDeParsage("le fait n'a pas été déclare");
 					}
 					else if(it->second == "booleen"){ // si il est booléen c'est une prémisse booléenne
 						return premisse_booleenne();

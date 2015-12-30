@@ -8,8 +8,8 @@ namespace sysexp{
 
 			Lexical::Lexical(std::istream & fichier):
 				ligne_(""),
-				oldPosition_(0),
 				position_(0),
+				oldPosition_(0),
 				fichier_(fichier),
 				numeroLigne_(0)
 				{}
