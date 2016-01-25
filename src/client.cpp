@@ -1,7 +1,7 @@
 /**
  * @mainpage
  *
- * Le systeme expert 0+ capable de comprendre la grammaire LORRAINE.
+ * Le système expert 0+ capable de comprendre la grammaire LORRAINE.
  *
  * @author PIVARD Julien, CLECH Sandy
  */
@@ -96,7 +96,28 @@ int main( int argc, char* argv[] )
 
     // On initialise le moteur d'inférence avec la base de règles
     sysexp::modele::MoteurInference moteur = sysexp::modele::MoteurInference( baseDeRegles );
-    moteur.analyserBaseRegles();
+    try
+    {
+        moteur.analyserBaseRegles();
+    }
+    catch( const sysexp::modele::ExceptionDivParZero & e )
+    {
+        std::cerr << "Tentative de division par zéro ! "
+            << std::endl;
+        return EXIT_FAILURE;
+    }
+    catch( const sysexp::modele::ExceptionFaitDejaAjoute & e )
+    {
+        std::cerr << "Le fait à déjà été ajouté avec une autre valeur !"
+            << std::endl;
+        return EXIT_FAILURE;
+    }
+    catch( const sysexp::modele::ExceptionFaitInconnu & e )
+    {
+        std::cerr << "Le fait n'existe pas !"
+            << std::endl;
+        return EXIT_FAILURE;
+    }
 
     // On affiche la base de fait une fois que le moteur à exécuté la base de règle.
     moteur.afficherBaseFaits();

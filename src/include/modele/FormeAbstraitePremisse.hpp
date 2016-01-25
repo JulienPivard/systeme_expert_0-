@@ -143,7 +143,7 @@ namespace sysexp
                  *
                  * Le prototype de l'opérateur de comparaison entre entier.
                  * */
-                typedef bool (&OperateurComparaisonEntier)( const long int &, const long int& );
+                typedef bool (&OperateurComparaisonEntier)( const long int &, const long int & );
 
                 /**
                  * @typedef OperateurComparaisonString
@@ -176,6 +176,7 @@ namespace sysexp
         };
 
     }
+
 }
 
 #endif
