@@ -8,3 +8,4 @@ doc/
 log.txt
 tags
 .zcache/
+.syntastic_cpp_config
