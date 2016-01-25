@@ -6,7 +6,7 @@ INCLUDE_DIRECTORIES(
     src/include/modele
     src/include/builders
     src/include/builders/lorraine
-   )
+    )
 
 # Chemin du répertoire contenant les binaires.
 SET ( EXECUTABLE_OUTPUT_PATH bin/${CMAKE_BUILD_TYPE} )
@@ -66,7 +66,7 @@ ADD_EXECUTABLE( client
     src/builders/directeur.cpp
 
     src/modele/MoteurInference.cpp
-)
+    )
 
 # Faire parler le make.
 set( CMAKE_VERBOSE_MAKEFILE off )
