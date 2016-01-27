@@ -24,6 +24,11 @@ Pour compiler les fichier tapez dans un terminal :
 Exemple d'exécution :
 * _./bin/client lorraine.txt_
 
+Les erreurs ne sont volontairement pas très explicites du fait de la masse
+de travail du devoir, il nous à été demandé de ne pas pousser cette
+aspect. Il n'est ainsi pas possible pour le moment de savoir quel règle
+à déclenché un problème.
+
 ##Générer la documentation développeur
 Pour générer la documentation placez vous à la racine du dépôt et tapez :
 * _doxygen_
