@@ -1,9 +1,18 @@
 # systeme_expert_0+
-Projet C++ de master 1 en binome.
+Projet C++ universitaire de master 1 informatique en binome.
 Le projet était à l'origine un repos svn qui à été transformé en dépôt git.
 
-Ma binome à été rendue anonyme inutile de la chercher.
+Ma binôme a été rendue anonyme inutile de la chercher.
 
+Le devoir consistait à mettre en place un système expert 0+ 
+en étant un peu guidé sur les _design patterns_ à utiliser,
+mais l'architecture de l'application 
+et l'agencement des _design patterns_ entre eux est de notre conception.
+Parmi les consignes qui nous avaient été données :
+* Respecter la philosophie du langage.
+* Les allocations dynamiques seront effectuées via des pointeurs intelligents de la bibliothèque standard _shared-ptr_.
+* Les messages d'erreurs seront volontairement négligés étant donné la masse déjà conséquente de travail.
+* La grammaire à implémenter est la grammaire _lorraine_.
 
 ##Configurer et compiler avec Cmake
 ###Méthode automatique.
@@ -25,10 +34,10 @@ Exemple d'exécution :
 * _./bin/client lorraine.txt_
 
 Les erreurs ne sont volontairement pas très explicites du fait de la masse
-de travail du devoir, il nous à été demandé de ne pas pousser cette
-aspect. Il n'est ainsi pas possible pour le moment de savoir quel règle
-à déclenché un problème.
+de travail du devoir, il nous a été demandé de ne pas pousser cet
+aspect. Il n'est ainsi pas possible pour le moment de savoir quelle règle
+a déclenché un problème.
 
 ##Générer la documentation développeur
-Pour générer la documentation placez vous à la racine du dépôt et tapez :
+Pour générer la documentation placez-vous à la racine du dépôt et tapez :
 * _doxygen_
