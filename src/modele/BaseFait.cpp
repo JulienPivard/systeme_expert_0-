@@ -2,6 +2,7 @@
 
 namespace sysexp
 {
+
     namespace modele
     {
 
@@ -12,8 +13,8 @@ namespace sysexp
                 << "========== Affichage de la base de fait. =========="
                 << std::endl << std::endl;
 
-            //const std::string fleche =  "└─────────▶ ";
-            const std::string fleche =  "┗━━━━━━━━━▶ ";
+            const std::string fleche =  "└─────────  ";
+            //const std::string fleche =  "┗━━━━━━━━━  ";
 
             for( const std::pair< std::string, FaitAbstrait::PtrFaitAbstrait > & couple : baseFait_ )
             {
@@ -105,7 +106,7 @@ namespace sysexp
                 // N'est présent que par soucis d'exhaustivité, n'est normalement jamais déclenché.
                 if( faitDansBase->lireType() != fait->lireType() )
                 {
-                    throw ExceptionFaitDejaAjoute();
+                    throw ExceptionFaitDejaAjoute( "Le fait [ " + fait->lireNom() + " ] existe déjà avec un autre type." );
                 }
                 else        // Les faits sont de même type.
                 {
@@ -119,7 +120,12 @@ namespace sysexp
                             const FaitBool* ptrFaitDansBase = static_cast< const FaitBool* >( faitDansBase.get() );
                             if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
                             {
-                                throw ExceptionFaitDejaAjoute();
+                                throw ExceptionFaitDejaAjoute( "Le fait [ "
+                                        + ptrFaitDansBase->lireNom()
+                                        + " ] existe déjà dans la base avec la valeur [ "
+                                        + ( ptrFaitDansBase->lireValeur() ? "vrais" : "faux" )
+                                        + " ] dans la base de fait."
+                                        );
                             }
 
                         }
@@ -132,7 +138,12 @@ namespace sysexp
                             const FaitEntier* ptrFaitDansBase = static_cast< const FaitEntier* >( faitDansBase.get() );
                             if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
                             {
-                                throw ExceptionFaitDejaAjoute();
+                                throw ExceptionFaitDejaAjoute( "Le fait [ "
+                                        + ptrFaitDansBase->lireNom()
+                                        + " ] existe déjà dans la base avec la valeur [ "
+                                        + std::to_string( ptrFaitDansBase->lireValeur() )
+                                        + " ] dans la base de fait."
+                                        );
                             }
 
                         }
@@ -145,7 +156,12 @@ namespace sysexp
                             const FaitSymbolique* ptrFaitDansBase = static_cast< const FaitSymbolique* >( faitDansBase.get() );
                             if( ptrFaitDansBase->lireValeur() != ptrFait->lireValeur() )
                             {
-                                throw ExceptionFaitDejaAjoute();
+                                throw ExceptionFaitDejaAjoute( "Le fait [ "
+                                        + ptrFaitDansBase->lireNom()
+                                        + " ] existe déjà dans la base avec la valeur [ "
+                                        + ptrFaitDansBase->lireValeur()
+                                        + " ] dans la base de fait."
+                                        );
                             }
 
                         }
@@ -168,4 +184,5 @@ namespace sysexp
         }
 
     }
+
 }

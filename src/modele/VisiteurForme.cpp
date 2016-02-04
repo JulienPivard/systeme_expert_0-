@@ -47,6 +47,7 @@ namespace sysexp
                 catch( ExceptionFaitInconnu & e )
                 {
                     erreur_ = Erreurs::incoherenceFait;
+                    messageErreur_ = e.what();
                 }
             }
             else
@@ -68,10 +69,12 @@ namespace sysexp
             catch( ExceptionFaitInconnu & e )
             {
                 erreur_ = Erreurs::faitExpressionInconnu;
+                messageErreur_ = e.what();
             }
             catch( ExceptionDivParZero & e )
             {
                 erreur_ = Erreurs::divParZero;
+                messageErreur_ = e.what();
             }
 
         }
@@ -96,6 +99,7 @@ namespace sysexp
                 catch( ExceptionFaitInconnu & e )
                 {
                     erreur_ = Erreurs::incoherenceFait;
+                    messageErreur_ = e.what();
                 }
             }
             else
@@ -159,10 +163,12 @@ namespace sysexp
                 catch( ExceptionFaitInconnu & e )
                 {
                     erreur_ = Erreurs::faitExpressionInconnu;
+                    messageErreur_ = e.what();
                 }
                 catch( ExceptionDivParZero & e )
                 {
                     erreur_ = Erreurs::divParZero;
+                    messageErreur_ = e.what();
                 }
             }
 

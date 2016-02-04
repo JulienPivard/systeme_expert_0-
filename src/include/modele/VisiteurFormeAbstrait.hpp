@@ -178,6 +178,13 @@ namespace sysexp
                 Erreurs getCodeErreurExecution() const;
 
                 /**
+                 * Accesseur
+                 *
+                 * @return Le message généré par l'erreur.
+                 * */
+                std::string getMessageErreur() const;
+
+                /**
                  * Pour faciliter l'affichage des variables de visiteur,
                  * de manière lisible.
                  *
@@ -355,6 +362,11 @@ namespace sysexp
                  * Permet de savoir quel type d'erreur a été rencontrée.
                  * */
                 Erreurs erreur_;
+
+                /**
+                 * Le message de l'erreur qui à été déclenchée.
+                 * */
+                std::string messageErreur_;
 
         };
 

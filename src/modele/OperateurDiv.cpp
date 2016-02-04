@@ -2,6 +2,7 @@
 
 namespace sysexp
 {
+
     namespace modele
     {
 
@@ -14,9 +15,16 @@ namespace sysexp
         {
             if( filsDroit_->interpret( baseFait ) == 0 )
             {
-                throw ExceptionDivParZero();
+                int valeurGauche = filsGauche_->interpret( baseFait );
+                std::ostringstream stream;
+                stream << "L'opération "
+                    << valeurGauche
+                    << "/0 ne peut pas être effectué.";
+                throw ExceptionDivParZero( stream.str() );
             }
             return filsGauche_->interpret( baseFait ) / filsDroit_->interpret( baseFait );
         }
+
     }
+
 }

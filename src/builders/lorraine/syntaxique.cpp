@@ -180,6 +180,7 @@ namespace sysexp{
 					return conclusion_booleenne(); // si l'identificateur rencontré est un non, c'est une conclusion booléenne.
 				}
 				erreurDeParsage("attendu: un identificateur ou un 'non'");
+				throw "Erreur";
 			}
 
 			FormeAbstraiteConclusion::PtrFormeAbstraiteConclusion
@@ -343,6 +344,7 @@ namespace sysexp{
 					suivant();
 					return val;
 				}
+				throw "Erreur";
 			}
 
 			RegleAvecPremisse::PtrRegleAbstraite
@@ -398,6 +400,7 @@ namespace sysexp{
 					return premisse_booleenne(); // si c'est un non, c'est une prémisse booléenne
 				}
 	            erreurDeParsage("attendu: un identificateur ou un 'non'");
+				throw "Erreur";
 			}
 
 			FormeAbstraitePremisse::PtrFormeAbstraitePremisse

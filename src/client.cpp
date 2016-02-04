@@ -104,17 +104,23 @@ int main( int argc, char* argv[] )
     {
         std::cerr << "Tentative de division par zéro ! "
             << std::endl;
+        std::cerr << e.what()
+            << std::endl;
         return EXIT_FAILURE;
     }
     catch( const sysexp::modele::ExceptionFaitDejaAjoute & e )
     {
         std::cerr << "Le fait à déjà été ajouté avec une autre valeur !"
             << std::endl;
+        std::cerr << e.what()
+            << std::endl;
         return EXIT_FAILURE;
     }
     catch( const sysexp::modele::ExceptionFaitInconnu & e )
     {
         std::cerr << "Le fait n'existe pas !"
+            << std::endl;
+        std::cerr << e.what()
             << std::endl;
         return EXIT_FAILURE;
     }

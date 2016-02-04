@@ -11,12 +11,13 @@
 #ifndef exceptionfaitdejaajoute_hpp
 #define exceptionfaitdejaajoute_hpp
 
-#include <stdexcept>
+#include <exception>
+#include <string>
 
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -24,20 +25,34 @@ namespace sysexp
          * @brief On a tenté de modifier un fait déjà ajouté à la base de faits.
          * Déclaration de l'exception pour signaler qu'un fait à déjà été ajouté à la base de faits.
          * */
-        class ExceptionFaitDejaAjoute : public std::runtime_error
+        class ExceptionFaitDejaAjoute : public std::exception
         {
 
             public:
 
                 /**
                  * Le fait existe déjà dans la base de faits.
+                 * @param[in] erreur
+                 * L'explication de l'erreur généré.
                  * */
-                ExceptionFaitDejaAjoute():
-                    std::runtime_error( "Erreur ! Le fait existe déjà. La base de règle est incohérente." )
-                { }
+                ExceptionFaitDejaAjoute( const std::string & erreur );
+
+                /**
+                 * @return Explicite l'exception.
+                 * */
+                const char* what() const throw() override;
+
+            protected:
+
+                /**
+                 * Le texte de l'exception.
+                 * */
+                const std::string erreur_;
+
         };
 
     }
+
 }
 
 #endif

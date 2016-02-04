@@ -11,9 +11,10 @@
 #ifndef operateurdiv_hpp
 #define operateurdiv_hpp
 
+#include <sstream>
+
 #include "OperateurAbstrait.hpp"
 #include "ExceptionDivParZero.hpp"
-
 
 namespace sysexp
 {

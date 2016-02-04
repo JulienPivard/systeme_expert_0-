@@ -9,7 +9,8 @@ namespace sysexp
             baseFait_( baseFait ),
             premisseVerifiee_( false ),
             conclusionDeclenchee_( false ),
-            erreur_( Erreurs::toutVaBien )
+            erreur_( Erreurs::toutVaBien ),
+            messageErreur_( "" )
         { }
 
         bool VisiteurFormeAbstrait::getPremisseVerifiee() const
@@ -27,6 +28,11 @@ namespace sysexp
             return erreur_;
         }
 
+        std::string VisiteurFormeAbstrait::getMessageErreur() const
+        {
+            return messageErreur_;
+        }
+
         void VisiteurFormeAbstrait::AjouterUnFait( const FaitAbstrait::PtrFaitAbstrait & fait )
         {
 
@@ -38,14 +44,17 @@ namespace sysexp
             catch( ExceptionFaitDejaAjoute & e )
             {
                 erreur_ = Erreurs::incoherenceFait;
+                messageErreur_ = e.what();
             }
             catch( ExceptionDivParZero & e )
             {
                 erreur_ = Erreurs::divParZero;;
+                messageErreur_ = e.what();
             }
             catch( ExceptionFaitInconnu & e )
             {
                 erreur_ = Erreurs::incoherenceFait;
+                messageErreur_ = e.what();
             }
 
         }
@@ -100,4 +109,5 @@ namespace sysexp
         }
 
     }
+
 }

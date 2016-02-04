@@ -56,6 +56,9 @@ ADD_EXECUTABLE( client
     src/modele/RegleSansPremisse.cpp
     src/modele/RegleAvecPremisse.cpp
 
+    src/modele/ExceptionDivParZero.cpp
+    src/modele/ExceptionFaitDejaAjoute.cpp
+
     src/builders/lorraine/jeton.cpp
     src/builders/lorraine/fabriqueJeton.cpp
     src/builders/lorraine/lexical.cpp

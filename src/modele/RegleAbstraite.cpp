@@ -42,7 +42,7 @@ namespace sysexp
                     << numeroRegle_
                     << "."
                     << std::endl;
-                throw ExceptionDivParZero();
+                throw ExceptionDivParZero( visiteur->getMessageErreur() );
             }
             if( visiteur->getCodeErreurExecution() == Erreurs::incoherenceFait )
             {
@@ -51,7 +51,7 @@ namespace sysexp
                     << numeroRegle_
                     << " à déjà été ajoutée avec une autre valeur."
                     << std::endl;
-                throw ExceptionFaitDejaAjoute();
+                throw ExceptionFaitDejaAjoute( visiteur->getMessageErreur() );
             }
         }
 
@@ -70,6 +70,7 @@ namespace sysexp
                     << conclusion_->lireNom()
                     << std::endl;
                 visiteur->afficher();
+                std::cout << std::endl;
                 // Fin de debogage.
             }
             // Vérification des flags d'erreur du visiteur.
@@ -79,6 +80,14 @@ namespace sysexp
 
         bool RegleAbstraite::iter( const BaseFait::PtrBaseFait & base )
         {
+
+            bool resultatSuccesseur = false;
+            if( possedeSuccesseur() )
+            {
+                // On récupère le résultat du déclenchement du successeur.
+                resultatSuccesseur = successeur_->iter( base );
+            }
+
             bool resultat = false;
             // Affichage de suivit de trace.
             // Ajout esthétique pour faciliter la lecture.
@@ -101,19 +110,13 @@ namespace sysexp
             // Ajout esthétique pour faciliter la lecture.
             if( traceExecution_ )
             {
-                std::cout << std::endl
-                    << "==== Fin règle numéro : "
+                std::cout << "==== Fin règle numéro : "
                     << numeroRegle_
                     << " ===="
                     << std::endl
                     << std::endl;
             }
-            bool resultatSuccesseur = false;
-            if( possedeSuccesseur() )
-            {
-                // On récupère le résultat du déclenchement du successeur.
-                resultatSuccesseur = successeur_->iter( base );
-            }
+
             return resultat || resultatSuccesseur;
         }
 
@@ -133,4 +136,5 @@ namespace sysexp
         }
 
     }
+
 }
