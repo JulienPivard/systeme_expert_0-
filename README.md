@@ -17,21 +17,22 @@ Parmi les consignes qui nous avaient été données :
 ##Configurer et compiler avec Cmake
 ###Méthode automatique.
 Exécutez simplement le fichier de configuration comme ceci :
-* _./configure_
+* `./configure`
 
 **Cette configuration ne fonctionne que pour les machines GNU/Linux**
 
 ###Méthode manuelle.
 Pour compiler les fichier tapez dans un terminal :
-* _cmake -G"Unix Makefiles"_
+* `cmake -G"Unix Makefiles"`
 * Suivez le Lisezmoi.txt pour configurer le cache.
-* _make_
+* `make`
 
-**La commande _cmake -G_ est à adapter à votre système d'exploitation**
+**La commande `cmake -G <Generateur>` est à adapter à votre système
+d'exploitation**
 
 ##Exécution
 Exemple d'exécution :
-* _./bin/client lorraine.txt_
+* `./bin/client lorraine.txt`
 
 Les erreurs ne sont volontairement pas très explicites du fait de la masse
 de travail du devoir, il nous a été demandé de ne pas pousser cet
@@ -40,4 +41,4 @@ aspect. Il n'est ainsi pas possible pour le moment de savoir quelle règle
 
 ##Générer la documentation développeur
 Pour générer la documentation placez-vous à la racine du dépôt et tapez :
-* _doxygen_
+* `doxygen`
