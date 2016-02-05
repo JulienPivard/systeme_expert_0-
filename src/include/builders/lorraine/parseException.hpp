@@ -1,5 +1,5 @@
 /**
- * @file ParseException.hpp
+ * @file parseException.hpp
  * @brief header.
  * @author PIVARD Julien, CLECH Sandy.
  *
@@ -17,7 +17,7 @@
 
 
 namespace sysexp{
- 
+
 	namespace builders{
 
 		namespace lorraine{
@@ -28,15 +28,15 @@ namespace sysexp{
 	        	public:
 					/**
 					* Constructeur de l'exception.
-					*/ 
+					*/
 	        		ParseException(std::string erreur);
 	        	public:
 					/**
 					* @return une chaine de caractère décrivant l'exception.
-					*/ 
+					*/
 	        		const char* what() const throw() override;
 
-	        	protected:					
+	        	protected:
 					/**
 					* La chaine de caractère décrivant l'erreur.
 					*/
