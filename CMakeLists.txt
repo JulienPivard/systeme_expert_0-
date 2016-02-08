@@ -58,6 +58,7 @@ ADD_EXECUTABLE( client
 
     src/modele/ExceptionDivParZero.cpp
     src/modele/ExceptionFaitDejaAjoute.cpp
+    src/modele/ExceptionFaitInconnu.cpp
 
     src/builders/lorraine/jeton.cpp
     src/builders/lorraine/fabriqueJeton.cpp

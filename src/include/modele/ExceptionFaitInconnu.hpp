@@ -11,12 +11,13 @@
 #ifndef exceptionfaitinconnu_hpp
 #define exceptionfaitinconnu_hpp
 
-#include <stdexcept>
+#include <exception>
+#include <string>
 
 
 namespace sysexp
 {
-    
+
     namespace modele
     {
 
@@ -24,20 +25,34 @@ namespace sysexp
         * @brief Le fait demandé n'a pas pu être trouvé dans la base de faits.
         * Déclaration de l'exception pour les faits non trouvés.
         * */
-        class ExceptionFaitInconnu : public std::runtime_error
+        class ExceptionFaitInconnu : public std::exception
         {
+
             public:
 
                 /**
                  * Le fait que l'on cherchait n'existe pas dans la base de faits.
+                 * @param[in] erreur
+                 * L'exception de l'erreur généré.
                  * */
-                ExceptionFaitInconnu():
-                    std::runtime_error( "Erreur ! Le fait n'existe pas dans la base." )
-                {}
+                ExceptionFaitInconnu( const std::string & erreur );
+
+                /**
+                 * @return Explicite l'exception.
+                 * */
+                const char* what() const throw() override;
+
+            protected:
+
+                /**
+                 * Le texte de l'exception.
+                 * */
+                const std::string erreur_;
 
         };
 
     }
+
 }
 
 #endif

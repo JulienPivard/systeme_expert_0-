@@ -2,6 +2,7 @@
 
 namespace sysexp
 {
+
     namespace modele
     {
 
@@ -15,13 +16,15 @@ namespace sysexp
 
             if( baseFait.appartient( nom_ ) )
             {
-                FaitEntier::PtrFaitEntier fait = std::dynamic_pointer_cast<FaitEntier>( baseFait.trouver( nom_ ));
+                FaitEntier::PtrFaitEntier fait = std::dynamic_pointer_cast<FaitEntier>( baseFait.trouver( nom_ ) );
                 return fait->lireValeur();
             }
 
             // On n'a pas trouvé le fait recherché.
-            throw ExceptionFaitInconnu();
+            throw ExceptionFaitInconnu( "Dans la feuille le fait : " + nom_ + " n'existe pas dans la base de fait." );
+
         }
 
     }
+
 }

@@ -64,7 +64,7 @@ namespace sysexp
 
                     default:
                         std::cerr << "Le type du fait n'existe pas.";
-                        throw ExceptionFaitInconnu();
+                        throw ExceptionFaitInconnu( "Le fait : " + faitAbstrait->lireNom() + " n'existe pas." );
                         break;
 
                 }
@@ -89,7 +89,7 @@ namespace sysexp
         {
             if( ! appartient( nomFait ) )
             {
-                throw ExceptionFaitInconnu();
+                throw ExceptionFaitInconnu( "Le fait : " + nomFait + " n'existe pas dans la base de fait." );
             }
             return baseFait_.find( nomFait )->second;
         }
