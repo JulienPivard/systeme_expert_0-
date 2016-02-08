@@ -32,7 +32,7 @@ d'exploitation**
 
 ##Exécution
 Exemple d'exécution :
-* `./bin/client lorraine.txt`
+* `./bin/Release/client lorraine.txt`
 
 Les erreurs ne sont volontairement pas très explicites du fait de la masse
 de travail du devoir, il nous a été demandé de ne pas pousser cet
