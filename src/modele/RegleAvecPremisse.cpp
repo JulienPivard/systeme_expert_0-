@@ -2,6 +2,7 @@
 
 namespace sysexp
 {
+
     namespace modele
     {
 
@@ -67,4 +68,5 @@ namespace sysexp
         }
 
     }
+
 }

@@ -12,6 +12,7 @@
 #define formeabstraitepremisse_hpp
 
 #include <memory>
+#include <functional>
 
 #include "FormeAbstraite.hpp"
 
@@ -21,105 +22,6 @@ namespace sysexp
 
     namespace modele
     {
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche < partieDroite.
-         * */
-        bool compLess( const long int & partieGauche, const long int & partieDroite );
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche <= partieDroite.
-         * */
-        bool compLessEqual( const long int & partieGauche, const long int & partieDroite );
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche > partieDroite.
-         * */
-        bool compSup( const long int & partieGauche, const long int & partieDroite );
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche >= partieDroite.
-         * */
-        bool compSupEqual( const long int & partieGauche, const long int & partieDroite );
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche == partieDroite.
-         * */
-        bool compEqualEqual( const long int & partieGauche, const long int & partieDroite );
-
-        /**
-         * Comparaison de deux entiers long.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche != partieDroite.
-         * */
-        bool compDiff( const long int & partieGauche, const long int & partieDroite );
-
-        //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-        /**
-         * Comparaison de deux string.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche == partieDroite.
-         * */
-        bool compEqualEqual( const std::string & partieGauche, const std::string & partieDroite );
-
-        /**
-         * Comparaison de deux string.
-         *
-         * @param[in] partieGauche
-         * La partie gauche de la comparaison.
-         * @param[in] partieDroite
-         * La partie droite de la comparaison.
-         *
-         * @return partieGauche != partieDroite.
-         * */
-        bool compDiff( const std::string & partieGauche, const std::string & partieDroite );
-
 
         /**
          * @brief Le squelette de représentation d'une prémisse.
@@ -141,16 +43,18 @@ namespace sysexp
                 /**
                  * @typedef OperateurComparaisonEntier
                  *
-                 * Le prototype de l'opérateur de comparaison entre entier.
+                 * Le prototype de l'opérateur de comparaison entre long entier,
+                 * avec les comparateurs de la librairie standard.
                  * */
-                typedef bool (&OperateurComparaisonEntier)( const long int &, const long int & );
+                typedef std::function< bool( const long int & gauche, const long int & droite ) >OperateurComparaisonEntier;
 
                 /**
                  * @typedef OperateurComparaisonString
                  *
-                 * Le prototype de l'opérateur de comparaison entre string.
+                 * Le prototype de l'opérateur de comparaison entre string,
+                 * avec les comparateurs de la librairie standard.
                  * */
-                typedef bool (&OperateurComparaisonString)( const std::string &, const std::string & );
+                typedef std::function< bool( const std::string & gauche, const std::string & droite ) >OperateurComparaisonString;
 
             public:
 

@@ -452,14 +452,14 @@ namespace sysexp{
 				if(it == faits_.end()){
 					if(signe.estEgal()){ // si il n'est pas dans la liste et que le signe rencontré précedemment est un égal
 						// on crée une prémisse symbolique constante
-						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueConstante(symb.lireRepresentation(), compEqualEqual, precharge_.lireRepresentation()));
+						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueConstante(symb.lireRepresentation(), std::equal_to< std::string >(), precharge_.lireRepresentation()));
 						suivant();
 						return premisse;
 					}
 
 					else if(signe.estDifferent()){ //si il n'est pas dans la liste et que le signe rencontré précedemment est un différent
 						// on crée une prémisse symbolique constante
-						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueConstante(symb.lireRepresentation(), compDiff, precharge_.lireRepresentation()));
+						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueConstante(symb.lireRepresentation(), std::not_equal_to< std::string >(), precharge_.lireRepresentation()));
 						suivant();
 						return premisse;
 					}
@@ -474,14 +474,14 @@ namespace sysexp{
 					}
 					if(signe.estEgal()){// si le fait est dans la liste de faits et que le signe rencontré précedemment est un égal
 						// on crée une premisse symbolique fait
-						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueFait(symb.lireRepresentation(), compEqualEqual, it->first));
+						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueFait(symb.lireRepresentation(), std::equal_to< std::string >(), it->first));
 						suivant();
 						return premisse;
 					}
 
 					else if(signe.estDifferent()){ // si le fait est dans la liste de faits et que le signe rencontré précedemment est un différent
 						// on crée une premisse symbolique fait
-						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueFait(symb.lireRepresentation(), compDiff, it->first));
+						FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseSymboliqueFait(symb.lireRepresentation(), std::not_equal_to< std::string >(), it->first));
 						suivant();
 						return premisse;
 					}
@@ -506,37 +506,37 @@ namespace sysexp{
 				Jeton signe = precharge_; // on enregistre le signe rencontré
 				if(signe.estEgal()){ // si le signe rencontré est un egal
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), compEqualEqual, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), std::equal_to< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 				else if(signe.estSuperieur()){// si le signe rencontré est un superieur
 					// on crée une prémisse entiere
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse(new FormePremisseEntierExpression(ent.lireRepresentation(), compSup, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse(new FormePremisseEntierExpression(ent.lireRepresentation(), std::greater< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 				else if(signe.estInferieur()){// si le signe rencontré est un inferieur
 					// on crée une prémisse entiere
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), compLess, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), std::less< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 				else if(signe.estSupEgal()){// si le signe rencontré est un superieur ou egal
 					// on crée une prémisse entiere
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), compSupEqual, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), std::greater_equal< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 				else if(signe.estInfEgal()){// si le signe rencontré est un inferieur ou egal
 					// on crée une prémisse entiere
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), compLessEqual, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), std::less_equal< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 				else if(signe.estDifferent()){// si le signe rencontré est un différent
 					// on crée une prémisse entiere
 					suivant();
-					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), compDiff, expressionEntiere()));
+					FormeAbstraitePremisse::PtrFormeAbstraitePremisse premisse( new FormePremisseEntierExpression(ent.lireRepresentation(), std::not_equal_to< const long int & >(), expressionEntiere()));
 					return premisse;
 				}
 	            else

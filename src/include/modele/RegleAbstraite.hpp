@@ -21,6 +21,7 @@
 
 namespace sysexp
 {
+
     /// paquetage contenant les composant logiciels relatifs au modele de données.
     namespace modele
     {
@@ -192,6 +193,7 @@ namespace sysexp
         };
 
     }
+
 }
 
 #endif
