@@ -43,6 +43,11 @@ if [[ ! -d src/ ]]; then
     mkdir src/
 fi
 
+if [[ ! -r src/client.cpp ]]; then
+    echo -e "${vert}Création du fichier ${magenta}src/client.cpp${neutre}\n"
+    touch src/client.cpp
+fi
+
 if [[ ! -d doc/ ]]; then
     echo -e "${vert}Création du dossier ${magenta}doc/${neutre}\n"
     mkdir doc/
@@ -55,6 +60,7 @@ if [[ ! -f Makefile && ! -f CMakeCache.txt ]]; then
 fi
 
 if [[ -r CMakeCache.txt ]]; then
+
     # Itère sur toutes les lignes du fichier
     # BEGIN
     # Une variable ENTREE mise a vide.
@@ -91,6 +97,12 @@ if [[ -r CMakeCache.txt ]]; then
         print ENTREE > "CMakeCache.txt";
         printf "Le CMakeCache.txt à bien été écrit.\n";
     }' ./CMakeCache.txt
+
+else
+
+    echo -e "${rouge}Le fichier ${magenta}CMakeCache.txt${rouge} n'existe pas ou n'est pas lisible et n'a pas pu être configuré.${neutre}\n"
+    echo -e "Si le fichier n'existe pas c'est que la configuration de cmake à échoué ou que le fichier n'est pas lisible.\n"
+
 fi
 
 exit 0
