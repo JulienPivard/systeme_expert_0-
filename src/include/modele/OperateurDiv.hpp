@@ -61,7 +61,7 @@ namespace sysexp
                  *
                  * @return La résultat de l'opération de division.
                  *
-                 * @throws ExceptionDivParZero
+                 * @throw ExceptionDivParZero
                  * La partie droite de la division est 0. L'opération ne peut pas être évaluée.
                  * */
                 long int interpret( const BaseFait & baseFait ) const override;
