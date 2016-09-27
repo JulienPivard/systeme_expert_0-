@@ -52,7 +52,7 @@ std::string affichageTest( std::string nomZone )
 int main( int argc, char* argv[] )
 {
 
-    // Controle du nombre d'argument sur la ligne de commande
+    // Contrôle du nombre d'argument sur la ligne de commande
     if( argc == 1 )
     {
         std::cout << "Usage : "

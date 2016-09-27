@@ -45,8 +45,8 @@ namespace sysexp
                 OperateurAbstrait( const ValeurAbstraite::PtrValeur & filsGauche, const ValeurAbstraite::PtrValeur & filsDroit );
 
                 /**
-                * Destructeur de OperateurAbstrait.
-                * */
+                 * Destructeur de OperateurAbstrait.
+                 * */
                 virtual ~OperateurAbstrait() = default;
 
             public:
@@ -58,15 +58,15 @@ namespace sysexp
             protected:
 
                 /**
-                * Le fils gauche de l'opération.
-                * @see ValeurAbstraite
-                * */
+                 * Le fils gauche de l'opération.
+                 * @see ValeurAbstraite
+                 * */
                 const ValeurAbstraite::PtrValeur filsGauche_;
 
                 /**
-                * Le fils droit de l'opération.
-                * @see ValeurAbstraite
-                * */
+                 * Le fils droit de l'opération.
+                 * @see ValeurAbstraite
+                 * */
                 const ValeurAbstraite::PtrValeur filsDroit_;
 
         };
