@@ -21,14 +21,14 @@ via le tag **renduDevoir**. Les commit suivant sont des modifications
 suggéré par le professeur lors du rendu des notes avec la correction
 détaillée.
 
-##Configurer et compiler avec Cmake
-###Méthode automatique.
+## Configurer et compiler avec Cmake
+### Méthode automatique.
 Exécutez simplement le fichier de configuration comme ceci :
 * `./configure`
 
 **Cette configuration ne fonctionne que pour les machines GNU/Linux**
 
-###Méthode manuelle.
+### Méthode manuelle.
 Pour compiler les fichier tapez dans un terminal :
 * `cmake -G"Unix Makefiles"`
 * Suivez le Lisezmoi.txt pour configurer le cache.
@@ -37,7 +37,7 @@ Pour compiler les fichier tapez dans un terminal :
 **La commande `cmake -G <Generateur>` est à adapter à votre système
 d'exploitation**
 
-##Exécution
+## Exécution
 Exemple d'exécution :
 * `./bin/Release/client lorraine.txt`
 
@@ -46,6 +46,6 @@ de travail du devoir, il nous a été demandé de ne pas pousser cet aspect.
 Il n'est ainsi pas possible pour le moment de savoir quelle règle
 à déclenché un problème.
 
-##Générer la documentation développeur
+## Générer la documentation développeur
 Pour générer la documentation placez-vous à la racine du dépôt et tapez :
 * `doxygen`
