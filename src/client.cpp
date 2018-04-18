@@ -52,6 +52,9 @@ std::string affichageTest( std::string nomZone )
 int main( int argc, char* argv[] )
 {
 
+    std::cout << affichageTest ("Systeme expert 0+")
+        << std::endl;
+
     // Contrôle du nombre d'argument sur la ligne de commande
     if( argc == 1 )
     {
