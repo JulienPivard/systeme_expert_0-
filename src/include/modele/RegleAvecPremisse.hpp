@@ -78,16 +78,6 @@ namespace sysexp
                 void ajouterPremisse( const FormeAbstraitePremisse::PtrFormeAbstraitePremisse & premisse );
 
                 /**
-                 * Parcours la base de règle.
-                 *
-                 * @param[in, out] base
-                 * La base de faits utilisée pour évaluer les règles.
-                 *
-                 * @return Une règle au moins à été déclenchée.
-                 * */
-                bool iter( const BaseFait::PtrBaseFait & base );
-
-                /**
                  * Parcoure les prémisses @ref premisses_ pour vérifier les prémisses par rapport à la base de faits.
                  *
                  * @param[in] base
