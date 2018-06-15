@@ -86,7 +86,7 @@ if [[ -r CMakeCache.txt ]]; then
         else if ($0=="CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG")
         {
             ENTREE=ENTREE$1"=-Wall -Wextra -march=native -fopenmp -O3\n";
-            printf "    La valeur précédente de : CMAKE_CXX_FLAGS_RELEASE:STRING= à bien été remplacée par : -Wall -Wextra -march=native -fopenmp -O3\n";
+            printf "    La valeur précédente de : CMAKE_CXX_FLAGS_RELEASE:STRING= à bien été remplacée par : -Wall -Wextra -march=native -O3\n";
         }
         else
         {
