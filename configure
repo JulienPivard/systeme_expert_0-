@@ -39,23 +39,23 @@ neutre='\e[0;m'
 # Création des dossiers de la configuration.
 
 if [[ ! -d src/ ]]; then
-    echo -e "${vert}Création du dossier ${magenta}src/${neutre}\n"
+    printf "${vert}Création du dossier ${magenta}src/${neutre}\n"
     mkdir src/
 fi
 
 if [[ ! -r src/client.cpp ]]; then
-    echo -e "${vert}Création du fichier ${magenta}src/client.cpp${neutre}\n"
+    printf "${vert}Création du fichier ${magenta}src/client.cpp${neutre}\n"
     touch src/client.cpp
 fi
 
 if [[ ! -d doc/ ]]; then
-    echo -e "${vert}Création du dossier ${magenta}doc/${neutre}\n"
+    printf "${vert}Création du dossier ${magenta}doc/${neutre}\n"
     mkdir doc/
 fi
 
 # Si le fichier makefile n'existe pas alors on le génère.
 if [[ ! -f Makefile && ! -f CMakeCache.txt ]]; then
-    echo -e "${vert}Configuration de ${magenta}CMake${vert} pour UNIX.${neutre}\n"
+    printf "${vert}Configuration de ${magenta}CMake${vert} pour UNIX.${neutre}\n"
     cmake -G"Unix Makefiles"
 fi
 
@@ -85,7 +85,7 @@ if [[ -r CMakeCache.txt ]]; then
         }
         else if ($0=="CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG")
         {
-            ENTREE=ENTREE$1"=-Wall -Wextra -march=native -fopenmp -O3\n";
+            ENTREE=ENTREE$1"=-Wall -Wextra -march=native -O3\n";
             printf "    La valeur précédente de : CMAKE_CXX_FLAGS_RELEASE:STRING= à bien été remplacée par : -Wall -Wextra -march=native -O3\n";
         }
         else
@@ -100,8 +100,8 @@ if [[ -r CMakeCache.txt ]]; then
 
 else
 
-    echo -e "${rouge}Le fichier ${magenta}CMakeCache.txt${rouge} n'existe pas ou n'est pas lisible et n'a pas pu être configuré.${neutre}\n"
-    echo -e "Si le fichier n'existe pas c'est que la configuration de cmake à échoué ou que le fichier n'est pas lisible.\n"
+    printf "${rouge}Le fichier ${magenta}CMakeCache.txt${rouge} n'existe pas ou n'est pas lisible et n'a pas pu être configuré.${neutre}\n"
+    printf "Si le fichier n'existe pas c'est que la configuration de cmake à échoué ou que le fichier n'est pas lisible.\n"
 
 fi
 
