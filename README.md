@@ -1,4 +1,4 @@
-# systeme_expert_0+
+# Systeme Expert 0+
 
 Projet C++ universitaire de master 1 informatique en binome. Le projet
 était à l'origine un repos svn qui à été transformé en dépôt git.
