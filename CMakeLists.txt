@@ -1,3 +1,4 @@
+project (SystemeExpert)
 # Version de cmake demandée.
 CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
 
