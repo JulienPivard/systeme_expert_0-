@@ -56,7 +56,9 @@ fi
 # Si le fichier makefile n'existe pas alors on le génère.
 if [[ ! -f Makefile && ! -f CMakeCache.txt ]]; then
     printf "${vert}Configuration de ${magenta}CMake${vert} pour UNIX.${neutre}\n"
-    cmake -G"Unix Makefiles"
+    # -S . pour que cmake trouve le fichier ./CMakeLists.txt
+    # -B . pour que cmake sache où écrire les fichiers de configuration de cmake
+    cmake -G "Unix Makefiles" -S . -B .
 fi
 
 if [[ -r CMakeCache.txt ]]; then

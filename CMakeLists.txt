@@ -1,6 +1,7 @@
-project (SystemeExpert)
 # Version de cmake demandée.
-CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )
+CMAKE_MINIMUM_REQUIRED( VERSION 3.20 )
+
+project (SystemeExpert)
 
 # Chemin des répertoires contenant les fichiers entêtes.
 INCLUDE_DIRECTORIES(
@@ -41,7 +42,7 @@ ADD_EXECUTABLE( client
     src/modele/FormeConclusionBoolTrue.cpp
     src/modele/FormeConclusionBoolFalse.cpp
     src/modele/FormeConclusionEntierExpression.cpp
-    src/modele/FormeConclusionEntierFait
+    src/modele/FormeConclusionEntierFait.cpp
     src/modele/FormeConclusionSymboliqueConstante.cpp
     src/modele/FormeConclusionSymboliqueFait.cpp
 
